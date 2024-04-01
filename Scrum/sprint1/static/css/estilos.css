@@ -11,11 +11,12 @@ body{
     background-repeat: no-repeat ;
     background-size: cover;
     background-attachment: fixed;
+    background-color: rgba(26, 46, 110, 0.993);
     
 }
 
 .formulario{
-    background-color: rgba(26, 46, 110, 0.795);
+    background-color: rgba(26, 46, 110, 0.918);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
