@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="47542A2C-43E2-CC3F-1AE1-004F1C7BBE27" name="paginas">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:11:49 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_pagina" id="9FBE1B4E-B817-C455-66F9-A6EDECFCD79E">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:11:54 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre_pagina" id="0A57C05C-AB01-59F3-F8D8-578FDB539A9C">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:12:18 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_usuario" id="0D69559A-FB58-EE5C-3F96-3B12A2A22FF5">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:17:14 UTC</createdTime>
+<generatorID>AAFC11EF-B457-8843-4E0F-A7CECC24224B</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<referedAttribute>A09B51C1-EADA-C317-4967-88C65E2008DE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="5EEABAA2-6E86-B125-6EA4-C49FD76A7800" name="paginas PK">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:12:17 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9FBE1B4E-B817-C455-66F9-A6EDECFCD79E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
