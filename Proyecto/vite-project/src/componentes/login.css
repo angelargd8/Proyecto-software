@@ -1,4 +1,9 @@
-body{
+.login{
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
     background-image: url(../assets/img/wallpaper8.jpg);
     background-repeat: no-repeat ;
     background-size: cover;
@@ -6,23 +11,23 @@ body{
     padding: 20px;
     background-color: #154EE5;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    
+    align-items: center;    
+
 }
-.formulario{
-    background-color:#154de5ab; 
+.login .formulario{
+    background-color:#061a4dab; 
     padding: 35px;
-    border-radius: 50px;
+    border-radius: 80px;
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
     color: white;
     border: none;
-    width: 90%;
-    height: 30%;
+    width: 80%;
+    height: 70%;
     margin-bottom: 35%;
+    margin-top: 3%;
 }
 
-.form-text{
+.login .form-text{
     padding: 5px;
     border-radius: 10px;
     color: white;
@@ -32,11 +37,11 @@ body{
     display: flex;
 }
 
-.btn{
+.login .btn{
     margin: 8px;
     padding: 17px;
     border-radius: 10px;
-    background-color: #081D56;
+    background-color: #051336;
     color: white;
     border: none;
     font-size: 20px;
@@ -46,7 +51,7 @@ body{
 
 }
 
-.btn2{
+.login .btn2{
     border-radius: 10px;
     background-color: #2D62EE;
     color: white;
@@ -57,18 +62,18 @@ body{
 
 }
 
-.btn:hover, .btn2:hover{
+.login  .btn:hover, .login .btn2:hover{
     background-color: #2a7727d2;
     color: white;
     border: none;
 }
 
-.inputs{
+.login .inputs{
     border: white;
     background-color: white;
     font-size: 16px;
     padding: 15px;
-    margin: 10px;
+    margin: 15px;
     border-radius: 10px;
     color: black;
 }
