@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import {  useState } from 'react'
 import './carrito.css'
 
 function Carrito(){
@@ -63,6 +63,7 @@ function Carrito(){
                 </div>
                 <div className="bottom">
                     <button className='pagobtn'> Pagar </button>
+                    <button className='pagobtn'> Regresar </button>
                 </div>
             </div>
         </>
