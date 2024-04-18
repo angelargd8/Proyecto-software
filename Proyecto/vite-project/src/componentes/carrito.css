@@ -141,14 +141,15 @@
 
 .pic {
     display: flex;
-    height: 80%;
+    height: 100%;
     width: 100%;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
+    align-items: right;
+    justify-content: right;
+    align-self: right;
     background-image: url(../assets/img/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: right;
 }
 
 .columnCampo {
@@ -215,8 +216,10 @@
     height: 100%;
     width: 70%;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    text-align: left;
 }
+
 .totales {
     display: flex;
     flex-direction: column;
