@@ -51,6 +51,13 @@ function Nabvar({ setRutaActual }){
                     <li className="nav-item">
                     <a className="nav-text" href="/login" onClick={(e) => {e.preventDefault(); setRutaActual('/login')}}>Iniciar Sesion</a>
                     </li>
+
+                    {/*------------ Esto es solo para probar mi pantalla, cuando ya existan las cards de productos hay que quitarlo ------------*/}
+                    <li className="nav-item">
+                    <a className="nav-text" href="/detalles" onClick={(e) => {e.preventDefault(); setRutaActual('/detalles')}}>Detalles</a>
+                    </li>
+                    {/*-------------------------------------------------------------------------------------------------------------------------*/}
+
                     {/* <li className="nav-item">
                     <a className="nav-text" href="/carrito" onClick={(e) => {e.preventDefault(); setRutaActual('/carrito')}}>Carrito de compras</a>
                     </li> */}

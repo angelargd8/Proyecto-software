@@ -1,6 +1,7 @@
 import Login from './login.jsx'
 import Home from './home.jsx'
 import SingUp from './signup.jsx'
+import Detalles from './detalles.jsx'
 // //import Carrito from './carrito.jsx'
 
 function Router({ruta, setRutaActual}){
@@ -10,7 +11,9 @@ function Router({ruta, setRutaActual}){
         case "/login":
             return <Login setRutaActual={setRutaActual}/>
         case "/signup":
-                return <SingUp setRutaActual={setRutaActual}/>
+            return <SingUp setRutaActual={setRutaActual}/>
+        case "/detalles":
+            return <Detalles setRutaActual={setRutaActual}/>
         // case "/carrito":
         //         return <Carrito setRutaActual={setRutaActual}/>
         case "/":
