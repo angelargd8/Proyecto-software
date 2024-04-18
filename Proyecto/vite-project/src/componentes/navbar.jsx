@@ -51,6 +51,10 @@ function Nabvar({ setRutaActual }){
                     <li className="nav-item">
                     <a className="nav-text" href="/login" onClick={(e) => {e.preventDefault(); setRutaActual('/login')}}>Iniciar Sesion</a>
                     </li>
+                    <li className="nav-item">
+                    <a className="nav-text" href="/carrito" onClick={(e) => {e.preventDefault(); setRutaActual('/carrito')}}>Carrito de compras</a>
+
+                    </li>
                     
                 </ul>
                 <form className="d-flex buscar" role="search">
