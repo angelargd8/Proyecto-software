@@ -5,7 +5,7 @@ function Login({setRutaActual}){
         <>
         <div className="login body">
           <div className="formulario">
-              <h1>Inicia sesión</h1>
+              <h1 className='form-text'>Inicia sesión</h1>
                 <input type="email" id="email" name="email" placeholder="Correo Electrónico" className="inputs"/>
                 
                 <input type="password" id="password" name="password" className="inputs" placeholder="Contraseña"/>

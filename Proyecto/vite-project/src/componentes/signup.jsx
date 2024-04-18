@@ -5,7 +5,7 @@ function SingUp({setRutaActual}){
         <>
         <div className="signup body">
           <div className="formulario">
-              <h1>Registro</h1>
+              <h1 className='form-text'>Registro</h1>
               <input type="text" id="name" name="name" placeholder="Nombre" className="inputs"/>
               <input type="text" id="lastname" name="lastname" placeholder="Apellido" className="inputs"/>
                 <input type="email" id="email" name="email" placeholder="Correo Electrónico" className="inputs"/>

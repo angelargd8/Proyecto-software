@@ -15,14 +15,15 @@
 
 }
 .login .formulario{
+    box-sizing: border-box;
     background-color:#061a4dab; 
     padding: 35px;
     border-radius: 80px;
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
     color: white;
     border: none;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 87%;
     margin-bottom: 35%;
     margin-top: 3%;
 }
@@ -32,10 +33,13 @@
     border-radius: 10px;
     color: white;
     border: none;
-    font-size: 20px;
+    font-size: 40px;
     align-items: flex-start;
     display: flex;
-}
+    margin: 50px;
+    justify-content: center;
+    align-items: center;    
+    }
 
 .login .btn{
     margin: 8px;
@@ -72,8 +76,8 @@
     border: white;
     background-color: white;
     font-size: 16px;
-    padding: 15px;
-    margin: 15px;
+    padding: 10px;
+    margin: 10px;
     border-radius: 10px;
     color: black;
 }
