@@ -1,0 +1,39 @@
+.nabvar-body{
+    background-color: #BEE9E8;
+    font-size: 20px;
+    font-weight: 500;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left:0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    padding: 10px;
+}
+
+
+
+.nav-text{
+    padding: 10px;
+    margin: 5px;
+    color: #115773 !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.buscar{
+    margin-left: 45%;
+}
+
+.logotipo{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#navbar.scrolled{
+    display: none;
+}
