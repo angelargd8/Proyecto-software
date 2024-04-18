@@ -63,6 +63,7 @@ function Carrito(){
                 </div>
                 <div className="bottom">
                     <button className='pagobtn'> Pagar </button>
+                    <button className='pagobtn'> Regresar </button>
                 </div>
             </div>
         </>
