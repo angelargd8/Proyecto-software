@@ -20,10 +20,7 @@
 
 .txt {
     color: #105675;
-    height: 100%;
-    width: 70%;
-    padding: 0;
-    margin: 0px;
+
 }
 
 .middle {
@@ -79,7 +76,7 @@
     height: 100%;
     width: 20%;
     background-image: url(../assets/img/corona.jpg);
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 10px;
@@ -154,22 +151,6 @@
     background-repeat: no-repeat;
 }
 
-/* .regresarbtn {
-
-    width: 100%;
-    height: 100%;
-    border-top: 20px solid transparent; 
-    border-bottom: 20px solid transparent; 
-    border-right: 20px solid #105675; 
-    align-items: left;
-    align-self: left;
-    margin-right: 90%;
-    margin-left: 10%;
-    margin-top: 10%;
-    margin-bottom: 10%;
-  
-} */
-
 .columnCampo {
     display: flex;
     height: 100%;
@@ -199,15 +180,15 @@
     border-radius: 20px;
     resize: none;
     text-align: center;    
-    margin-left: 1%;
-    padding-top: 10px;
     overflow: hidden;
 }
 
 .codigo::placeholder {
     color: black;
     font-size: x-large;
-    padding: 1%;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .rowDatos {
@@ -215,7 +196,10 @@
     flex-direction: row;
     height: 80%;
     width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
+
 .carrito {
     display: flex;
     flex-direction: column;
@@ -227,14 +211,16 @@
 }
 
 #contTitulo {
+    display: flex;
     height: 100%;
     width: 70%;
+    align-items: center;
+    justify-content: center;
 }
 .totales {
     display: flex;
     flex-direction: column;
     height: 30%;
     width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    
 }
