@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5C144DE2-4133-2404-EA07-7A06FACE23F4" name="envios">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<generatorID>F4EA2877-4E2B-3228-5B72-C153DF9804C4</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_envio" id="31D03F0A-CD5A-9243-A93B-DB69CDD26BFE">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<generatorID>DCC3B53A-C389-C8EC-60C9-158C3E0110FE</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="3FE54060-DFD8-2CD6-8815-9E08AB75015C">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<generatorID>74B0AA42-D369-B407-2A56-FB5D098B9994</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="costo" id="DE337C4A-CC3E-FCF7-92A0-5BE8B75FCF4A">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<generatorID>B31A7B72-012E-54A3-AB3C-5E4A61337B56</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ordenes_id_orden" id="AEB3B14A-A64D-F333-DB1C-B462D10233CA">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<generatorID>3BCB3E2D-2698-5D14-DE9E-A343CD5A79CC</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E601970F-4CEC-8B42-46CD-D7E56DEDBD16" referredColumn="853A9E47-DB0E-9DA9-A0FD-339C8A31596E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="87DBD2E3-3977-4C5B-BB65-D1DB2EC4C30D" name="envios__IDX">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>086A7B74-0448-6E54-F3A8-BA0D3752AEBC</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="AEB3B14A-A64D-F333-DB1C-B462D10233CA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BA2BD9F2-ADDD-D248-92C8-F4DA5B13274D" name="envios_ordenes_FK">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<generatorID>086A7B74-0448-6E54-F3A8-BA0D3752AEBC</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AEB3B14A-A64D-F333-DB1C-B462D10233CA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

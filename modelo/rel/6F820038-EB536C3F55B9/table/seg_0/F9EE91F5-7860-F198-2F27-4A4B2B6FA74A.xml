@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F9EE91F5-7860-F198-2F27-4A4B2B6FA74A" name="favoritos">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<generatorID>6DAD90E5-3448-1F32-D4C6-14E687F5D84D</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="usuarios_id_usuario" id="F3E0A8FC-312C-50B0-0CA9-7540835EAC7A">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<generatorID>0936C7E6-E3C1-E632-7763-5862FDC08FB0</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E4590AAF-38EE-B6FE-0852-ED05B947B3A9" referredColumn="4F9F1E50-3D67-1C99-80A0-385799DB88EC"/>
+</associations>
+</Column>
+<Column name="favoritos_ID" id="02B67D35-9CD7-A68C-DBD8-B64BAFDF642C">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6BA584E3-EBE2-14D7-090A-9C0F5935DF71" name="favoritos_PK">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="02B67D35-9CD7-A68C-DBD8-B64BAFDF642C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="37F82F4A-0704-71D5-833C-2B42996F6129" name="favoritos_usuarios_FK">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<generatorID>EE517FED-5323-D573-711D-DFD07EF7A08D</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F3E0A8FC-312C-50B0-0CA9-7540835EAC7A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

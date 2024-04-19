@@ -1,0 +1,17 @@
+.card{
+    /* colocar un borde */
+    margin: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    align-items: center;
+}
+
+.imagen{
+    width: 15%;
+    height: 15%;
+    border-radius: 10%;
+}
