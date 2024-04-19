@@ -63,7 +63,7 @@ const resolvers = {
                 return {
                     status: true,
                     message: "Usuario creado con exito",
-                    user:result[0]
+                    user:result
                 }
             }else{
                 return {

@@ -71,15 +71,13 @@ async function createNewUser(args){
                 ('${args.email}','${args.nombre}','${args.apellido}','${args.password}',2)
         `);
         //console.log("AQ]UIIIII",result)
-        let jsonResult = result.rows.map(row =>{
-            return {
-                email: args.email,
-                name: args.nombre,
-                lastName: args.apellido,
-                password: args.password,
-                IdRol: 2
-            }
-        })
+        let jsonResult ={
+            email: args.email,
+            name: args.nombre,
+            lastName: args.apellido,
+            password: args.password,
+            IdRol: 2
+        }
         return jsonResult;
     } catch (error) {
         console.error(error);
