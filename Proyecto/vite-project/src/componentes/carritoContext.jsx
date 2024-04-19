@@ -21,10 +21,22 @@ export const CarritoProvider = ({ children }) => {
     localStorage.setItem('carrito', JSON.stringify(carrito))
   }
 
-  const agregarAlCarrito = (producto) => {
-    const nuevoCarrito = [...carrito, producto]
-    setCarrito(nuevoCarrito)
-    guardarCarritoStorage(nuevoCarrito)
+  const agregarAlCarrito = (producto, nuevaCantidad) => {
+    const existingIndex = carrito.findIndex((item) => item.id === producto.id)
+    if (existingIndex !== -1) {
+      // Si el producto ya está en el carrito, actualiza su cantidad
+      const updatedCarrito = [...carrito]
+      updatedCarrito[existingIndex].cantidad = nuevaCantidad
+      setCarrito(updatedCarrito)
+      guardarCarritoStorage(updatedCarrito)
+    } else {
+      // Si el producto no está en el carrito, agrégalo
+      const nuevoCarrito = [...carrito, producto]
+      setCarrito(nuevoCarrito)
+      guardarCarritoStorage(nuevoCarrito)
+    }
+
+    console.log('Estado del carrito después de agregar:', carrito)
   }
 
   const eliminarDelCarrito = (id) => {
@@ -33,8 +45,13 @@ export const CarritoProvider = ({ children }) => {
     guardarCarritoStorage(nuevaCarrito)
   }
 
+  const limpiarCarrito = () => {
+    setCarrito([])
+    localStorage.removeItem('carrito')
+  }
+
   return (
-    <CarritoContext.Provider value={{ carrito, agregarAlCarrito }}>
+    <CarritoContext.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito, setCarrito, guardarCarritoStorage }}>
       {children}
     </CarritoContext.Provider>
   )

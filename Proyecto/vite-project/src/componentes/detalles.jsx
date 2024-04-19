@@ -1,5 +1,5 @@
 import './detalles.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useCarrito } from './carritoContext'
 
@@ -7,14 +7,20 @@ function Detalles(){
     const [cantidad, setCantidad] = useState(1)
     const location = useLocation()
     const { cardInfo } = location.state || {}
-    const { agregarAlCarrito } = useCarrito()
+    const { carrito, agregarAlCarrito } = useCarrito()
+    const {limpiarCarrito} = useCarrito()
+
+    useEffect(() => {
+        console.log('Estado actual del carrito después de agregar producto:', carrito)
+    }, [carrito])
 
     if (!cardInfo) {
         return <div>Error: No se encontraron detalles para mostrar.</div>;
     }
 
-    const {title, content, imagen} = cardInfo
+    const {id, title, content, imagen} = cardInfo
 
+    console.log(id)
     const restarCantidad = () => {
         if (cantidad > 1) {
             setCantidad(cantidad - 1)
@@ -33,8 +39,9 @@ function Detalles(){
     }
 
     const handleAgregarAlCarrito = () => {
-        const producto = {title, content, imagen, cantidad}
-        agregarAlCarrito(producto)
+        //limpiarCarrito()         // EN CASO DE EMERGENCIAS, BORRAR EL CARRITO
+        const producto = {id, title, content, imagen, cantidad}
+        agregarAlCarrito(producto, cantidad)
         console.log(`Agregado al carrito: ${cantidad} unidad(es)`)
     }
     
