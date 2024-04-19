@@ -1,14 +1,18 @@
 import './detalles.css'
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useCarrito } from './carritoContext'
+import { useNavigate } from 'react-router-dom'
+
 
 function Detalles(){
     const [cantidad, setCantidad] = useState(1)
     const location = useLocation()
     const { cardInfo } = location.state || {}
     const { carrito, agregarAlCarrito } = useCarrito()
-    const {limpiarCarrito} = useCarrito()
+    // const {limpiarCarrito} = useCarrito()
+    const navigate = useNavigate()
+
 
     useEffect(() => {
         console.log('Estado actual del carrito después de agregar producto:', carrito)
@@ -44,10 +48,15 @@ function Detalles(){
         agregarAlCarrito(producto, cantidad)
         console.log(`Agregado al carrito: ${cantidad} unidad(es)`)
     }
+
+    function Regresar(){
+        navigate(`/home`)
+    }
     
     return(
         <div className="cuerpo">
-            <img src={imagen} alt='producto'/>
+            <button onClick={Regresar}>Regresar</button>
+            <img src={imagen} className='imagen' alt='producto'/>
             <h2>{title}</h2>
             <h3>Precio: {content}</h3>
             <p>No incluye precio de envío</p>
