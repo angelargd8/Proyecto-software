@@ -1,9 +1,11 @@
 import {  useState } from 'react'
 import './carrito.css'
 import { useNavigate } from 'react-router-dom';
+import { useCarrito } from './carritoContext';
 
 function Carrito(){
     const [cantidad, setCantidad] = useState(1);
+    const { carrito } = useCarrito()
 
 
     const [shoppingcart, setShoppingCart] = useState([
@@ -27,12 +29,13 @@ function Carrito(){
         setShoppingCart(shoppingcart.map(producto => producto.id === id ? { ...producto, cantidad: nuevaCantidad}: producto));
     };
 
-    const envio = 15
+    const envio = 15.00
 
-    const Subtotal = shoppingcart.reduce((total, producto) => {
-        const precio = producto.precio; 
+    const Subtotal = carrito.reduce((total, producto) => {
+        const precioStr = producto.content;
+        const precioNum = parseFloat(precioStr.slice(1))
         const cantidadProducto = producto.cantidad; 
-        return total + (precio * cantidadProducto);
+        return total + (precioNum * cantidadProducto);
     }, 0);
 
     const Total = Subtotal + envio;
@@ -52,15 +55,15 @@ function Carrito(){
                 </div>
                 <div className='middle'>
                     <div className="carrito">
-                    {shoppingcart.map(producto => (
+                    {carrito.map((producto) => (
                             <div className='product' key={producto.id}>
                                 <div className='vista'>
-                                    <img className='imgVista' src={producto.imagen} alt={producto.nombre} />
+                                    <img className='imgVista' src={producto.imagen} alt={producto.title} />
                                 </div>
                                 <div className='info'>
-                                    <p className='textInfo'>{producto.nombre}</p>
-                                    <p className='textInfo'>{producto.descripcion}</p>
-                                    <p className='textInfo'>Q {producto.precio}</p>
+                                    <p className='textInfo'>{producto.title}</p>
+                                    <p className='textInfo'>descripcion</p>
+                                    <p className='textInfo'>{producto.content}</p>
                                 </div>
                                 <div className='nums'>
                                     <div id='xd'>
@@ -82,9 +85,9 @@ function Carrito(){
                             </div>
                             <div className="columnNo">
                                 
-                                Q {Subtotal}<br/>
-                                Q {envio} <br />                            
-                                Q {Total}
+                                Q {Subtotal.toFixed(2)}<br/>
+                                Q {envio.toFixed(2)} <br />                            
+                                Q {Total.toFixed(2)}
                             </div>
                         </div>
                     </div>
