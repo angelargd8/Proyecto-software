@@ -1,55 +1,7 @@
 const {ApolloServer, gql} = require('apollo-server');
 
-const {getAllUser,getRol} = require('../Servidor/db')
+const {getAllUser,getRol,validateUser,createNewUser} = require('../Servidor/db')
 
-
-const persons = [
-    {
-        name: "Gerax",
-        age: 20,
-        street: "20 calle",
-        city:"Guatemala"
-    },
-    {
-        name:"Mirna",
-        phone:"46668105",
-        street:"14 calle",
-        city:"Guatemala"
-    }
-]
-
-/*! campo requerido*/ 
-/*const typeDefs = gql`
-
- type Adress {
-    street: String!
-    city: String!
- }
-
- type Person {
-    name: String!
-    phone: String
-    age: Int
-    canDrink: Boolean
-    adress: Adress
- }
-
- type Query {
-    personCount: Int!
-    allPersons: [Person]!
-    findPerson(name: String!): Person
- }
-
- type Mutation {
-    addPerson(
-        name: String!
-        phone: String
-        street: String!
-        city: String!
-        age: Int
-    ): Person
- }
-`*/
 
 const typeDefs = gql`
 
@@ -59,47 +11,66 @@ const typeDefs = gql`
  }
 
  type Users {
-    ID: Int!
+    email: String!
     name: String!
+    lastName: String!
     password: String!
     rol: Roles
  }
 
  type Query {
-    personCount: Int!
     allUsers: [Users]!
-    getUser(name: String!): Users
+    validateCredentials(
+        email: String!
+        password: String!
+    ): Users
  }
 
+ type UserValidationResult {
+    status: Boolean!
+    message: String
+    user: Users
+  }
+
  type Mutation {
-    addPerson(
-        name: String!
-        phone: String
-        street: String!
-        city: String!
-        age: Int
-    ): Users
+    addnewUser(
+        email: String!
+        nombre: String!
+        appelido: String
+        password: String!
+    ): UserValidationResult
  }
 `
 
 const resolvers = {
     Query: {
-        personCount: () => persons.length,
         allUsers: async () => {
             const users = await getAllUser();
-            console.log(users);
             return users
         },
-        getUser: (root, args) => {
-            const {name} = args
-            return persons.find(persons => persons.name == name)
+        validateCredentials: async (root, args) => {
+            const {email, password} = args
+            const user = await validateUser(email,password)
+            return user[0]
         }
     },
     Mutation: {
-        addPerson: (root, args) => {
-            const person = {...args}
-            persons.push(person)
-            return person
+        addnewUser: async (root, args) => {
+            const user = {...args}
+            const response = await validateUser(user.email,user.password)
+            if(response.length<1){
+                const result = await createNewUser(user)
+                return {
+                    status: true,
+                    message: "Usuario creado con exito",
+                    user:result[0]
+                }
+            }else{
+                return {
+                    status: false,
+                    message: "El usuario ya existe"
+                }
+            }
         }
     },
     Users: {
