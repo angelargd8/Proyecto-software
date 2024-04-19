@@ -74,20 +74,14 @@ function Nabvar(){
                     </li>
                     <li className="nav-item">
                     <a className="nav-text" href="/login" onClick={handleLogin}>Iniciar Sesion</a>
-                    </li>
-
-                    {/*------------ Esto es solo para probar mi pantalla, cuando ya existan las cards de productos hay que quitarlo ------------*/}
-                    <li className="nav-item">
-                    <a className="nav-text" href="/detalles" onClick={(e) => {e.preventDefault(); setRutaActual('/detalles')}}>Detalles</a>
-                    </li>
-                    {/*-------------------------------------------------------------------------------------------------------------------------*/}
-
-                     <li className="nav-item">
+                    </li><li className="nav-item">
                     <a className="nav-text" href="/carrito"  onClick={handleCarrito}>Carrito de compras</a>
                     </li>
+                    {/*------------ Esto es solo para probar mi pantalla, cuando ya existan las cards de productos hay que quitarlo ------------*/}
                     <li className="nav-item">
                     <a className="nav-text" href="/detalles" onClick={handleDetalles}>Detalles</a>
                     </li>
+                    {/*-------------------------------------------------------------------------------------------------------------------------*/}
                     
                 </ul>
                 <form className="d-flex buscar" role="search">
