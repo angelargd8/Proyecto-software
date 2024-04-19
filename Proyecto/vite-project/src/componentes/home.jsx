@@ -9,11 +9,11 @@ function Home() {
   // cargar las cards
   function cargarCards(){
     setCards([
-      {title: "Card 1", content: "Contenido de la tarjeta 1"},
-      {title: "Card 2", content: "Contenido de la tarjeta 2"},
-      {title: "Card 3", content: "Contenido de la tarjeta 3"},
-      {title: "Card 4", content: "Contenido de la tarjeta 4"},
-      {title: "Card 5", content: "Contenido de la tarjeta 5"},
+      {title: "Cartulina", content: "Contenido de la tarjeta 1", imagen: "../src/assets/img/cartulina.jpg"},
+      {title: "Cuaderno", content: "Contenido de la tarjeta 2", imagen: "../src/assets/img/cuadernos.png"},
+      {title: "Pegatinas", content: "Contenido de la tarjeta 3", imagen: "../src/assets/img/pegatinas.jpg"},
+      {title: "plumas", content: "Contenido de la tarjeta 4", imagen: "../src/assets/img/plumas.jpg"},
+      {title: "Ojitos locos", content: "Contenido de la tarjeta 5", imagen: "../src/assets/img/ojosmoviles.jpeg"},
     ]);
   }
   
@@ -33,7 +33,7 @@ function Home() {
       <p>Bienvenido a la página de inicio</p>
       <a href="/login">Cerrar sesión</a>
       {listadoCards.map((elemento) => {
-        return <Card title={elemento.title} content={elemento.content} click={info} />
+        return <Card title={elemento.title} content={elemento.content} imagen={elemento.imagen} click={info} />
       })}
 
     </div>
