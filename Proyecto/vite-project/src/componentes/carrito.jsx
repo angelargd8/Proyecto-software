@@ -2,30 +2,19 @@ import {  useState } from 'react'
 import './carrito.css'
 import { useNavigate } from 'react-router-dom';
 
-
-
 function Carrito(){
     const [cantidad, setCantidad] = useState(1);
 
-    const sumarCant = () => {
-        setCantidad(cantidad+1);
-    };
 
-    const restCant = () => {
-        if (cantidad >1) {
-            setCantidad(cantidad-1);
-        }
-    };
-
-    const shoppingcart = [
-        [1, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Pegatinas_con_dibujos.jpg/1200px-Pegatinas_con_dibujos.jpg', 'Pegatina Gemas Autoadhesivas','Descripcion', 12.00],
-        [2, 'https://m.media-amazon.com/images/I/71E345WsyuL._AC_UF894,1000_QL80_DpWeblab_.jpg', 'Plumas de Colores','Descripcion', 24.50],
-        [3, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVlWNMqqyTjfF99u89Lkkk8Y2fEj28X6yYWlhI1zPV1w&s', 'Mini Rosas de Foamy','Descripcion', 15.50],
-        [4, 'https://walmartgt.vtexassets.com/arquivos/ids/244882/Ojos-Moviles-Pqt64-Colores-Merletto-1-46923.jpg?v=637800395116230000', 'Ojitos Mobiles','Descripcion', 12.00],
-        [5, 'https://casabak.com/wp-content/uploads/2023/08/Cartulina.jpg', 'Cartulina De Colores', 'Descripcion', 5.00],
-        [6, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWDM0M5HopZSXDfc4zssZg0KzbMHCGe31AiyHb2XBqhg&s', 'Flores', 'Descripcion', 5.00],
-        [7, 'https://arriola.com.gt/wp-content/uploads/2020/12/CUADE321.png', 'Cuadernos ', 'Descripcion', 5.00]
-      ];
+    const [shoppingcart, setShoppingCart] = useState([
+        { id: 1, imagen: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Pegatinas_con_dibujos.jpg/1200px-Pegatinas_con_dibujos.jpg', nombre: 'Pegatina Gemas Autoadhesivas', descripcion: 'Descripcion', precio: 12.00, cantidad: 1 },
+        { id: 2, imagen: 'https://m.media-amazon.com/images/I/71E345WsyuL._AC_UF894,1000_QL80_DpWeblab_.jpg', nombre: 'Plumas de Colores', descripcion: 'Descripcion', precio: 24.50, cantidad: 1 },
+        { id: 3, imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVlWNMqqyTjfF99u89Lkkk8Y2fEj28X6yYWlhI1zPV1w&s', nombre: 'Mini Rosas de Foamy', descripcion: 'Descripcion', precio: 15.50, cantidad: 1 },
+        { id: 4, imagen: 'https://walmartgt.vtexassets.com/arquivos/ids/244882/Ojos-Moviles-Pqt64-Colores-Merletto-1-46923.jpg?v=637800395116230000', nombre: 'Ojitos Mobiles', descripcion: 'Descripcion', precio: 12.00, cantidad: 1 },
+        { id: 5, imagen: 'https://casabak.com/wp-content/uploads/2023/08/Cartulina.jpg', nombre: 'Cartulina De Colores', descripcion: 'Descripcion', precio: 5.00, cantidad: 1 },
+        { id: 6, imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWDM0M5HopZSXDfc4zssZg0KzbMHCGe31AiyHb2XBqhg&s', nombre: 'Flores', descripcion: 'Descripcion', precio: 5.00, cantidad: 1 },
+        { id: 7, imagen: 'https://arriola.com.gt/wp-content/uploads/2020/12/CUADE321.png', nombre: 'Cuadernos', descripcion: 'Descripcion', precio: 5.00, cantidad: 1 }
+    ]);
 
     
     const navigate = useNavigate();
@@ -34,33 +23,21 @@ function Carrito(){
         navigate("/home");
     };
 
+    const ActCant = (id, nuevaCantidad) =>{
+        setShoppingCart(shoppingcart.map(producto => producto.id === id ? { ...producto, cantidad: nuevaCantidad}: producto));
+    };
+
     const envio = 15
 
-    const Subtotal = shoppingcart.reduce((total, producto) => total + (producto[4] * cantidad), 0);
+    const Subtotal = shoppingcart.reduce((total, producto) => {
+        const precio = producto.precio; 
+        const cantidadProducto = producto.cantidad; 
+        return total + (precio * cantidadProducto);
+    }, 0);
+
     const Total = Subtotal + envio;
 
 
-    function generarProductos() {
-        return shoppingcart.map(producto => (
-            <div className='product' key={producto[0]}> 
-                <div className='vista'>
-                    <img className = 'imgVista'src={producto[1]} />
-                </div>
-                <div className='info'>
-                    <p className='textInfo'>{producto[2]}</p> 
-                    <p className='textInfo'>{producto[3]}</p> 
-                    <p className='textInfo'>Q {producto[4]}</p> 
-                </div>
-                <div className='nums'>
-                    <div id='xd'>
-                        <div className='btn_sumar' onClick={restCant}><b>-</b></div>
-                        <span className='cant'>{cantidad}</span>
-                        <div className="btn_restar" onClick={sumarCant}><b>+</b></div>
-                    </div>
-                </div>
-            </div>
-        ));
-      }
     return(
         <>
             <div className='contenedor'>
@@ -75,7 +52,25 @@ function Carrito(){
                 </div>
                 <div className='middle'>
                     <div className="carrito">
-                        {generarProductos()}
+                    {shoppingcart.map(producto => (
+                            <div className='product' key={producto.id}>
+                                <div className='vista'>
+                                    <img className='imgVista' src={producto.imagen} alt={producto.nombre} />
+                                </div>
+                                <div className='info'>
+                                    <p className='textInfo'>{producto.nombre}</p>
+                                    <p className='textInfo'>{producto.descripcion}</p>
+                                    <p className='textInfo'>Q {producto.precio}</p>
+                                </div>
+                                <div className='nums'>
+                                    <div id='xd'>
+                                        <div className='btn_sumar' onClick={() => ActCant(producto.id, producto.cantidad - 1)}><b>-</b></div>
+                                        <span className='cant'>{producto.cantidad}</span>
+                                        <div className="btn_restar" onClick={() => ActCant(producto.id, producto.cantidad + 1)}><b>+</b></div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                     <div className="totales">
                         <textarea className='codigo' rows={1} placeholder='Codigo Promocional'></textarea>
