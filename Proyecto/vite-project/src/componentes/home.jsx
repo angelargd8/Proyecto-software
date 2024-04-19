@@ -1,26 +1,27 @@
 import Card from "./card.jsx";
 import './home.css';
 import { useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
   const [listadoCards, setCards] = useState([]);
+  const navigate = useNavigate()
 
+
+  // ir al apartado de detalles
+  const info = (title, cardInfo) => {
+    navigate(`/detalles/${title}`,{ state: { cardInfo } })
+  }
 
   // cargar las cards
   function cargarCards(){
     setCards([
-      {title: "Cartulina", content: "Contenido de la tarjeta 1", imagen: "../src/assets/img/cartulina.jpg"},
-      {title: "Cuaderno", content: "Contenido de la tarjeta 2", imagen: "../src/assets/img/cuadernos.png"},
-      {title: "Pegatinas", content: "Contenido de la tarjeta 3", imagen: "../src/assets/img/pegatinas.jpg"},
-      {title: "plumas", content: "Contenido de la tarjeta 4", imagen: "../src/assets/img/plumas.jpg"},
-      {title: "Ojitos locos", content: "Contenido de la tarjeta 5", imagen: "../src/assets/img/ojosmoviles.jpeg"},
+      {title: "Cartulina", content: "Q3.75", imagen: "../src/assets/img/cartulina.jpg"},
+      {title: "Cuaderno", content: "Q48.75", imagen: "../src/assets/img/cuadernos.png"},
+      {title: "Pegatinas", content: "Q12.00", imagen: "../src/assets/img/pegatinas.jpg"},
+      {title: "plumas", content: "Q24.50", imagen: "../src/assets/img/plumas.jpg"},
+      {title: "Ojitos locos", content: "Q12.00", imagen: "../src/assets/img/ojosmoviles.jpeg"},
     ]);
-  }
-  
-
-  // mostrar un alert con el nombre de la card seleccionada
-  function info(name){
-    alert("Elegiste la card " + name);
   }
 
   useEffect(() => {
@@ -32,9 +33,9 @@ function Home() {
       <h1>Home</h1>
       <p>Bienvenido a la página de inicio</p>
       <a href="/login">Cerrar sesión</a>
-      {listadoCards.map((elemento) => {
-        return <Card title={elemento.title} content={elemento.content} imagen={elemento.imagen} click={info} />
-      })}
+      {listadoCards.map((elemento) => (
+        <Card key={elemento.title} title={elemento.title} content={elemento.content} imagen={elemento.imagen} click={() => info(elemento.title,elemento)} />
+      ))}
 
     </div>
   );

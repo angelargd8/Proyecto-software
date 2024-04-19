@@ -1,8 +1,17 @@
 import './detalles.css'
 import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
-function Detalles({setRutaActual}){
+function Detalles(){
     const [cantidad, setCantidad] = useState(1)
+    const location = useLocation()
+    const { cardInfo } = location.state || {}
+
+    if (!cardInfo) {
+        return <div>Error: No se encontraron detalles para mostrar.</div>;
+    }
+
+    const {title, content, imagen} = cardInfo
 
     const restarCantidad = () => {
         if (cantidad > 1) {
@@ -27,9 +36,9 @@ function Detalles({setRutaActual}){
     
     return(
         <div className="cuerpo">
-            <img src='https://grupotucan.com/media/catalog/product/cache/1/image/530x/040ec09b1e35df139433887a97daa66f/p/a/papel-ecologico-coloes-reales.-01.png' alt='producto'/>
-            <h2>HOJAS DE PAPEL</h2>
-            <h3>Precio: Q50.00</h3>
+            <img src={imagen} alt='producto'/>
+            <h2>{title}</h2>
+            <h3>Precio: {content}</h3>
             <p>No incluye precio de envío</p>
             <h5 className='titulos'>Cantidad:</h5>
             <div className="detalle-cantidad">
