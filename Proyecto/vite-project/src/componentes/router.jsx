@@ -15,7 +15,7 @@ function Router({ruta, setRutaActual}){
         case "/detalles":
             return <Detalles setRutaActual={setRutaActual}/>
          case "/carrito":
-                 return <Carrito setRutaActual={setRutaActual}/>
+            return <Carrito setRutaActual={setRutaActual}/>
         case "/":
             return <Home></Home>
         default:
