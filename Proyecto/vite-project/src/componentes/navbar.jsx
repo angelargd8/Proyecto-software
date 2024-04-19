@@ -70,7 +70,7 @@ function Nabvar(){
 
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                    <a className="nav-text" aria-current="page" href="/" onClick={handleHome}>Home</a>
+                    <a className="nav-text" aria-current="page" href="/home" onClick={handleHome}>Home</a>
                     </li>
                     <li className="nav-item">
                     <a className="nav-text" href="/login" onClick={handleLogin}>Iniciar Sesion</a>
