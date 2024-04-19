@@ -35,10 +35,16 @@ function Login(){
             const data = await response.json();
             if (data.error) {
               console.error('Error en la consulta GraphQL:', data.errors);
-            } else {
+            } 
+            if (data.data.validateCredentials == null) {
+              console.error('Error el usuario  con esa contraseña no existe');
+              {alert('Error el usuario  con esa contraseña no existe')}
+            }
+            else {
               console.log(data.data.validateCredentials);
               localStorage.setItem('email', data.data.validateCredentials.email);
               localStorage.setItem('name', data.data.validateCredentials.name);
+              {alert('Bienvenir@ '+data.data.validateCredentials.name+' a Picolin')}
               navigate("/home");
             }
             }catch(error){
