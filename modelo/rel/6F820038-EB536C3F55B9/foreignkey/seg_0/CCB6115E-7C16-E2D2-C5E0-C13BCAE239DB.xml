@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="CCB6115E-7C16-E2D2-C5E0-C13BCAE239DB" containerWithKeyObject="F03FB673-734C-6CFD-AC40-F3B4673F9982" localFKIndex="DC4800C3-136E-B4E6-C22E-BB25EABD2FB6" name="articulos_paginas_FK">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:33:52 UTC</createdTime>
+<generatorID>0609D7B0-A93C-77B2-0C10-6364B83B1FA9</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<referredTableLongName>paginas</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>E80DD7C0-C0D3-D0A8-9C62-CB261F6363BA</referredTableID>
+<keyObject>A215899B-089F-22E7-1C0D-75111082B28A</keyObject>
+<referredKeyID>A215899B-089F-22E7-1C0D-75111082B28A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_pagina</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
