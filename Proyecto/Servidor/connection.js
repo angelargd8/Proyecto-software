@@ -1,14 +1,14 @@
 const {Pool} = require('pg')
 
 const password1 = "Gerax@2003lm!"
-const password2 = ""
+const password2 = "123456"
 const password3 = ""
 const password4 = ""
 
 const pool = new Pool({
     host:"localhost",
     user: "postgres",
-    password:password1,
+    password:password2,
     database:"ecomers",
     port:"5432"
 })

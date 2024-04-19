@@ -13,7 +13,6 @@ javascript
 
 
 Done. Now run:
-
   cd vite-project
   npm install
   npm run dev
@@ -22,5 +21,12 @@ Boostrap:
 npm i --save bootstrap @popperjs/core
 npm i --save-dev sass 
 
+
+REQUISITO PARA CORRER:
 DOM:
 npm install react-router-dom
+
+
+node:
+node index.js
+npx nodemon index.js
