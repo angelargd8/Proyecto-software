@@ -66,13 +66,11 @@ function Carrito(){
         <>
             <div className='contenedor'>
                 <div className="up">
-                    <div className='logo'>
+                    <div className=''>
                         <div className="pic"></div>
                         <div className="regresarbtn"></div>
                     </div>
-                    <div id='contTitulo'>
-                        <h1 className='txt'>Orsons Library</h1>
-                    </div>
+                    
                 </div>
                 <div className='middle'>
                     <div className="carrito">
