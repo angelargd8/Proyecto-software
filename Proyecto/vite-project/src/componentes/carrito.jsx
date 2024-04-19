@@ -1,18 +1,18 @@
 import {  useState } from 'react'
 import './carrito.css'
 
-function Carrito(){
+function Carrito({setRutaActual}){
     const [cantidad, setCantidad] = useState(1);
 
     const sumarCant = () => {
-        setCantidad(cantidad + 1 );
+        setCantidad(cantidad+1);
     };
 
     const restCant = () => {
-        setCantidad(cantidad -1);
+        if (cantidad >1) {
+            setCantidad(cantidad-1);
+        }
     };
-
-    
     return(
         <>
             <div className='contenedor'>
@@ -21,7 +21,6 @@ function Carrito(){
                         <div className="pic"></div>
                         <div className="regresarbtn"></div>
                     </div>
-                    
                     <div id='contTitulo'>
                         <h1 className='txt'>Orson Library</h1>
                     </div>
@@ -49,25 +48,24 @@ function Carrito(){
                         <div className='rowDatos'>
                             <div className="columnCampo">
                                 Subtotal <br/>
-                                Envio <br/> <br/>
+                                Envio <br/> 
                                 Total
                             </div>
                             <div className="columnNo">
                                 Q 100.00 <br/>
-                                Q 10.00 <br/> <br/>
+                                Q 10.00 <br/> 
                                 Q 110.00
                             </div>
                         </div>
                     </div>
-                    
                 </div>
                 <div className="bottom">
                     <button className='pagobtn'> Pagar </button>
+                    <button className='pagobtn' onClick={()=>{setRutaActual("/home")}}> Regresar </button>
                 </div>
             </div>
         </>
     )
-
 }
 
 export default Carrito

@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="523F751F-5AB2-9781-1F12-AF95C63D04F6" name="promociones">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 02:48:18 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_promocion" id="BDF7A11D-1324-24C9-6E38-59E72BE950E9">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 02:48:26 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="porcentaje" id="95722727-14D6-C921-3919-471CD14D54AC">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 02:48:31 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="estado" id="52122343-54AB-7A2C-EBC0-167A33928876">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 02:49:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[1 activo 0 inactivo ]]></commentInRDBMS>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="7C2981C8-44CB-419B-90D1-F9ECC56D91FF">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 02:49:24 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descuento" id="FB8FD820-138D-42AE-3E56-4D00BAF85A1B">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 23:14:19 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C92091DE-3484-C8A3-D397-F521CF3FD82D" name="promociones PK">
+<createdBy>Francis</createdBy>
+<createdTime>2024-04-18 02:48:46 UTC</createdTime>
+<ownerDesignName>modelo</ownerDesignName>
+<engineerTo>
+<item key="6F820038-D1AB-653F-BF9D-EB536C3F55B9" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BDF7A11D-1324-24C9-6E38-59E72BE950E9</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
