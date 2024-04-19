@@ -1,7 +1,8 @@
 import {  useState } from 'react'
 import './carrito.css'
+import { useNavigate } from 'react-router-dom';
 
-function Carrito({setRutaActual}){
+function Carrito(){
     const [cantidad, setCantidad] = useState(1);
 
     const sumarCant = () => {
@@ -13,6 +14,15 @@ function Carrito({setRutaActual}){
             setCantidad(cantidad-1);
         }
     };
+
+    //navegacion
+    const navigate = useNavigate();
+
+    const handleRegresar = () => {
+        // aqui va a ir lo de la autentificacion y todo eso
+        navigate("/home");
+    };
+
     return(
         <>
             <div className='contenedor'>
@@ -61,7 +71,7 @@ function Carrito({setRutaActual}){
                 </div>
                 <div className="bottom">
                     <button className='pagobtn'> Pagar </button>
-                    <button className='pagobtn' onClick={()=>{setRutaActual("/home")}}> Regresar </button>
+                    <button className='pagobtn' onClick={handleRegresar}> Regresar </button>
                 </div>
             </div>
         </>
