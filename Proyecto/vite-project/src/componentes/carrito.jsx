@@ -2,6 +2,7 @@ import {  useState } from 'react'
 import './carrito.css'
 import { useNavigate } from 'react-router-dom';
 
+
 function Carrito(){
     const [cantidad, setCantidad] = useState(1);
 
@@ -15,11 +16,17 @@ function Carrito(){
         }
     };
 
-    //navegacion
+    const shoppingcart = [
+        [1, 'pegatina.jpg', 'Pegatina Gemas Autoadhesivas','Descripcion', 12.00],
+        [2, 'plumas.jpg', 'Plumas de Colores','Descripcion', 24.50],
+        [3, 'rosasF.jpg', 'Mini Rosas de Foamy','Descripcion', 15.50],
+        [4, 'ojosM.jpg', 'Ojitos Mobiles','Descripcion', 12.00]
+      ];
+
+    
     const navigate = useNavigate();
 
     const handleRegresar = () => {
-        // aqui va a ir lo de la autentificacion y todo eso
         navigate("/home");
     };
 
@@ -32,13 +39,15 @@ function Carrito(){
                         <div className="regresarbtn"></div>
                     </div>
                     <div id='contTitulo'>
-                        <h1 className='txt'>Orson Library</h1>
+                        <h1 className='txt'>imagen_p</h1>
                     </div>
                 </div>
                 <div className='middle'>
                     <div className="carrito">
                         <div className='product'>
-                            <div className='vista'></div>
+                            <div className='vista'>
+                                <img src="" />
+                            </div>
                             <div className='info'> 
                                 Corona <br/>
                                 SixPack 500ml C/U <br/>
@@ -46,9 +55,9 @@ function Carrito(){
                             </div>
                             <div className='nums'>
                                 <div id='xd'>
-                                    <div className='btn_sumar' onClick={restCant}>-</div>
+                                    <div className='btn_sumar' onClick={restCant}> <b>-</b></div>
                                     <span className='cant'>{cantidad}</span>
-                                    <div className="btn_restar" onClick={sumarCant}>+</div>
+                                    <div className="btn_restar" onClick={sumarCant}><b>+</b></div>
                                 </div>
                             </div>
                         </div>
@@ -77,5 +86,4 @@ function Carrito(){
         </>
     )
 }
-
 export default Carrito

@@ -5,7 +5,6 @@
     right: 0;
     bottom: 0;
     background-color: #EEF3FF;
-    /* z-index: 1; */
 }
 
 .up {
@@ -30,6 +29,7 @@
 
 .bottom {
     display: flex;
+    background-color: rgb(189, 189, 189);
     height: 10%;
     width: 100%;
     padding: 0;
@@ -58,11 +58,13 @@
 .product {
     display: flex;
     flex-direction: row;
+    background-color: #b8d6e3;
     height: 25%;
     width: 100%;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: 5px;
+    border-radius: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
 }
 
 .vista{
@@ -88,6 +90,7 @@
     height: 100%;
     width: 60%;
     border-radius: 10px;
+    font-size: small;
 }
 
 .nums {
@@ -112,13 +115,15 @@
 .btn_sumar {
     display: flex;
     border-radius: 50% ;
-    color: white;
+    color: #105675;
     align-items: center;
     justify-content: center;
-    background-color: #105675;
+    background-color: white;
+    border: #105675 solid 1px;
     height: 30px;
     width: 30px;
     margin: 3px;
+    font-weight: bolder;
 }
 
 .btn_restar {
@@ -137,9 +142,6 @@
     display: flex;
     height: 100%;
     width: 100%;
-    /* align-items: right;
-    justify-content: right;
-    align-self: right; */
     background-image: url(../assets/img/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -151,7 +153,7 @@
     height: 100%;
     width: 50%;
     color: rgb(72, 69, 69);
-    font-size: x-large;
+    font-size: large;
     padding-left: 3%;
     text-align: left;
 }
@@ -161,7 +163,7 @@
     height: 100%;
     width: 50%;
     color: rgb(72, 69, 69);
-    font-size: x-large;
+    font-size: large;
     padding-left: 3%;
     text-align: right;
     justify-content: right;
@@ -179,19 +181,22 @@
 }
 
 .codigo::placeholder {
+    display: flex;
     color: black;
-    font-size: x-large;
+    font-size: large;
     align-items: center;
     justify-content: center;
+    text-align: center;
     
 }
 
 .rowDatos {
     display: flex;
     flex-direction: row;
+    background-color: rgb(242, 242, 242);
     height: 80%;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
 }
 
