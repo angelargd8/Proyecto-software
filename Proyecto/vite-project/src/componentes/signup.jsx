@@ -7,13 +7,67 @@ function SingUp(){
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // aqui va a ir lo de la autentificacion y todo eso
     navigate("/login");
   };
 
   const handleSignup = () => {
-    navigate("/home");
+
+    const url = ' http://localhost:4000/'
+        const query = `
+        mutation AddnewUser($email: String!, $nombre: String!, $password: String!, $appelido: String) {
+          addnewUser(email: $email, nombre: $nombre, password: $password, appelido: $appelido) {
+            message
+            status
+            user {
+              name
+               email
+            }
+          }
+        }
+        
+        `;
+        async function crearteUser(){
+          try{
+            const response = await fetch(url,{
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                query,
+                variables: {
+                  email: document.getElementById('email').value,
+                  password: document.getElementById('password').value,
+                  nombre: document.getElementById('name').value,
+                  appelido: document.getElementById('lastname').value
+                }
+              })
+            });
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+
+            if (data.error) {
+              console.error('Error en la consulta GraphQL:', data.errors);
+            }
+            else {
+              console.log(data.data.addnewUser);
+              localStorage.setItem('email', data.data.addnewUser.user.email);
+              localStorage.setItem('name', data.data.addnewUser.user.name);
+              {alert('Bienvenir@ '+data.data.addnewUser.user.name+' a Picolin')}
+              navigate("/home");
+            }
+            }catch(error){
+              console.error('Error:', error);
+            }
+          }
+
+          crearteUser();
   };
+ 
 
     return (
         <>

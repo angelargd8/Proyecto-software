@@ -6,7 +6,7 @@ function Login(){
     const navigate = useNavigate();
 
     const handleLogin = () => {
-        // aqui va a ir lo de la autentificacion y todo eso
+        // aqui esta la logica del login xd
         const url = ' http://localhost:4000/'
         const query = `
         query validateCredentials($email: String!, $password: String!){
