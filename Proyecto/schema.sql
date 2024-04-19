@@ -3,8 +3,9 @@ CREATE DATABASE ecomers;
 
 create table usuarios 
 (
-	id_usuario Serial primary key,
+	email varchar(100) primary key,
 	nombre varchar(100) not null,
+	apellido varchar(100),
 	password varchar(100) not null,
 	id_rol int not null
 );
@@ -18,7 +19,7 @@ create table roles
 create table configuraciones
 (
 	id_configuracion serial primary key,
-	id_usuario serial not null,
+	email varchar(100) not null,
 	nombre_configuracion varchar(100),
 	estado char(1),
 	id_pagina int
@@ -54,7 +55,7 @@ create table paginas
 (
 	id_pagina serial primary key,
 	nombre_pagina varchar(100),
-	id_usuario int not null
+	email varchar(100) not null
 );
 
 create table ordenes
@@ -80,7 +81,7 @@ create table ordenes_articulos
 create table favoritos
 (
 	id_articulo int not null,
-	id_usuario int not null
+	email varchar(100) not null
 );
 
 create table articulos_promociones
@@ -97,7 +98,7 @@ create table categoria_promociones
 
 alter table usuarios add constraint userfkrol foreign key (id_rol) references roles(id_rol);
 
-alter table paginas add constraint paginasfkusuarios foreign key (id_usuario) references usuarios(id_usuario);
+alter table paginas add constraint paginasfkusuarios foreign key (email) references usuarios(email);
 
 alter table articulos add constraint articulosfkpaginas foreign key (id_articulo) references paginas(id_pagina);
 
@@ -109,7 +110,7 @@ alter table ordenes_articulos add constraint ordenes_articulosfkarticulos foreig
 
 alter table favoritos add constraint favoritosfkarticulos foreign key (id_articulo) references articulos(id_articulo);
 
-alter table favoritos add constraint favoritosfkusuario foreign key (id_usuario) references usuarios (id_usuario);
+alter table favoritos add constraint favoritosfkusuario foreign key (email) references usuarios (email);
 
 alter table articulos_promociones add constraint articulos_promocionesfkarticulos foreign key (id_articulo) references articulos (id_articulo);
 
