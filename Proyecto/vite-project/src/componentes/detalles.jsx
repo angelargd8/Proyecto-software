@@ -1,11 +1,13 @@
 import './detalles.css'
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useCarrito } from './carritoContext'
 
 function Detalles(){
     const [cantidad, setCantidad] = useState(1)
     const location = useLocation()
     const { cardInfo } = location.state || {}
+    const { agregarAlCarrito } = useCarrito()
 
     if (!cardInfo) {
         return <div>Error: No se encontraron detalles para mostrar.</div>;
@@ -30,7 +32,9 @@ function Detalles(){
         }
     }
 
-    const agregarAlCarrito = () => {
+    const handleAgregarAlCarrito = () => {
+        const producto = {title, content, imagen, cantidad}
+        agregarAlCarrito(producto)
         console.log(`Agregado al carrito: ${cantidad} unidad(es)`)
     }
     
@@ -52,7 +56,7 @@ function Detalles(){
                         className="num-input"
                     />
                     <button onClick={sumarCantidad}>+</button>
-                    <button className="agregar-carrito" onClick={agregarAlCarrito}>Agregar al carrito</button>
+                    <button className="agregar-carrito" onClick={handleAgregarAlCarrito}>Agregar al carrito</button>
                 </div>
             </div>
         </div>
