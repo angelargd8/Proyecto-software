@@ -1,6 +1,6 @@
 const {ApolloServer, gql} = require('apollo-server');
 
-const {createUser} = require('../Servidor/connection')
+const {getAllUser,getRol} = require('../Servidor/db')
 
 
 const persons = [
@@ -19,7 +19,7 @@ const persons = [
 ]
 
 /*! campo requerido*/ 
-const typeDefs = gql`
+/*const typeDefs = gql`
 
  type Adress {
     street: String!
@@ -49,13 +49,48 @@ const typeDefs = gql`
         age: Int
     ): Person
  }
+`*/
+
+const typeDefs = gql`
+
+ type Roles {
+    ID: Int!
+    name: String!
+ }
+
+ type Users {
+    ID: Int!
+    name: String!
+    password: String!
+    rol: Roles
+ }
+
+ type Query {
+    personCount: Int!
+    allUsers: [Users]!
+    getUser(name: String!): Users
+ }
+
+ type Mutation {
+    addPerson(
+        name: String!
+        phone: String
+        street: String!
+        city: String!
+        age: Int
+    ): Users
+ }
 `
 
 const resolvers = {
     Query: {
         personCount: () => persons.length,
-        allPersons: () => persons,
-        findPerson: (root, args) => {
+        allUsers: async () => {
+            const users = await getAllUser();
+            console.log(users);
+            return users
+        },
+        getUser: (root, args) => {
             const {name} = args
             return persons.find(persons => persons.name == name)
         }
@@ -67,7 +102,19 @@ const resolvers = {
             return person
         }
     },
-    Person:{
+    Users: {
+        rol : async (root) => {
+            const rol = await getRol(root.IdRol)
+            console.log(rol)
+            return rol[0]
+        } 
+    }
+    
+}
+
+
+/**
+ * Person:{
         canDrink: (root) => root.age > 18,
         adress: (root) => {
             return {
@@ -76,8 +123,7 @@ const resolvers = {
             }
         }
     }
-}
-
+ */
 /**
  * Si quiero pasar algo es typeDefs: Nombre de mi clase
  * typedefs y resolvers siempre tienen que ir 
