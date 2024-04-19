@@ -6,18 +6,19 @@
     top: 0;
     width: 100%;
     left:0;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
     padding: 10px;
     z-index: 2;
 }
 
 .nav-text{
-    padding: 10px;
-    margin: 5px;
     color: #115773 !important;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    margin-right: 10px;
 }
 
 .navbar-toggler-icon {
@@ -25,7 +26,7 @@
 }
 
 .buscar{
-    margin-left: 45%;
+    margin-left: 25%;
 }
 
 .logotipo{
@@ -35,4 +36,10 @@
 
 #navbar.scrolled{
     display: none;
+}
+
+.textos{
+  
+    margin-left: 10px;
+    margin-right: 10px;
 }

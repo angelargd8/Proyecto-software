@@ -6,6 +6,7 @@
     margin: 0 auto;
     padding: 20px;
     height: 100vh;
+    padding-top: 120px;
     overflow-y: auto;
 }
 
@@ -66,4 +67,15 @@
 
 .agregar-carrito:hover {
     background-color: #0056b3;
+}
+
+.num-input {
+    width: 50px;
+    height: 35px;
+    background-color: lightblue;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
 }
