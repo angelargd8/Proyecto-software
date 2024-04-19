@@ -7,7 +7,48 @@ function Login(){
 
     const handleLogin = () => {
         // aqui va a ir lo de la autentificacion y todo eso
-        navigate("/home");
+        const url = ' http://localhost:4000/'
+        const query = `
+        query validateCredentials($email: String!, $password: String!){
+          validateCredentials(email: $email, password: $password) {
+            email
+            name
+          }
+        }
+        
+        `;
+        async function validateCredentials(){
+          try{
+            const response = await fetch(url,{
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                query,
+                variables: {
+                  email: document.getElementById('email').value,
+                  password: document.getElementById('password').value
+                }
+              })
+            });
+            const data = await response.json();
+            if (data.error) {
+              console.error('Error en la consulta GraphQL:', data.errors);
+            } else {
+              console.log(data.data.validateCredentials);
+              localStorage.setItem('email', data.data.validateCredentials.email);
+              localStorage.setItem('name', data.data.validateCredentials.name);
+              navigate("/home");
+            }
+            }catch(error){
+              console.error('Error:', error);
+            }
+        }
+
+
+        //navigate("/home");
+        validateCredentials();
     };
 
     const handleSignup = () => {
