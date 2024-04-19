@@ -1,17 +1,20 @@
 import './App.css'
-import Router from './componentes/router.jsx'
+import AppRouter from './componentes/router.jsx'
 import Nabvar from './componentes/navbar.jsx'
-import { useState } from 'react'
+//import { useState } from 'react'
 //import { useEffect, useState } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
-  const [rutaActual, setRutaActual] = useState("app")
+  //const [rutaActual, setRutaActual] = useState("app")
   return (
     <>
-      <Nabvar setRutaActual={setRutaActual}/>
+    <Router>
+      <Nabvar/>
       <div className="contenedor">
-        <Router ruta={rutaActual} setRutaActual={setRutaActual} />
+        <AppRouter/>
       </div>
+      </Router>
     </>
   )
 }

@@ -1,6 +1,20 @@
 import './signup.css'
+import { useNavigate } from 'react-router-dom';
 
-function SingUp({setRutaActual}){
+
+function SingUp(){
+
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // aqui va a ir lo de la autentificacion y todo eso
+    navigate("/login");
+  };
+
+  const handleSignup = () => {
+    navigate("/home");
+  };
+
     return (
         <>
         <div className="signup body">
@@ -12,12 +26,12 @@ function SingUp({setRutaActual}){
                 <input type="password" id="password" name="password" className="inputs" placeholder="Contraseña"/>
                 
                 <div className="boton">
-                  <button className= "btn" onClick={()=>{setRutaActual("/home")}}>
+                  <button className= "btn" onClick={handleSignup}>
                     Registrarse
                   </button>
                 </div>
                 <div className="boton">
-                  <button className= "btn2" onClick={()=>{setRutaActual("/login")}}>
+                  <button className= "btn2" onClick={handleLogin}>
                     Ya tengo una cuenta
                   </button>
                 </div>

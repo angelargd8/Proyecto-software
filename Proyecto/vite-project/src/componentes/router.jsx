@@ -1,24 +1,22 @@
+import { Routes, Route } from 'react-router-dom';
 import Login from './login.jsx'
 import Home from './home.jsx'
 import SingUp from './signup.jsx'
 import Carrito from './carrito.jsx'
 
-function Router({ruta, setRutaActual}){
-    switch(ruta){
-        case "/home":
-            return <Home></Home>
-        case "/login":
-            return <Login setRutaActual={setRutaActual}/>
-        case "/signup":
-                return <SingUp setRutaActual={setRutaActual}/>
-         case "/carrito":
-                 return <Carrito setRutaActual={setRutaActual}/>
-        case "/":
-            return <Home></Home>
-        default:
-            return (
-                <h1>ruta actual {ruta}</h1>
-            )
-    }
+function AppRouter(){
+
+    return (
+        <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SingUp />} />
+            <Route path="/carrito" element={<Carrito />} />
+            {/* <Route path="/detalles" element={<Detalles/>} />*/}
+            
+            <Route path="/" element={<Home />} />
+        </Routes>
+    )
+    
 }
-export default Router;
+export default AppRouter;

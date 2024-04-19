@@ -21,3 +21,6 @@ Done. Now run:
 Boostrap:
 npm i --save bootstrap @popperjs/core
 npm i --save-dev sass 
+
+DOM:
+npm install react-router-dom
