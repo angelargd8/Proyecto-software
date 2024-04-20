@@ -43,7 +43,7 @@ function Detalles(){
     }
 
     const handleAgregarAlCarrito = () => {
-        //limpiarCarrito()         // EN CASO DE EMERGENCIAS, BORRAR EL CARRITO
+        // limpiarCarrito()         // EN CASO DE EMERGENCIAS, BORRAR EL CARRITO
         const producto = {id, title, content, imagen, cantidad}
         agregarAlCarrito(producto, cantidad)
         console.log(`Agregado al carrito: ${cantidad} unidad(es)`)
