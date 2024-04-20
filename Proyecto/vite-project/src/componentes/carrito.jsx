@@ -18,7 +18,6 @@ function Carrito(){
     const cambioCant = (producto, nuevaCantidad) =>{
         if (nuevaCantidad < 1){
             if(window.confirm("Se eliminara este producto del carrito, estas seguro de continuar?")){
-
                 eliminarDelCarrito(producto.id)
             }
         }else{
@@ -34,10 +33,6 @@ function Carrito(){
     useEffect(() => {
         console.log('Estado actual del carrito después de agregar producto:', carrito);
     }, [carrito]);
-
-    // const handleEliminar = (id) =>{
-    //     eliminarDelCarrito(id)
-    // }
 
     const envio = 15.00 //Temporal
 
