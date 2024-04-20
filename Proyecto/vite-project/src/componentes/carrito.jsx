@@ -32,9 +32,9 @@ function Carrito(){
         console.log('Estado actual del carrito después de agregar producto:', carrito);
     }, [carrito]);
 
-    const handleEliminar = (id) =>{
-        eliminarDelCarrito(id)
-    }
+    // const handleEliminar = (id) =>{
+    //     eliminarDelCarrito(id)
+    // }
 
     const envio = 15.00 //Temporal
 
@@ -47,7 +47,7 @@ function Carrito(){
 
     const Total = Subtotal + envio;
 
-    return(
+    return (
         <>
             <div className='contenedor'>
                 <div className="up">
@@ -58,27 +58,31 @@ function Carrito(){
                     
                 </div>
                 <div className='middle'>
-                        <div className="carrito">
-                            {carrito.map((producto) => (
-                                    <div className='product' key={producto.id}>
-                                        <div className='vista'>
-                                            <img className='imgVista' src={producto.imagen} alt={producto.title} />
-                                        </div>
-                                        <div className='info'>
-                                            <p className='textInfo'>{producto.title}</p>
-                                            <p className='textInfo'>descripcion</p>
-                                            <p className='textInfo'>{producto.content}</p>
-                                        </div>
-                                        <div className='nums'>
-                                            <div id='xd'>
-                                                <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
-                                                <span className='cant'>{producto.cantidad}</span>
-                                                <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
-                                            </div>
+                    <div className="carrito">
+                        {carrito.length === 0 ? (
+                            <h4>El carrito de compras está vacío.</h4>
+                        ) : (
+                            carrito.map((producto) => (
+                                <div className='product' key={producto.id}>
+                                    <div className='vista'>
+                                        <img className='imgVista' src={producto.imagen} alt={producto.title} />
+                                    </div>
+                                    <div className='info'>
+                                        <p className='textInfo'>{producto.title}</p>
+                                        <p className='textInfo'>descripcion</p>
+                                        <p className='textInfo'>{producto.content}</p>
+                                    </div>
+                                    <div className='nums'>
+                                        <div id='xd'>
+                                            <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
+                                            <span className='cant'>{producto.cantidad}</span>
+                                            <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
                                         </div>
                                     </div>
-                                ))}
-                            </div>
+                                </div>
+                            ))
+                        )}
+                    </div>
                     <div className="totales">
                         <textarea className='codigo' rows={1} placeholder='Codigo Promocional'></textarea>
                         <div className='rowDatos'>
@@ -88,7 +92,6 @@ function Carrito(){
                                 Total
                             </div>
                             <div className="columnNo">
-                                
                                 Q {Subtotal.toFixed(2)}<br/>
                                 Q {envio.toFixed(2)} <br />                            
                                 Q {Total.toFixed(2)}
@@ -102,6 +105,7 @@ function Carrito(){
                 </div>
             </div>
         </>
-    )
+    );
 }
-export default Carrito
+
+export default Carrito;
