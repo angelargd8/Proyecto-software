@@ -17,7 +17,10 @@ function Carrito(){
 
     const cambioCant = (producto, nuevaCantidad) =>{
         if (nuevaCantidad < 1){
-            eliminarDelCarrito(producto.id)
+            if(window.confirm("Se eliminara este producto del carrito, estas seguro de continuar?")){
+
+                eliminarDelCarrito(producto.id)
+            }
         }else{
             agregarAlCarrito(producto, nuevaCantidad)
         }
