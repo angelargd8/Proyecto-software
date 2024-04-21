@@ -55,51 +55,54 @@ function Carrito(){
                     </div>
                     
                 </div>
-                <div className='middle'>
-                    <div className="carrito">
-                        {carrito.length === 0 ? (
-                            <h4>El carrito de compras está vacío.</h4>
-                        ) : (
-                            carrito.map((producto) => (
-                                <div className='product' key={producto.id}>
-                                    <div className='vista'>
-                                        <img className='imgVista' src={producto.imagen} alt={producto.title} />
-                                    </div>
-                                    <div className='info'>
-                                        <p className='textInfo'>{producto.title}</p>
-                                        <p className='textInfo'>descripcion</p>
-                                        <p className='textInfo'>{producto.content}</p>
-                                    </div>
-                                    <div className='nums'>
-                                        <div id='xd'>
-                                            <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
-                                            <span className='cant'>{producto.cantidad}</span>
-                                            <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
+                <div className="MidyBotm">
+
+                    <div className='middle'>
+                        <div className="carrito">
+                            {carrito.length === 0 ? (
+                                <h4>El carrito de compras está vacío.</h4>
+                            ) : (
+                                carrito.map((producto) => (
+                                    <div className='product' key={producto.id}>
+                                        <div className='vista'>
+                                            <img className='imgVista' src={producto.imagen} alt={producto.title} />
+                                        </div>
+                                        <div className='info'>
+                                            <p className='textInfo'>{producto.title}</p>
+                                            <p className='textInfo'>descripcion</p>
+                                            <p className='textInfo'>{producto.content}</p>
+                                        </div>
+                                        <div className='nums'>
+                                            <div id='xd'>
+                                                <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
+                                                <span className='cant'>{producto.cantidad}</span>
+                                                <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
+                                            </div>
                                         </div>
                                     </div>
+                                ))
+                            )}
+                        </div>
+                        <div className="totales">
+                            <textarea className='codigo' rows={1} placeholder='Codigo Promocional'></textarea>
+                            <div className='rowDatos'>
+                                <div className="columnCampo">
+                                    Subtotal <br/>
+                                    Envio <br/> 
+                                    Total
                                 </div>
-                            ))
-                        )}
-                    </div>
-                    <div className="totales">
-                        <textarea className='codigo' rows={1} placeholder='Codigo Promocional'></textarea>
-                        <div className='rowDatos'>
-                            <div className="columnCampo">
-                                Subtotal <br/>
-                                Envio <br/> 
-                                Total
-                            </div>
-                            <div className="columnNo">
-                                Q {Subtotal.toFixed(2)}<br/>
-                                Q {envio.toFixed(2)} <br />                            
-                                Q {Total.toFixed(2)}
+                                <div className="columnNo">
+                                    Q {Subtotal.toFixed(2)}<br/>
+                                    Q {envio.toFixed(2)} <br />                            
+                                    Q {Total.toFixed(2)}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="bottom">
-                    <button className='pagobtn' onClick={handlePagar}> Pagar </button>
-                    <button className='pagobtn' onClick={handleRegresar}> Cancelar </button>
+                    <div className="bottom">
+                        <button className='pagobtn' onClick={handlePagar}> Pagar </button>
+                        <button className='pagobtn' onClick={handleRegresar}> Cancelar </button>
+                    </div>
                 </div>
             </div>
         </>

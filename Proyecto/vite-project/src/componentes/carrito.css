@@ -1,10 +1,36 @@
 .contenedor {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: #EEF3FF;
+    align-items: center;
+    justify-content: center;
+}
+
+.MidyBotm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 50%;
+    padding: 5%;
+    border: 1px black solid;
+    border-radius: 30px;
+    margin: 3%;
+    background-color: #BEE9E8;
+
+}
+
+@media only screen and (max-width: 768px) {
+    .MidyBotm {
+        /* height: 100%; */
+        width: 80%; 
+    }
 }
 
 .up {
@@ -22,17 +48,27 @@
 
 .middle {
     display: flex;
+    background-color: rgb(242, 242, 242);
     flex-direction: column;
-    height: 70%;
+    height: 100%;
     width: 100%;
+    /* border: 1px solid black; */
+    border-radius: 20px;
 }
 
 .bottom {
     display: flex;
-    background-color: rgb(189, 189, 189);
+    background-color: rgb(242, 242, 242);
     height: 10%;
     width: 100%;
     padding: 0;
+    /* border: 1px solid black; */
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /* border-top-left-radius: 20px;
+    border-top-right-radius: 20px; */
+
+
 }
 
 .pagobtn {
@@ -61,11 +97,10 @@
     background-color: #b8d6e3;
     min-height: 25%;
     max-height: 25%;
-    width: 100%;
+    width: 95%;
+    padding: 2%;
     border-radius: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 5px;
+    margin: 1%;
 }
 
 
@@ -74,7 +109,6 @@
     flex-direction: column;
     height: 100%;
     width: 20%;
-    /* background-image: url(../assets/img/corona.jpg); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -90,6 +124,7 @@
     justify-content: center;
     padding: 5%;
     margin: 5%;
+    /* border-radius: 50%; */
 }
 
 .info {
@@ -212,8 +247,11 @@
     display: flex;
     flex-direction: row;
     background-color: rgb(242, 242, 242);
-    height: 80%;
+    height: 100%;
     width: 100%;
+    /* border-radius: 10px; */
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
     overflow-y: hidden;
     overflow-x: hidden;
 }
@@ -221,7 +259,7 @@
 .carrito {
     display: flex;
     flex-direction: column;
-    height: 70%;
+    height: 100%;
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
