@@ -40,9 +40,11 @@ export const CarritoProvider = ({ children }) => {
   }
 
   const eliminarDelCarrito = (id) => {
-    const nuevaCarrito = carrito.filter((producto) => producto.id !== id)
-    setCarrito(nuevaCarrito)
-    guardarCarritoStorage(nuevaCarrito)
+    if(window.confirm("Se eliminara este producto del carrito, estas seguro de continuar?")){  
+      const nuevaCarrito = carrito.filter((producto) => producto.id !== id)
+      setCarrito(nuevaCarrito)
+      guardarCarritoStorage(nuevaCarrito)
+    }
   }
 
   const limpiarCarrito = () => {

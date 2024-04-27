@@ -9,10 +9,8 @@ function Carrito(){
     const navigate = useNavigate();
 
     const handleRegresar = () => {
-        if (window.confirm("Se limpiara el carrito de compras, estas seguro de continuar?")) {
-            limpiarCarrito()
             navigate("/home");
-        }
+        
     };
 
     const cambioCant = (producto, nuevaCantidad) =>{
@@ -49,10 +47,11 @@ function Carrito(){
         <>
             <div className='contenedor'>
                 <div className="up">
-                    <div className=''>
-                        <div className="pic"></div>
-                        <div className="regresarbtn"></div>
+                    <div className="regresarbtn" onClick={() => handleRegresar()}> &lt; </div>
+                    <div className='header'>
+                        <h4>My Cart</h4>
                     </div>
+                    <img src="../src/assets/img/menu.png" alt="img" className='opciones'/>
                     
                 </div>
                 <div className="MidyBotm">
@@ -65,6 +64,7 @@ function Carrito(){
                                 carrito.map((producto) => (
                                     <div className='product' key={producto.id}>
                                         <div className='vista'>
+                                            <div className="btn_eliminar" onClick={() => eliminarDelCarrito(producto.id)}>x</div>
                                             <img className='imgVista' src={producto.imagen} alt={producto.title} />
                                         </div>
                                         <div className='info'>
@@ -78,6 +78,7 @@ function Carrito(){
                                                 <span className='cant'>{producto.cantidad}</span>
                                                 <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
                                             </div>
+
                                         </div>
                                     </div>
                                 ))
@@ -101,7 +102,6 @@ function Carrito(){
                     </div>
                     <div className="bottom">
                         <button className='pagobtn' onClick={handlePagar}> Pagar </button>
-                        <button className='pagobtn' onClick={handleRegresar}> Cancelar </button>
                     </div>
                 </div>
             </div>
