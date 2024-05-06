@@ -1,5 +1,5 @@
 .nabvar-body{
-    background-color: #BEE9E8;
+    background-color: #1B4965;
     font-size: 20px;
     font-weight: 500;
     position: fixed;
@@ -9,12 +9,12 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 5px;
     z-index: 2;
 }
 
 .nav-text{
-    color: #115773 !important;
+    color: #FFF !important;
     align-items: center;
     text-align: center;
     white-space: nowrap;

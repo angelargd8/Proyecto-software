@@ -1,3 +1,6 @@
 .home { 
     padding-top: 120px;
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
 }
