@@ -32,7 +32,6 @@ function Home() {
     <div className="home">
       <h1>Home</h1>
       <p>Bienvenido a la página de inicio</p>
-      <a href="/login">Cerrar sesión</a>
       {listadoCards.map((elemento) => (
         <Card key={elemento.id} title={elemento.title} content={elemento.content} imagen={elemento.imagen} click={() => info(elemento.title,elemento)} />
       ))}

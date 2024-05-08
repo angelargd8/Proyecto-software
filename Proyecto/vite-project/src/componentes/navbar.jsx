@@ -5,12 +5,9 @@ import { useEffect } from 'react';
 import {useLocation} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 
-
-//import 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
-
-
 function Nabvar(){
     const location = useLocation();
+    const userRol = localStorage.getItem('rol');
     useEffect(() => {
         const handleScroll = () => {
             var navbar = document.getElementById('navbar');
@@ -32,7 +29,6 @@ function Nabvar(){
     const navigate = useNavigate();
 
     const handleHome = () => {
-        // aqui va a ir lo de la autentificacion y todo eso
         navigate("/home");
     };
 
@@ -44,12 +40,16 @@ function Nabvar(){
     const handleCarrito = () => {
         navigate("/carrito");
       };
-    
+
+    const handleLogOut = () => {
+        localStorage.removeItem('rol');
+        alert('Sesión cerrada');
+        navigate("/home");
+    };
     return (
         <>
-        {
-            location.pathname!=='/login' && location.pathname!=='/signup'  && location.pathname!=='/carrito' &&(
-                <div className="nabvar-body" id="navbar">
+        {location.pathname!=='/login' && location.pathname!=='/signup'  && location.pathname!=='/carrito' &&(
+        <div className="nabvar-body" id="navbar">
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             
         <a className="navbar-brand" href="/">
@@ -68,12 +68,22 @@ function Nabvar(){
                     <li className="nav-item">
                     <a className="nav-text" aria-current="page" href="/home" onClick={handleHome}>Home</a>
                     </li>
+                    
                     <li className="nav-item">
-                    <a className="nav-text" href="/login" onClick={handleLogin}>Iniciar Sesion</a>
-                    </li><li className="nav-item">
                     <a className="nav-text" href="/carrito"  onClick={handleCarrito}>Carrito de compras</a>
                     </li>
-                    
+                    {userRol === 'admin' && (
+                        <li className="nav-item">
+                            <button type="button" className="boton"  onClick={handleLogOut}>cerrar sesión</button>
+                        </li>
+                    )
+                    }
+                    {userRol === null && (
+                        <li className="nav-item">
+                            <a className="nav-text" href="/login" onClick={handleLogin}>Iniciar Sesión</a>
+                        </li>
+                        )
+                    }
                 </ul>
                 <form className="d-flex buscar" role="search">
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>

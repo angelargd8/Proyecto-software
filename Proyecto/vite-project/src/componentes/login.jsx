@@ -13,6 +13,9 @@ function Login(){
           validateCredentials(email: $email, password: $password) {
             email
             name
+            rol{
+              name
+            }
           }
         }
         
@@ -42,9 +45,11 @@ function Login(){
             }
             else {
               console.log(data.data.validateCredentials);
-              localStorage.setItem('email', data.data.validateCredentials.email);
-              localStorage.setItem('name', data.data.validateCredentials.name);
+              //localStorage.setItem('name', data.data.validateCredentials.name);
+              const rol = localStorage.setItem('rol', data.data.validateCredentials.rol.name);
+              console.log(rol);
               {alert('Bienvenir@ '+data.data.validateCredentials.name+' a Picolin')}
+
               navigate("/home");
             }
             }catch(error){
