@@ -72,23 +72,26 @@ function Nabvar(){
                     <li className="nav-item">
                     <a className="nav-text" href="/carrito"  onClick={handleCarrito}>Carrito de compras</a>
                     </li>
-                    {userRol === 'admin' && (
-                        <li className="nav-item">
-                            <button type="button" className="boton"  onClick={handleLogOut}>cerrar sesión</button>
-                        </li>
-                    )
-                    }
-                    {userRol === null && (
-                        <li className="nav-item">
-                            <a className="nav-text" href="/login" onClick={handleLogin}>Iniciar Sesión</a>
-                        </li>
-                        )
-                    }
                 </ul>
                 <form className="d-flex buscar" role="search">
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                     <button className="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0 textos">
+                {userRol === 'admin' && (
+                        <li className="nav-item">
+                            <button type="button" className="boton-admin"  onClick={handleLogOut}>cerrar sesión</button>
+                        </li>
+                    )
+                    }
+                    {userRol === null && (
+                        <li className="nav-item">
+                            <button type="button" className="boton-admin" onClick={handleLogin}>Iniciar Sesión</button>
+                        </li>
+                        )
+                    }
+
+                </ul>
                 </div>
             </div>
             </nav>

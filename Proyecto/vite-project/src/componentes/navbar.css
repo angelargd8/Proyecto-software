@@ -26,7 +26,7 @@
 }
 
 .buscar{
-    margin-left: 25%;
+    margin-left: 35%;
 }
 
 .logotipo{
@@ -44,8 +44,11 @@
     margin-right: 10px;
 }
 
-.boton{
-    color: #BEE9E8;
+.boton-admin{
+    color: #1B4965;
     padding: 0px;
-    background-color: #1B4965;
+    background-color: #BEE9E8;
+    margin-left: 65px;
+    padding: 5px;
+    font-size: medium;
 }
