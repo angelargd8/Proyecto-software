@@ -6,6 +6,9 @@
   "keywords": [],
   "author": {},
   "license": "ISC",
+  "scripts" : {
+    "start": "nodemon node index.js"
+  },
   "dependencies": {
     "apollo-server": "^3.13.0",
     "fs": "^0.0.1-security",

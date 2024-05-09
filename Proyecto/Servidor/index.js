@@ -1,6 +1,6 @@
 const {ApolloServer, gql} = require('apollo-server');
 
-const {getAllUser,getRol,validateUser,createNewUser,getAllItems, getPage} = require('../Servidor/db')
+const {getAllUser,getRol,validateUser,createNewUser,getAllItems, getPage,getPromotions} = require('../Servidor/db')
 
 
 const typeDefs = gql`
@@ -30,8 +30,16 @@ const typeDefs = gql`
     quantity: Int
     price: Float!
     page: Pages
+    promotions: [Promotions]
  }
 
+ type Promotions {
+    idPromotions: Int!
+    percentage: Float
+    state: String!
+    name: String!
+    discount: Float
+ }
 
  type Query {
     allUsers: [Users]!
@@ -104,6 +112,10 @@ const resolvers = {
         page : async (root) => {
             const page = await getPage(root.idPage)
             return page[0]
+        },
+        promotions: async (root) => {
+            const promotions = await getPromotions(root.idItems)
+            return promotions
         }
     }
     

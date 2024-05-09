@@ -112,4 +112,21 @@ async function getPage(idPage){
     return jsonResult
 }
 
-module.exports = { getAllUser,getRol,validateUser,createNewUser,getAllItems,getPage };
+async function getPromotions(idItems){
+    const result = await pool.query(`select p.id_promocion,p.porcentaje,p.estado,p.nombre_promocion,p.descuento from articulos a
+    join articulos_promociones ap on (a.id_articulo = ap.id_articulo)
+    join promociones p on (p.id_promocion = ap.id_promocion)
+    where a.id_articulo = ${idItems}`)
+    let jsonResult = result.rows.map(row =>{
+        return {
+            idPromotions: row.id_promocion,
+            percentage: row.porcentaje,
+            state: row.estado,
+            name: row.nombre_promocion,
+            discount: row.descuento
+        }
+    })
+    return jsonResult
+}
+
+module.exports = { getAllUser,getRol,validateUser,createNewUser,getAllItems,getPage,getPromotions };
