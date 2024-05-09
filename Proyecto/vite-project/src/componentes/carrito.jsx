@@ -2,6 +2,8 @@ import {  useState, useEffect } from 'react'
 import './carrito.css'
 import { useNavigate } from 'react-router-dom';
 import { useCarrito } from './carritoContext';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 function Carrito(){
     const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } = useCarrito()
@@ -49,9 +51,15 @@ function Carrito(){
                 <div className="up">
                     <div className="regresarbtn" onClick={() => handleRegresar()}> &lt; </div>
                     <div className='header'>
-                        <h4>My Cart</h4>
+                        <div className="titulo">
+                        My Cart
+                        </div>
                     </div>
-                    <img src="../src/assets/img/menu.png" alt="img" className='opciones'/>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block', marginBottom: '5px'}}></span>
+                        <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block', marginBottom: '5px'}}></span>
+                        <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block'}}></span>
+                    </button>
                     
                 </div>
                 <div className="MidyBotm">
