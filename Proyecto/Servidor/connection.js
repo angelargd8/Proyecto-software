@@ -8,7 +8,7 @@ const password4 = ""
 const pool = new Pool({
     host:"localhost",
     user: "postgres",
-    password:password2,
+    password:password1,
     database:"ecomers",
     port:"5432"
 })
