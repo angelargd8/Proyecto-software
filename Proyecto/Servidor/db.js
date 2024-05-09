@@ -86,4 +86,30 @@ async function createNewUser(args){
     
 }
 
-module.exports = { getAllUser,getRol,validateUser,createNewUser };
+async function getAllItems(){
+    const result = await pool.query('SELECT * FROM articulos')
+    let jsonResult = result.rows.map(row =>{
+        return {
+            idItems: row.id_articulo,
+            name: row.nombre_articulo,
+            quantity: row.cantidad_articulo,
+            price: row.precio,
+            idPage: row.id_pagina
+        }
+    })
+    return jsonResult
+}
+
+async function getPage(idPage){
+    const result = await pool.query(`SELECT * FROM paginas WHERE id_pagina = ${idPage}`)
+    let jsonResult = result.rows.map(row =>{
+        return {
+            idPage: row.id_pagina,
+            name: row.nombre_pagina,
+            emailAdmin: row.email
+        }
+    })
+    return jsonResult
+}
+
+module.exports = { getAllUser,getRol,validateUser,createNewUser,getAllItems,getPage };

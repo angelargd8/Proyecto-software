@@ -1,6 +1,6 @@
 const {ApolloServer, gql} = require('apollo-server');
 
-const {getAllUser,getRol,validateUser,createNewUser} = require('../Servidor/db')
+const {getAllUser,getRol,validateUser,createNewUser,getAllItems, getPage} = require('../Servidor/db')
 
 
 const typeDefs = gql`
@@ -18,12 +18,28 @@ const typeDefs = gql`
     rol: Roles
  }
 
+ type Pages {
+    idPage: Int!
+    name: String!
+    admin: Users
+ }
+
+ type Items {
+    idItems: Int!
+    name: String!
+    quantity: Int
+    price: Float!
+    page: Pages
+ }
+
+
  type Query {
     allUsers: [Users]!
     validateCredentials(
         email: String!
         password: String!
     ): Users
+    getItems: [Items]!
  }
 
  type UserValidationResult {
@@ -45,13 +61,17 @@ const typeDefs = gql`
 const resolvers = {
     Query: {
         allUsers: async () => {
-            const users = await getAllUser();
+            const users = await getAllUser()
             return users
         },
         validateCredentials: async (root, args) => {
             const {email, password} = args
             const user = await validateUser(email,password)
             return user[0]
+        },
+        getItems: async () => {
+            const items = await getAllItems()
+            return items
         }
     },
     Mutation: {
@@ -79,6 +99,12 @@ const resolvers = {
             console.log(rol)
             return rol[0]
         } 
+    },
+    Items : {
+        page : async (root) => {
+            const page = await getPage(root.idPage)
+            return page[0]
+        }
     }
     
 }
