@@ -17,13 +17,23 @@
     justify-content: center;
     height: 100%;
     width: 70%;
-    padding: 2%;
+    padding: 0.5%;
     border-radius: 30px;
-    margin: 3%;
-    background-color: transparent;
-}
+    margin-bottom: 1%;
+    margin-top: 1%;
 
+}
+.middle {
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    padding: 0;
+}
 .header {
+    /*lo que esta dentro de up*/
     display: flex;
     color: #1B4965;
     font-family:'Gill Sans', 'Gill Sans MT',  sans-serif;
@@ -32,7 +42,7 @@
     height: 100%;
     width: 100%;
     margin-right: 20%;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .regresarbtn {
@@ -48,12 +58,14 @@
     font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
     font-size: small;
     padding: 2%;
-    margin-left: 14%;
-    margin-top: 25px;
+    margin-left: 5%;
+    margin-top: -15px;
 
 }
 .titulo{
     font-size: xx-large;
+    margin-top: -30px;
+    margin-left: 5%;
 }
 
 @media (min-width: 768px) {
@@ -64,45 +76,42 @@
 
 .opciones {
     display: flex;
-    height: 30%;
-    width: 10%;
+    height: 100%;
+    width: 100%;
     color: #1B4965;
     justify-content: center;
     align-items: center;
     margin-right: 16%;
+    
 }
 .up {
+    /*este es el header*/
     display: flex;
     align-items: center;
     justify-content: center;
     text-justify: center;
-    height: 10%;
+    height: 140px;
     width: 100%;
 }
-.middle {
-    display: flex;
-    background-color: transparent;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    border-radius: 20px;
-}
+
 .bottom {
     display: flex;
     background-color: transparent;
-    height: 10%;
+    height: 20%;
     width: 100%;
-    padding: 0;
+    padding: 1px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 
 }
 .pagobtn {
-    height: 100%;
-    width: 100%;
+    height: 60%;
+    width: 40%;
     color: #FFF;
     background-color: #1B4965;
     border-radius: 20px;
+    margin-left: 25%;
+    cursor: pointer;
 }
 .logo {
     display: flex;
@@ -139,20 +148,22 @@
 }
 .btn_eliminar {
     display: flex;
-    height: 20%;
-    width: 20%;
+    height: 100%;
+    width: 40%;
     color: #1B4965;
+    font-size: larger;
 
 }
 .imgVista {
     display: flex;
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
     align-items: center;
     justify-content: center;    
     border-radius: 50%;
     padding: 5%;
     margin: 5%;
+    margin-top: -10px;
 }
 
 .info {
@@ -166,7 +177,7 @@
     width: 50%;
     border-radius: 10px;
     font-size: small;
-    padding: 2%;
+    padding: 1%;
 
 }
 
@@ -246,12 +257,14 @@
 
 .columnCampo {
     display: flex;
-    height: 100%;
+    height: 60%;
     width: 50%;
-    color: white;
+    color: #1B4965;
     font-size: large;
     padding-left: 3%;
+    padding-top: 1%;
     text-align: left;
+    font-size: small;
 }
 
 .columnNo {
@@ -269,14 +282,15 @@
 .codigo {
     display: flex;
     width: 100%;
-    height: 40%;
+    height: 30%;
     background-color: transparent;
     border-radius: 20px;
-    color: white;
+    color: #1B4965;
     resize: none;
     text-align: center;    
     border: 1px solid #1B4965;
     margin-top: 2%;
+    margin-bottom: 0.5%;
     overflow: hidden;
 }
 
@@ -298,8 +312,8 @@
     color: #1B4965;
     height: 100%;
     width: 100%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
     border-radius: 10px;
     
     overflow-y: hidden;
@@ -328,7 +342,7 @@
 .totales {
     display: flex;
     flex-direction: column;
-    height: 30%;
+    height: 50%;
     width: 100%;
 }
 
@@ -342,7 +356,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 80%;
+        height: 100%;
         width: 50%;
         padding: 2%;
         /* border: 1px black solid; */
@@ -584,7 +598,7 @@
         display: flex;
         height: 100%;
         width: 50%;
-        color: white;
+        color: #1B4965;
         font-size: large;
         /* font-family: 'Gill Sans', 'Gill Sans MT',  sans-serif;; */
         padding-left: 3%;
@@ -610,7 +624,7 @@
         height: 30%;
         background-color: transparent;
         border-radius: 20px;
-        color: white;
+        color: #1B4965;
         resize: none;
         text-align: center;    
         border: 1px solid #1B4965;
