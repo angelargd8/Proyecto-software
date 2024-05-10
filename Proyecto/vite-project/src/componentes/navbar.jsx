@@ -69,8 +69,12 @@ function Nabvar(){
                     <a className="nav-text" aria-current="page" href="/home" onClick={handleHome}>Home</a>
                     </li>
                     
-                    <li className="nav-item">
-                    <a className="nav-text" href="/carrito"  onClick={handleCarrito}>Carrito de compras</a>
+                
+                </ul>
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0 textos">
+                    <li className='nav-item'>
+                    <img src='./src/assets/img/carrito.png' id='carrito-img' href="/carrito" onClick={handleCarrito}/>
+
                     </li>
                 </ul>
                 <form className="d-flex buscar" role="search">
