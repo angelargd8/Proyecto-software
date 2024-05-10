@@ -100,7 +100,7 @@ alter table usuarios add constraint userfkrol foreign key (id_rol) references ro
 
 alter table paginas add constraint paginasfkusuarios foreign key (email) references usuarios(email);
 
-alter table articulos add constraint articulosfkpaginas foreign key (id_articulo) references paginas(id_pagina);
+alter table articulos add constraint articulosfkpaginas foreign key (id_pagina) references paginas(id_pagina);
 
 alter table categorias add constraint categoriasfkpaginas foreign key (id_pagina) references paginas(id_pagina);
 

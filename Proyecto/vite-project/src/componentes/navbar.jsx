@@ -1,13 +1,15 @@
 import './navbar.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react'
 import {useLocation} from 'react-router-dom'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 function Nabvar(){
-    const location = useLocation();
-    const userRol = localStorage.getItem('rol');
+    const location = useLocation()
+    const userRol = localStorage.getItem('rol')
+    const [searchItem, setSearchItem] = useState('')
+
     useEffect(() => {
         const handleScroll = () => {
             var navbar = document.getElementById('navbar');
@@ -29,23 +31,35 @@ function Nabvar(){
     const navigate = useNavigate();
 
     const handleHome = () => {
-        navigate("/home");
-    };
+        navigate("/home")
+    }
 
     const handleLogin = () => {
-      navigate("/login");
-    };
-    
+      navigate("/login")
+    }
 
     const handleCarrito = () => {
-        navigate("/carrito");
-      };
+        navigate("/carrito")
+    }
 
     const handleLogOut = () => {
         localStorage.removeItem('rol');
-        alert('Sesión cerrada');
-        navigate("/home");
-    };
+        alert('Sesión cerrada')
+        navigate("/home")
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        if (searchItem.trim()) {
+            navigate(`/home?search=${encodeURIComponent(searchItem)}`)
+        } else {
+            navigate("/home")
+        }
+    }
+
+    const handleAddProduct = () => {
+        navigate("/agregarProducto")
+    }
     return (
         <>
         {location.pathname!=='/login' && location.pathname!=='/signup'  && location.pathname!=='/carrito' &&(
@@ -76,18 +90,29 @@ function Nabvar(){
                     <img src='./src/assets/img/carrito.png' id='carrito-img' href="/carrito" onClick={handleCarrito}/>
 
                     </li>
+                    
+                    <div className="admin-div">
+                        <li className="nav-item">
+                            <a className="nav-text" href="/agregarproducto"  onClick={handleAddProduct}>Agregar producto</a>
+                        </li>
+                    </div>
+                    
+                
                 </ul>
-                <form className="d-flex buscar" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                <form className="d-flex buscar" role="search" onSubmit={handleSearch}>
+                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchItem} onChange={(e)=> setSearchItem(e.target.value)}/>
                     <button className="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 textos">
                 {userRol === 'admin' && (
+                    <div className="admin-div">
                         <li className="nav-item">
-                            <button type="button" className="boton-admin"  onClick={handleLogOut}>cerrar sesión</button>
+                            <button type="button" className="boton-admin"  onClick={handleLogOut}>Cerrar sesión</button>
                         </li>
+                    </div>
+                   
                     )
-                    }
+                }
                     {userRol === null && (
                         <li className="nav-item">
                             <button type="button" className="boton-admin" onClick={handleLogin}>Iniciar Sesión</button>

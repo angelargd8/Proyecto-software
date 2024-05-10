@@ -1,6 +1,6 @@
 const {ApolloServer, gql} = require('apollo-server');
 
-const {getAllUser,getRol,validateUser,createNewUser,getAllItems, getPage,getPromotions} = require('../Servidor/db')
+const {getAllUser,getRol,validateUser,createNewUser,getAllItems, getPage,getPromotions, setNewItem,getOneItem} = require('../Servidor/db')
 
 
 const typeDefs = gql`
@@ -48,6 +48,9 @@ const typeDefs = gql`
         password: String!
     ): Users
     getItems: [Items]!
+    getOneItem(
+        idItem: Int!
+    ): Items
  }
 
  type UserValidationResult {
@@ -56,6 +59,12 @@ const typeDefs = gql`
     user: Users
   }
 
+ type StatusItemInsert {
+    status: Boolean!
+    message: String
+    Item: Items
+ }
+
  type Mutation {
     addnewUser(
         email: String!
@@ -63,6 +72,13 @@ const typeDefs = gql`
         appelido: String
         password: String!
     ): UserValidationResult
+    addNewItem(
+        name: String!
+        quantity: Int
+        price: Float!
+        idPage: Int!
+    ): StatusItemInsert
+
  }
 `
 
@@ -80,6 +96,11 @@ const resolvers = {
         getItems: async () => {
             const items = await getAllItems()
             return items
+        },
+        getOneItem: async (root, args) =>{
+            const {idItem} = args
+            const item = await getOneItem(idItem)
+            return item[0]
         }
     },
     Mutation: {
@@ -98,6 +119,16 @@ const resolvers = {
                     status: false,
                     message: "El usuario ya existe"
                 }
+            }
+        },
+        addNewItem: async (root, args) => {
+            const item = {...args}
+            console.log(item)
+            const response = await setNewItem(item)
+            return {
+                status: true,
+                message: "Se creo con exito el objeto",
+                Item: response
             }
         }
     },

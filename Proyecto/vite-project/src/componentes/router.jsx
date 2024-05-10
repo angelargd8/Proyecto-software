@@ -4,6 +4,7 @@ import Home from './home.jsx'
 import SingUp from './signup.jsx'
 import Detalles from './detalles.jsx'
 import Carrito from './carrito.jsx'
+import AgregarProducto from './agregarProd.jsx'
 
 function AppRouter(){
 
@@ -15,6 +16,7 @@ function AppRouter(){
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/detalles/:title" element={<Detalles/>} />
             <Route path="/" element={<Home />} />
+            <Route path="/agregarProducto" element={<AgregarProducto/>} />
         </Routes>
     )
     

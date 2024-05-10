@@ -129,4 +129,44 @@ async function getPromotions(idItems){
     return jsonResult
 }
 
-module.exports = { getAllUser,getRol,validateUser,createNewUser,getAllItems,getPage,getPromotions };
+async function setNewItem(args){
+    try {
+        const result = await pool.query(`
+            insert into articulos (nombre_articulo,cantidad_articulo,precio,id_pagina)
+            values ('${args.name}',${args.quantity},${args.price},${args.idPage})
+            RETURNING id_articulo;
+        `);
+        let jsonResult ={
+            idItems: result.rows[0].id_articulo,
+            name: args.name,
+            quantity: args.quantity,
+            price: args.price,
+            idPage: args.idPage
+        }
+        return jsonResult;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
+async function getOneItem(idItem){
+    try {
+        const result = await pool.query(`select * from articulos where id_articulo = ${idItem}`);
+        let jsonResult = result.rows.map(row =>{
+            return {
+                idItems: row.id_articulo,
+                name: row.nombre_articulo,
+                quantity: row.cantidad_articulo,
+                price: row.precio,
+                idPage: row.id_pagina
+            }
+        })
+        return jsonResult
+    } catch (error) {
+        console.error(error)
+        return [];
+    }
+}
+
+module.exports = { getAllUser,getRol,validateUser,createNewUser,getAllItems,getPage,getPromotions,setNewItem,getOneItem };
