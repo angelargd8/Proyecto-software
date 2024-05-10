@@ -91,11 +91,15 @@ function Nabvar(){
 
                     </li>
                     
+                    {userRol === 'admin' && (
                     <div className="admin-div">
                         <li className="nav-item">
                             <a className="nav-text" href="/agregarproducto"  onClick={handleAddProduct}>Agregar producto</a>
                         </li>
                     </div>
+                   
+                    )
+                }
                     
                 
                 </ul>

@@ -26,6 +26,9 @@ function SingUp(){
         }
         
         `;
+
+
+        
         async function crearteUser(){
           try{
             const response = await fetch(url,{
