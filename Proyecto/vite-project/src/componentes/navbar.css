@@ -52,3 +52,10 @@
     padding: 5px;
     font-size: medium;
 }
+
+.admin-div{
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    
+}

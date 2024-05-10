@@ -57,6 +57,9 @@ function Nabvar(){
         }
     }
 
+    const handleAddProduct = () => {
+        navigate("/agregarProducto")
+    }
     return (
         <>
         {location.pathname!=='/login' && location.pathname!=='/signup'  && location.pathname!=='/carrito' &&(
@@ -83,6 +86,14 @@ function Nabvar(){
                     <li className="nav-item">
                     <a className="nav-text" href="/carrito"  onClick={handleCarrito}>Carrito de compras</a>
                     </li>
+                    
+                    <div className="admin-div">
+                        <li className="nav-item">
+                            <a className="nav-text" href="/agregarproducto"  onClick={handleAddProduct}>Agregar producto</a>
+                        </li>
+                    </div>
+                    
+                
                 </ul>
                 <form className="d-flex buscar" role="search" onSubmit={handleSearch}>
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchItem} onChange={(e)=> setSearchItem(e.target.value)}/>
@@ -90,11 +101,14 @@ function Nabvar(){
                 </form>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 textos">
                 {userRol === 'admin' && (
+                    <div className="admin-div">
                         <li className="nav-item">
-                            <button type="button" className="boton-admin"  onClick={handleLogOut}>cerrar sesión</button>
+                            <button type="button" className="boton-admin"  onClick={handleLogOut}>Cerrar sesión</button>
                         </li>
+                    </div>
+                   
                     )
-                    }
+                }
                     {userRol === null && (
                         <li className="nav-item">
                             <button type="button" className="boton-admin" onClick={handleLogin}>Iniciar Sesión</button>
