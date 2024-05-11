@@ -49,18 +49,21 @@ function Carrito(){
         <>
             <div className='contenedor'>
                 <div className="up">
-                    <div className="regresarbtn" onClick={() => handleRegresar()}> &lt; </div>
+                    <div className="regresar">
+                        <div className="regresarbtn" onClick={() => handleRegresar()}> &lt; </div>
+                    </div>
                     <div className='header'>
                         <div className="titulo">
                         My Cart
                         </div>
                     </div>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block', marginBottom: '5px'}}></span>
-                        <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block', marginBottom: '5px'}}></span>
-                        <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block'}}></span>
-                    </button>
-                    
+                    <div className="opciones">
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block', marginBottom: '5px'}}></span>
+                            <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block', marginBottom: '5px'}}></span>
+                            <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block'}}></span>
+                        </button>
+                    </div>
                 </div>
                 <div className="MidyBotm">
 

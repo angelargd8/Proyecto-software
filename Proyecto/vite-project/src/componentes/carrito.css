@@ -9,79 +9,84 @@
     align-items: center;
     justify-content: center;
 }
+
 .MidyBotm {
     width: 100%; 
+    height: 90%;
     display: flex;
+    background-color: rgb(229, 229, 229);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 70%;
-    padding: 0.5%;
-    border-radius: 30px;
-    margin-bottom: 1%;
-    margin-top: 1%;
-
 }
+
 .middle {
     display: flex;
     background-color: transparent;
     flex-direction: column;
-    height: 100%;
+    height: 80%;
     width: 100%;
     border-radius: 20px;
-    padding: 0;
 }
 .header {
     /*lo que esta dentro de up*/
     display: flex;
+    height: 100%;
+    width: 90%;
     color: #1B4965;
     font-family:'Gill Sans', 'Gill Sans MT',  sans-serif;
+    justify-content: left;
+    align-items: center;
+}
+
+.regresar {
+    display: flex;
+    height: 100%;
+    width: 10%;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
-    margin-right: 20%;
-    margin-top: 15px;
+    /* padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 2.5%;
+    padding-right: 2.5%; */
 }
 
 .regresarbtn {
     display: flex;
-    height: 15%;
-    width: 8%;
-    color: #FFF;
-    background-color: #1B4965;
-    border: 1px solid #1B4965;
+    height: 100%;
+    width: 100%;
+    color: #1B4965;
     border-radius: 15px;
     justify-content: center;
     align-items: center;
     font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
-    font-size: small;
-    padding: 2%;
-    margin-left: 5%;
-    margin-top: -15px;
-
+    font-size: xx-large;
 }
+
 .titulo{
     font-size: xx-large;
-    margin-top: -30px;
-    margin-left: 5%;
+    /* margin-top: -30px; */
+    /* margin-left: 5%; */
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .navbar-toggler{
         display: none;
     }    
-}
+} */
 
-.opciones {
-    display: flex;
+/* .navbar-toggler {
     height: 100%;
     width: 100%;
+} */
+.opciones {
+    display: none;
+    height: 100%;
+    width: 10%;
     color: #1B4965;
     justify-content: center;
     align-items: center;
-    margin-right: 16%;
+    /* margin-right: 16%; */
     
 }
 .up {
@@ -90,7 +95,8 @@
     align-items: center;
     justify-content: center;
     text-justify: center;
-    height: 140px;
+    margin-bottom: 5%;
+    height: 10%;
     width: 100%;
 }
 
@@ -99,18 +105,19 @@
     background-color: transparent;
     height: 20%;
     width: 100%;
-    padding: 1px;
+    justify-content: center;
+    align-content: center;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 
 }
 .pagobtn {
     height: 60%;
-    width: 40%;
+    width: 100%;
     color: #FFF;
     background-color: #1B4965;
     border-radius: 20px;
-    margin-left: 25%;
+    /* margin-left: 25%; */
     cursor: pointer;
 }
 .logo {
@@ -308,7 +315,7 @@
 .rowDatos {
     display: flex;
     flex-direction: row;
-    background-color: #FFF;
+    background-color: #c6cacb;
     color: #1B4965;
     height: 100%;
     width: 100%;
@@ -327,6 +334,7 @@
     height: 100%;
     width: 100%;
     overflow-y: scroll;
+    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
@@ -344,21 +352,37 @@
     flex-direction: column;
     height: 50%;
     width: 100%;
+    /* background-color: rgb(190, 186, 186); */
+    border-radius: 20px;
+    /* margin-left: 5%;
+    margin-right: 5%; */
 }
 
 @media only screen and (max-width: 768px) {
     .navbar-toggler{
-        margin-right: 15%;
+        margin-right: 25%;
+        /* display: block;
+        height: 3px;
+        width: 30px;
+        margin-bottom: 5px;
+        background-color: black; */
+    }
+
+    .regresar {
+        padding-top: 2.5%;
+        padding-bottom: 2.5%;
+        padding-right: 0;
+        padding-left: 0;
     }
     .MidyBotm {
-        width: 80%; 
+        /* width: 100%;  */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100%;
-        width: 50%;
-        padding: 2%;
+        width: 90%;
+        /* padding: 2%; */
         /* border: 1px black solid; */
         border-radius: 30px;
         margin: 3%;
@@ -377,9 +401,6 @@
     }
     .header {
         display: flex;
-        /* position: absolute;
-        top: -50;
-        left: 50; */
         color: #1B4965;
         font-family:'Gill Sans', 'Gill Sans MT',  sans-serif;
         justify-content: center;
@@ -388,35 +409,30 @@
         width: 90%;
     }
     .regresarbtn {
-        display: flex;
-        height: 15%;
-        width: 8%;
         color: #1B4965;
-        border: 1px solid #1B4965;
-        border-radius: 10px;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
-        font-size: small;
-        padding: 2%;
-        margin-left: 14%;
-    
+        background-color: transparent;
+        font-size: xx-large;
+        border: none;
     }
     .opciones {
         display: flex;
-        height: 30%;
+        height: 100%;
         width: 10%;
         background-image: url(../assets/img/menu.png);
         justify-content: center;
         align-items: center;
-        margin-right: 16%;
+        /* margin-right: 16%; */
         z-index: 3;
     }
     .up {
         display: flex;
+        height: 20%;
         align-items: center;
         justify-content: center;
         text-justify: center;
+        margin-top: 1%;
+        margin-left: 1%;
+        
         height: 10%;
         width: 100%;
     }
@@ -432,6 +448,8 @@
     .bottom {
         display: flex;
         background-color: transparent;
+        justify-content: center;
+        align-items: center;
         height: 10%;
         width: 100%;
         padding: 0;
@@ -646,7 +664,7 @@
     .rowDatos {
         display: flex;
         flex-direction: row;
-        background-color: #FFF;
+        /* background-color: #FFF; */
         color: #1B4965;
         height: 100%;
         width: 100%;
@@ -666,6 +684,8 @@
         width: 100%;
         overflow-y: scroll;
         overflow-x: hidden;
+        padding-top: 3%;
+
     }
     
     #contTitulo {
