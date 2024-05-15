@@ -122,6 +122,7 @@ function Carrito(){
                         </div>
                     </div>
                     <div className="bottom">
+                        Orsons Library
                     </div>
                 </div>
             </div>

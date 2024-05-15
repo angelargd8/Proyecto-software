@@ -152,11 +152,14 @@
     /* Footer, aqui no hay nada aun y en movil no se muestra */
     display: flex;
     background-color: #1B4965;
+    color: white;
     height: 10%;
     width: 100%;
-    justify-content: center;
+    justify-content: left;
     align-content: center;
-    padding-right: 15%;
+    align-items: center;
+    padding-left: 10%;
+    /* padding-right: 15%; */
     /* border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px; */
 
