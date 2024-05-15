@@ -98,7 +98,6 @@ function Carrito(){
                                                 <span className='cant'>{producto.cantidad}</span>
                                                 <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
                                             </div>
-
                                         </div>
                                     </div>
                                 ))
