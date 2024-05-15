@@ -55,7 +55,10 @@ function Detalles(){
     
     return(
         <div className="cuerpo">
-            <button onClick={Regresar}>Regresar</button>
+            <button onClick={Regresar} className='boton'>
+                    <img src='../assets/img/black_arrow.png' alt='return arrow'></img>
+                    <h2>Regresar</h2>
+            </button>
             <img src={imagen} className='imagen' alt='producto'/>
             <h2>{title}</h2>
             <h3>Precio: {content}</h3>

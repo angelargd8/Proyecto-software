@@ -94,7 +94,7 @@ async function getAllItems(){
             name: row.nombre_articulo,
             quantity: row.cantidad_articulo,
             price: row.precio,
-            idPage: row.id_pagina
+            description: row.descripcion
         }
     })
     return jsonResult
@@ -132,16 +132,16 @@ async function getPromotions(idItems){
 async function setNewItem(args){
     try {
         const result = await pool.query(`
-            insert into articulos (nombre_articulo,cantidad_articulo,precio,id_pagina)
-            values ('${args.name}',${args.quantity},${args.price},${args.idPage})
+            insert into articulos (nombre_articulo,cantidad_articulo,precio,descripcion)
+            values ('${args.name}',${args.quantity},${args.price},'${args.description}')
             RETURNING id_articulo;
         `);
         let jsonResult ={
             idItems: result.rows[0].id_articulo,
             name: args.name,
             quantity: args.quantity,
-            price: args.price,
-            idPage: args.idPage
+            description: args.description,
+            price: args.price
         }
         return jsonResult;
     } catch (error) {
@@ -158,8 +158,8 @@ async function getOneItem(idItem){
                 idItems: row.id_articulo,
                 name: row.nombre_articulo,
                 quantity: row.cantidad_articulo,
-                price: row.precio,
-                idPage: row.id_pagina
+                description: row.descripcion,
+                price: row.precio
             }
         })
         return jsonResult
@@ -169,4 +169,31 @@ async function getOneItem(idItem){
     }
 }
 
-module.exports = { getAllUser,getRol,validateUser,createNewUser,getAllItems,getPage,getPromotions,setNewItem,getOneItem };
+async function updateItem(item){
+    try {
+        const result = await pool.query(`update articulos 
+        set nombre_articulo = '${item.name}', cantidad_articulo = ${item.quantity ? item.quantity : null}, precio = ${item.price}, descripcion = '${item.description ? item.description : null}'
+        where id_articulo = ${item.idItem}`)
+        let jsonResult = {
+            idItems: item.idItem,
+            name: item.name,
+            quantity: item.quantity ? item.quantity : null,
+            description: item.description ? item.description : null,
+            price: item.price
+        }
+        return jsonResult
+    } catch (error) {
+        console.error(error)
+        return [];
+    }
+}
+
+module.exports = { getAllUser,
+    getRol,validateUser,
+    createNewUser,
+    getAllItems,
+    getPage,
+    getPromotions,
+    setNewItem,
+    getOneItem,
+    updateItem };

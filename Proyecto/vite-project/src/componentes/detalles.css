@@ -80,7 +80,35 @@
     color: #333;
 }
 
-.imagen{
+.imagen {
+    width: 100%;
+    max-width: 100px;
+}
+
+.boton {
+    align-self: flex-start;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    background-color: transparent;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.boton img {
     width: 30%;
     height: 30%;
+    margin-right: 5px;
+    transform: scaleX(-1);
+}
+  
+@media (min-width: 768px) {
+    .imagen {
+        max-width: 600px;
+    }
+
+    .boton h2{
+        
+    }
 }

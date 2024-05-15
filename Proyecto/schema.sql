@@ -30,8 +30,8 @@ create table articulos
 	id_articulo serial primary key,
 	nombre_articulo varchar(100) not null,
 	cantidad_articulo int,
-	precio float not null,
-	id_pagina int
+	descripcion TEXT,
+	precio float not null
 );
 
 create table categorias
@@ -99,8 +99,6 @@ create table categoria_promociones
 alter table usuarios add constraint userfkrol foreign key (id_rol) references roles(id_rol);
 
 alter table paginas add constraint paginasfkusuarios foreign key (email) references usuarios(email);
-
-alter table articulos add constraint articulosfkpaginas foreign key (id_pagina) references paginas(id_pagina);
 
 alter table categorias add constraint categoriasfkpaginas foreign key (id_pagina) references paginas(id_pagina);
 

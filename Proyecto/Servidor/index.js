@@ -1,6 +1,15 @@
 const {ApolloServer, gql} = require('apollo-server');
 
-const {getAllUser,getRol,validateUser,createNewUser,getAllItems, getPage,getPromotions, setNewItem,getOneItem} = require('../Servidor/db')
+const {getAllUser,
+    getRol,
+    validateUser,
+    createNewUser,
+    getAllItems, 
+    getPage,
+    getPromotions,
+    setNewItem,
+    getOneItem,
+    updateItem } = require('../Servidor/db')
 
 
 const typeDefs = gql`
@@ -29,7 +38,7 @@ const typeDefs = gql`
     name: String!
     quantity: Int
     price: Float!
-    page: Pages
+    description: String
     promotions: [Promotions]
  }
 
@@ -76,8 +85,15 @@ const typeDefs = gql`
         name: String!
         quantity: Int
         price: Float!
-        idPage: Int!
+        description: String
     ): StatusItemInsert
+    updateItem(
+        idItem: Int!
+        name: String!
+        quantity: Int
+        price: Float!
+        description: String
+    ): Items
 
  }
 `
@@ -123,27 +139,26 @@ const resolvers = {
         },
         addNewItem: async (root, args) => {
             const item = {...args}
-            console.log(item)
             const response = await setNewItem(item)
             return {
                 status: true,
                 message: "Se creo con exito el objeto",
                 Item: response
             }
+        },
+        updateItem: async (root, args) =>{
+            const newItem = {...args}
+            const response = await updateItem(newItem)
+            return response
         }
     },
     Users: {
         rol : async (root) => {
             const rol = await getRol(root.IdRol)
-            console.log(rol)
             return rol[0]
         } 
     },
     Items : {
-        page : async (root) => {
-            const page = await getPage(root.idPage)
-            return page[0]
-        },
         promotions: async (root) => {
             const promotions = await getPromotions(root.idItems)
             return promotions
