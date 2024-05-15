@@ -70,9 +70,9 @@ function Carrito(){
                         <div className="pasos">
                             <div className="nombrePaso"> Direccion de Entrega</div>
                             <div className="separador">  -------------  </div>
-                            <div className="nombrePaso"> Forma de Pago</div>
+                            <div className="nombrePaso" style={{backgroundColor: 'transparent', color: '#1B4965'}}> Forma de Pago</div>
                             <div className="separador">  -------------  </div>
-                            <div className="nombrePaso"> Ultimo Paso</div>
+                            <div className="nombrePaso" style={{backgroundColor: 'transparent', color: '#1B4965'}}> Ultimo Paso</div>
                         </div>
                         <div className="relleno"></div>
                     </div>
@@ -94,9 +94,9 @@ function Carrito(){
                                         </div>
                                         <div className='nums'>
                                             <div id='xd'>
-                                                <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
+                                                <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
                                                 <span className='cant'>{producto.cantidad}</span>
-                                                <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
+                                                <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
                                             </div>
                                         </div>
                                     </div>
