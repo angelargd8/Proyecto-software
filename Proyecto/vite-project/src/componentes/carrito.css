@@ -1,3 +1,5 @@
+
+/* --------------------------------------------Contenedor General----------------------------------------------------- */
 .contenedor {
     display: flex;
     flex-direction: column;
@@ -9,25 +11,18 @@
     align-items: center;
     justify-content: center;
 }
+/* --------------------------------------------Header----------------------------------------------------- */
 
-.MidyBotm {
-    width: 100%; 
-    height: 90%;
+.up {
+    /*este es el header*/
     display: flex;
-    background-color: rgb(229, 229, 229);
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-justify: center;
+    height: 10%;
+    width: 100%;
 }
 
-.middle {
-    display: flex;
-    background-color: transparent;
-    flex-direction: column;
-    height: 80%;
-    width: 100%;
-    border-radius: 20px;
-}
 .header {
     /*lo que esta dentro de up*/
     display: flex;
@@ -37,6 +32,12 @@
     font-family:'Gill Sans', 'Gill Sans MT',  sans-serif;
     justify-content: left;
     align-items: center;
+}
+
+.titulo{
+    font-size: xx-large;
+    /* margin-top: -30px; */
+    /* margin-left: 5%; */
 }
 
 .regresar {
@@ -63,22 +64,6 @@
     font-size: xx-large;
 }
 
-.titulo{
-    font-size: xx-large;
-    /* margin-top: -30px; */
-    /* margin-left: 5%; */
-}
-
-/* @media (min-width: 768px) {
-    .navbar-toggler{
-        display: none;
-    }    
-} */
-
-/* .navbar-toggler {
-    height: 100%;
-    width: 100%;
-} */
 .opciones {
     display: none;
     height: 100%;
@@ -89,38 +74,93 @@
     /* margin-right: 16%; */
     
 }
-.up {
-    /*este es el header*/
+
+/* --------------------------------------------Medio y Bottom ----------------------------------------------------- */
+
+
+.MidyBotm {
+    width: 100%; 
+    height: 90%;
     display: flex;
+    background-color: rgb(229, 229, 229);
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-justify: center;
-    margin-bottom: 5%;
+}
+
+.middle {
+    display: flex;
+    background-color: transparent;
+    flex-direction: row;
+    height: 80%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.columnPasosPagar {
+    display: flex;
+    flex-direction: row;
     height: 10%;
     width: 100%;
 }
 
+.pasos {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 75%;
+    margin-left: 7%;
+    margin-top: 2%;
+    /* padding: 1%; */
+}
+
+.nombrePaso {
+    height: 60%;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: small;
+    padding: 1%;
+    border-radius: 1px solid #1B4965;
+    background-color: #1B4965;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+
+}
+
+.relleno {
+    height: 100%;
+    width: 25%;
+}
+
 .bottom {
     display: flex;
-    background-color: transparent;
-    height: 20%;
+    background-color: #1B4965;
+    height: 10%;
     width: 100%;
     justify-content: center;
     align-content: center;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    padding-right: 15%;
+    /* border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; */
 
 }
+
 .pagobtn {
-    height: 60%;
-    width: 100%;
+    height: 30%;
+    width: 50%;
     color: #FFF;
+    margin-top: 5%;
+    align-self: center;
+    margin-left: 55%;
     background-color: #1B4965;
     border-radius: 20px;
-    /* margin-left: 25%; */
     cursor: pointer;
 }
-.logo {
+
+/* .logo {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -131,7 +171,8 @@
     justify-content: center;
     background-size: cover;
     background-position: center;
-}
+} */
+
 .product {
     display: flex;
     flex-direction: row;
@@ -143,6 +184,7 @@
     margin: 1%;
     border-bottom: 1px solid #1B4965;
 }
+
 .vista{
     display: flex;
     height: 100%;
@@ -153,6 +195,7 @@
     border-radius: 10px;
     padding: 0px;
 }
+
 .btn_eliminar {
     display: flex;
     height: 100%;
@@ -161,6 +204,7 @@
     font-size: larger;
 
 }
+
 .imgVista {
     display: flex;
     height: 100px;
@@ -330,14 +374,24 @@
 .carrito {
     display: flex;
     flex-direction: column;
+    background-color: white;
     color: #1B4965;
-    height: 100%;
-    width: 100%;
+    height: 80%;
+    width: 50%;
     overflow-y: scroll;
-    scroll-behavior: smooth;
     overflow-x: hidden;
+    scrollbar-width: 0;
+    margin-top: 3%;
+    margin-right: 5%;
+    margin-bottom: 15%;
+    margin-left: 5%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
+.carrito::-webkit-scrollbar {
+    display: none;
+}
 #contTitulo {
     display: flex;
     height: 100%;
@@ -350,10 +404,16 @@
 .totales {
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to bottom,  white 0%,white 75%,transparent 75%,transparent 100%);;
     height: 50%;
-    width: 100%;
+    width: 40%;
     /* background-color: rgb(190, 186, 186); */
-    border-radius: 20px;
+    /* border-radius: 20px;  */
+    margin-top: 3%;
+    margin-right: 2%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    padding: 1%;
     /* margin-left: 5%;
     margin-right: 5%; */
 }
@@ -368,6 +428,9 @@
         background-color: black; */
     }
 
+    .columnPasosPagar {
+        display: none;
+    }
     .regresar {
         padding-top: 2.5%;
         padding-bottom: 2.5%;
@@ -446,7 +509,7 @@
         border-radius: 20px;
     }
     .bottom {
-        display: flex;
+        display: none;
         background-color: transparent;
         justify-content: center;
         align-items: center;
@@ -465,6 +528,8 @@
         color: #FFF;
         background-color: #1B4965;
         border-radius: 20px;
+        margin-top: 0;
+        margin-left: 0;
         /* font-family: 'Gill Sans', 'Gill Sans MT',  sans-serif; */
     }
     .logo {
@@ -639,7 +704,7 @@
     .codigo {
         display: flex;
         width: 100%;
-        height: 30%;
+        min-height: 15%;
         background-color: transparent;
         border-radius: 20px;
         color: #1B4965;
@@ -666,7 +731,7 @@
         flex-direction: row;
         /* background-color: #FFF; */
         color: #1B4965;
-        height: 100%;
+        min-height: 50%;
         width: 100%;
         margin-top: 5%;
         margin-bottom: 5%;
@@ -685,6 +750,7 @@
         overflow-y: scroll;
         overflow-x: hidden;
         padding-top: 3%;
+        margin: 0;
 
     }
     
@@ -700,7 +766,10 @@
     .totales {
         display: flex;
         flex-direction: column;
-        height: 30%;
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+        min-height: 30%;
         width: 100%;
     }
     

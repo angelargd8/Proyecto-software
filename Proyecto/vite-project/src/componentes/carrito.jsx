@@ -66,7 +66,16 @@ function Carrito(){
                     </div>
                 </div>
                 <div className="MidyBotm">
-
+                    <div className="columnPasosPagar">
+                        <div className="pasos">
+                            <div className="nombrePaso"> Direccion de Entrega</div>
+                            <div className="separador">  -------------  </div>
+                            <div className="nombrePaso"> Forma de Pago</div>
+                            <div className="separador">  -------------  </div>
+                            <div className="nombrePaso"> Ultimo Paso</div>
+                        </div>
+                        <div className="relleno"></div>
+                    </div>
                     <div className='middle'>
                         <div className="carrito">
                             {carrito.length === 0 ? (
@@ -109,10 +118,11 @@ function Carrito(){
                                     Q {Total.toFixed(2)}
                                 </div>
                             </div>
+                            <button className='pagobtn' onClick={handlePagar}> Pagar </button>
+
                         </div>
                     </div>
                     <div className="bottom">
-                        <button className='pagobtn' onClick={handlePagar}> Pagar </button>
                     </div>
                 </div>
             </div>
