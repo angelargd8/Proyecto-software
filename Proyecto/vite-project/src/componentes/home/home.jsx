@@ -4,6 +4,8 @@ import { useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from "react-router-dom"
 
+// aqui se muestran las categorías de productos
+
 function Home() {
   const [listadoCards, setCards] = useState([])
   const location = useLocation()
@@ -52,9 +54,12 @@ function Home() {
     <div className="home">
       <h1>Home</h1>
       <p>Bienvenido a la página de inicio</p>
-      {listadoCards.map((elemento) => (
-        <Card key={elemento.id} title={elemento.title} content={elemento.content} imagen={elemento.imagen} onClick={() => info(elemento.title, elemento)}/>
-      ))}
+      <div id="contenido-cartas">
+        {listadoCards.map((elemento) => (
+          <Card key={elemento.id} title={elemento.title} content={elemento.content} imagen={elemento.imagen} onClick={() => info(elemento.title, elemento)}/>
+        ))}
+      </div>
+      
 
     </div>
   );

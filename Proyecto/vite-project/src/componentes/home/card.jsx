@@ -1,4 +1,5 @@
 import './card.css';
+import PropTypes from 'prop-types';
 
 function Card({title, content, imagen, onClick}){
     return (
@@ -9,5 +10,12 @@ function Card({title, content, imagen, onClick}){
         </div>    
     )
 }
+
+Card.propTypes = {
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    imagen: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
+};
 
 export default Card
