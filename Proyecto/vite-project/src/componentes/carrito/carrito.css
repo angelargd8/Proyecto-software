@@ -1,3 +1,5 @@
+
+/* --------------------------------------------Contenedor General----------------------------------------------------- */
 .contenedor {
     display: flex;
     flex-direction: column;
@@ -9,25 +11,18 @@
     align-items: center;
     justify-content: center;
 }
+/* --------------------------------------------Header----------------------------------------------------- */
 
-.MidyBotm {
-    width: 100%; 
-    height: 90%;
+.up {
+    /*este es el header*/
     display: flex;
-    background-color: rgb(229, 229, 229);
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-justify: center;
+    height: 10%;
+    width: 100%;
 }
 
-.middle {
-    display: flex;
-    background-color: transparent;
-    flex-direction: column;
-    height: 80%;
-    width: 100%;
-    border-radius: 20px;
-}
 .header {
     /*lo que esta dentro de up*/
     display: flex;
@@ -39,7 +34,15 @@
     align-items: center;
 }
 
+.titulo{
+    /* Titulo que esta dentro de header */
+    font-size: xx-large;
+    /* margin-top: -30px; */
+    /* margin-left: 5%; */
+}
+
 .regresar {
+    /* Espacio para poner boton */
     display: flex;
     height: 100%;
     width: 10%;
@@ -52,6 +55,7 @@
 }
 
 .regresarbtn {
+    /* Boton regresar: < */
     display: flex;
     height: 100%;
     width: 100%;
@@ -63,23 +67,8 @@
     font-size: xx-large;
 }
 
-.titulo{
-    font-size: xx-large;
-    /* margin-top: -30px; */
-    /* margin-left: 5%; */
-}
-
-/* @media (min-width: 768px) {
-    .navbar-toggler{
-        display: none;
-    }    
-} */
-
-/* .navbar-toggler {
-    height: 100%;
-    width: 100%;
-} */
 .opciones {
+    /* Las tres lineas a la derecha superior */
     display: none;
     height: 100%;
     width: 10%;
@@ -89,38 +78,107 @@
     /* margin-right: 16%; */
     
 }
-.up {
-    /*este es el header*/
+
+/* --------------------------------------------Medio y Bottom ----------------------------------------------------- */
+
+
+.MidyBotm {
+    /* Contenedor para poner el footer(bottom) y el mid(middle) en un solo div, para movil  */
+    width: 100%; 
+    height: 90%;
     display: flex;
+    background-color: rgb(229, 229, 229);
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-justify: center;
-    margin-bottom: 5%;
-    height: 10%;
+}
+
+.middle {
+    /* Medio, aqui esta totales y carrito */
+    display: flex;
+    background-color: #F9F6EE;
+    flex-direction: row;
+    height: 80%;
     width: 100%;
+    border-radius: 20px;
+}
+
+.columnPasosPagar {
+    /* Row donde esta el espacio de relleno para que aparezcan los nombres de las pestanas encima del carrito */
+    display: flex;
+    flex-direction: row;
+    background-color: #F9F6EE;
+    height: 10%;
+    justify-content: center;
+    width: 100%;
+}
+
+.pasos {
+    /* Columna donde estan las pestanas */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 75%;
+    margin-left: 7%;
+    margin-bottom: 1%;
+    /* padding: 1%; */
+}
+
+.nombrePaso {
+    /* ovalos donde estan el nombre de las pestanas */
+    height: 60%;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: small;
+    padding: 1%;
+    border: 2px solid #1B4965;
+    background-color: #1B4965;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+
+}
+
+.relleno {
+    /* Div de relleno para poner las pestanas encima de carrito */
+    height: 100%;
+    width: 25%;
 }
 
 .bottom {
+    /* Footer, aqui no hay nada aun y en movil no se muestra */
     display: flex;
-    background-color: transparent;
-    height: 20%;
+    background-color: #1B4965;
+    color: white;
+    height: 10%;
     width: 100%;
-    justify-content: center;
+    justify-content: left;
     align-content: center;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    align-items: center;
+    padding-left: 10%;
+    /* padding-right: 15%; */
+    /* border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; */
 
 }
+
 .pagobtn {
-    height: 60%;
+    /* Boton de pagar en movil o siguiente en escritorio */
+    height: 30%;
     width: 100%;
     color: #FFF;
+    margin-top: 5%;
+    align-self: center;
+    /* margin-left: 55%; */
     background-color: #1B4965;
     border-radius: 20px;
-    /* margin-left: 25%; */
     cursor: pointer;
 }
-.logo {
+
+/* .logo {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -131,8 +189,10 @@
     justify-content: center;
     background-size: cover;
     background-position: center;
-}
+} */
+
 .product {
+    /* Aqui se va a mostrar la foto del producto, info del producto y botones para sumar y restar cantidad */
     display: flex;
     flex-direction: row;
     background-color: transparent;
@@ -143,7 +203,9 @@
     margin: 1%;
     border-bottom: 1px solid #1B4965;
 }
+
 .vista{
+    /* Espacio para la Foto del producto */
     display: flex;
     height: 100%;
     width: 30%;
@@ -153,7 +215,9 @@
     border-radius: 10px;
     padding: 0px;
 }
+
 .btn_eliminar {
+    /* Boton para eliminar producto del carrito, esto esta dentro de vista */
     display: flex;
     height: 100%;
     width: 40%;
@@ -161,7 +225,9 @@
     font-size: larger;
 
 }
+
 .imgVista {
+    /* foto del producto */
     display: flex;
     height: 100px;
     width: 100px;
@@ -174,6 +240,7 @@
 }
 
 .info {
+    /* Epacio para la Info del producto, esta dentro de product */
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -189,10 +256,12 @@
 }
 
 .textInfo {
+    /* info del producto */
     padding: 0;
     margin: 0;
 }
 .nums {
+    /* Contenedor para botones de sumar y restar y la cantidad */
     display: flex;
     height: 100%;
     width: 20%;
@@ -202,6 +271,7 @@
 }
 
 #xd {
+    /* Div para darle forma a los botones y el numero como solo una row y que este separada de la info */
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -215,6 +285,7 @@
 }
 
 .btn_sumar {
+    /* Boton para sumar*/
     display: flex;
     color: #FFF;
     align-items: center;
@@ -229,6 +300,7 @@
 }
 
 .cant {
+    /* Cantidad de cada producto */
     display: flex;
     color: white;
     align-items: center;
@@ -240,6 +312,7 @@
 }
 
 .btn_restar {
+    /* Boton para restar */
     display: flex;
     color: #FFF;
     align-items: center;
@@ -252,7 +325,8 @@
     
 }
 
-.pic {
+/* .pic {
+    esto era para el titulo pero ya no 
     display: flex;
     height: 100%;
     width: 100%;
@@ -260,9 +334,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
-}
+} */
 
 .columnCampo {
+    /* Columna para mostrar los nombres del cobro, (Subtotal, total, envio) */
     display: flex;
     height: 60%;
     width: 50%;
@@ -275,10 +350,11 @@
 }
 
 .columnNo {
+    /* Numeros de cada cobro de envio subtotal y total */
     display: flex;
     height: 100%;
     width: 50%;
-    color: white;
+    color: #1B4965;
     font-size: large;
     padding-right: 3%;
     text-align: right;
@@ -287,6 +363,7 @@
 }
 
 .codigo {
+    /* Barra para codigo de descuento */
     display: flex;
     width: 100%;
     height: 30%;
@@ -302,6 +379,7 @@
 }
 
 .codigo::placeholder {
+    /* Place holder que dice Codigo promocional */
     display: flex;
     color: #1B4965;
     font-size: small;
@@ -313,51 +391,82 @@
 }
 
 .rowDatos {
+    /* Row que engloba a las columnas de los numeros de los precios y sus nombres */
     display: flex;
     flex-direction: row;
-    background-color: #c6cacb;
+    background-color: #c7cdd1;
     color: #1B4965;
     height: 100%;
     width: 100%;
     margin-top: 1%;
     margin-bottom: 1%;
     border-radius: 10px;
-    
     overflow-y: hidden;
     overflow-x: hidden;
+    /* box-shadow: 1px 1px 10px #a2a19b; */
+
 }
 
 .carrito {
+    /* Div donde salen todos los productos o "El carrito esta vacio" */
     display: flex;
     flex-direction: column;
+    background-color: white;
+    /* border: 1px solid grey; */
+    /* border-radius: 20px; */
     color: #1B4965;
-    height: 100%;
-    width: 100%;
+    height: 80%;
+    width: 50%;
     overflow-y: scroll;
-    scroll-behavior: smooth;
     overflow-x: hidden;
+    scrollbar-width: 0;
+    margin-top: 3%;
+    margin-right: 5%;
+    margin-bottom: 15%;
+    margin-left: 5%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    box-shadow: 1px 1px 10px #a2a19b;
 }
 
-#contTitulo {
+.carrito::-webkit-scrollbar {
+    /* Oucltar la barra */
+    display: none;
+}
+
+/* #contTitulo {
     display: flex;
     height: 100%;
     width: 70%;
     align-items: center;
     justify-content: left;
     text-align: left;
-}
+} */
 
 .totales {
+    /* Columna donde esta el codigo promocional y datos de pago, (rowDatos) y el boton de pagar */
     display: flex;
     flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    /* background: linear-gradient(to bottom,  white 0%,white 75%,transparent 75%,transparent 100%);; */
     height: 50%;
-    width: 100%;
+    width: 40%;
     /* background-color: rgb(190, 186, 186); */
-    border-radius: 20px;
+    /* border-radius: 20px;  */
+    margin-top: 3%;
+    margin-right: 2%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    padding: 1%;
+    box-shadow: 1px 1px 10px #a2a19b;
+
     /* margin-left: 5%;
     margin-right: 5%; */
 }
 
+/* Todo pero en forma de movil para que sea responsive */
 @media only screen and (max-width: 768px) {
     .navbar-toggler{
         margin-right: 25%;
@@ -368,6 +477,10 @@
         background-color: black; */
     }
 
+    .columnPasosPagar {
+        display: none;
+
+    }
     .regresar {
         padding-top: 2.5%;
         padding-bottom: 2.5%;
@@ -446,7 +559,7 @@
         border-radius: 20px;
     }
     .bottom {
-        display: flex;
+        display: none;
         background-color: transparent;
         justify-content: center;
         align-items: center;
@@ -465,6 +578,8 @@
         color: #FFF;
         background-color: #1B4965;
         border-radius: 20px;
+        margin-top: 0;
+        margin-left: 0;
         /* font-family: 'Gill Sans', 'Gill Sans MT',  sans-serif; */
     }
     .logo {
@@ -627,7 +742,7 @@
         display: flex;
         height: 100%;
         width: 50%;
-        color: white;
+        color: #1B4965;
         font-size: large;
         padding-right: 3%;
         text-align: right;
@@ -639,7 +754,7 @@
     .codigo {
         display: flex;
         width: 100%;
-        height: 30%;
+        min-height: 15%;
         background-color: transparent;
         border-radius: 20px;
         color: #1B4965;
@@ -666,7 +781,7 @@
         flex-direction: row;
         /* background-color: #FFF; */
         color: #1B4965;
-        height: 100%;
+        min-height: 50%;
         width: 100%;
         margin-top: 5%;
         margin-bottom: 5%;
@@ -685,6 +800,9 @@
         overflow-y: scroll;
         overflow-x: hidden;
         padding-top: 3%;
+        margin: 0;
+        box-shadow: 0px 0px 0px #a2a19b;
+
 
     }
     
@@ -700,8 +818,13 @@
     .totales {
         display: flex;
         flex-direction: column;
-        height: 30%;
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+        min-height: 30%;
         width: 100%;
+        box-shadow: 0px 0px 0px #a2a19b;
+
     }
     
 

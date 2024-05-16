@@ -1,0 +1,13 @@
+.home { 
+    padding-top: 120px;
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
+}
+
+#contenido-cartas{
+    /* display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 10px; */
+}

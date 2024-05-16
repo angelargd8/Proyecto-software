@@ -66,7 +66,16 @@ function Carrito(){
                     </div>
                 </div>
                 <div className="MidyBotm">
-
+                    <div className="columnPasosPagar">
+                        <div className="pasos">
+                            <div className="nombrePaso"> Direccion de Entrega</div>
+                            <div className="separador">  -------------  </div>
+                            <div className="nombrePaso" style={{backgroundColor: 'transparent', color: '#1B4965'}}> Forma de Pago</div>
+                            <div className="separador">  -------------  </div>
+                            <div className="nombrePaso" style={{backgroundColor: 'transparent', color: '#1B4965'}}> Ultimo Paso</div>
+                        </div>
+                        <div className="relleno"></div>
+                    </div>
                     <div className='middle'>
                         <div className="carrito">
                             {carrito.length === 0 ? (
@@ -85,11 +94,10 @@ function Carrito(){
                                         </div>
                                         <div className='nums'>
                                             <div id='xd'>
-                                                <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
+                                                <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
                                                 <span className='cant'>{producto.cantidad}</span>
-                                                <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
+                                                <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
                                             </div>
-
                                         </div>
                                     </div>
                                 ))
@@ -109,10 +117,12 @@ function Carrito(){
                                     Q {Total.toFixed(2)}
                                 </div>
                             </div>
+                            <button className='pagobtn' onClick={handlePagar}> Pagar </button>
+
                         </div>
                     </div>
                     <div className="bottom">
-                        <button className='pagobtn' onClick={handlePagar}> Pagar </button>
+                        Orsons Library
                     </div>
                 </div>
             </div>

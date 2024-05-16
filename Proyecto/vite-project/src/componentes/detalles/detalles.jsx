@@ -1,7 +1,7 @@
 import './detalles.css'
 import  { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useCarrito } from './carritoContext'
+import { useCarrito } from '../carrito/carritoContext'
 import { useNavigate } from 'react-router-dom'
 
 
