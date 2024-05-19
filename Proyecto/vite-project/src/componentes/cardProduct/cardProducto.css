@@ -1,0 +1,22 @@
+.cardProducto {
+    width:90%;
+    background-color: beige;
+    height:30%;
+    margin-top:1%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.containerImage {
+    width: 20%;
+    height: 90%;
+    margin-left: 2%;
+}
+
+.imageProduct {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
