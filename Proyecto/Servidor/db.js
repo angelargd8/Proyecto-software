@@ -86,6 +86,7 @@ async function createNewUser(args){
     
 }
 
+
 async function getAllItems(){
     const result = await pool.query('SELECT * FROM articulos')
     let jsonResult = result.rows.map(row =>{
@@ -100,6 +101,11 @@ async function getAllItems(){
     return jsonResult
 }
 
+async function deleteUser(email){
+    const result = await pool.query(`DELETE FROM usuarios WHERE email = '${email}'`);
+    return result
+}
+
 async function getPage(idPage){
     const result = await pool.query(`SELECT * FROM paginas WHERE id_pagina = ${idPage}`)
     let jsonResult = result.rows.map(row =>{
@@ -111,6 +117,9 @@ async function getPage(idPage){
     })
     return jsonResult
 }
+
+
+
 
 async function getPromotions(idItems){
     const result = await pool.query(`select p.id_promocion,p.porcentaje,p.estado,p.nombre_promocion,p.descuento from articulos a
@@ -196,4 +205,5 @@ module.exports = { getAllUser,
     getPromotions,
     setNewItem,
     getOneItem,
-    updateItem };
+    updateItem, 
+    deleteUser };
