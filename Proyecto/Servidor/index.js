@@ -9,7 +9,8 @@ const {getAllUser,
     getPromotions,
     setNewItem,
     getOneItem,
-    updateItem } = require('../Servidor/db')
+    updateItem,
+    deleteUser } = require('../Servidor/db')
 
 
 const typeDefs = gql`
@@ -74,6 +75,11 @@ const typeDefs = gql`
     Item: Items
  }
 
+ type StatusUserDelete {
+    status: Boolean!
+    message: String
+ }
+
  type Mutation {
     addnewUser(
         email: String!
@@ -94,6 +100,9 @@ const typeDefs = gql`
         price: Float!
         description: String
     ): Items
+    deleteUser(
+        email: String!
+    ): StatusUserDelete
 
  }
 `
@@ -154,7 +163,19 @@ const resolvers = {
         deleteUser: async (root, args) => {
             const {email} = args
             const response = await deleteUser(email)
-            return response
+            if(response.rowCount > 0){
+                return {
+                    status: true,
+                    message: "Usuario eliminado con exito"
+                }
+            }
+            else{
+                return {
+                    status: false,
+                    message: "Usuario no encontrado"
+                }
+            }
+            
         }
     },
     Users: {
