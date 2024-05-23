@@ -6,9 +6,10 @@ function SingUp(){
 
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    navigate("/login");
+  /*const handleHome = () => {
+    navigate("/home");
   };
+  */
 
   const handleSignup = () => {
 
@@ -83,15 +84,11 @@ function SingUp(){
                 <input type="password" id="password" name="password" className="inputs" placeholder="Contraseña"/>
                 
                 <div className="boton">
-                  <button className= "btn" onClick={handleSignup}>
-                    Registrarse
-                  </button>
-                </div>
-                <div className="boton">
-                  <button className= "btn2" onClick={handleLogin}>
-                    Ya tengo una cuenta
-                  </button>
-                </div>
+                    <button className= "btn" onClick={handleSignup}>
+                      Registrar
+                    </button>
+                  </div>
+                  
         
           </div>
         </div>

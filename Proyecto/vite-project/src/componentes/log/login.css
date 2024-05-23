@@ -4,7 +4,7 @@
     left:0;
     right: 0;
     bottom: 0;
-    background-image: url(../assets/img/wallpaper8.jpg);
+    background-image: url(../../assets/img/wallpaper8.jpg);
     background-repeat: no-repeat ;
     background-size: cover;
     background-attachment: fixed;
@@ -12,6 +12,39 @@
     background-color: #154EE5;
     justify-content: center;
     align-items: center;   
+
+}
+
+.login .goBack{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+    transition: 0.5s ease-in;
+    font-weight: 700!important;
+
+}
+
+.login .goBack-btn{
+    background-color: #0513366b;
+    color: white;
+    border: none;
+    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+    transition: 0.5s ease-in;
+    font-weight: 700!important;
+    margin-left: 20px;
+}
+
+.login .goBack-btn:hover{
+    background-color: #2D62EE;
+    color: white;
+    border: none;
 
 }
 .login .formulario{
@@ -43,7 +76,7 @@
 
 .login .btn{
     margin: 8px;
-    padding: 17px;
+    padding: 15px;
     border-radius: 10px;
     background-color: #051336;
     color: white;
@@ -52,7 +85,6 @@
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
     transition: 0.5s ease-in;
     font-weight: 700!important;
-
 }
 
 .login .btn2{
@@ -63,11 +95,19 @@
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
     transition: 0.5s ease-in;
     font-weight: 700!important;
+    margin-left: 20px;
 
 }
 
+.login .boton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 65px;
+}
+
 .login  .btn:hover, .login .btn2:hover{
-    background-color: #2a7727d2;
+    background-color: #2D62EE;
     color: white;
     border: none;
 }

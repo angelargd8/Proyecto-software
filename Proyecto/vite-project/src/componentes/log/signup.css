@@ -4,7 +4,7 @@
     left:0;
     right: 0;
     bottom: 0;
-    background-image: url(../assets/img/wallpaper8.jpg);
+    background-image: url(../../assets/img/wallpaper8.jpg);
     background-repeat: no-repeat ;
     background-size: cover;
     background-attachment: fixed;
@@ -43,7 +43,7 @@
 
 .signup .btn{
     margin: 2px;
-    padding: 17px;
+    padding: 15px;
     border-radius: 10px;
     background-color: #051336;
     color: white;
@@ -55,16 +55,12 @@
 
 }
 
-.signup .btn2{
-    border-radius: 10px;
-    background-color: #2D62EE;
-    color: white;
-    border: none;
-    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
-    transition: 0.5s ease-in;
-    font-weight: 700!important;
-    margin: 1px;
 
+.signup .boton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 85px;
 }
 
 .signup  .btn:hover, .signup .btn2:hover{

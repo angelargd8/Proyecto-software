@@ -5,6 +5,10 @@ function Login(){
 
     const navigate = useNavigate();
 
+    const handleHome = () => {
+        navigate("/home");
+    }
+
     const handleLogin = () => {
         // aqui esta la logica del login xd
         const url = ' http://localhost:4000/'
@@ -69,6 +73,9 @@ function Login(){
     return (
         <>
         <div className="login body">
+          <div className="goBack">
+              <button className="goBack-btn" onClick={handleHome}> &lt; regresar</button>
+            </div>
           <div className="formulario">
               <h1 className='form-text'>Inicia sesión</h1>
                 <input type="email" id="email" name="email" placeholder="Correo Electrónico" className="inputs"/>
