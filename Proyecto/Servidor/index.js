@@ -150,6 +150,11 @@ const resolvers = {
             const newItem = {...args}
             const response = await updateItem(newItem)
             return response
+        },
+        deleteUser: async (root, args) => {
+            const {email} = args
+            const response = await deleteUser(email)
+            return response
         }
     },
     Users: {

@@ -117,3 +117,4 @@ alter table articulos_promociones add constraint articulos_promocionesfkpromocio
 alter table categoria_promociones add constraint categoria_promocionesfkcategoria foreign key (id_categoria) references categorias (id_categoria);
 
 alter table categoria_promociones add constraint categoria_promocionesfkpromociones foreign key (id_promocion) references promociones (id_promocion);
+

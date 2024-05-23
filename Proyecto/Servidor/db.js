@@ -112,6 +112,11 @@ async function getPage(idPage){
     return jsonResult
 }
 
+
+async function deleteUser(email){
+    
+}
+
 async function getPromotions(idItems){
     const result = await pool.query(`select p.id_promocion,p.porcentaje,p.estado,p.nombre_promocion,p.descuento from articulos a
     join articulos_promociones ap on (a.id_articulo = ap.id_articulo)
