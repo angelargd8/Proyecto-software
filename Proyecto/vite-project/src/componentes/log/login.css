@@ -121,3 +121,10 @@
     border-radius: 10px;
     color: black;
 }
+
+.login .googleAuth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}

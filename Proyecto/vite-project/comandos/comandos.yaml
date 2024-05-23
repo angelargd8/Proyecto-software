@@ -30,3 +30,18 @@ npm install react-router-dom
 node:
 node index.js
 npx nodemon index.js
+
+/* --------------------------------
+react-google:
+/*npm install --legacy-peer-deps
+npm install --force*/ <-- es para forzar a instalarlo a pesar que no sea la misma version
+
+npm install react-google-login --force
+
+
+conectarse apis de google: 
+npm install gapi-script
+*/ --------------------------------
+
+@react-oauth/google: 
+npm install @react-oauth/google@latest

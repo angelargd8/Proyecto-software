@@ -1,16 +1,21 @@
 import './login.css'
 import { useNavigate } from 'react-router-dom';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 function Login(){
-
+    const clienteId ="30472634326-rbomjumikpc7llu20snb7bcvmmc4h87n.apps.googleusercontent.com"
     const navigate = useNavigate();
 
     const handleHome = () => {
         navigate("/home");
     }
 
+    const responseGoogle = (response) => {
+      console.log(response);
+      navigate("/home");
+    }
+
     const handleLogin = () => {
-        // aqui esta la logica del login xd
         const url = ' http://localhost:4000/'
         const query = `
         query validateCredentials($email: String!, $password: String!){
@@ -84,8 +89,19 @@ function Login(){
                     Iniciar sesión
                   </button>
                 </div>
-                             
-        
+                <div className="googleAuth">
+                  <GoogleOAuthProvider clientId={clienteId}>
+                    
+                        <GoogleLogin
+                          clientId={clienteId}
+                          buttonText="Iniciar sesión con Google"
+                          onSuccess={responseGoogle}
+                          onFailure={responseGoogle}
+                          cookiePolicy={'single_host_origin'}
+                        ></GoogleLogin>
+                    
+                  </GoogleOAuthProvider>   
+                </div>         
           </div>
         </div>
         </>
