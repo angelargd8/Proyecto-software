@@ -78,3 +78,38 @@
     border-radius: 10px;
     color: black;
 }
+
+
+.signup .goBack{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+    transition: 0.5s ease-in;
+    font-weight: 700!important;
+
+}
+
+.signup .goBack-btn{
+    background-color: #0513366b;
+    color: white;
+    border: none;
+    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+    transition: 0.5s ease-in;
+    font-weight: 700!important;
+    margin-left: 20px;
+}
+
+.signup .goBack-btn:hover{
+    background-color: #2D62EE;
+    color: white;
+    border: none;
+
+}
+

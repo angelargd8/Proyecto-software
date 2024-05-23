@@ -66,9 +66,6 @@ function Login(){
         validateCredentials();
     };
 
-    const handleSignup = () => {
-      navigate("/signup");
-    };
 
     return (
         <>
@@ -87,11 +84,7 @@ function Login(){
                     Iniciar sesión
                   </button>
                 </div>
-                <div className="boton">
-                  <button className= "btn2" onClick={handleSignup}>
-                    Registrarse
-                  </button>
-                </div>              
+                             
         
           </div>
         </div>

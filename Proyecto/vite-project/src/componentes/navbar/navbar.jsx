@@ -57,6 +57,10 @@ function Nabvar(){
         }
     }
 
+    const handleSignup = () => {
+        navigate("/signup");
+      };
+
     const handleAddProduct = () => {
         navigate("/agregarProducto")
     }
@@ -110,6 +114,9 @@ function Nabvar(){
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 textos">
                 {userRol === 'admin' && (
                     <div className="admin-div">
+                        <li className="nav-item">
+                            <button type="button" className="boton-admin"  onClick={handleSignup}>registrar</button>
+                        </li>
                         <li className="nav-item">
                             <button type="button" className="boton-admin"  onClick={handleLogOut}>Cerrar sesión</button>
                         </li>

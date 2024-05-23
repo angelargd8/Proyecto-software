@@ -6,10 +6,9 @@ function SingUp(){
 
   const navigate = useNavigate();
 
-  /*const handleHome = () => {
+  const handleHome = () => {
     navigate("/home");
-  };
-  */
+}
 
   const handleSignup = () => {
 
@@ -76,6 +75,9 @@ function SingUp(){
     return (
         <>
         <div className="signup body">
+        <div className="goBack">
+              <button className="goBack-btn" onClick={handleHome}> &lt; regresar</button>
+            </div>
           <div className="formulario">
               <h1 className='form-text'>Registro</h1>
               <input type="text" id="name" name="name" placeholder="Nombre" className="inputs"/>
