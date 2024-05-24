@@ -11,7 +11,8 @@ const {getAllUser,
     getOneItem,
     updateItem,
     deleteUser,
-    validateEmail } = require('../Servidor/db')
+    validateEmail,
+    getCategories } = require('../Servidor/db')
 
 
 const typeDefs = gql`
@@ -52,6 +53,12 @@ const typeDefs = gql`
     discount: Float
  }
 
+ type Categories {
+    idCategory: Int!
+    name: String
+    Page: Pages
+ }
+
  type Query {
     allUsers: [Users]!
     validateCredentials(
@@ -65,6 +72,7 @@ const typeDefs = gql`
     validateEmail(
         email: String!
     ): Users
+    getCategories: [Categories]!
  }
 
  type UserValidationResult {
@@ -135,6 +143,10 @@ const resolvers = {
             const {email} = args
             const user = await validateEmail(email)
             return user[0]
+        },
+        getCategories: async (root, args) => {
+            const categories = await getCategories()
+            return categories
         }
     },
     Mutation: {
@@ -197,6 +209,12 @@ const resolvers = {
         promotions: async (root) => {
             const promotions = await getPromotions(root.idItems)
             return promotions
+        }
+    },
+    Categories : {
+        Page: async (root) => {
+            const page = await getPage(root.idPage)
+            return page[0]
         }
     }
     

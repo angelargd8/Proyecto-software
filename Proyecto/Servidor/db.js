@@ -216,6 +216,22 @@ async function validateEmail(email){
     }
 }
 
+async function getCategories(){
+    try {
+        const result = await pool.query('select * from categorias')
+        let jsonResult  = result.rows.map(row => {
+            return {
+                idCategory: row.id_categoria,
+                name: row.nombre_categoria,
+                idPage: row.id_pagina
+            }
+        })
+        return jsonResult
+    } catch (error) {
+        
+    }
+}
+
 module.exports = { getAllUser,
     getRol,validateUser,
     createNewUser,
@@ -226,4 +242,5 @@ module.exports = { getAllUser,
     getOneItem,
     updateItem, 
     deleteUser,
-    validateEmail };
+    validateEmail,
+    getCategories };
