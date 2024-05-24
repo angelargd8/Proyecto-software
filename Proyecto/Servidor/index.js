@@ -12,7 +12,8 @@ const {getAllUser,
     updateItem,
     deleteUser,
     validateEmail,
-    getCategories } = require('../Servidor/db')
+    getCategories,
+    getCategory } = require('../Servidor/db')
 
 
 const typeDefs = gql`
@@ -73,6 +74,9 @@ const typeDefs = gql`
         email: String!
     ): Users
     getCategories: [Categories]!
+    getCategory (
+        idCategory: Int!
+    ): Categories
  }
 
  type UserValidationResult {
@@ -147,6 +151,11 @@ const resolvers = {
         getCategories: async (root, args) => {
             const categories = await getCategories()
             return categories
+        },
+        getCategory: async (root, args) => {
+            const {idCategory} = args
+            const category = await getCategory(idCategory)
+            return category[0]
         }
     },
     Mutation: {
