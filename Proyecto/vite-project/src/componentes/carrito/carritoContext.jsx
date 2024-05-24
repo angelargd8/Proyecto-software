@@ -22,11 +22,13 @@ export const CarritoProvider = ({ children }) => {
   }
 
   const agregarAlCarrito = (producto, nuevaCantidad) => {
+    console.log(producto)
     const existingIndex = carrito.findIndex((item) => item.id === producto.id)
+    console.log(existingIndex)
     if (existingIndex !== -1) {
       // Si el producto ya está en el carrito, actualiza su cantidad
       const updatedCarrito = [...carrito]
-      updatedCarrito[existingIndex].cantidad = nuevaCantidad
+      updatedCarrito[existingIndex].quantity = nuevaCantidad
       setCarrito(updatedCarrito)
       guardarCarritoStorage(updatedCarrito)
     } else {
