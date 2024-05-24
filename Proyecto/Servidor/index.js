@@ -13,7 +13,10 @@ const {getAllUser,
     deleteUser,
     validateEmail,
     getCategories,
-    getCategory } = require('../Servidor/db')
+    getCategory,
+    setCategory,
+    setCategoryItem,
+    getItemsPerCategory } = require('../Servidor/db')
 
 
 const typeDefs = gql`
@@ -58,6 +61,7 @@ const typeDefs = gql`
     idCategory: Int!
     name: String
     Page: Pages
+    Items: [Items]
  }
 
  type Query {
@@ -91,7 +95,18 @@ const typeDefs = gql`
     Item: Items
  }
 
+ type statusCategoryInsert {
+    status: Boolean!
+    message: String
+    Category: Categories
+ }
+
  type StatusUserDelete {
+    status: Boolean!
+    message: String
+ }
+
+ type StatusInserCategoyItem {
     status: Boolean!
     message: String
  }
@@ -119,6 +134,14 @@ const typeDefs = gql`
     deleteUser(
         email: String!
     ): StatusUserDelete
+    addNewCategory(
+        name: String!
+        idPage: Int!
+    ): statusCategoryInsert
+    addNewCategoryItem(
+        idCategory: Int!
+        idItem: Int!
+    ): StatusInserCategoyItem
 
  }
 `
@@ -206,6 +229,37 @@ const resolvers = {
                 }
             }
             
+        },
+        addNewCategory: async (root, args) => {
+            const {name, idPage} = args
+            const response = await setCategory(name, idPage)
+            if(response.length > 0){
+                return {
+                    status: true,
+                    message: "Se inserto con exito",
+                    Category: response[0]
+                }
+            }else{
+                return {
+                    status: false,
+                    message: "Problema insertando"
+                }
+            }
+        },
+        addNewCategoryItem: async (root, args) => {
+            const {idCategory, idItem} = args
+            const response = await setCategoryItem(idCategory, idItem)
+            if(response > 0){
+                return {
+                    status: true,
+                    message: "Se agrego con exito la relacion"
+                }
+            }else{
+                return {
+                    status: false,
+                    message: "problema al insertar"
+                }
+            }
         }
     },
     Users: {
@@ -224,6 +278,10 @@ const resolvers = {
         Page: async (root) => {
             const page = await getPage(root.idPage)
             return page[0]
+        },
+        Items: async (root) => {
+            const items = await getItemsPerCategory(root.idCategory)
+            return items
         }
     }
     

@@ -228,7 +228,8 @@ async function getCategories(){
         })
         return jsonResult
     } catch (error) {
-        
+        console.log(error)
+        return []
     }
 }
 
@@ -244,8 +245,52 @@ async function getCategory(idCategory){
         })
         return jsonResult
     } catch (error) {
-        
+        console.error(error)
+        return []
     }
+}
+
+async function setCategoryItem(idCategory, idItem){
+    try {
+        const result = await pool.query(`insert into categorias_articulos (id_articulo, id_categoria)
+        values (${idItem},${idCategory})`)
+        return 1
+    } catch (error) {
+        console.log(error)
+        return 0
+    }
+}
+
+async function setCategory(name, idPage){
+    try {
+        const result = await pool.query(`insert into categorias (nombre_categoria, id_pagina)
+        values ('${name}', ${idPage}) returning id_categoria`)
+        let jsonResult = [{
+            idCategory: result.rows[0].id_categoria,
+            name: name,
+            idPage: idPage
+        }]
+        return jsonResult
+    } catch (error) {
+        console.log(error)
+        return []
+    }
+}
+
+async function getItemsPerCategory(idCategory){
+    const result = await pool.query(`select a.* from categorias_articulos ca
+    inner join articulos a on (a.id_articulo = ca.id_articulo)
+    where id_categoria = ${idCategory}`)
+    let jsonResult = result.rows.map(row =>{
+        return {
+            idItems: row.id_articulo,
+            name: row.nombre_articulo,
+            quantity: row.cantidad_articulo,
+            description: row.descripcion,
+            price: row.precio
+        }
+    })
+    return jsonResult
 }
 
 module.exports = { getAllUser,
@@ -260,4 +305,7 @@ module.exports = { getAllUser,
     deleteUser,
     validateEmail,
     getCategories,
-    getCategory };
+    getCategory,
+    setCategory,
+    setCategoryItem,
+    getItemsPerCategory };
