@@ -6,6 +6,7 @@ import Carrito from './carrito/carrito.jsx'
 import AgregarProducto from './admin/agregarProd.jsx'
 import EditarProds from './admin/editarProd.jsx';
 import Pago from './carrito/pago.jsx';
+import Products from './products/products.jsx';
 
 function AppRouter(){
 
@@ -19,6 +20,7 @@ function AppRouter(){
             <Route path="/" element={<Home />} />
             <Route path="/agregarProducto" element={<AgregarProducto/>} />
             <Route path="/editarProductos" element={<EditarProds/>} />
+            <Route path='/detalles/Brillantina' element={<Products />} />
         </Routes>
     )
     

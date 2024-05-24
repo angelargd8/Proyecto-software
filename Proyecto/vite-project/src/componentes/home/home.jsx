@@ -24,10 +24,10 @@ function Home() {
 
     const cards = [
       {id: 1, title: "Brillantina", content: "Q3.75", imagen: "../src/assets/img/Brillantina-surtida.jpg"},
-      {id: 2, title: "Cuaderno", content: "Q48.75", imagen: "../src/assets/img/cuadernos.png"},
-      {id: 3, title: "Pegatinas", content: "Q12.00", imagen: "../src/assets/img/pegatinas.jpg"},
-      {id: 4, title: "plumas", content: "Q24.50", imagen: "../src/assets/img/plumas.jpg"},
-      {id: 5, title: "Ojitos locos", content: "Q12.00", imagen: "../src/assets/img/ojosmoviles.jpeg"},
+      {id: 2, title: "Ojos", content: "Q48.75", imagen: "../src/assets/img/Ojos/Ojitos NO 1.jpg"},
+      {id: 3, title: "Añelina", content: "Q12.00", imagen: "../src/assets/img/Colorante/AÑELINA.jpg"},
+      {id: 4, title: "Pulseras", content: "Q24.50", imagen: "../src/assets/img/Pulseras/PULSERA PASTEL.jpg"},
+      {id: 5, title: "Flores", content: "Q12.00", imagen: "../src/assets/img/Flores/FLOR GRANDE.jpg"},
     ]
 
     if (searchItem.trim() === ''){
