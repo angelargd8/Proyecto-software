@@ -1,8 +1,6 @@
 import './login.css'
 import { useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-//import * as jwt_decode from 'jwt-decode';
-//import {jwt_decode} from 'jwt-decode';
 
 function Login(){
     const clienteId ="30472634326-rbomjumikpc7llu20snb7bcvmmc4h87n.apps.googleusercontent.com"
@@ -17,16 +15,19 @@ function Login(){
       const credential = parseJwt(response.credential)
       //console.log(credential);
       if (response && credential) {
-        const { email } = credential.email;
-        const {name} = credential.name;
-        console.log(name);
+        const { email } = credential;
         console.log(email);
+        navigate("/home");
+        //para que asi pueda cerrar sesion 
+        localStorage.setItem('googleUser');
+        //handleLoginGoogle(email);
+
       } else {
         alert('La autenticación con Google no se realizó correctamente');
-        console.log('La autenticación con Google no se realizó correctamente');
       }
     }
 
+    //parsear la credencial a datos de google, como foto, nombre, email, etc
     function parseJwt(token) { //token = credencial
       var base64Url = token.split('.')[1];
       var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -36,23 +37,60 @@ function Login(){
     
       return JSON.parse(jsonPayload);
     }
+
+    /*const handleLoginGoogle = () => {
+      const url = ' http://localhost:4000/'
+      const query = `
+      query validateCredentials($email: String!){
+        validateCredentials(email: $email) {
+          email
+          name
+          rol{
+            name
+          }
+        }
+      }
+      
+      `;
+      async function validateCredentialsGoogle(){
+        try{
+          const response = await fetch(url,{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              query,
+              variables: {
+                email: document.getElementById('email').value,
+              }
+            })
+          });
+          const data = await response.json();
+          if (data.error) {
+            console.error('Error en la consulta GraphQL:', data.errors);
+          } 
+          if (data.data.validateCredentials == null) {
+            console.error('Error el usuario  con esa contraseña no existe');
+            {alert('Error el usuario  con esa contraseña no existe')}
+          }
+          else {
+            console.log(data.data.validateCredentials);
+            const rol = localStorage.setItem('rol', data.data.validateCredentials.rol.name);
+            console.log(rol);
+            {alert('Bienvenir@ '+data.data.validateCredentials.name+' a Picolin')}
+
+            navigate("/home");
+          }
+          }catch(error){
+            console.error('Error:', error);
+          }
+      }
+      //navigate("/home");
+      validateCredentialsGoogle();
+  };*/
+
     
-
-
-    /*const responseGoogle = (response) => {
-      console.log(response);
-      console.log(response.credential)
-      const decodedToken = jwtDecode(response.credential);
-      console.log(decodedToken);
-      /*if (response && response.profileObj) {
-        const { email } = response.profileObj;
-        const {name} = response.profileObj;
-        console.log(name);
-        console.log(email);
-      } else {
-        console.log('La autenticación con Google no se realizó correctamente');
-      }     
-    }*/
 
     const handleLogin = () => {
         const url = ' http://localhost:4000/'
@@ -104,8 +142,6 @@ function Login(){
               console.error('Error:', error);
             }
         }
-
-
         //navigate("/home");
         validateCredentials();
     };

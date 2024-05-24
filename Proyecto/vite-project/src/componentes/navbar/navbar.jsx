@@ -9,6 +9,7 @@ function Nabvar(){
     const location = useLocation()
     const userRol = localStorage.getItem('rol')
     const [searchItem, setSearchItem] = useState('')
+    const googleUser = localStorage.getItem('googleUser')
 
     useEffect(() => {
         const handleScroll = () => {
@@ -40,6 +41,12 @@ function Nabvar(){
 
     const handleCarrito = () => {
         navigate("/carrito")
+    }
+
+    const handleLogOutGoogle = () => {
+        localStorage.removeItem('googleUser');
+        alert('Sesión cerrada')
+        navigate("/home")
     }
 
     const handleLogOut = () => {
@@ -94,6 +101,14 @@ function Nabvar(){
                     <img src='./src/assets/img/carrito.png' id='carrito-img' href="/carrito" onClick={handleCarrito}/>
 
                     </li>
+
+                    {
+                        googleUser && (
+                            <li className="nav-item">
+                                <a className="nav-text" href="/home" onClick={handleLogOutGoogle}>Cerrar sesión</a>
+                            </li>
+                        )
+                    }
                     
                     {userRol === 'admin' && (
                     <div className="admin-div">
@@ -103,7 +118,7 @@ function Nabvar(){
                     </div>
                    
                     )
-                }
+                    }
                     
                 
                 </ul>
