@@ -23,7 +23,7 @@ function Home() {
     const searchItem = searchParams.get('search') || ''
 
     const cards = [
-      {id: 1, title: "Cartulina", content: "Q3.75", imagen: "../src/assets/img/cartulina.jpg"},
+      {id: 1, title: "Brillantina", content: "Q3.75", imagen: "../src/assets/img/Brillantina-surtida.jpg"},
       {id: 2, title: "Cuaderno", content: "Q48.75", imagen: "../src/assets/img/cuadernos.png"},
       {id: 3, title: "Pegatinas", content: "Q12.00", imagen: "../src/assets/img/pegatinas.jpg"},
       {id: 4, title: "plumas", content: "Q24.50", imagen: "../src/assets/img/plumas.jpg"},
