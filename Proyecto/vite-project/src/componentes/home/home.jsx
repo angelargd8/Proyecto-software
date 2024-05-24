@@ -53,12 +53,12 @@ function Home() {
   return (
     <div className="container-home">
       <div className="container-categorias">
-      <h1>Home</h1>
+      <h1>Categorias</h1>
       <p>Bienvenido a la página de inicio</p>
         <div id="contenido-cartas">
           {listadoCards.map((elemento) => (
             <div key={elemento.id} className="category-card">
-              <Card title={elemento.title} content={elemento.content} 
+              <Card title={elemento.title}  
               imagen={elemento.imagen} onClick={() => info(elemento.title, elemento)}/>
             </div>
           ))}
