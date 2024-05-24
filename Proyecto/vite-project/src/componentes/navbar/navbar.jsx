@@ -118,7 +118,8 @@ function Nabvar(){
                 </ul>
                 <form className="d-flex buscar" role="search" onSubmit={handleSearch}>
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchItem} onChange={(e)=> setSearchItem(e.target.value)}/>
-                    <button className="btn btn-outline-success" type="submit">Buscar</button>
+                    <img ></img>
+                    <button type="submit" id='buscar-boton'><img id='imagen-btn' src="./src/assets/img/buscar.png" alt="Buscar"/></button>
                 </form>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 textos">
                 {

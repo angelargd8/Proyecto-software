@@ -64,3 +64,14 @@
     flex-direction: row; 
     margin-right: 1%;
 }
+
+#buscar-boton{
+    background-color: transparent;
+    padding: 5px;
+    font-size: medium;
+    margin-left: 5px;
+}
+
+#imagen-btn{
+    width: 20px;
+}
