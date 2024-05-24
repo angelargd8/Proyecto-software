@@ -3,7 +3,7 @@ import Proptypes from 'prop-types'
 import { useState } from 'react'
 import { useCarrito } from '../carrito/carritoContext'
 
-const CardProduct = ({id, title, content, image, precios, styleCard, styleImage}) => {
+const CardProduct = ({id, title, description, image, precios, styleCard, styleImage}) => {
 
     const [quantity, setQuantity] = useState(0)
     const [isEditing, setIsEditing] = useState(false)
@@ -61,7 +61,7 @@ const CardProduct = ({id, title, content, image, precios, styleCard, styleImage}
     const handleAddToCart = () => {
         const precioFinal = calcularPrecioTotal(quantity)
         console.log(`Precio Final: ${precioFinal}`)
-        const producto = { id, title, content, image, precioFinal, quantity }
+        const producto = { id, title, description, image, precioFinal, quantity }
         agregarAlCarrito(producto)
         alert(`Agregado ${quantity} ${title} al carrito`)
     }
@@ -76,7 +76,7 @@ const CardProduct = ({id, title, content, image, precios, styleCard, styleImage}
                     {title}
                 </div>
                 <div className='title' style={{fontWeight:'normal',wordWrap:'break-word', marginTop:"1%", fontSize:15}}>
-                    {content}
+                    {description}
                 </div>
                 <div className='title' style={{fontWeight:'normal',wordWrap:'break-word', marginTop:"1%", fontSize:15}}>
                     <div style={{fontWeight:'bold'}}>Precios:</div>
@@ -113,7 +113,7 @@ CardProduct.propTypes = {
     title: Proptypes.string,
     styleCard: Proptypes.any,
     styleImage: Proptypes.any,
-    content: Proptypes.any,
+    description: Proptypes.any,
     image: Proptypes.any,
     precios: Proptypes.any
 }
