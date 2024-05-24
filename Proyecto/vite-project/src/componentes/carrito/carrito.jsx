@@ -7,7 +7,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 function Carrito(){
     const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } = useCarrito()
-
     const navigate = useNavigate();
 
     const handleRegresar = () => {
@@ -26,8 +25,7 @@ function Carrito(){
     }
 
     const handlePagar = () => {
-        {alert('Se realizo la compra!')}
-        navigate("/home");
+        navigate("/pago");
     }
 
     useEffect(() => {
@@ -92,7 +90,7 @@ function Carrito(){
                                         <div className='nums'>
                                             <div id='xd'>
                                                 <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
-                                                <span className='cant'>{producto.quantity}</span>
+                                                <span className='cant'>{producto.cantidad}</span>
                                                 <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
                                             </div>
                                         </div>
@@ -119,7 +117,7 @@ function Carrito(){
                         </div>
                     </div>
                     <div className="bottom">
-                        Orsons Library
+                        Picolin
                     </div>
                 </div>
             </div>

@@ -74,7 +74,7 @@ function Nabvar(){
     }
     return (
         <>
-        {location.pathname!=='/login' && location.pathname!=='/signup'  && location.pathname!=='/carrito' &&(
+        {location.pathname!=='/login' && location.pathname!=='/signup'  && location.pathname!=='/carrito' && location.pathname!=='/pago' &&(
         <div className="nabvar-body" id="navbar">
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             
