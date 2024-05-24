@@ -37,11 +37,9 @@ function Carrito(){
     const envio = 15.00 //Temporal
 
     const Subtotal = carrito.reduce((total, producto) => {
-        const precioStr = producto.content;
-        const precioNum = parseFloat(precioStr.slice(1))
-        const cantidadProducto = producto.cantidad; 
-        return total + (precioNum * cantidadProducto);
-    }, 0);
+        const precioFinal = producto.precioFinal || 0
+        return total + precioFinal
+    }, 0)
 
     const Total = Subtotal + envio;
 
@@ -85,17 +83,16 @@ function Carrito(){
                                     <div className='product' key={producto.id}>
                                         <div className='vista'>
                                             <div className="btn_eliminar" onClick={() => eliminarDelCarrito(producto.id)}>x</div>
-                                            <img className='imgVista' src={producto.imagen} alt={producto.title} />
+                                            <img className='imgVista' src={producto.image} alt={producto.title} />
                                         </div>
                                         <div className='info'>
-                                            <p className='textInfo'>{producto.title}</p>
-                                            <p className='textInfo'>descripcion</p>
+                                            <h3 className='textInfo'>{producto.title}</h3>
                                             <p className='textInfo'>{producto.content}</p>
                                         </div>
                                         <div className='nums'>
                                             <div id='xd'>
                                                 <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
-                                                <span className='cant'>{producto.cantidad}</span>
+                                                <span className='cant'>{producto.quantity}</span>
                                                 <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
                                             </div>
                                         </div>

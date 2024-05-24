@@ -1,11 +1,13 @@
 import './cardProducto.css'
 import Proptypes from 'prop-types'
 import { useState } from 'react'
+import { useCarrito } from '../carrito/carritoContext'
 
-const CardProduct = ({text, description, image, precios, styleCard, styleImage}) => {
+const CardProduct = ({id, title, content, image, precios, styleCard, styleImage}) => {
 
     const [quantity, setQuantity] = useState(0)
     const [isEditing, setIsEditing] = useState(false)
+    const { agregarAlCarrito } = useCarrito()
 
     const onHandlerClickButton = (type) => {
         switch(type){
@@ -42,8 +44,26 @@ const CardProduct = ({text, description, image, precios, styleCard, styleImage})
         setIsEditing(true)
     }
 
+    const calcularPrecioTotal = (cantidad) => {
+        const precioDocena = precios[1][1] * 12
+        const precioUnitario = precios[0][1]
+
+        console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
+        if (cantidad >= 12) {
+            const docenas = Math.floor(cantidad / 12)
+            const extras = cantidad % 12
+            return (docenas * precioDocena) + (extras * precioUnitario)
+        } else {
+            return cantidad * precioUnitario
+        }
+    }
+
     const handleAddToCart = () => {
-        alert(`Agregado ${quantity} ${text} al carrito`)
+        const precioFinal = calcularPrecioTotal(quantity)
+        console.log(`Precio Final: ${precioFinal}`)
+        const producto = { id, title, content, image, precioFinal, quantity }
+        agregarAlCarrito(producto)
+        alert(`Agregado ${quantity} ${title} al carrito`)
     }
 
     return (
@@ -53,10 +73,10 @@ const CardProduct = ({text, description, image, precios, styleCard, styleImage})
             </div>
             <div className='containerInfo'>
                 <div className='title'>
-                    {text}
+                    {title}
                 </div>
                 <div className='title' style={{fontWeight:'normal',wordWrap:'break-word', marginTop:"1%", fontSize:15}}>
-                    {description}
+                    {content}
                 </div>
                 <div className='title' style={{fontWeight:'normal',wordWrap:'break-word', marginTop:"1%", fontSize:15}}>
                     <div style={{fontWeight:'bold'}}>Precios:</div>
@@ -90,10 +110,10 @@ const CardProduct = ({text, description, image, precios, styleCard, styleImage})
 }
 
 CardProduct.propTypes = {
-    text: Proptypes.string,
+    title: Proptypes.string,
     styleCard: Proptypes.any,
     styleImage: Proptypes.any,
-    description: Proptypes.any,
+    content: Proptypes.any,
     image: Proptypes.any,
     precios: Proptypes.any
 }

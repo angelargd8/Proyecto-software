@@ -15,7 +15,6 @@ function Card({title, imagen, onClick}){
 
 Card.propTypes = {
     title: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
     imagen: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
 };

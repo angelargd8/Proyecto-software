@@ -1,6 +1,6 @@
 .cardProducto {
     width:90%;
-    background-color: beige;
+    background-color: rgb(205, 255, 238);
     height:30%;
     margin-top:1%;
     display: flex;
@@ -68,14 +68,16 @@
     opacity: 0.5;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input[type=number] {
+    appearance: textfield;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
 }
 
-input[type=number] {
-  -moz-appearance: textfield;
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .addToCartContainer {
