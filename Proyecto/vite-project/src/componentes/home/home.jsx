@@ -51,15 +51,20 @@ function Home() {
   }, [])
 
   return (
-    <div className="home">
+    <div className="container-home">
+      <div className="container-categorias">
       <h1>Home</h1>
       <p>Bienvenido a la página de inicio</p>
-      <div id="contenido-cartas">
-        {listadoCards.map((elemento) => (
-          <Card key={elemento.id} title={elemento.title} content={elemento.content} imagen={elemento.imagen} onClick={() => info(elemento.title, elemento)}/>
-        ))}
-      </div>
+        <div id="contenido-cartas">
+          {listadoCards.map((elemento) => (
+            <div key={elemento.id} className="category-card">
+              <Card title={elemento.title} content={elemento.content} 
+              imagen={elemento.imagen} onClick={() => info(elemento.title, elemento)}/>
+            </div>
+          ))}
+        </div>
       
+      </div>
 
     </div>
   );

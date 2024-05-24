@@ -118,3 +118,10 @@ alter table categoria_promociones add constraint categoria_promocionesfkcategori
 
 alter table categoria_promociones add constraint categoria_promocionesfkpromociones foreign key (id_promocion) references promociones (id_promocion);
 
+
+-- inserts 
+
+insert into roles (id_rol, nombre_rol) values (1, 'Admin'), (2, 'User')
+
+INSERT INTO USUARIOS (email, nombre, apellido, password, id_rol) 
+values('aguilar@gmail.com','Francis','Aguilar','123',2),('francis@gmail.com','Francis','Aguilar','123',1)
