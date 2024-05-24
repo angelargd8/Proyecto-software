@@ -197,6 +197,25 @@ async function updateItem(item){
     }
 }
 
+async function validateEmail(email){
+    try {
+        const result = await pool.query(`select * from usuarios where email = '${email}'`)
+        let jsonResult = result.rows.map(row =>{
+            return {
+                email: row.email,
+                name: row.nombre,
+                lastName: row.apellido,
+                password: row.password,
+                IdRol: row.id_rol
+            }
+        })
+        return jsonResult;
+    } catch (error) {
+        console.log(error)
+        return [];
+    }
+}
+
 module.exports = { getAllUser,
     getRol,validateUser,
     createNewUser,
@@ -206,4 +225,5 @@ module.exports = { getAllUser,
     setNewItem,
     getOneItem,
     updateItem, 
-    deleteUser };
+    deleteUser,
+    validateEmail };

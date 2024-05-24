@@ -10,7 +10,8 @@ const {getAllUser,
     setNewItem,
     getOneItem,
     updateItem,
-    deleteUser } = require('../Servidor/db')
+    deleteUser,
+    validateEmail } = require('../Servidor/db')
 
 
 const typeDefs = gql`
@@ -61,6 +62,9 @@ const typeDefs = gql`
     getOneItem(
         idItem: Int!
     ): Items
+    validateEmail(
+        email: String!
+    ): Users
  }
 
  type UserValidationResult {
@@ -126,6 +130,11 @@ const resolvers = {
             const {idItem} = args
             const item = await getOneItem(idItem)
             return item[0]
+        },
+        validateEmail: async (root, args) => {
+            const {email} = args
+            const user = await validateEmail(email)
+            return user[0]
         }
     },
     Mutation: {
