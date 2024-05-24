@@ -51,7 +51,9 @@ function Pago(){
                     <div className='middle'>
                         <div className="ParteVenta">
                             Detalles de Entrega
-                            <div className="ubicacion"></div>
+                            <div className="ubicacion"> 
+                                <div className="fotoubi"></div>
+                            </div>
                         </div>
                         <div className="PartePago">
                             Metodos de Pago

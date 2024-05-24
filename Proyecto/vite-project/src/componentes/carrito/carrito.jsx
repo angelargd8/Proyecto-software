@@ -89,9 +89,10 @@ function Carrito(){
                                         </div>
                                         <div className='nums'>
                                             <div id='xd'>
-                                                <div className='btn_sumar' onClick={() => cambioCant(producto, producto.cantidad + 1)}><b>+</b></div>
-                                                <span className='cant'>{producto.cantidad}</span>
-                                                <div className="btn_restar" onClick={() => cambioCant(producto, producto.cantidad - 1)}><b>-</b></div>
+                                                {console.log(producto)}
+                                                <div className='btn_sumar' onClick={() => cambioCant(producto, producto.quantity + 1)}><b>+</b></div>
+                                                <span className='cant'>{producto.quantity}</span>
+                                                <div className="btn_restar" onClick={() => cambioCant(producto, producto.quantity - 1)}><b>-</b></div>
                                             </div>
                                         </div>
                                     </div>

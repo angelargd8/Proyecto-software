@@ -62,6 +62,7 @@ const CardProduct = ({id, title, content, image, precios, styleCard, styleImage}
         const precioFinal = calcularPrecioTotal(quantity)
         console.log(`Precio Final: ${precioFinal}`)
         const producto = { id, title, content, image, precioFinal, quantity }
+        console.log(producto)
         agregarAlCarrito(producto)
         alert(`Agregado ${quantity} ${title} al carrito`)
     }
