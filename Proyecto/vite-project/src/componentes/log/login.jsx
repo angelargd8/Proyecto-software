@@ -1,6 +1,8 @@
 import './login.css'
 import { useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+//import * as jwt_decode from 'jwt-decode';
+//import {jwt_decode} from 'jwt-decode';
 
 function Login(){
     const clienteId ="30472634326-rbomjumikpc7llu20snb7bcvmmc4h87n.apps.googleusercontent.com"
@@ -12,8 +14,45 @@ function Login(){
 
     const responseGoogle = (response) => {
       console.log(response);
-      navigate("/home");
+      const credential = parseJwt(response.credential)
+      //console.log(credential);
+      if (response && credential) {
+        const { email } = credential.email;
+        const {name} = credential.name;
+        console.log(name);
+        console.log(email);
+      } else {
+        alert('La autenticación con Google no se realizó correctamente');
+        console.log('La autenticación con Google no se realizó correctamente');
+      }
     }
+
+    function parseJwt(token) { //token = credencial
+      var base64Url = token.split('.')[1];
+      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+    
+      return JSON.parse(jsonPayload);
+    }
+    
+
+
+    /*const responseGoogle = (response) => {
+      console.log(response);
+      console.log(response.credential)
+      const decodedToken = jwtDecode(response.credential);
+      console.log(decodedToken);
+      /*if (response && response.profileObj) {
+        const { email } = response.profileObj;
+        const {name} = response.profileObj;
+        console.log(name);
+        console.log(email);
+      } else {
+        console.log('La autenticación con Google no se realizó correctamente');
+      }     
+    }*/
 
     const handleLogin = () => {
         const url = ' http://localhost:4000/'
