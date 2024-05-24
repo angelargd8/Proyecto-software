@@ -42,6 +42,10 @@ const CardProduct = ({text, description, image, precios, styleCard, styleImage})
         setIsEditing(true)
     }
 
+    const handleAddToCart = () => {
+        alert(`Agregado ${quantity} ${text} al carrito`)
+    }
+
     return (
         <div className="cardProducto" style={styleCard}>
             <div className='containerImage' style={styleImage}>
@@ -61,22 +65,25 @@ const CardProduct = ({text, description, image, precios, styleCard, styleImage})
                     })}
                 </div>
             </div>
-            <div className='containerActions'>
-                <div className='button' style={{ fontSize:20, textAlign:'center',}} onClick={() => onHandlerClickButton("-")}>
-                    -
+            <div className='addToCartContainer'>
+                <div className='containerActions'>
+                    <div className='button' style={{ fontSize:20, textAlign:'center',}} onClick={() => onHandlerClickButton("-")}>
+                        -
+                    </div>
+                    <input
+                        type="number"
+                        className='button'
+                        style={{backgroundColor:'white', color:'black', fontSize:20, borderRadius:"0%", border:"1px solid black", textAlign: 'center'}}
+                        value={isEditing ? quantity : parseInt(quantity,10)}
+                        onChange={onChangeQuantity}
+                        onBlur = {onBlurQuantity}
+                        onFocus={onFocusQuantity}
+                    />
+                    <div className='button' style={{ fontSize:20}} onClick={() => onHandlerClickButton("+")}>
+                        +
+                    </div>
                 </div>
-                <input
-                    type="number"
-                    className='button'
-                    style={{backgroundColor:'white', color:'black', fontSize:20, borderRadius:"0%", border:"1px solid black", textAlign: 'center'}}
-                    value={isEditing ? quantity : parseInt(quantity,10)}
-                    onChange={onChangeQuantity}
-                    onBlur = {onBlurQuantity}
-                    onFocus={onFocusQuantity}
-                />
-                <div className='button' style={{ fontSize:20}} onClick={() => onHandlerClickButton("+")}>
-                    +
-                </div>
+                <button className='addToCartButton' onClick={handleAddToCart}>Agregar al carrito</button>
             </div>
         </div>
     )

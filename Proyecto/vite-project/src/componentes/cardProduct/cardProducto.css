@@ -36,26 +36,29 @@
     height:90%;
     display:flex;
     flex-direction:column;
+    padding: 10px;
+    padding-left: 20px;
 }
 
 .containerActions {
     height: 90%;
-    width: 15%;
+    width: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .button {
-    width: 90%;
+    width: 30%;
     border-radius: 10%;
     cursor: pointer;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     background-color: #1B4965;
-    color:white;
+    color: white;
     justify-content: center;
     margin-right: 5%;
     transition: opacity 0.3s ease;
@@ -73,4 +76,30 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.addToCartContainer {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.addToCartButton {
+    width: 90%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #1B4965;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: center;
+}
+
+.addToCartButton:hover {
+    background-color: #12324a;
 }
