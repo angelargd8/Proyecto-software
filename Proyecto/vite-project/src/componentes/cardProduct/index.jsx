@@ -44,24 +44,24 @@ const CardProduct = ({id, title, description, image, precios, styleCard, styleIm
         setIsEditing(true)
     }
 
-    const calcularPrecioTotal = (cantidad) => {
-        const precioDocena = precios[1][1] * 12
-        const precioUnitario = precios[0][1]
+    // const calcularPrecioTotal = (cantidad) => {
+    //     const precioDocena = precios[1][1] * 12
+    //     const precioUnitario = precios[0][1]
 
-        console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
-        if (cantidad >= 12) {
-            const docenas = Math.floor(cantidad / 12)
-            const extras = cantidad % 12
-            return (docenas * precioDocena) + (extras * precioUnitario)
-        } else {
-            return cantidad * precioUnitario
-        }
-    }
+    //     console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
+    //     if (cantidad >= 12) {
+    //         const docenas = Math.floor(cantidad / 12)
+    //         const extras = cantidad % 12
+    //         return (docenas * precioDocena) + (extras * precioUnitario)
+    //     } else {
+    //         return cantidad * precioUnitario
+    //     }
+    // }
 
     const handleAddToCart = () => {
         const precioFinal = calcularPrecioTotal(quantity)
-        console.log(`Precio Final: ${precioFinal}`)
-        const producto = { id, title, description, image, precioFinal, quantity }
+        // console.log(`Precio Final: ${precioFinal}`)
+        // const producto = { id, title, description, image, precioFinal, quantity }
         console.log(producto)
         agregarAlCarrito(producto)
         alert(`Agregado ${quantity} ${title} al carrito`)
