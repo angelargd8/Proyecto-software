@@ -19,8 +19,9 @@ function Login(){
         console.log(email);
         navigate("/home");
         //para que asi pueda cerrar sesion 
-        localStorage.setItem('googleUser');
-        //handleLoginGoogle(email);
+        localStorage.setItem('googleUser', email);
+        console.log(localStorage.getItem('googleUser'));
+        handleLoginGoogle(email);
 
       } else {
         alert('La autenticación con Google no se realizó correctamente');
@@ -38,11 +39,11 @@ function Login(){
       return JSON.parse(jsonPayload);
     }
 
-    /*const handleLoginGoogle = () => {
+    const handleLoginGoogle = () => {
       const url = ' http://localhost:4000/'
       const query = `
-      query validateCredentials($email: String!){
-        validateCredentials(email: $email) {
+      query validateEmail($email: String!){
+        validateEmail(email: $email) {
           email
           name
           rol{
@@ -70,15 +71,15 @@ function Login(){
           if (data.error) {
             console.error('Error en la consulta GraphQL:', data.errors);
           } 
-          if (data.data.validateCredentials == null) {
+          if (data.data.validateEmail == null) {
             console.error('Error el usuario  con esa contraseña no existe');
             {alert('Error el usuario  con esa contraseña no existe')}
           }
           else {
-            console.log(data.data.validateCredentials);
-            const rol = localStorage.setItem('rol', data.data.validateCredentials.rol.name);
+            console.log(data.data.validateEmail);
+            const rol = localStorage.setItem('rol', data.data.validateEmail.rol.name);
             console.log(rol);
-            {alert('Bienvenir@ '+data.data.validateCredentials.name+' a Picolin')}
+            {alert('Bienvenir@ '+data.data.validateEmail.name+' a Picolin')}
 
             navigate("/home");
           }
@@ -86,9 +87,8 @@ function Login(){
             console.error('Error:', error);
           }
       }
-      //navigate("/home");
       validateCredentialsGoogle();
-  };*/
+  };
 
     
 

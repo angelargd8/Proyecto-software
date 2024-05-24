@@ -45,6 +45,7 @@ function Nabvar(){
 
     const handleLogOutGoogle = () => {
         localStorage.removeItem('googleUser');
+        localStorage.removeItem('rol');
         alert('Sesión cerrada')
         navigate("/home")
     }
@@ -102,13 +103,7 @@ function Nabvar(){
 
                     </li>
 
-                    {
-                        googleUser && (
-                            <li className="nav-item">
-                                <a className="nav-text" href="/home" onClick={handleLogOutGoogle}>Cerrar sesión</a>
-                            </li>
-                        )
-                    }
+                    
                     
                     {userRol === 'admin' && (
                     <div className="admin-div">
@@ -118,8 +113,7 @@ function Nabvar(){
                     </div>
                    
                     )
-                    }
-                    
+                    }                   
                 
                 </ul>
                 <form className="d-flex buscar" role="search" onSubmit={handleSearch}>
@@ -127,6 +121,15 @@ function Nabvar(){
                     <button className="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 textos">
+                {
+                    googleUser !==null && (
+                        <li className="admin-div">
+                            <li className="nav-item">
+                                <button type="button" className="boton-admin"  onClick={handleLogOutGoogle}>Cerrar sesión</button>
+                            </li>
+                        </li>
+                    )
+                }
                 {userRol === 'admin' && (
                     <div className="admin-div">
                         <li className="nav-item">
