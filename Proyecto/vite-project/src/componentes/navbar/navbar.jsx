@@ -69,7 +69,7 @@ function Nabvar(){
       };
 
     const handleAddProduct = () => {
-        navigate("/agregarProducto")
+        navigate("/editarProductos")
     }
     return (
         <>
@@ -113,7 +113,7 @@ function Nabvar(){
                     {userRol === 'admin' && (
                     <div className="admin-div">
                         <li className="nav-item">
-                            <a className="nav-text" href="/agregarproducto"  onClick={handleAddProduct}>Agregar producto</a>
+                            <a className="nav-text" href="/editarproductos"  onClick={handleAddProduct}>Editar Productos</a>
                         </li>
                     </div>
                    

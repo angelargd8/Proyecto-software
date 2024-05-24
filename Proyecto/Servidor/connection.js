@@ -3,12 +3,12 @@ const {Pool} = require('pg')
 const password1 = "Gerax@2003lm!"
 const password2 = "123456"
 const password3 = "francis123"
-const password4 = ""
+const password4 = "Basedatos1"
 
 const pool = new Pool({
     host:"localhost",
     user: "postgres",
-    password:password3,
+    password:password4,
     database:"ecomers",
     port:"5432"
 })
