@@ -4,23 +4,42 @@ import { useState } from 'react'
 
 const CardProduct = ({text, description, image, precios, styleCard, styleImage}) => {
 
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(0)
+    const [isEditing, setIsEditing] = useState(false)
 
     const onHandlerClickButton = (type) => {
         switch(type){
             case "+":{
-                let prevQuantity = quantity
-                setQuantity(prevQuantity + 1)
+                setQuantity(prevQuantity => parseInt(prevQuantity, 10) + 1)
                 return
             }
             case "-":{
-                if(quantity != 0){
-                    let prevQuantity = quantity
-                    setQuantity(prevQuantity - 1)
+                if(quantity > 0){
+                    setQuantity(prevQuantity => parseInt(prevQuantity, 10) - 1)
                     return
                 }
             }
+            default:
+                return
         }
+    }
+
+    const onChangeQuantity = (e) => {
+        const value = e.target.value
+        if (value === '' || (!isNaN(value) && parseInt(value, 10) >= 0)) {
+            setQuantity(value)
+        }
+    }
+
+    const onBlurQuantity = () => {
+        if (quantity === '' || isNaN(parseInt(quantity, 10))) {
+            setQuantity(0)
+        }
+        setIsEditing(false)
+    }
+
+    const onFocusQuantity = () => {
+        setIsEditing(true)
     }
 
     return (
@@ -38,7 +57,7 @@ const CardProduct = ({text, description, image, precios, styleCard, styleImage})
                 <div className='title' style={{fontWeight:'normal',wordWrap:'break-word', marginTop:"1%", fontSize:15}}>
                     <div style={{fontWeight:'bold'}}>Precios:</div>
                     {precios && precios.map((precio, index) => {
-                        return <div key={index}>{`${precio[0]}: ${precio[1]}`}</div>
+                        return <div key={index}>{`${precio[0]}: Q ${precio[1]}.00`}</div>
                     })}
                 </div>
             </div>
@@ -46,9 +65,15 @@ const CardProduct = ({text, description, image, precios, styleCard, styleImage})
                 <div className='button' style={{ fontSize:20, textAlign:'center',}} onClick={() => onHandlerClickButton("-")}>
                     -
                 </div>
-                <div className='button' style={{backgroundColor:'white', color:'black', fontSize:20, borderRadius:"0%", border:"1px solid black"}}>
-                    {quantity}
-                </div>
+                <input
+                    type="number"
+                    className='button'
+                    style={{backgroundColor:'white', color:'black', fontSize:20, borderRadius:"0%", border:"1px solid black", textAlign: 'center'}}
+                    value={isEditing ? quantity : parseInt(quantity,10)}
+                    onChange={onChangeQuantity}
+                    onBlur = {onBlurQuantity}
+                    onFocus={onFocusQuantity}
+                />
                 <div className='button' style={{ fontSize:20}} onClick={() => onHandlerClickButton("+")}>
                     +
                 </div>
