@@ -35,6 +35,7 @@ function Carrito(){
     const envio = 15.00 //Temporal
 
     const calcularPrecioTotal = (cantidad, precios) => {
+        // console.log(precios)
         const precioDocena = precios[1][1] * 12
         const precioUnitario = precios[0][1]
 
@@ -103,7 +104,8 @@ function Carrito(){
                                         </div>
                                         <div className='nums'>
                                             <div id='xd'>
-                                                {console.log(producto)}
+                                                {console.log(producto.quantity)}
+                                                {console.log(producto.precios)}
                                                 <div className='btn_sumar' onClick={() => cambioCant(producto, producto.quantity + 1)}><b>+</b></div>
                                                 <span className='cant'>{producto.quantity}</span>
                                                 <div className="btn_restar" onClick={() => cambioCant(producto, producto.quantity - 1)}><b>-</b></div>

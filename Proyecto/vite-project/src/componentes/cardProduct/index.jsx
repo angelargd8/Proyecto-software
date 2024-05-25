@@ -59,11 +59,12 @@ const CardProduct = ({id, title, description, image, precios, styleCard, styleIm
     // }
 
     const handleAddToCart = () => {
-        const precioFinal = calcularPrecioTotal(quantity)
+        // const precioFinal = calcularPrecioTotal(quantity)
         // console.log(`Precio Final: ${precioFinal}`)
-        // const producto = { id, title, description, image, precioFinal, quantity }
-        console.log(producto)
-        agregarAlCarrito(producto)
+        const producto = { id, title, description, image, quantity, precios }
+        // console.log(producto)
+        // console.log(precios)
+        agregarAlCarrito(producto, quantity)
         alert(`Agregado ${quantity} ${title} al carrito`)
     }
 
