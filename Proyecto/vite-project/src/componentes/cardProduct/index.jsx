@@ -3,7 +3,7 @@ import Proptypes from 'prop-types'
 import { useState } from 'react'
 import { useCarrito } from '../carrito/carritoContext'
 
-const CardProduct = ({id, title, content, image, precios, styleCard, styleImage}) => {
+const CardProduct = ({id, title, description, image, precios, styleCard, styleImage}) => {
 
     const [quantity, setQuantity] = useState(0)
     const [isEditing, setIsEditing] = useState(false)
@@ -44,24 +44,24 @@ const CardProduct = ({id, title, content, image, precios, styleCard, styleImage}
         setIsEditing(true)
     }
 
-    const calcularPrecioTotal = (cantidad) => {
-        const precioDocena = precios[1][1] * 12
-        const precioUnitario = precios[0][1]
+    // const calcularPrecioTotal = (cantidad) => {
+    //     const precioDocena = precios[1][1] * 12
+    //     const precioUnitario = precios[0][1]
 
-        console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
-        if (cantidad >= 12) {
-            const docenas = Math.floor(cantidad / 12)
-            const extras = cantidad % 12
-            return (docenas * precioDocena) + (extras * precioUnitario)
-        } else {
-            return cantidad * precioUnitario
-        }
-    }
+    //     console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
+    //     if (cantidad >= 12) {
+    //         const docenas = Math.floor(cantidad / 12)
+    //         const extras = cantidad % 12
+    //         return (docenas * precioDocena) + (extras * precioUnitario)
+    //     } else {
+    //         return cantidad * precioUnitario
+    //     }
+    // }
 
     const handleAddToCart = () => {
         const precioFinal = calcularPrecioTotal(quantity)
-        console.log(`Precio Final: ${precioFinal}`)
-        const producto = { id, title, content, image, precioFinal, quantity }
+        // console.log(`Precio Final: ${precioFinal}`)
+        // const producto = { id, title, description, image, precioFinal, quantity }
         console.log(producto)
         agregarAlCarrito(producto)
         alert(`Agregado ${quantity} ${title} al carrito`)
@@ -77,7 +77,7 @@ const CardProduct = ({id, title, content, image, precios, styleCard, styleImage}
                     {title}
                 </div>
                 <div className='title' style={{fontWeight:'normal',wordWrap:'break-word', marginTop:"1%", fontSize:15}}>
-                    {content}
+                    {description}
                 </div>
                 <div className='title' style={{fontWeight:'normal',wordWrap:'break-word', marginTop:"1%", fontSize:15}}>
                     <div style={{fontWeight:'bold'}}>Precios:</div>
@@ -114,7 +114,7 @@ CardProduct.propTypes = {
     title: Proptypes.string,
     styleCard: Proptypes.any,
     styleImage: Proptypes.any,
-    content: Proptypes.any,
+    description: Proptypes.any,
     image: Proptypes.any,
     precios: Proptypes.any
 }

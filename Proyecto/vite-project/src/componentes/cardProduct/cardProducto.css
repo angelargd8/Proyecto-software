@@ -1,7 +1,7 @@
 .cardProducto {
     width:90%;
     background-color: rgb(205, 255, 238);
-    height:30%;
+    height:80%;
     margin-top:1%;
     display: flex;
     flex-direction: row;

@@ -34,8 +34,22 @@ function Carrito(){
 
     const envio = 15.00 //Temporal
 
+    const calcularPrecioTotal = (cantidad, precios) => {
+        const precioDocena = precios[1][1] * 12
+        const precioUnitario = precios[0][1]
+
+        console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
+        if (cantidad >= 12) {
+            const docenas = Math.floor(cantidad / 12)
+            const extras = cantidad % 12
+            return (docenas * precioDocena) + (extras * precioUnitario)
+        } else {
+            return cantidad * precioUnitario
+        }
+    }
+
     const Subtotal = carrito.reduce((total, producto) => {
-        const precioFinal = producto.precioFinal || 0
+        const precioFinal = calcularPrecioTotal(producto.quantity, producto.precios)
         return total + precioFinal
     }, 0)
 
