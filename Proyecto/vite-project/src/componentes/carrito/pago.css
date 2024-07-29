@@ -20,6 +20,8 @@
     text-justify: center;
     height: 10%;
     width: 100%;
+    box-shadow: 1px 1px 10px #a2a19b;
+    margin-bottom: 0.5%;
 }
 
 .header {
@@ -31,11 +33,14 @@
     font-family:'Gill Sans', 'Gill Sans MT',  sans-serif;
     justify-content: left;
     align-items: center;
+    align-content: center;
 }
 
 .tituloDeskPago{
     /* Titulo que esta dentro de header */
     font-size: xx-large;
+    text-align: center;
+    align-content: center;
     /* margin-top: -30px; */
     /* margin-left: 5%; */
 }
@@ -50,21 +55,11 @@
     width: 10%;
     justify-content: center;
     align-items: center;
-    /* padding-top: 3%;
-    padding-bottom: 3%;
-    padding-left: 2.5%;
-    padding-right: 2.5%; */
 }
 
 .regresarbtn {
     /* Boton regresar: < */
-    display: flex;
-    height: 100%;
-    width: 100%;
     color: #1B4965;
-    border-radius: 15px;
-    justify-content: center;
-    align-items: center;
     font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
     font-size: xx-large;
 }
@@ -160,11 +155,6 @@
     justify-content: left;
     align-content: center;
     align-items: center;
-    padding-left: 10%;
-    /* padding-right: 15%; */
-    /* border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px; */
-
 }
 
 .pagobtn {

@@ -21,6 +21,11 @@
     text-justify: center;
     height: 10%;
     width: 100%;
+    box-shadow: 1px 1px 10px #a2a19b;
+    margin-bottom: 0.5%;
+
+
+
 }
 
 .header {
@@ -30,16 +35,13 @@
     width: 90%;
     color: #1B4965;
     font-family:'Gill Sans', 'Gill Sans MT',  sans-serif;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
+    align-content: center;
+    /* box-shadow: 1px 1px 10px #1B4965; */
+
 }
 
-.titulo{
-    /* Titulo que esta dentro de header */
-    font-size: xx-large;
-    /* margin-top: -30px; */
-    /* margin-left: 5%; */
-}
 
 .regresar {
     /* Espacio para poner boton */
@@ -48,23 +50,39 @@
     width: 10%;
     justify-content: center;
     align-items: center;
-    /* padding-top: 3%;
-    padding-bottom: 3%;
-    padding-left: 2.5%;
-    padding-right: 2.5%; */
 }
+
 
 .regresarbtn {
     /* Boton regresar: < */
-    display: flex;
-    height: 100%;
-    width: 100%;
-    color: #1B4965;
-    border-radius: 15px;
-    justify-content: center;
-    align-items: center;
+    color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
     font-size: xx-large;
+}
+
+.titulo{
+    /* Titulo que esta dentro de header */
+    height: 100%;
+    width: 10%;
+    font-size: xx-large;
+    /* background-color: red; */
+    text-align: center;
+    align-content: center;
+}
+
+.midHeader {
+    height: 100%;
+    width: 70%;
+    /* background-color: purple; */
+}
+
+.logoBox {
+    display: flex;
+    height: 100%;
+    width: 20%;
+    /* background-color: aqua; */
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .opciones {
@@ -79,12 +97,16 @@
     
 }
 
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 /* --------------------------------------------Medio y Bottom ----------------------------------------------------- */
 
 
 .MidyBotm {
     /* Contenedor para poner el footer(bottom) y el mid(middle) en un solo div, para movil  */
-    width: 100%; 
+    width: 100%;
     height: 90%;
     display: flex;
     background-color: rgb(229, 229, 229);
@@ -127,12 +149,12 @@
 
 .nombrePaso {
     /* ovalos donde estan el nombre de las pestanas */
+    display: flex;
     height: 60%;
     width: 15%;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: small;
     padding: 1%;
     border: 2px solid #1B4965;
     background-color: #1B4965;
@@ -148,21 +170,16 @@
     width: 25%;
 }
 
-.bottom {
-    /* Footer, aqui no hay nada aun y en movil no se muestra */
+.Dbottom {
+    /* Footer en movil no se muestra */
     display: flex;
     background-color: #1B4965;
     color: white;
     height: 10%;
     width: 100%;
-    justify-content: left;
-    align-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding-left: 10%;
-    /* padding-right: 15%; */
-    /* border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px; */
-
+    text-align: left;
 }
 
 .pagobtn {
@@ -177,6 +194,7 @@
     border-radius: 20px;
     cursor: pointer;
 }
+
 
 /* .logo {
     display: flex;
@@ -343,7 +361,6 @@
     height: 60%;
     width: 50%;
     color: #1B4965;
-    font-size: large;
     padding-left: 3%;
     padding-top: 1%;
     text-align: left;
@@ -363,33 +380,46 @@
 
 }
 
-.codigo {
+.codigoC {
     /* Barra para codigo de descuento */
     display: flex;
     width: 100%;
-    height: 30%;
+    height: 20%;
     background-color: transparent;
     border-radius: 20px;
-    color: #1B4965;
     resize: none;
     text-align: center;    
     border: 1px solid #1B4965;
-    margin-top: 2%;
-    margin-bottom: 0.5%;
     overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
-.codigo::placeholder {
+.codigoC::placeholder {
     /* Place holder que dice Codigo promocional */
     display: flex;
     color: #1B4965;
-    font-size: small;
+    font-size: 1vw;
     align-items: center;
+    align-content: center;
     justify-content: center;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT',  sans-serif;
     
 }
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }
 
 .rowDatos {
     /* Row que engloba a las columnas de los numeros de los precios y sus nombres */
@@ -483,6 +513,8 @@
 
     }
     .regresar {
+        height: 100%;
+        width: 10%;
         padding-top: 2.5%;
         padding-bottom: 2.5%;
         padding-right: 0;
@@ -522,6 +554,17 @@
         height: 100%;
         width: 90%;
     }
+    .titulo {
+        width: 80%;
+        height: 100%;
+        text-align: center;
+    }
+    .midHeader {
+        display: none;
+    }
+    .logoBox{
+        display: none
+    }
     .regresarbtn {
         color: #1B4965;
         background-color: transparent;
@@ -544,11 +587,8 @@
         align-items: center;
         justify-content: center;
         text-justify: center;
-        margin-top: 1%;
-        margin-left: 1%;
-        
         height: 10%;
-        width: 100%;
+        /* width: 100%; */
     }
     .middle {
         display: flex;
@@ -559,19 +599,8 @@
         /* border: 1px solid black; */
         border-radius: 20px;
     }
-    .bottom {
+    .Dbottom {
         display: none;
-        background-color: transparent;
-        justify-content: center;
-        align-items: center;
-        height: 10%;
-        width: 100%;
-        padding: 0;
-        /* border: 1px solid black; */
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-        /* border-top-left-radius: 20px;
-        border-top-right-radius: 20px; */
     }
     .pagobtn {
         height: 100%;
@@ -806,15 +835,6 @@
         box-shadow: 0px 0px 0px #a2a19b;
 
 
-    }
-    
-    #contTitulo {
-        display: flex;
-        height: 100%;
-        width: 70%;
-        align-items: center;
-        justify-content: left;
-        text-align: left;
     }
     
     .totales {

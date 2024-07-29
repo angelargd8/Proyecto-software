@@ -14,6 +14,10 @@ function Pago(){
     
     };
 
+    const handleConfirmPago = () => {
+        navigate("/confirmPago")
+    }
+
     return (
         <>
             <div className='contenedor'>
@@ -40,11 +44,11 @@ function Pago(){
                 <div className="MidyBotmPago">
                     <div className="columnPasosPagar">
                         <div className="pasos">
-                            <div className="nombrePaso " style={{backgroundColor: 'transparent', color: '#1B4965'}}> Direccion de Entrega </div>
+                            <div className="nombrePaso " style={{backgroundColor: 'transparent', color: '#1B4965'}} onClick={() => handleRegresar()}> Direccion de Entrega </div>
                             <div className="separador">  -------------  </div>
                             <div className="nombrePaso" > Forma de Pago</div>
                             <div className="separador">  -------------  </div>
-                            <div className="nombrePaso" style={{backgroundColor: 'transparent', color: '#1B4965'}}> Ultimo Paso</div>
+                            <div className="nombrePaso" style={{backgroundColor: 'transparent', color: '#1B4965'}} onClick={() => handleConfirmPago()}> Ultimo Paso</div>
                         </div>
                         <div className="relleno"></div>
                     </div>
@@ -63,7 +67,8 @@ function Pago(){
                         </div>
                     </div>
                     <div className="bottom">
-                        Piculin 
+                        <img className="logotipo" src="../src/assets/img/logo.png" style={{ width: 60, height: 70, marginLeft: '1%'}}  />
+                        Picolin 
                     </div>
                 </div>
             </div>

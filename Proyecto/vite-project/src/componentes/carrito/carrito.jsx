@@ -28,6 +28,10 @@ function Carrito(){
         navigate("/pago");
     }
 
+    const handleDirecc = () => {
+        navigate("/carrito")
+    }
+
     useEffect(() => {
         console.log('Estado actual del carrito después de agregar producto:', carrito);
     }, [carrito]);
@@ -67,6 +71,10 @@ function Carrito(){
                         <div className="titulo">
                         My Cart
                         </div>
+                        <div className="midHeader"></div>
+                        <div className="logoBox">
+                            <img className="logotipo" src="../src/assets/img/logo.png" alt="" width="60" height="70"  />
+                        </div>
                     </div>
                     <div className="opciones">
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,11 +87,11 @@ function Carrito(){
                 <div className="MidyBotm">
                     <div className="columnPasosPagar">
                         <div className="pasos">
-                            <div className="nombrePaso"> Direccion de Entrega</div>
+                            <div className="nombrePaso" style={{fontSize: '1vw'}}onClick={() => handleDirecc()} > Direccion</div>
                             <div className="separador">  -------------  </div>
-                            <div className="nombrePaso" style={{backgroundColor: 'transparent', color: '#1B4965'}}> Forma de Pago</div>
+                            <div className="nombrePaso" style={{fontSize: '1vw', backgroundColor: 'transparent', color: '#1B4965'}} onClick={() => handlePagar()} > Forma de Pago</div>
                             <div className="separador">  -------------  </div>
-                            <div className="nombrePaso" style={{backgroundColor: 'transparent', color: '#1B4965'}}> Ultimo Paso</div>
+                            <div className="nombrePaso" style={{fontSize: '1vw', backgroundColor: 'transparent', color: '#1B4965'}}> Ultimo Paso</div>
                         </div>
                         <div className="relleno"></div>
                     </div>
@@ -116,24 +124,24 @@ function Carrito(){
                             )}
                         </div>
                         <div className="totales">
-                            <textarea className='codigo' rows={1} placeholder='Codigo Promocional'></textarea>
+                            <textarea className="codigoC" rows={1} placeholder='Codigo Promocional'></textarea>
                             <div className='rowDatos'>
-                                <div className="columnCampo">
+                                <div className="columnCampo" style={{fontSize: '1.2vw'}}>
                                     Subtotal <br/>
                                     Envio <br/> 
                                     Total
                                 </div>
-                                <div className="columnNo">
+                                <div className="columnNo" style={{fontSize: '1.2vw'}}>
                                     Q {Subtotal.toFixed(2)}<br/>
                                     Q {envio.toFixed(2)} <br />                            
                                     Q {Total.toFixed(2)}
                                 </div>
                             </div>
                             <button className='pagobtn' onClick={handlePagar}> Pagar </button>
-
                         </div>
                     </div>
-                    <div className="bottom">
+                    <div className="Dbottom" style={{fontSize: '1.5vw'}}>
+                        <img className="logotipo" src="../src/assets/img/logo.png" style={{ width: 60, height: 70, marginLeft: '1%', marginRight: '2%'}}  />
                         Picolin
                     </div>
                 </div>
