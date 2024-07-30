@@ -98,7 +98,7 @@ function Carrito(){
                     <div className='middle'>
                         <div className="carrito">
                             {carrito.length === 0 ? (
-                                <h4>El carrito de compras está vacío.</h4>
+                                <h4 style={{marginTop: 25}}>El carrito de compras está vacío.</h4>
                             ) : (
                                 carrito.map((producto) => (
                                     <div className='product' key={producto.id}>
@@ -126,12 +126,12 @@ function Carrito(){
                         <div className="totales">
                             <textarea className="codigoC" rows={1} placeholder='Codigo Promocional'></textarea>
                             <div className='rowDatos'>
-                                <div className="columnCampo" style={{fontSize: '1.2vw'}}>
+                                <div className="ColumnCampo">
                                     Subtotal <br/>
                                     Envio <br/> 
                                     Total
                                 </div>
-                                <div className="columnNo" style={{fontSize: '1.2vw'}}>
+                                <div className="ColumnNo">
                                     Q {Subtotal.toFixed(2)}<br/>
                                     Q {envio.toFixed(2)} <br />                            
                                     Q {Total.toFixed(2)}

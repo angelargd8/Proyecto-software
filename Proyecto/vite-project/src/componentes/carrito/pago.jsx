@@ -8,6 +8,7 @@ function Pago(){
     
     const navigate = useNavigate();
 
+    
 
     const handleRegresar = () => {
         navigate("/carrito");
@@ -54,13 +55,26 @@ function Pago(){
                     </div>
                     <div className='middle'>
                         <div className="ParteVenta">
-                            Detalles de Entrega
+                            <h5 style={{position: 'absolute', bottom: '80%'}}> Detalles de Entrega</h5>
                             <div className="ubicacion"> 
                                 <div className="fotoubi"></div>
+                                <div className="nombreUbi">Universidad del Valle de Guatemala</div>
+                            </div>
+                            <div className="receptor">
+                                <div className="fotoRec"></div>
+                                <div className="nombreRec">Kimberly Daniela Morales Ortega</div>
                             </div>
                         </div>
                         <div className="PartePago">
-                            Metodos de Pago
+                            <h5 style={{position: 'absolute', bottom: '52%'}}> Metodos de Pago</h5>
+                            <div className="ubicacion"> 
+                                <div className="fotoTarj"></div>
+                                <div className="nombreUbi">Tarjeta de Credito/Debito</div>
+                            </div>
+                            <div className="receptor">
+                                <div className="fotoEfct"></div>
+                                <div className="nombreRec">Efectivo</div>
+                            </div>                            
                         </div>
                         <div className="ParteExtras">
                             Extras

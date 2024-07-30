@@ -355,7 +355,7 @@
     background-position: right;
 } */
 
-.columnCampo {
+.ColumnCampo {
     /* Columna para mostrar los nombres del cobro, (Subtotal, total, envio) */
     display: flex;
     height: 60%;
@@ -364,10 +364,10 @@
     padding-left: 3%;
     padding-top: 1%;
     text-align: left;
-    font-size: small;
+    font-size: '10vw';
 }
 
-.columnNo {
+.ColumnNo {
     /* Numeros de cada cobro de envio subtotal y total */
     display: flex;
     height: 100%;
@@ -377,6 +377,9 @@
     padding-right: 3%;
     text-align: right;
     justify-content: right;
+    font-size: '10vw';
+
+    
 
 }
 
@@ -758,7 +761,7 @@
         background-position: right;
     }
     
-    .columnCampo {
+    .ColumnCampo {
         display: flex;
         height: 100%;
         width: 50%;
@@ -769,7 +772,7 @@
         text-align: left;
     }
     
-    .columnNo {
+    .ColumnNo {
         display: flex;
         height: 100%;
         width: 50%;
