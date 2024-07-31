@@ -11,12 +11,12 @@ function Login(){
     }
 
     const responseGoogle = (response) => {
-      console.log(response);
+      //console.log(response);
       const credential = parseJwt(response.credential)
-      //console.log(credential);
+      
       if (response && credential) {
         const { email } = credential;
-        console.log(email);
+        //console.log(email);
         navigate("/home");
         //para que asi pueda cerrar sesion 
         localStorage.setItem('googleUser', email);
@@ -153,31 +153,38 @@ function Login(){
           <div className="goBack">
               <button className="goBack-btn" onClick={handleHome}> &lt; regresar</button>
             </div>
-          <div className="formulario">
-              <h1 className='form-text'>Inicia sesión</h1>
-                <input type="email" id="email" name="email" placeholder="Correo Electrónico" className="inputs"/>
-                
-                <input type="password" id="password" name="password" className="inputs" placeholder="Contraseña"/>
-                
-                <div className="boton">
-                  <button className= "btn" onClick={handleLogin}>
-                    Iniciar sesión
-                  </button>
-                </div>
-                <div className="googleAuth">
-                  <GoogleOAuthProvider clientId={clienteId}>
+          <div className="contenedor">
+              <div className='imagen'>a               
+              </div>
+              <div className="formulario">
+                  <h1 className='form-text'>Inicia sesión</h1>
+                    <input type="email" id="email" name="email" placeholder="Correo Electrónico" className="inputs"/>
                     
-                        <GoogleLogin
-                          clientId={clienteId}
-                          buttonText="Iniciar sesión con Google"
-                          onSuccess={responseGoogle}
-                          onFailure={responseGoogle}
-                          cookiePolicy={'single_host_origin'}
-                        ></GoogleLogin>
+                    <input type="password" id="password" name="password" className="inputs" placeholder="Contraseña"/>
                     
-                  </GoogleOAuthProvider>   
-                </div>         
+                    <div className="boton">
+                      <button className= "btn" onClick={handleLogin}>
+                        Iniciar sesión
+                      </button>
+                    </div>
+                    <div className="googleAuth">
+                      <GoogleOAuthProvider clientId={clienteId}>
+                        
+                            <GoogleLogin
+                              clientId={clienteId}
+                              buttonText="Iniciar sesión con Google"
+                              onSuccess={responseGoogle}
+                              onFailure={responseGoogle}
+                              cookiePolicy={'single_host_origin'}
+                            ></GoogleLogin>
+                        
+                      </GoogleOAuthProvider>   
+                    </div>         
+              </div>
+              
+              
           </div>
+          
         </div>
         </>
       )

@@ -4,15 +4,43 @@
     left:0;
     right: 0;
     bottom: 0;
-    /*background-image: url(../../assets/img/wallpaper8.jpg);*/
     background-repeat: no-repeat ;
     background-size: cover;
     background-attachment: fixed;
     padding: 20px;
-    background-color: #154EE5;
     justify-content: center;
     align-items: center;   
+    display: flex;
+    padding: 0%;
+    margin: 0%;
+}
 
+.login .contenedor{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.login .imagen{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-image: url(../../assets/img/wallpaper11.jpg);
+}
+
+.login .formulario{
+    box-sizing: border-box;
+    padding: 35px;
+    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+    color: #000;
+    border: none;
+    width: 100%;
+    height: 100%;
 }
 
 .login .goBack{
@@ -22,7 +50,7 @@
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
-    color: white;
+    color: #000;
     border: none;
     font-size: 20px;
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
@@ -42,32 +70,18 @@
 }
 
 .login .goBack-btn:hover{
-    background-color: #2D62EE;
-    color: white;
+    background-color: #1b4965;
+    color:  #000;
     border: none;
 
 }
-.login .formulario{
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    background-color:#061a4dab; 
-    padding: 35px;
-    border-radius: 80px;
-    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
-    color: white;
-    border: none;
-    width: 100%;
-    margin-top: 6% auto 35%;
 
-}
 
 .login .form-text{
     padding: 5px;
     border-radius: 10px;
-    color: white;
-    border: none;
+    color: #000;
+    border: #000;
     font-size: 40px;
     align-items: flex-start;
     display: flex;
@@ -82,7 +96,7 @@
     border-radius: 10px;
     background-color: #051336;
     color: white;
-    border: none;
+    border: #000;
     font-size: 20px;
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
     transition: 0.5s ease-in;
@@ -97,7 +111,6 @@
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
     transition: 0.5s ease-in;
     font-weight: 700!important;
-    /*margin-left: 20px;*/
 
 }
 
@@ -115,8 +128,8 @@
 }
 
 .login .inputs{
-    border: white;
-    background-color: white;
+    border: #000;
+    background-color: rgba(165, 165, 165, 0.425);
     font-size: 16px;
     padding: 10px;
     margin: 10px;
@@ -126,4 +139,7 @@
 
 .login .googleAuth{
     margin-top: 15px;
+    display: flex;
+    position: relative;
+    justify-content: center;
 }
