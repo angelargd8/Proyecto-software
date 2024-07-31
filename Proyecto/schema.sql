@@ -16,6 +16,19 @@ create table roles
 	nombre_rol varchar(100)
 );
 
+CREATE TABLE permisos (
+    id_permiso SERIAL PRIMARY KEY,
+    nombre_permiso VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE rol_permisos (
+    id_rol INT NOT NULL,
+    id_permiso INT NOT NULL,
+    PRIMARY KEY (id_rol, id_permiso),
+    FOREIGN KEY (id_rol) REFERENCES roles(id_rol),
+    FOREIGN KEY (id_permiso) REFERENCES permisos(id_permiso)
+);
+
 create table configuraciones
 (
 	id_configuracion serial primary key,
