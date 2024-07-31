@@ -1,0 +1,27 @@
+version: "1"
+name: "ecommerce"
+services:
+  postgres:
+    build: ./BACKEND/DB
+    ports:
+      - "33065:3306"
+    environment:
+      DB_HOST: postgres
+      DB_USER: ecomers_user
+      DB_PASS: ecomers_password
+      # MYSQL_ROOT_PASSWORD: root_password
+      # MYSQL_USER: blog_user
+      # MYSQL_PASSWORD: blog_password
+      # MYSQL_DATABASE: blog_zelda
+    volumes:
+      - "mysql-data:/var/lib/mysql"
+  api:
+    build: ./BACKEND/api
+    ports:
+      - "3005:3005"
+    depends_on:
+      - mysql
+
+volumes:
+  postgres-data:
+    driver: local
