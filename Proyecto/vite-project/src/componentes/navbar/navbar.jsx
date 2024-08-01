@@ -143,7 +143,7 @@ function Nabvar(){
                    
                     )
                 }
-                    {userRol === null && (
+                    {userRol === null && googleUser ===null &&  (
                         <li className="nav-item">
                             <button type="button" className="boton-admin" onClick={handleLogin}>Iniciar Sesión</button>
                         </li>
