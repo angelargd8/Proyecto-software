@@ -93,7 +93,7 @@ function Login(){
     
 
     const handleLogin = () => {
-        const url = ' http://localhost:4000/'
+        const url = 'http://localhost:4000/'
         const query = `
         query validateCredentials($email: String!, $password: String!){
           validateCredentials(email: $email, password: $password) {

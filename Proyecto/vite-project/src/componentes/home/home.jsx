@@ -23,11 +23,11 @@ function Home() {
     const searchItem = searchParams.get('search') || ''
 
     const cards = [
-      {id: 1, title: "Brillantina", content: "Q3.75", imagen: "../src/assets/img/Brillantina-surtida.jpg"},
-      {id: 2, title: "Ojos", content: "Q48.75", imagen: "../src/assets/img/Ojos/Ojitos NO 1.jpg"},
-      {id: 3, title: "Añelina", content: "Q12.00", imagen: "../src/assets/img/Colorante/AÑELINA.jpg"},
-      {id: 4, title: "Pulseras", content: "Q24.50", imagen: "../src/assets/img/Pulseras/PULSERA PASTEL.jpg"},
-      {id: 5, title: "Flores", content: "Q12.00", imagen: "../src/assets/img/Flores/FLOR GRANDE.jpg"},
+      {id: 1, title: "Brillantina", imagen: "../src/assets/img/Brillantina-surtida.jpg"},
+      {id: 2, title: "Ojos", imagen: "../src/assets/img/Ojos/Ojitos NO 1.jpg"},
+      {id: 3, title: "Añelina", imagen: "../src/assets/img/Colorante/AÑELINA.jpg"},
+      {id: 4, title: "Pulseras", imagen: "../src/assets/img/Pulseras/PULSERA PASTEL.jpg"},
+      {id: 5, title: "Flores", imagen: "../src/assets/img/Flores/FLOR GRANDE.jpg"},
     ]
 
     if (searchItem.trim() === ''){
