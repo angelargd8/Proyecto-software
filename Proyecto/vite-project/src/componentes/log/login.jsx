@@ -154,8 +154,7 @@ function Login(){
               <button className="goBack-btn" onClick={handleHome}> &lt; regresar</button>
             </div>
           <div className="contenedor">
-              <div className='imagen'>a               
-              </div>
+              <div className='imagen'></div>
               <div className="formulario">
                   <h1 className='form-text'>Inicia sesión</h1>
                     <input type="email" id="email" name="email" placeholder="Correo Electrónico" className="inputs"/>

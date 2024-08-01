@@ -34,6 +34,10 @@
 }
 
 .login .formulario{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     padding: 35px;
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
@@ -56,22 +60,23 @@
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
     transition: 0.5s ease-in;
     font-weight: 700!important;
+    z-index: 2;
 
 }
 
 .login .goBack-btn{
-    background-color: #0513366b;
+    /*background-color: #0513366b;*/
     color: white;
     border: none;
-    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+    /*box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);*/
     transition: 0.5s ease-in;
     font-weight: 700!important;
     margin-left: 20px;
 }
 
 .login .goBack-btn:hover{
-    background-color: #1b4965;
-    color:  #000;
+    background-color: transparent;
+    color:  #FFF;
     border: none;
 
 }
