@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "keywords": [],
-  "author": {},
+  "author": {"name": "GRUPO 3"},
   "license": "ISC",
   "scripts": {
     "start": "nodemon node index.js"
