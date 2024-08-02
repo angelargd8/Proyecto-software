@@ -2,3 +2,7 @@ npm install -D vitest @testing-library/react @testing-library/jest-dom
 npm install -D jest babel-jest @testing-library/react @testing-library/jest-dom
 npm install --save-dev jest-environment-jsdom
 npm install --save-dev @babel/preset-env
+
+/---------------------------------------/
+correr tests:
+npx jest
