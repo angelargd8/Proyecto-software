@@ -1,44 +1,40 @@
-.card-category{
-    display: grid;
-    grid-template-rows: 80% 10%;
+.card-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 10px;
-    margin-left: 10%;
-    margin-right: 10%;
     padding: 5px;
-    /* border: 1px solid #ccc; */
     border-radius: 5%;
-    
-    align-items: center;
-    width: 400px;
-    height: 400px;
-    align-items: center;
-    justify-content: center;
-
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    box-sizing: border-box;
 }
 
-.card-category:hover{
+.card-category:hover {
     transform: scale(1.05);
     transition: transform 0.5s;
     cursor: pointer;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.card-content-category{
+.card-content-category {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 10px;
-    
 }
 
-.imagen-category{
-    width: 80%;
+.imagen-category {
+    width: 100%;
     height: auto;
-    size: cover;
     object-fit: cover;
+    border-radius: 5%;
 }
 
-#title-card{
-    align-self: flex-end;
+#title-card {
+    margin-top: 10px;
+    text-align: center;
 }
