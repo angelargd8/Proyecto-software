@@ -16,6 +16,19 @@ create table roles
 	nombre_rol varchar(100)
 );
 
+CREATE TABLE permisos (
+    id_permiso SERIAL PRIMARY KEY,
+    nombre_permiso VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE rol_permisos (
+    id_rol INT NOT NULL,
+    id_permiso INT NOT NULL,
+    PRIMARY KEY (id_rol, id_permiso),
+    FOREIGN KEY (id_rol) REFERENCES roles(id_rol),
+    FOREIGN KEY (id_permiso) REFERENCES permisos(id_permiso)
+);
+
 create table configuraciones
 (
 	id_configuracion serial primary key,
@@ -119,7 +132,14 @@ alter table categoria_promociones add constraint categoria_promocionesfkcategori
 alter table categoria_promociones add constraint categoria_promocionesfkpromociones foreign key (id_promocion) references promociones (id_promocion);
 
 
--- inserts 
+-- inserts necesarios
+INSERT INTO rol_permisos (id_rol, id_permiso) VALUES
+(1, 1), (1, 2), (1, 3), (1, 4), -- Admin con todos los permisos
+(2, 3); -- User solo con permiso de ver usuarios
+INSERT INTO permisos (nombre_permiso) VALUES ('Crear Artículos'), ('Eliminar Artículos'), ('Ver Usuarios'), ('Modificar Configuraciones');
+
+
+-- insert de usuarios
 
 insert into roles (id_rol, nombre_rol) values (1, 'Admin'), (2, 'User')
 

@@ -1,4 +1,4 @@
-import CardProduct from "../cardProduct"
+import CardProduct from "../cardProduct/cardProd"
 import { useParams } from "react-router-dom"
 import './products.css'
 
@@ -27,6 +27,12 @@ const Products = () => {
                 </>
             )}
             {detail == 'Pulseras' && (
+                <>
+                    <CardProduct id={"1"} title={"Carton de añelina"} description={'Cartones de añelina de 40 sobres de colores'} image={'../src/assets/img/Colorante/AÑELINA.jpg'} precios={[["Unidad",50],["Docena",45]]}></CardProduct>
+                    <CardProduct id={"2"} title={"Carton de colorante vegetal"} description={'Carton de colorante vegetal de 40 sobres de colores'} image={'../src/assets/img/Colorante/COLORANTE VEGETAL.jpg'} precios={[["Unidad",70],["Docena",65]]} ></CardProduct>
+                </>
+            )}
+            {detail == 'Flores' && (
                 <>
                     <CardProduct id={"1"} title={"Carton de añelina"} description={'Cartones de añelina de 40 sobres de colores'} image={'../src/assets/img/Colorante/AÑELINA.jpg'} precios={[["Unidad",50],["Docena",45]]}></CardProduct>
                     <CardProduct id={"2"} title={"Carton de colorante vegetal"} description={'Carton de colorante vegetal de 40 sobres de colores'} image={'../src/assets/img/Colorante/COLORANTE VEGETAL.jpg'} precios={[["Unidad",70],["Docena",65]]} ></CardProduct>
