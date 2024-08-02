@@ -11,6 +11,8 @@ import Products from './products/products.jsx';
 
 function AppRouter(){
 
+    const userRol = localStorage.getItem('rol')
+
     return (
         <Routes>
             <Route path="/home" element={<Home />} />
@@ -19,10 +21,17 @@ function AppRouter(){
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/pago" element = {<Pago />}/>
             <Route path="/" element={<Home />} />
-            <Route path="/agregarProducto" element={<AgregarProducto/>} />
-            <Route path="/editarCategorias" element={<EditarCateg/>} />
+            {console.log(userRol)}
+            {
+            userRol === "Admin" && (
+                console.log(userRol),
+                <>
+                    <Route path="/agregarProducto" element={<AgregarProducto />} />
+                    <Route path="/editarCategorias" element={<EditarCateg />} />
+                    <Route path="/editarProductos" element={<EditarProds />} />
+                </>
+            )}
             <Route path='/detalles/:detail' element={<Products />} />
-            <Route path='/editarProductos' element={<EditarProds/>}/>
         </Routes>
     )
     
