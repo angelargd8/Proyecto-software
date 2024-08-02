@@ -1,79 +1,45 @@
+import EditCardProduct from "./editCardProd";
+import { useParams } from "react-router-dom";
 import './editarProd.css';
-import { useState } from 'react';
-import Proptypes from 'prop-types';
-import { useNavigate } from 'react-router-dom'
 
-const EditarProds = ({ id, title, content, image, precios, styleCard, styleImage }) => {
-    const [editTitle, setEditTitle] = useState(title)
-    const [editContent, setEditContent] = useState(content)
-    const [editImage, setEditImage] = useState(image)
-    const [editPrecios, setEditPrecios] = useState(precios)
-    const navigate = useNavigate()
-
-    const handleEditProduct = () => {
-        const editedProduct = {
-            id: id,
-            title: editTitle,
-            content: editContent,
-            image: editImage,
-            precios: editPrecios
-        }
-        
-        console.log('Producto editado:', editedProduct);
-    }
-
-    const handleAddProduct = () => {
-        navigate("/agregarProducto")
-    }
-
+const EditarProd = () => {
+    const { detail } = useParams();
+    console.log(detail);
     return (
-        <div className='bigSquare'>
-            <button className="agregarProductoButton" onClick={handleAddProduct}>
-                Agregar Producto
-            </button>
-            <div className="cardProducto" style={styleCard}>
-                <div className='containerImage' style={styleImage}>
-                    <img className='imageProduct' src={editImage} alt={editTitle}></img>
-                </div>
-                <div className='containerInfo'>
-                    <div className='title'>
-                        <label htmlFor="editTitle">Título:</label>
-                        <input type="text" id="editTitle" value={editTitle} onChange={(e) => setEditTitle(e.target.value)} />
-                    </div>
-                    <div className='title'>
-                        <label htmlFor="editContent">Contenido:</label>
-                        <textarea id="editContent" value={editContent} onChange={(e) => setEditContent(e.target.value)} />
-                    </div>
-                    <div className='title'>
-                        <label htmlFor="editPrecios">Precios:</label>
-                        {editPrecios && editPrecios.map((precio, index) => (
-                            <div key={index}>
-                                <label htmlFor={`precio${index}`}>{precio[0]}:</label>
-                                <input type="text" id={`precio${index}`} value={precio[1]} onChange={(e) => {
-                                    const newPrecios = [...editPrecios];
-                                    newPrecios[index][1] = e.target.value;
-                                    setEditPrecios(newPrecios);
-                                }} />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className='addToCartContainer'>
-                    <button className='addToCartButton' onClick={handleEditProduct}>Editar Producto</button>
-                </div>
-            </div>
+        <div className="container-edit-prod">
+            {detail == 'Brillantina' && (
+                <>
+                    <EditCardProduct id={"1"} title={"Carton de brillantina Tierra"} description={'Cartones de brillantina de 40 sobre estilo tierra'} image={'../src/assets/img/Brillantina-tierra.jpg'} precios={[["Unidad",12],["Docena",10]]}></EditCardProduct>
+                    <EditCardProduct id={"2"} title={"Carton de brillantina Surtida"} description={'Cartones de brillantina de 40 sobre estilo surtida'} image={'../src/assets/img/Brillantina-surtida.jpg'} precios={[["Unidad",12],["Docena",10]]} ></EditCardProduct>
+                    <EditCardProduct id={"3"} title={"Carton de brillantina Tornasol"} description={'Cartones de brillantina de 40 sobre estilo tornasol'} image={'../src/assets/img/Brillantina-tornasol.jpg'} precios={[["Unidad",12],["Docena",10]]}></EditCardProduct>
+                </>
+            )}
+            {detail == 'Ojos' && (
+                <>
+                    <EditCardProduct id={"1"} title={"Carton ojitos pequeños"} description={'Cartones de ojos de 20 sobres tamaño pequeño'} image={'../src/assets/img/Ojos/OJITOS NO 1.jpg'} precios={[["Unidad",12],["Docena",10]]}></EditCardProduct>
+                    <EditCardProduct id={"2"} title={"Carton ojitos grandes"} description={'Cartones de ojos de 20 sobres tamaño grande'} image={'../src/assets/img/Ojos/OJITOS 2.jpg'} precios={[["Unidad",12],["Docena",10]]} ></EditCardProduct>
+                </>
+            )}
+            {detail == 'Añelina' && (
+                <>
+                    <EditCardProduct id={"1"} title={"Carton de añelina"} description={'Cartones de añelina de 40 sobres de colores'} image={'../src/assets/img/Colorante/AÑELINA.jpg'} precios={[["Unidad",50],["Docena",45]]}></EditCardProduct>
+                    <EditCardProduct id={"2"} title={"Carton de colorante vegetal"} description={'Carton de colorante vegetal de 40 sobres de colores'} image={'../src/assets/img/Colorante/COLORANTE VEGETAL.jpg'} precios={[["Unidad",70],["Docena",65]]} ></EditCardProduct>
+                </>
+            )}
+            {detail == 'Pulseras' && (
+                <>
+                    <EditCardProduct id={"1"} title={"Carton de añelina"} description={'Cartones de añelina de 40 sobres de colores'} image={'../src/assets/img/Colorante/AÑELINA.jpg'} precios={[["Unidad",50],["Docena",45]]}></EditCardProduct>
+                    <EditCardProduct id={"2"} title={"Carton de colorante vegetal"} description={'Carton de colorante vegetal de 40 sobres de colores'} image={'../src/assets/img/Colorante/COLORANTE VEGETAL.jpg'} precios={[["Unidad",70],["Docena",65]]} ></EditCardProduct>
+                </>
+            )}
+            {detail == 'Flores' && (
+                <>
+                    <EditCardProduct id={"1"} title={"Carton de añelina"} description={'Cartones de añelina de 40 sobres de colores'} image={'../src/assets/img/Colorante/AÑELINA.jpg'} precios={[["Unidad",50],["Docena",45]]}></EditCardProduct>
+                    <EditCardProduct id={"2"} title={"Carton de colorante vegetal"} description={'Carton de colorante vegetal de 40 sobres de colores'} image={'../src/assets/img/Colorante/COLORANTE VEGETAL.jpg'} precios={[["Unidad",70],["Docena",65]]} ></EditCardProduct>
+                </>
+            )}
         </div>
-    )
+    );
 };
 
-EditarProds.propTypes = {
-    id: Proptypes.string.isRequired,
-    title: Proptypes.string.isRequired,
-    content: Proptypes.string.isRequired,
-    image: Proptypes.string.isRequired,
-    precios: Proptypes.array.isRequired,
-    styleCard: Proptypes.object,
-    styleImage: Proptypes.object
-}
-
-export default EditarProds
+export default EditarProd;

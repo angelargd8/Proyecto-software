@@ -11,7 +11,7 @@ function EditCateg() {
 
   // Ir al apartado de edición de productos 
   const info = (title, cardInfo) => {
-    navigate(`/detalles/${title}`, { state: { cardInfo } });
+    navigate(`/editarProductos/${title}`, { state: { cardInfo } });
   };
 
   // Eliminar categoría
