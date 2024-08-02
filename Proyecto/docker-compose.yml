@@ -9,10 +9,6 @@ services:
       DB_HOST: postgres
       DB_USER: ecomers_user
       DB_PASS: ecomers_password
-      # MYSQL_ROOT_PASSWORD: root_password
-      # MYSQL_USER: blog_user
-      # MYSQL_PASSWORD: blog_password
-      # MYSQL_DATABASE: blog_zelda
     volumes:
       - "postgres-data:/var/lib/postgresql/data"
   api:
