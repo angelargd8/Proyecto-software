@@ -1,9 +1,9 @@
 import './login.css'
 import { useNavigate } from 'react-router-dom';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import GoogleAuthProvider from './GoogleAuthProvider';
 
 function Login(){
-    const clienteId ="30472634326-rbomjumikpc7llu20snb7bcvmmc4h87n.apps.googleusercontent.com"
     const navigate = useNavigate();
 
     const handleHome = () => {
@@ -11,12 +11,10 @@ function Login(){
     }
 
     const responseGoogle = (response) => {
-      //console.log(response);
       const credential = parseJwt(response.credential)
       
       if (response && credential) {
         const { email } = credential;
-        //console.log(email);
         navigate("/home");
         //para que asi pueda cerrar sesion 
         localStorage.setItem('googleUser', email);
@@ -149,9 +147,10 @@ function Login(){
 
     return (
         <>
+        <GoogleAuthProvider>
         <div className="login body">
           <div className="goBack">
-              <button className="goBack-btn" onClick={handleHome}> &lt; regresar</button>
+              <button className="goBack-btn" onClick={handleHome}> &lt; </button>
             </div>
           <div className="contenedor">
               <div className='imagen'></div>
@@ -167,24 +166,18 @@ function Login(){
                       </button>
                     </div>
                     <div className="googleAuth">
-                      <GoogleOAuthProvider clientId={clienteId}>
-                        
                             <GoogleLogin
-                              clientId={clienteId}
                               buttonText="Iniciar sesión con Google"
                               onSuccess={responseGoogle}
                               onFailure={responseGoogle}
                               cookiePolicy={'single_host_origin'}
                             ></GoogleLogin>
-                        
-                      </GoogleOAuthProvider>   
                     </div>         
               </div>
-              
-              
           </div>
           
         </div>
+        </GoogleAuthProvider>
         </>
       )
 }

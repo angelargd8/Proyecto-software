@@ -7,4 +7,9 @@ export default defineConfig({
   server: {
     host: true,
   },
+  test :{
+    globals: true, 
+    environment: 'happy-dom', 
+    setupFiles:  './src/setupTest.js',
+  },
 });
