@@ -1,4 +1,4 @@
-const { pool } = require("../api/connection");
+const { pool } = require("./connection");
 
 async function getAllUser() {
   try {

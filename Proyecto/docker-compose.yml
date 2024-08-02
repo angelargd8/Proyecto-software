@@ -4,7 +4,7 @@ services:
   postgres:
     build: ./BACKEND/DB
     ports:
-      - "33065:3306"
+      - "33065:5432"
     environment:
       DB_HOST: postgres
       DB_USER: ecomers_user
@@ -14,13 +14,20 @@ services:
       # MYSQL_PASSWORD: blog_password
       # MYSQL_DATABASE: blog_zelda
     volumes:
-      - "mysql-data:/var/lib/mysql"
+      - "postgres-data:/var/lib/postgresql/data"
   api:
     build: ./BACKEND/api
     ports:
-      - "3005:3005"
+      - "3005:4000"
     depends_on:
-      - mysql
+      - postgres
+  frontend:
+    build: ./FRONTEND
+    ports:
+      - "8000:80"
+    depends_on:
+      - api
+      - postgres
 
 volumes:
   postgres-data:

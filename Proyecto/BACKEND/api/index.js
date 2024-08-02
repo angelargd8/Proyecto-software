@@ -18,7 +18,7 @@ const {
   setCategory,
   setCategoryItem,
   getItemsPerCategory,
-} = require("../api/db");
+} = require("./db");
 
 const typeDefs = gql`
   type Roles {
