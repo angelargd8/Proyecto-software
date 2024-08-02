@@ -108,6 +108,7 @@ const typeDefs = gql`
       nombre: String!
       appelido: String
       password: String!
+      rol: Int!
     ): UserValidationResult
     addNewItem(
       name: String!

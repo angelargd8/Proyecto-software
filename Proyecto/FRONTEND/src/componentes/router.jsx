@@ -22,6 +22,7 @@ function AppRouter(){
             <Route path="/agregarProducto" element={<AgregarProducto/>} />
             <Route path="/editarCategorias" element={<EditarCateg/>} />
             <Route path='/detalles/:detail' element={<Products />} />
+            <Route path='/editarProductos' element={<EditarProds/>}/>
         </Routes>
     )
     

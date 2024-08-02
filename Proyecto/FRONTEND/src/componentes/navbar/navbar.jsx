@@ -11,6 +11,8 @@ function Nabvar(){
     const [searchItem, setSearchItem] = useState('')
     const googleUser = localStorage.getItem('googleUser')
 
+    console.log(userRol);
+
     useEffect(() => {
         const handleScroll = () => {
             var navbar = document.getElementById('navbar');
@@ -69,6 +71,8 @@ function Nabvar(){
         navigate("/signup");
       };
 
+   
+
     const handleAddProduct = () => {
         navigate("/editarCategorias")
     }
@@ -104,8 +108,7 @@ function Nabvar(){
                     </li>
 
                     
-                    
-                    {userRol === 'admin' && (
+                    {userRol === 'Admin' && (
                     <div className="admin-div">
                         <li className="nav-item">
                             <a className="nav-text" href="/editarCategorias"  onClick={handleAddProduct}>Editar Productos</a>
@@ -131,11 +134,12 @@ function Nabvar(){
                         </li>
                     )
                 }
-                {userRol === 'admin' && (
+                {userRol === 'Admin' && (
                     <div className="admin-div">
                         <li className="nav-item">
                             <button type="button" className="boton-admin"  onClick={handleSignup}>registrar</button>
                         </li>
+                      
                         <li className="nav-item">
                             <button type="button" className="boton-admin"  onClick={handleLogOut}>Cerrar sesión</button>
                         </li>

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const EditarProds = ({ id, title, content, image, precios, styleCard, styleImage }) => {
     const [editTitle, setEditTitle] = useState(title)
     const [editContent, setEditContent] = useState(content)
-    const [editImage, setEditImage] = useState(image)
+    const [editImage] = useState(image)
     const [editPrecios, setEditPrecios] = useState(precios)
     const navigate = useNavigate()
 

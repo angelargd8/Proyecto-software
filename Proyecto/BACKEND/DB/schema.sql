@@ -123,5 +123,5 @@ alter table categoria_promociones add constraint categoria_promocionesfkpromocio
 
 insert into roles (id_rol, nombre_rol) values (1, 'Admin'), (2, 'User')
 
---INSERT INTO USUARIOS (email, nombre, apellido, password, id_rol) 
---values('aguilar@gmail.com','Francis','Aguilar','123',2),('francis@gmail.com','Francis','Aguilar','123',1)
+INSERT INTO USUARIOS (email, nombre, apellido, password, id_rol) 
+values('aguilar@gmail.com','Francis','Aguilar','123',2),('francis@gmail.com','Francis','Aguilar','123',1)
