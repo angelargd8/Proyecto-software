@@ -2,6 +2,7 @@ import './pago.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { useNavigate } from 'react-router-dom';
+import Carrusel from './carrusel';  
 
 
 function Pago(){
@@ -25,13 +26,17 @@ function Pago(){
                 <div className="up">
                     <div className="regresar">
                         <div className="regresarbtn" onClick={() => handleRegresar()}> &lt; </div>
-                    </div>
+                    </div>  
                     <div className='header'>
                         <div className="tituloDeskPago">
                         My Cart
                         </div>
                         <div className="tituloMovilPago">
                         Detalles de Pedido
+                        </div>
+                        <div className="midHeader"></div>
+                        <div className="logoBox">
+                            <img className="logotipo" src="../src/assets/img/logo.png" alt="" width="60" height="70"  />
                         </div>
                     </div>
                     <div className="opciones">
@@ -45,43 +50,48 @@ function Pago(){
                 <div className="MidyBotmPago">
                     <div className="columnPasosPagar">
                         <div className="pasos">
-                            <div className="nombrePaso " style={{backgroundColor: 'transparent', color: '#1B4965'}} onClick={() => handleRegresar()}> Direccion de Entrega </div>
+                            <div className="nombrePaso " style={{fontSize: '1vw', backgroundColor: 'transparent', color: '#1B4965'}} onClick={() => handleRegresar()}> Direccion</div>
                             <div className="separador">  -------------  </div>
-                            <div className="nombrePaso" > Forma de Pago</div>
+                            <div className="nombrePaso" style={{fontSize: '1vw', backgroundColor: '#1B4965', color: 'white'}}> Forma de Pago</div>
                             <div className="separador">  -------------  </div>
-                            <div className="nombrePaso" style={{backgroundColor: 'transparent', color: '#1B4965'}} onClick={() => handleConfirmPago()}> Ultimo Paso</div>
+                            <div className="nombrePaso" style={{fontSize: '1vw', backgroundColor: 'transparent', color: '#1B4965'}} onClick={() => handleConfirmPago()}> Ultimo Paso</div>
                         </div>
                         <div className="relleno"></div>
                     </div>
                     <div className='middle'>
                         <div className="ParteVenta">
-                            <h5 style={{position: 'absolute', bottom: '80%'}}> Detalles de Entrega</h5>
+                            <h5 style={{position: 'absolute', top: '14%'}}> Detalles de Entrega</h5>
                             <div className="ubicacion"> 
                                 <div className="fotoubi"></div>
                                 <div className="nombreUbi">Universidad del Valle de Guatemala</div>
                             </div>
+                            <div className="divisionLine"></div>
                             <div className="receptor">
                                 <div className="fotoRec"></div>
                                 <div className="nombreRec">Kimberly Daniela Morales Ortega</div>
                             </div>
                         </div>
                         <div className="PartePago">
-                            <h5 style={{position: 'absolute', bottom: '52%'}}> Metodos de Pago</h5>
+                            <h5 style={{position: 'absolute', bottom: '57%'}}> Metodos de Pago</h5>
                             <div className="ubicacion"> 
                                 <div className="fotoTarj"></div>
                                 <div className="nombreUbi">Tarjeta de Credito/Debito</div>
                             </div>
+                            <div className="divisionLine" style={{height: '1.8%'}}></div>
                             <div className="receptor">
                                 <div className="fotoEfct"></div>
                                 <div className="nombreRec">Efectivo</div>
                             </div>                            
                         </div>
                         <div className="ParteExtras">
-                            Extras
+                            <h5 style={{position: 'absolute', bottom: '32%'}}>Extras</h5>
+                            <div className="carruselExtra">
+                                <Carrusel></Carrusel>
+                            </div>
                         </div>
                     </div>
                     <div className="bottom">
-                        <img className="logotipo" src="../src/assets/img/logo.png" style={{ width: 60, height: 70, marginLeft: '1%'}}  />
+                        <img className="logotipo" src="../src/assets/img/logo.png" style={{ width: 60, height: 70, marginLeft: '1%', marginRight: '2%'}}  />
                         Picolin 
                     </div>
                 </div>

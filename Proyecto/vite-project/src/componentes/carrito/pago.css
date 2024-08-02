@@ -38,16 +38,32 @@
 
 .tituloDeskPago{
     /* Titulo que esta dentro de header */
+    height: 100%;
+    width: 10%;
     font-size: xx-large;
     text-align: center;
     align-content: center;
-    /* margin-top: -30px; */
-    /* margin-left: 5%; */
 }
 
 .tituloMovilPago {
     display: none;
 }
+
+.midHeader {
+    height: 100%;
+    width: 70%;
+    /* background-color: purple; */
+}
+
+.logoBox {
+    display: flex;
+    height: 100%;
+    width: 20%;
+    /* background-color: aqua; */
+    justify-content: flex-end;
+    align-items: center;
+}
+
 .regresar {
     /* Espacio para poner boton */
     display: flex;
@@ -91,7 +107,6 @@
 }
 
 .middle {
-    /* Medio, aqui esta totales y carrito */
     display: flex;
     background-color: #F9F6EE;
     flex-direction: row;
@@ -146,15 +161,16 @@
 }
 
 .bottom {
-    /* Footer, aqui no hay nada aun y en movil no se muestra */
+    /* Footer, en movil no se muestra */
     display: flex;
     background-color: #1B4965;
     color: white;
     height: 10%;
     width: 100%;
-    justify-content: left;
-    align-content: center;
+    justify-content: flex-start;
     align-items: center;
+    text-align: left;
+    font-size: 1.5vw;
 }
 
 .pagobtn {
@@ -399,33 +415,6 @@
 
 }
 
-.carrito {
-    /* Div donde salen todos los productos o "El carrito esta vacio" */
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    /* border: 1px solid grey; */
-    /* border-radius: 20px; */
-    color: #1B4965;
-    height: 80%;
-    width: 50%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scrollbar-width: 0;
-    margin-top: 3%;
-    margin-right: 5%;
-    margin-bottom: 15%;
-    margin-left: 5%;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    box-shadow: 1px 1px 10px #a2a19b;
-}
-
-.carrito::-webkit-scrollbar {
-    /* Oucltar la barra */
-    display: none;
-}
-
 /* #contTitulo {
     display: flex;
     height: 100%;
@@ -482,42 +471,50 @@
 
 /* Todo pero en forma de movil para que sea responsive */
 @media only screen and (max-width: 768px) {
+
+    .midHeader {
+        display: none;
+    }
+    
+    .logoBox {
+        display: none;
+    }
+
     .tituloDeskPago {
         display: none;
     }
 
     .tituloMovilPago {
         display: flex;
-        font-size: 5vw;
+        font-size: 20px;
         font-weight: bold;
+    }
+
+    .middle {
+        /* justify-content: center; */
     }
 
     .ParteVenta {
         display: flex;
         flex-direction: column;
-        justify-content: left;
-        align-items: left;
-        text-align: left;
-        height: 20%;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        min-height: 20%;
         width: 100%;
-        padding: 1%;
+        padding: 5%;
+        margin-top: 12%;
         box-shadow: 1px 1px 5px #1B4965;
-        margin: 1%;
-        margin-bottom: 15%;
-        margin-top: 25%;
+        background-color: #F9F6EE;
     }
 
     .ubicacion {
         display: flex;
-        justify-content: left;
+        justify-content: center;
         align-items: center;
+        align-content: center;
         height: 25%;
         width: 85%;
-        margin-left: 10%;
-        margin-top: 10%;
-        border-bottom: 1px solid #1B4965;
-        padding-bottom: 15px;
-
     }
 
     .fotoubi {
@@ -540,7 +537,12 @@
         align-items: center;
         align-content: center;
         font-size: 3.5vw;
-        margin-left: 2%;
+    }
+
+    .divisionLine {
+        width: 80%;
+        height: 1.5%;
+        background-color:#1B4965
     }
 
     .receptor {
@@ -548,13 +550,9 @@
         justify-content: center;
         align-items: center;
         align-content: center;
-        height: 24%;
+        height: 25%;
         width: 85%;
-        margin-left: 10%;
-        margin-top: 5%;
-        padding-bottom: 15px;
-        /* box-shadow: 1px 1px 2px #1B4965; */
-        /* border-radius: 20px; */
+        /* background-color: red; */
     }
 
     .fotoRec {
@@ -583,11 +581,14 @@
     .PartePago {
         display: flex;
         flex-direction: column;
-        height: 20%;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 20%;
         width: 100%;
-        padding: 1%;
-        margin-top: 7%;
+        padding: 5%;
+        margin-top: 15%;
         box-shadow: 1px 1px 5px #1B4965;
+        background-color: #F9F6EE;
     }
 
     .fotoTarj {
@@ -596,7 +597,7 @@
         height: 100%;
         background-image: url('../../assets/img/FotoTarjeta.jpg');
         background-position: center;
-        background-size: cover;
+        background-size: contain;
         background-repeat: no-repeat;
         border-radius: 20px;
     }
@@ -612,6 +613,80 @@
         border-radius: 20px;
     }
 
+    .ParteExtras {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-items: center;
+        height: 20%;
+        width: 100%;
+        margin-top: 15%;
+        /* box-shadow: 1px 1px 5px #1B4965; */
+        /* background-color: #F9F6EE; */
+    }
+
+    .carruselExtra {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        transform-style: preserve-3d;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-bottom: 0;
+    }
+
+    .card {
+        position: absolute;
+        width: 60%;
+        height: 100%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transition: transform .4s ease;
+        cursor: pointer;
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 20px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    #item-1:checked ~ .cards #song-3, #item-2:checked ~ .cards #song-1, #item-3:checked ~ .cards #song-2 {
+        transform: translatex(-40%) scale(.8);
+        opacity: .4;
+        z-index: 0;
+    }
+      
+    #item-1:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-1 {
+        transform: translatex(40%) scale(.8);
+        opacity: .4;
+        z-index: 0;
+    }
+      
+    #item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3 {
+        transform: translatex(0) scale(1);
+        opacity: 1;
+        z-index: 1;
+        
+        img {
+            box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+        }
+    }
 
     .navbar-toggler{
         margin-right: 25%;
@@ -935,22 +1010,6 @@
         overflow-y: hidden;
         overflow-x: hidden;
     }
-    
-    .carrito {
-        display: flex;
-        flex-direction: column;
-        color: #1B4965;
-        height: 100%;
-        width: 100%;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        padding-top: 3%;
-        margin: 0;
-        box-shadow: 0px 0px 0px #a2a19b;
-
-
-    }
-    
     #contTitulo {
         display: flex;
         height: 100%;

@@ -38,8 +38,6 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    /* box-shadow: 1px 1px 10px #1B4965; */
-
 }
 
 
@@ -65,7 +63,6 @@
     height: 100%;
     width: 10%;
     font-size: xx-large;
-    /* background-color: red; */
     text-align: center;
     align-content: center;
 }
@@ -403,7 +400,7 @@
     /* Place holder que dice Codigo promocional */
     display: flex;
     color: #1B4965;
-    font-size: 1vw;
+    font-size: 20px;
     align-items: center;
     align-content: center;
     justify-content: center;
@@ -785,7 +782,7 @@
     
     }
     
-    .codigo {
+    .codigoC {
         display: flex;
         width: 100%;
         min-height: 15%;
@@ -799,15 +796,16 @@
         overflow: hidden;
     }
     
-    .codigo::placeholder {
+    .codigoC::placeholder {
         display: flex;
         color: #1B4965;
-        font-size: small;
         align-items: center;
+        align-content: center;
         justify-content: center;
         text-align: center;
         font-family: 'Gill Sans', 'Gill Sans MT',  sans-serif;
-        
+        font-size: 20px;
+        font-weight: bolder;
     }
     
     .rowDatos {
