@@ -79,7 +79,7 @@ function Nabvar(){
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             
         <a className="navbar-brand" href="/">
-            <img className="logotipo" src="../src/assets/img/logo.png" alt="" width="60" height="70" />
+            <img className="logotipo" src="../src/assets/img/logo.png" alt=""  />
         </a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block', marginBottom: '5px'}}></span>

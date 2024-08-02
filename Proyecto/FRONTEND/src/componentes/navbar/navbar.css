@@ -1,5 +1,5 @@
 .nabvar-body{
-    background-color: #1B4965;
+    background-color: #1b1671;
     font-size: 20px;
     font-weight: 500;
     position: fixed;
@@ -32,6 +32,8 @@
 .logotipo{
     margin-left: 15%;
     margin-right: 15%;
+    height: 70px;
+    
 }
 
 #navbar.scrolled{

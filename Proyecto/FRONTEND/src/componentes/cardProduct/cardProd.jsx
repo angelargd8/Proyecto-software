@@ -3,6 +3,7 @@ import Proptypes from 'prop-types'
 import { useState } from 'react'
 import { useCarrito } from '../carrito/carritoContext'
 
+// eslint-disable-next-line react/prop-types
 const CardProduct = ({id, title, description, image, precios, styleCard, styleImage}) => {
 
     const [quantity, setQuantity] = useState(0)
@@ -21,6 +22,7 @@ const CardProduct = ({id, title, description, image, precios, styleCard, styleIm
                     return
                 }
             }
+            // eslint-disable-next-line no-fallthrough
             default:
                 return
         }
