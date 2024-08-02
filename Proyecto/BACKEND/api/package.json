@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "keywords": [],
-  "author": {"name": "GRUPO 3"},
+  "author": {
+    "name": "GRUPO 3"
+  },
   "license": "ISC",
   "scripts": {
-    "start": "nodemon node index.js"
+    "start": "npm install & nodemon node index.js"
   },
   "dependencies": {
     "apollo-server": "^3.13.0",
