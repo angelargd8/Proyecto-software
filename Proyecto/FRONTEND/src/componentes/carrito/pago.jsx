@@ -36,7 +36,7 @@ function Pago(){
                         </div>
                         <div className="midHeader"></div>
                         <div className="logoBox">
-                            <img className="logotipo" src="../src/assets/img/logo.png" alt="" width="60" height="70"/>
+                            <img  src="../src/assets/img/logo.png" style={{width: 60, height: 70, marginLeft: '1%', marginRight: '2%' }} />
                         </div>
                     </div>
                     <div className="opciones">
@@ -89,6 +89,7 @@ function Pago(){
                                 <Carrusel></Carrusel>
                             </div>
                         </div>
+                        <div className="BTNsiguiente" onClick={() => handleConfirmPago()}> SIGUIENTE </div>
                     </div>
                     <div className="bottom">
                         <img className="logotipo" src="../src/assets/img/logo.png" style={{ width: 60, height: 70, marginLeft: '1%', marginRight: '2%'}}  />
