@@ -21,6 +21,8 @@ services:
     build: ./FRONTEND
     ports:
       - "8000:5173"
+    environment:
+      VITE_APIPORT: "http://localhost:3005/"
     depends_on:
       - api
       - postgres
