@@ -17,10 +17,6 @@
   padding-top: 5%;
 }
 
-.blue {
-  background-color: #428aa6;
-}
-
 input[type=radio] {
   display: none;
 }
@@ -55,6 +51,12 @@ img {
   border-radius: 10px;
   object-fit: cover;
 }
+
+/* #item-1:checked ~ .cards #song-4, #item-2:checked ~ .cards #song-4, #item-3:checked ~ .cards #song-2 {
+  transform: translatex(-40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+} */
 
 #item-1:checked ~ .cards #song-3, #item-2:checked ~ .cards #song-1, #item-3:checked ~ .cards #song-2 {
   transform: translatex(-40%) scale(.8);

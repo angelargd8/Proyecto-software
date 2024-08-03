@@ -36,7 +36,7 @@ function Pago(){
                         </div>
                         <div className="midHeader"></div>
                         <div className="logoBox">
-                            <img className="logotipo" src="../src/assets/img/logo.png" alt="" width="60" height="70"  />
+                            <img className="logotipo" src="../src/assets/img/logo.png" alt="" width="60" height="70"/>
                         </div>
                     </div>
                     <div className="opciones">
@@ -60,7 +60,7 @@ function Pago(){
                     </div>
                     <div className='middle'>
                         <div className="ParteVenta">
-                            <h5 style={{position: 'absolute', top: '14%'}}> Detalles de Entrega</h5>
+                            <h5 style={{position: 'absolute', top: '12%'}}> Detalles de Entrega</h5>
                             <div className="ubicacion"> 
                                 <div className="fotoubi"></div>
                                 <div className="nombreUbi">Universidad del Valle de Guatemala</div>
@@ -72,7 +72,7 @@ function Pago(){
                             </div>
                         </div>
                         <div className="PartePago">
-                            <h5 style={{position: 'absolute', bottom: '57%'}}> Metodos de Pago</h5>
+                            <h5 style={{position: 'absolute', bottom: '60%'}}> Metodos de Pago</h5>
                             <div className="ubicacion"> 
                                 <div className="fotoTarj"></div>
                                 <div className="nombreUbi">Tarjeta de Credito/Debito</div>
@@ -84,7 +84,7 @@ function Pago(){
                             </div>                            
                         </div>
                         <div className="ParteExtras">
-                            <h5 style={{position: 'absolute', bottom: '32%'}}>Extras</h5>
+                            <h5 style={{position: 'absolute', bottom: '37%'}}>Extras</h5>
                             <div className="carruselExtra">
                                 <Carrusel></Carrusel>
                             </div>

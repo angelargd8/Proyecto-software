@@ -39,7 +39,7 @@ function Carrito(){
     const envio = 15.00 //Temporal
 
     const calcularPrecioTotal = (cantidad, precios) => {
-        // console.log(precios)
+        console.log('HOLAAA',precios)
         const precioDocena = precios[1][1] * 12
         const precioUnitario = precios[0][1]
 
