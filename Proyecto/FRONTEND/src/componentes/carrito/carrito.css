@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: center;
 }
+
 /* --------------------------------------------Header----------------------------------------------------- */
 
 .up {
@@ -23,9 +24,6 @@
     width: 100%;
     box-shadow: 1px 1px 10px #a2a19b;
     margin-bottom: 0.5%;
-
-
-
 }
 
 .header {

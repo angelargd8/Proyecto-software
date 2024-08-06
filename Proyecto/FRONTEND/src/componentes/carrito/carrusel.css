@@ -24,8 +24,8 @@ input[type=radio] {
 .card {
     display: flex;
     position: absolute;
-    width: 40%;
-    height: 150%;
+    width: 30%;
+    height: 115%;
     left: 0;
     right: 0;
     transition: transform .4s ease;
