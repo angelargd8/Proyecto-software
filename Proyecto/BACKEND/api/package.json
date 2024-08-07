@@ -15,8 +15,12 @@
     "apollo-server": "^3.13.0",
     "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
-    "graphql": "^16.8.1",
     "nodemon": "^3.1.0",
     "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "apollo-server-testing": "^2.25.3",
+    "graphql": "^15.9.0",
+    "jest": "^29.7.0"
   }
 }

@@ -1,5 +1,5 @@
 const { ApolloServer, gql } = require("apollo-server");
-
+const { createTestClient } = require("apollo-server-testing");
 const {
   getAllUser,
   getRol,
@@ -18,7 +18,7 @@ const {
   setCategory,
   setCategoryItem,
   getItemsPerCategory,
-} = require("./db");
+} = require("../db");
 
 const typeDefs = gql`
   type Roles {
@@ -272,4 +272,78 @@ const server = new ApolloServer({
   resolvers,
 });
 
-server.listen().then(({ url }) => console.log(`server redy at ${url}`));
+const { query, mutate } = createTestClient(server);
+
+describe("GraphQL Server", () => {
+  it("fetches all users", async () => {
+    const GET_ALL_USERS = gql`
+      query {
+        allUsers {
+          email
+          name
+        }
+      }
+    `;
+
+    const res = await query({ query: GET_ALL_USERS });
+    expect(res.data.allUsers).not.toBeNull();
+    expect(res.data.allUsers).not.toBe([]);
+  });
+
+  it("validates user credentials", async () => {
+    const VALIDATE_CREDENTIALS = gql`
+      query validateCredentials($email: String!, $password: String!) {
+        validateCredentials(email: $email, password: $password) {
+          email
+          name
+        }
+      }
+    `;
+
+    const variables = { email: "aguilar@gmail.com", password: "123" };
+    const res = await query({ query: VALIDATE_CREDENTIALS, variables });
+    validationResult = res.data.validateCredentials;
+
+    expect(validationResult).not.toBeNull();
+    expect(validationResult.email).toBe("aguilar@gmail.com");
+  });
+
+  it("adds a new user", async () => {
+    const ADD_NEW_USER = gql`
+      mutation addnewUser(
+        $email: String!
+        $nombre: String!
+        $appelido: String
+        $password: String!
+        $rol: Int!
+      ) {
+        addnewUser(
+          email: $email
+          nombre: $nombre
+          appelido: $appelido
+          password: $password
+          rol: $rol
+        ) {
+          status
+          message
+          user {
+            email
+            name
+          }
+        }
+      }
+    `;
+
+    const variables = {
+      email: "newuser@example.com",
+      nombre: "New",
+      appelido: "User",
+      password: "password",
+      rol: 1,
+    };
+
+    const res = await mutate({ mutation: ADD_NEW_USER, variables });
+    console.log(res);
+    expect(res.data.addnewUser.status).toBe(true);
+  });
+});
