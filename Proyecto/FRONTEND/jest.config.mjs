@@ -5,6 +5,6 @@ export default {
     '^.+\\.jsx?$': 'babel-jest',
   },
   moduleNameMapper: {
-    '\\.(css|less)$': 'identity-obj-proxy',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
 };
