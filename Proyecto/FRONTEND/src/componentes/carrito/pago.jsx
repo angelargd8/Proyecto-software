@@ -6,10 +6,7 @@ import Carrusel from './carrusel';
 
 
 function Pago(){
-    
     const navigate = useNavigate();
-
-    
 
     const handleRegresar = () => {
         navigate("/carrito");
@@ -17,7 +14,7 @@ function Pago(){
     };
 
     const handleConfirmPago = () => {
-        navigate("/confirmPago")
+        navigate("/resumen")
     }
 
     return (
@@ -27,7 +24,7 @@ function Pago(){
                     <div className="regresar">
                         <div className="regresarbtn" onClick={() => handleRegresar()}> &lt; </div>
                     </div>  
-                    <div className='header'>
+                    <div className='headerPago'>
                         <div className="tituloDeskPago">
                         My Cart
                         </div>

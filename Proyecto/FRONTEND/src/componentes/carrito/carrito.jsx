@@ -39,7 +39,6 @@ function Carrito(){
     const envio = 15.00 //Temporal
 
     const calcularPrecioTotal = (cantidad, precios) => {
-        console.log('HOLAAA',precios)
         const precioDocena = precios[1][1] * 12
         const precioUnitario = precios[0][1]
 
@@ -137,7 +136,7 @@ function Carrito(){
                                     Q {Total.toFixed(2)}
                                 </div>
                             </div>
-                            <button className='pagobtn' onClick={handlePagar}> Pagar </button>
+                            <button className='pagobtn' onClick={handleConf}> Pagar </button>
                         </div>
                     </div>
                     <div className="Dbottom" style={{fontSize: '1.5vw'}}>

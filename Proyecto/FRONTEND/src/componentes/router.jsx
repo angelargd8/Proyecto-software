@@ -8,6 +8,7 @@ import EditarProds from './admin/editarProd.jsx';
 import EditarCateg from './admin/editarCateg.jsx';
 import Pago from './carrito/pago.jsx';
 import Products from './products/products.jsx';
+import Resumen from './carrito/resumen.jsx';
 
 function AppRouter(){
 
@@ -20,6 +21,7 @@ function AppRouter(){
             <Route path="/signup" element={<SingUp />} />
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/pago" element = {<Pago />}/>
+            <Route path="/resumen" element = {<Resumen />}/>
             <Route path="/" element={<Home />} />
             {console.log(userRol)}
             {
