@@ -11,7 +11,6 @@ function Carrito(){
 
     const handleRegresar = () => {
             navigate("/home");
-        
     };
 
     const cambioCant = (producto, nuevaCantidad) =>{
@@ -66,7 +65,7 @@ function Carrito(){
                     <div className="regresar">
                         <div className="regresarbtn" onClick={() => handleRegresar()}> &lt; </div>
                     </div>
-                    <div className='header'>
+                    <div className='CarritoHeader'>
                         <div className="titulo">
                         My Cart
                         </div>
@@ -136,7 +135,7 @@ function Carrito(){
                                     Q {Total.toFixed(2)}
                                 </div>
                             </div>
-                            <button className='pagobtn' onClick={handleConf}> Pagar </button>
+                            <button className='pagobtn' onClick={handlePagar}> Pagar </button>
                         </div>
                     </div>
                     <div className="Dbottom" style={{fontSize: '1.5vw'}}>

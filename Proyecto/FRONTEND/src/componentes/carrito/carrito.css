@@ -26,7 +26,7 @@
     margin-bottom: 0.5%;
 }
 
-.header {
+.CarritoHeader {
     /*lo que esta dentro de up*/
     display: flex;
     height: 100%;
@@ -543,7 +543,7 @@
         align-items: center;
         justify-content: center;
     }
-    .header {
+    .Carritoheader {
         display: flex;
         color: #1B4965;
         font-family:'Gill Sans', 'Gill Sans MT',  sans-serif;
