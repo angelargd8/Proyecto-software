@@ -335,7 +335,7 @@ describe("GraphQL Server", () => {
     `;
 
     const variables = {
-      email: "newuser@example.com",
+      email: "newauser@example.com",
       nombre: "New",
       appelido: "User",
       password: "password",
