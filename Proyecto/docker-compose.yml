@@ -22,7 +22,7 @@ services:
     ports:
       - "8000:5173"
     environment:
-      VITE_APIPORT: "http://localhost:3005/"
+      VITE_APIPORT: "http://5.161.104.98:3005/"
     depends_on:
       - api
       - postgres
