@@ -30,7 +30,8 @@
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-image: url(../../assets/img/wallpaper11.jpg);
+    background-image: url(../../assets/img/Cartulinas2.jpg);
+    object-fit: fill;
 }
 
 .login .formulario{
@@ -65,13 +66,14 @@
 }
 
 .login .goBack-btn{
-    /*background-color: #0513366b;*/
+    background-color: #051336;
     color: white;
     border: none;
     /*box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);*/
     transition: 0.5s ease-in;
     font-weight: 700!important;
     margin-left: 20px;
+    
 }
 
 .login .goBack-btn:hover{
