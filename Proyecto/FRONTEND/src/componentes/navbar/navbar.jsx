@@ -13,7 +13,6 @@ function Nabvar(){
     const googleUser = localStorage.getItem('googleUser')
     //search
     const [searchItem, setSearchItem] = useState('')
-    const [isVisible, setVisibility] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -81,9 +80,7 @@ function Nabvar(){
         }
     }
     
-    const toggleVisibility = () => {
-        setVisibility(!isVisible);
-    }
+
 
 
     return (
@@ -117,17 +114,13 @@ function Nabvar(){
                                         
                     
                     </ul>
-                    <div className="items-end">
                     
+                    <div className="items-end">
                     
                         {/* Busqueda */}
                         <form className="d-flex buscar" role="search" onSubmit={handleSearch}>
-                            
-                            <button type="submit" onClick={toggleVisibility} id='boton'>
-                                <img className="imagen-btn" src="./src/assets/img/buscar.png" alt="Buscar" />
-                            </button>
-                            {
-                                isVisible &&(
+
+                            <div className='input-container'>
                                 <input 
                                     className="form-control " 
                                     type="search" 
@@ -137,10 +130,14 @@ function Nabvar(){
                                     value={searchItem} 
                                     onChange={(e)=> setSearchItem(e.target.value)}
                                 />
-                                )
-                            }
+                                <button type="submit" id='boton-buscar'>
+                                    <img className="imagen-btn-search" src="./src/assets/img/buscar.png" alt="Buscar" />
+                                </button>
+                            </div>
+                                
+                                
                         </form>
-
+                        
                         {/* Carrito */}               
                         <button type="buton" onClick={handleCarrito} id='boton'>
                             <img className ='imagen-btn' src='./src/assets/img/carrito.png' id='carrito-img' href="/carrito" onClick={handleCarrito}/>
@@ -150,7 +147,7 @@ function Nabvar(){
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link boton" href="#" id="navbarDropdown boton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle botonUser" href="#" id="navbarDropdown boton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <button type="button" id="boton-user" >
                                             <img class="imagen-btn" src="./src/assets/img/user.png" alt="User" />
                                         </button>

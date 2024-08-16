@@ -29,7 +29,7 @@
 
 .buscar{
     margin-left: 5%;
-    max-width: 180%;
+    width: 100%;
 }
 
 
@@ -48,18 +48,45 @@
 }
 
 .items-end{
-    margin-left: 55%;
+    margin-left: 65%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-right: 4%;
-    padding-right: 0;
+    margin-right: -15%;
+    padding-right: 1%;
 }
 
+.input-container {
+    position: relative;
+    width: 100%;
+}
+#boton-buscar{
+    position: absolute;
+    left: 52%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    align-items: center; 
+    justify-content: center;
+    background-color: transparent ;
+  
+   
+}
 #search-input{
     align-items: center;
-    margin-top: 11%;
+    margin-top: 4%;
     font-size: small;
+    border: none;
+    padding-right: 10%;
+    border-radius: 10px;
+    background-color: #d8d8d8;
+}
+.botonUser{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #FFF;
 }
 #boton{
     position: relative;
@@ -73,6 +100,7 @@
     justify-content: center; 
     border: none;
     flex-grow: 0;
+    margin-right: 5%;
 }
 
 #boton-user{
@@ -84,7 +112,7 @@
     max-height: 50%;
     display: flex;
     align-items: center; 
-    justify-content: center; 
+    justify-content: right; 
     border: none;
     
 }
@@ -94,5 +122,14 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
+    flex-grow: 0;
+}
+
+
+.imagen-btn-search{
+    background-repeat: no-repeat;
+    object-fit: cover;
+    width: 250%;
+    height: 250%;
     flex-grow: 0;
 }
