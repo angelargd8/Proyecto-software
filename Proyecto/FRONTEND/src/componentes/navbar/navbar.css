@@ -1,24 +1,26 @@
 .nabvar-body{
-    background-color: #1b1671;
+    background-color: #1f3350;
     font-size: 20px;
-    font-weight: 500;
     position: fixed;
     top: 0;
-    width: 100%;
     left:0;
+    width: 100%;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between;
     padding: 5px;
     z-index: 2;
+    display: flex;
+    flex-grow: 0;
+}
+
+
+.nav-item{
+    padding-left: 5%;
 }
 
 .nav-text{
-    color: #FFF !important;
-    align-items: center;
-    text-align: center;
+    color: #d8d8d8 !important;
     white-space: nowrap;
-    margin-right: 10px;
 }
 
 .navbar-toggler-icon {
@@ -26,14 +28,14 @@
 }
 
 .buscar{
-    margin-left: 35%;
+    margin-left: 5%;
+    max-width: 180%;
 }
 
-.logotipo{
-    margin-left: 15%;
-    margin-right: 15%;
-    height: 70px;
-    
+
+.navbar-name{
+    color: #FFF;
+    justify-content: flex-start;
 }
 
 #navbar.scrolled{
@@ -41,39 +43,56 @@
 }
 
 .textos{
-  
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.boton-admin{
-    color: #1B4965;
-    padding: 0px;
-    background-color: #BEE9E8;
-    margin-left: 5px;
-    padding: 5px;
-    font-size: medium;
-}
-#carrito-img{
-    width: 15%;
-}
-
-.admin-div{
+.items-end{
+    margin-left: 55%;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    grid-template-columns: repeat(1, 1fr);
-    display: flex; 
-    flex-direction: row; 
-    margin-right: 1%;
+    margin-right: 4%;
+    padding-right: 0;
 }
 
-#buscar-boton{
+#search-input{
+    align-items: center;
+    margin-top: 11%;
+    font-size: small;
+}
+#boton{
+    position: relative;
     background-color: transparent;
-    padding: 5px;
-    font-size: medium;
-    margin-left: 5px;
+    padding: 20px;
+    margin-left: 5%;
+    max-width: 45%;
+    max-height: 45%;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    border: none;
+    flex-grow: 0;
 }
 
-#imagen-btn{
-    width: 20px;
+#boton-user{
+    position: relative;
+    background-color: transparent;
+    padding: 20px;
+    margin-left: 5%;
+    max-width: 50%;
+    max-height: 50%;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    border: none;
+    
+}
+
+.imagen-btn{
+    background-repeat: no-repeat;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    flex-grow: 0;
 }

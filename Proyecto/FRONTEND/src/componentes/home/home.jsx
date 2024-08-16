@@ -74,8 +74,8 @@ function Home() {
   return (
     <div className="container-home">
       <div className="container-categorias">
-        <h1>Categorias</h1>
-        <p>Bienvenido a la página de inicio</p>
+        <h1 className="categorias">Categorias</h1>
+        <p className="bienvenida">Bienvenido a la página de inicio</p>
         <div id="contenido-cartas">
           {listadoCards.map((elemento) => (
             <div key={elemento.id} className="category-card">
