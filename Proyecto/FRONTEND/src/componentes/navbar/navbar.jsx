@@ -45,6 +45,9 @@ function Nabvar(){
     const handleCarrito = () => {
         navigate("/carrito")
     }
+    const handleContact = () => {
+        navigate("/contactanos")
+    }
 
     const handleLogOutGoogle = () => {
         localStorage.removeItem('googleUser');
@@ -61,7 +64,7 @@ function Nabvar(){
 
     const handleSignup = () => {
         navigate("/signup");
-      };
+    };
 
    
 
@@ -110,6 +113,9 @@ function Nabvar(){
                         {/* Inicio */}
                         <li className="nav-item">
                             <a className="nav-text" aria-current="page" href="/home" onClick={handleHome}>Inicio</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-text" aria-current="page" href="/contact" onClick={handleContact}>Contáctanos</a>
                         </li>
                                         
                     

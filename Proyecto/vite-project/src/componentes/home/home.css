@@ -1,0 +1,23 @@
+.container-home { 
+    padding-top: 120px;
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#contenido-cartas{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.category-card{
+    margin: 10px;
+    display: flex;
+    min-width: 300px;
+    align-items: center;
+    justify-content: center;
+}

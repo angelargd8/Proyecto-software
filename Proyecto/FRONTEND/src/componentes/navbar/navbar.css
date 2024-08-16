@@ -15,7 +15,7 @@
 
 
 .nav-item{
-    padding-left: 5%;
+    padding-left: 10%;
 }
 
 .nav-text{
@@ -48,7 +48,7 @@
 }
 
 .items-end{
-    margin-left: 65%;
+    margin-left: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -73,7 +73,7 @@
    
 }
 #search-input{
-    align-items: center;
+    align-items: left;
     margin-top: 4%;
     font-size: small;
     border: none;
@@ -87,6 +87,7 @@
     flex-direction: row;
     align-items: center;
     color: #FFF;
+
 }
 #boton{
     position: relative;
@@ -107,9 +108,9 @@
     position: relative;
     background-color: transparent;
     padding: 20px;
-    margin-left: 5%;
-    max-width: 50%;
-    max-height: 50%;
+    margin-left: 1%;
+    max-width: 45%;
+    max-height: 45%;
     display: flex;
     align-items: center; 
     justify-content: right; 
@@ -129,7 +130,8 @@
 .imagen-btn-search{
     background-repeat: no-repeat;
     object-fit: cover;
-    width: 250%;
-    height: 250%;
+    width: 80%;
+    height: 80%;
     flex-grow: 0;
+    margin-left: 45%;
 }
