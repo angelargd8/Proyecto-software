@@ -37,26 +37,26 @@ function Carrito(){
 
     const envio = 15.00 //Temporal
 
-    const calcularPrecioTotal = (cantidad, precios) => {
-        const precioDocena = precios[1][1] * 12
-        const precioUnitario = precios[0][1]
+    // const calcularPrecioTotal = (cantidad, precios) => {
+    //     const precioDocena = precios[1][1] * 12
+    //     const precioUnitario = precios[0][1]
 
-        console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
-        if (cantidad >= 12) {
-            const docenas = Math.floor(cantidad / 12)
-            const extras = cantidad % 12
-            return (docenas * precioDocena) + (extras * precioUnitario)
-        } else {
-            return cantidad * precioUnitario
-        }
-    }
+    //     console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
+    //     if (cantidad >= 12) {
+    //         const docenas = Math.floor(cantidad / 12)
+    //         const extras = cantidad % 12
+    //         return (docenas * precioDocena) + (extras * precioUnitario)
+    //     } else {
+    //         return cantidad * precioUnitario
+    //     }
+    // }
 
-    const Subtotal = carrito.reduce((total, producto) => {
-        const precioFinal = calcularPrecioTotal(producto.quantity, producto.precios)
-        return total + precioFinal
-    }, 0)
+    // const Subtotal = carrito.reduce((total, producto) => {
+    //     const precioFinal = calcularPrecioTotal(producto.quantity, producto.precios)
+    //     return total + precioFinal
+    // }, 0)
 
-    const Total = Subtotal + envio;
+    // const Total = Subtotal + envio;
 
     return (
         <>
@@ -130,9 +130,9 @@ function Carrito(){
                                     Total
                                 </div>
                                 <div className="ColumnNo">
-                                    Q {Subtotal.toFixed(2)}<br/>
+                                    Q 0<br/>
                                     Q {envio.toFixed(2)} <br />                            
-                                    Q {Total.toFixed(2)}
+                                    Q 15.00
                                 </div>
                             </div>
                             <button className='pagobtn' onClick={handlePagar}> Pagar </button>
