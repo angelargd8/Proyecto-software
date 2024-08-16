@@ -1,4 +1,4 @@
-import './AgregarProd.css'
+import './agregarProd.css'
 function AgregarProducto(){
 
     return(
