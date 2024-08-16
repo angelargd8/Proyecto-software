@@ -1,5 +1,4 @@
-version: "1"
-name: "ecommerce"
+version: "2.2"
 services:
   postgres:
     build: ./BACKEND/DB
@@ -17,6 +16,8 @@ services:
       - "3005:4000"
     depends_on:
       - postgres
+    volumes:
+      - "uploads:/app/uploads"
   frontend:
     build: ./FRONTEND
     ports:
@@ -29,4 +30,6 @@ services:
 
 volumes:
   postgres-data:
+    driver: local
+  uploads:
     driver: local
