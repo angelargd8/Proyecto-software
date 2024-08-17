@@ -1,0 +1,107 @@
+.cardProducto {
+    width:90%;
+    background-color: rgb(205, 255, 238);
+    height:80%;
+    margin-top:1%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.containerImage {
+    width: 20%;
+    height: 90%;
+    margin-left: 2%;
+}
+
+.imageProduct {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.title {
+    width:100%; 
+    font-size:25; 
+    display:flex; 
+    flex-direction:column;
+    text-align:initial;
+    font-weight:bold;
+    font-family: "Gill Sans", sans-serif;
+}
+
+.containerInfo{
+    width:60%;
+    height:90%;
+    display:flex;
+    flex-direction:column;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.containerActions {
+    height: 90%;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.button {
+    width: 30%;
+    border-radius: 10%;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #1B4965;
+    color: white;
+    justify-content: center;
+    margin-right: 5%;
+    transition: opacity 0.3s ease;
+}
+
+.button:active {
+    opacity: 0.5;
+}
+
+input[type=number] {
+    appearance: textfield;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.addToCartContainer {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.addToCartButton {
+    width: 90%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #1B4965;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: center;
+}
+
+.addToCartButton:hover {
+    background-color: #12324a;
+}

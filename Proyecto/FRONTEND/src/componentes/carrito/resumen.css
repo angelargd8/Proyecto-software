@@ -37,7 +37,7 @@
     width: 50%;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 20px;
     padding-top: 3%;
 }
 
@@ -52,8 +52,8 @@
 .body {
     display: flex;
     flex-direction: column;
-    width: 100%;
     height: 80%;
+    width: 100%;
     overflow-y: scroll;
 }
 
@@ -82,11 +82,66 @@
 
 .content {
     display: flex;
+    flex-direction: column;
     height: 70%;
     width: 90%;
     background-color: #F9F6EE;
     box-shadow: 1px 1px 10px #a2a19b;
     margin: 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.ubicacionRes {
+    display: flex;
+    height: 45%;
+    width: 90%;
+    margin-top: 5%;
+    margin-bottom: 2.5%;
+}
+
+.map {
+    height: 100%;
+    width: 25%;
+    background-image: url("../../assets/img/MapaImg.png");
+    background-size: contain;
+    background-position: center;
+}
+
+.UbiName {
+    height: 100%;
+    width: 75%;
+    align-items: center;
+}
+
+.deliveryTimeRes {
+    display: flex;
+    height: 45%;
+    width: 90%;
+    margin-top: 2.5%;
+    margin-bottom: 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.DeliveryImg {
+    display: flex;
+    height: 60%;
+    width: 15%;
+    background-image: url("../../assets/img/MotoImg.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+.DeliveryTxt {
+    display: flex;
+    height: 100%;
+    width: 85%;
+    align-items: center;
+    padding-left: 5%;
+    font-size: 16px;
 }
 
 .footer {

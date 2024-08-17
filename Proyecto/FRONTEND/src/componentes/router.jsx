@@ -9,6 +9,7 @@ import EditarCateg from './admin/editarCateg.jsx';
 import Pago from './carrito/pago.jsx';
 import Products from './products/products.jsx';
 import Resumen from './carrito/resumen.jsx';
+import AgregarCateg from './admin/agregarCateg.jsx';
 
 function AppRouter(){
 
@@ -28,9 +29,10 @@ function AppRouter(){
             userRol === "Admin" && (
                 console.log(userRol),
                 <>
-                    <Route path="/agregarProducto" element={<AgregarProducto />} />
-                    <Route path="/editarCategorias" element={<EditarCateg />} />
-                    <Route path="/editarProductos" element={<EditarProds />} />
+                    <Route path="/agregarProducto" element={<AgregarProducto/>} />
+                    <Route path="/agregarCategoria" element={<AgregarCateg/>} />
+                    <Route path="/editarCategorias" element={<EditarCateg/>} />
+                    <Route path="/editarProductos/:detail" element={<EditarProds/>} />
                 </>
             )}
             <Route path='/detalles/:detail' element={<Products />} />

@@ -1,9 +1,9 @@
-import {  useState, useEffect } from 'react'
-import './carrito.css'
+import {  useState, useEffect } from 'react';
+import './carrito.css';
 import { useNavigate } from 'react-router-dom';
 import { useCarrito } from './carritoContext';
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 
 function Carrito(){
     const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } = useCarrito()
