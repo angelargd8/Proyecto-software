@@ -25,7 +25,16 @@ const Resumen = () => {
             <div className="body">
                 <div className="sector">
                     <div className="subtitle">Destino </div>
-                    <div className="content"></div>
+                    <div className="content">
+                        <div className="ubicacionRes">
+                            <div className="map"></div>
+                            <div className="UbiName"> Universidad del Valle de Guatemala</div>
+                        </div>
+                        <div className="deliveryTimeRes">
+                            <div className="DeliveryImg"></div>
+                            <div className="DeliveryTxt"> Delivery 30-45 min</div>
+                        </div>
+                    </div>
                 </div>
                 <div className="sector">
                     <div className="subtitle">Propoina</div>
