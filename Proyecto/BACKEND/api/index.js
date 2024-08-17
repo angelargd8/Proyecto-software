@@ -1,4 +1,9 @@
-const { ApolloServer, gql } = require("apollo-server");
+const { ApolloServer, gql } = require("apollo-server-express");
+const express = require("express");
+const multer = require("multer");
+const cors = require("cors");
+const { GraphQLScalarType } = require("graphql");
+const { Kind } = require("graphql/language");
 
 const {
   getAllUser,
@@ -20,7 +25,30 @@ const {
   getItemsPerCategory,
 } = require("./db");
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "/app/uploads/");
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + "-" + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
 const typeDefs = gql`
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+    path: String!
+  }
+
+  type Mutation {
+    uploadFile: File!
+  }
+
   type Roles {
     ID: Int!
     name: String!
@@ -242,6 +270,18 @@ const resolvers = {
         };
       }
     },
+    uploadFile: async (parent, args, { req }) => {
+      return new Promise((resolve, reject) => {
+        upload.single("file")(req, {}, (err) => {
+          if (err) {
+            reject(err);
+          } else {
+            const { filename, mimetype, encoding, path } = req.file;
+            resolve({ filename, mimetype, encoding, path });
+          }
+        });
+      });
+    },
   },
   Users: {
     rol: async (root) => {
@@ -267,13 +307,39 @@ const resolvers = {
   },
 };
 
+const app = express();
+
+app.use(cors());
+// app.post("/upload", upload.single("file"), (req, res) => {
+//   res.json({
+//     filename: req.file.filename,
+//     mimetype: req.file.mimetype,
+//     encoding: "7bit",
+//   });
+// });
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  cors: {
-    origin: "https://studio.apollographql.com",
-    credentials: true,
-  },
+  context: ({ req }) => ({ req }),
 });
 
-server.listen().then(({ url }) => console.log(`server redy at ${url}`));
+app.post("/upload", upload.single("file"), (req, res) => {
+  res.json({
+    filename: req.file.filename,
+    mimetype: req.file.mimetype,
+    encoding: "7bit",
+    path: req.file.path,
+  });
+});
+
+async function startServer() {
+  await server.start();
+  server.applyMiddleware({ app });
+}
+
+startServer();
+
+app.listen({ port: 4000 }, () =>
+  console.log(`Servidor listo en http://localhost:4000/graphql`)
+);
