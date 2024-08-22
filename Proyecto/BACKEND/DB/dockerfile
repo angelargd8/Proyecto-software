@@ -1,0 +1,9 @@
+FROM postgres:latest
+
+# Configura las variables de entorno para PostgreSQL
+ENV POSTGRES_DB=ecomers
+ENV POSTGRES_USER=ecomers_user
+ENV POSTGRES_PASSWORD=ecomers_password
+
+# Copia el archivo de esquema al directorio de inicialización de PostgreSQL
+COPY schema.sql /docker-entrypoint-initdb.d/
