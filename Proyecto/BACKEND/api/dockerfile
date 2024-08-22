@@ -1,0 +1,19 @@
+FROM node:20-alpine
+# Create app directory
+WORKDIR /app
+# Install app dependencies
+COPY package*.json ./
+# Run npm install
+RUN npm install
+# Bundle app source
+COPY . .
+# Expose port 4000
+EXPOSE  4000
+
+# Set environment variables
+# FIXME
+ENV DB_HOST=postgres
+ENV DB_USER=ecomers_user
+ENV DB_PASS=ecomers_password
+
+CMD ["npm", "start"]
