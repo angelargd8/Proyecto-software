@@ -45,10 +45,6 @@ const typeDefs = gql`
     path: String!
   }
 
-  type Mutation {
-    uploadFile: File!
-  }
-
   type Roles {
     ID: Int!
     name: String!
@@ -154,6 +150,7 @@ const typeDefs = gql`
     deleteUser(email: String!): StatusUserDelete
     addNewCategory(name: String!, idPage: Int!): statusCategoryInsert
     addNewCategoryItem(idCategory: Int!, idItem: Int!): StatusInserCategoyItem
+    uploadFile: File!
   }
 `;
 
@@ -310,13 +307,6 @@ const resolvers = {
 const app = express();
 
 app.use(cors());
-// app.post("/upload", upload.single("file"), (req, res) => {
-//   res.json({
-//     filename: req.file.filename,
-//     mimetype: req.file.mimetype,
-//     encoding: "7bit",
-//   });
-// });
 
 const server = new ApolloServer({
   typeDefs,
