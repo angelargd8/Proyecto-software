@@ -6,7 +6,7 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: "ecomers",
-  port: process.env.DB_PORT,
+  port: 5432,
 });
 
 pool.query("SELECT NOW()", (err, res) => {
