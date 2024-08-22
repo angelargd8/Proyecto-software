@@ -1,0 +1,35 @@
+version: "2.2"
+services:
+  postgres:
+    build: ./BACKEND/DB
+    ports:
+      - "33065:5432"
+    environment:
+      DB_HOST: postgres
+      DB_USER: ecomers_user
+      DB_PASS: ecomers_password
+    volumes:
+      - "postgres-data:/var/lib/postgresql/data"
+  api:
+    build: ./BACKEND/api
+    ports:
+      - "3005:4000"
+    depends_on:
+      - postgres
+    volumes:
+      - "uploads:/app/uploads"
+  frontend:
+    build: ./FRONTEND
+    ports:
+      - "8000:5173"
+    environment:
+      VITE_APIPORT: "http://5.161.104.98:3005/"
+    depends_on:
+      - api
+      - postgres
+
+volumes:
+  postgres-data:
+    driver: local
+  uploads:
+    driver: local
