@@ -129,16 +129,14 @@ alter table categoria_promociones add constraint categoria_promocionesfkcategori
 alter table categoria_promociones add constraint categoria_promocionesfkpromociones foreign key (id_promocion) references promociones (id_promocion);
 
 
+INSERT INTO permisos (nombre_permiso) VALUES ('Crear Artículos'), ('Eliminar Artículos'), ('Ver Usuarios'), ('Modificar Configuraciones');
+-- insert de usuarios
+insert into roles (id_rol, nombre_rol) values (1, 'Admin'), (2, 'User');
+
 -- inserts necesarios
 INSERT INTO rol_permisos (id_rol, id_permiso) VALUES
 (1, 1), (1, 2), (1, 3), (1, 4), -- Admin con todos los permisos
 (2, 3); -- User solo con permiso de ver usuarios
-INSERT INTO permisos (nombre_permiso) VALUES ('Crear Artículos'), ('Eliminar Artículos'), ('Ver Usuarios'), ('Modificar Configuraciones');
-
-
--- insert de usuarios
-
-insert into roles (id_rol, nombre_rol) values (1, 'Admin'), (2, 'User')
 
 INSERT INTO USUARIOS (email, nombre, apellido, password, id_rol) 
 values('aguilar@gmail.com','Francis','Aguilar','123',2),('francis@gmail.com','Francis','Aguilar','123',1), ('admin@gmail.com','admin','','123',1)
