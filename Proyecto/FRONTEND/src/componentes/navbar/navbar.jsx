@@ -46,7 +46,7 @@ function Nabvar(){
         navigate("/carrito")
     }
     const handleContact = () => {
-        navigate("/contactanos")
+        navigate("/contact")
     }
 
     const handleLogOutGoogle = () => {

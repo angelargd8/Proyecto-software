@@ -10,6 +10,7 @@ import Pago from './carrito/pago.jsx';
 import Products from './products/products.jsx';
 import Resumen from './carrito/resumen.jsx';
 import AgregarCateg from './admin/agregarCateg.jsx';
+import Contact from './contact/contact.jsx';
 
 function AppRouter(){
 
@@ -23,6 +24,7 @@ function AppRouter(){
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/pago" element = {<Pago />}/>
             <Route path="/resumen" element = {<Resumen />}/>
+            <Route path="/contact" element = {<Contact />}/>
             <Route path="/" element={<Home />} />
             {console.log(userRol)}
             {
