@@ -17,43 +17,32 @@ function Home() {
   };
 
   // cargar las cards
-  const cargarCards = () => {
+  const cargarCards = async () => {
     const searchParams = new URLSearchParams(location.search);
     const searchItem = searchParams.get("search") || "";
 
-    const cards = [
-      {
-        id: 1,
-        title: "Brillantina",
-        imagen: "../src/assets/img/Brillantina-surtida.jpg",
+    const url = import.meta.env.VITE_APIPORT;
+    const query = `
+      query GetCategories {
+          getCategories {
+            idCategory
+            image
+            name
+          }
+      }
+    `;
+    const result = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      {
-        id: 2,
-        title: "Ojos",
-        imagen: "../src/assets/img/Ojos/OJITOS NO 1.jpg",
-      },
-      {
-        id: 3,
-        title: "Añelina",
-        imagen: "../src/assets/img/Colorante/AÑELINA.jpg",
-      },
-      {
-        id: 4,
-        title: "Pulseras",
-        imagen: "../src/assets/img/Pulseras/PULSERA PASTEL.jpg",
-      },
-      {
-        id: 5,
-        title: "Flores",
-        imagen: "../src/assets/img/Flores/FLOR GRANDE.jpg",
-      },
-      {
-        id: 6,
-        title: "Pegatina",
-        imagen:
-          "http://localhost:4000/uploads/1724605342859-411238410-438085825_2143037769396777_2320968923290748998_n.jpg",
-      },
-    ];
+      body: JSON.stringify({
+        query,
+      }),
+    });
+
+    let data = await result.json();
+    const cards = data.data.getCategories;
 
     if (searchItem.trim() === "") {
       setCards(cards);
@@ -84,11 +73,11 @@ function Home() {
         <p className="bienvenida">Bienvenido a la página de inicio</p>
         <div id="contenido-cartas">
           {listadoCards.map((elemento) => (
-            <div key={elemento.id} className="category-card">
+            <div key={elemento.idCategory} className="category-card">
               <Card
-                title={elemento.title}
-                imagen={elemento.imagen}
-                onClick={() => info(elemento.title, elemento)}
+                title={elemento.name}
+                imagen={elemento.image}
+                onClick={() => info(elemento.name, elemento)}
               />
             </div>
           ))}

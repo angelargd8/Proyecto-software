@@ -24,6 +24,7 @@ services:
       - "8000:5173"
     environment:
       VITE_APIPORT: "http://5.161.104.98:3005/graphql"
+      VITE_APIPORT_IMAGE: "http://5.161.104.98:3005/"
     depends_on:
       - api
       - postgres

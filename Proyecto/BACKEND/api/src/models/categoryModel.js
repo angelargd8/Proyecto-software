@@ -8,6 +8,7 @@ async function getCategories() {
         idCategory: row.id_categoria,
         name: row.nombre_categoria,
         idPage: row.id_pagina,
+        image: row.imagen_categoria,
       };
     });
     return jsonResult;
@@ -27,6 +28,7 @@ async function getCategory(idCategory) {
         idCategory: row.id_categoria,
         name: row.nombre_categoria,
         idPage: row.id_pagina,
+        image: row.imagen_categoria,
       };
     });
     return jsonResult;

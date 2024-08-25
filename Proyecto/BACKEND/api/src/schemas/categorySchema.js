@@ -13,6 +13,7 @@ const categoryTypeDefs = gql`
     idCategory: Int!
     name: String
     Page: Pages
+    image: String
   }
 
   type Pages {
