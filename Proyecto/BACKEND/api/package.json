@@ -9,7 +9,8 @@
   },
   "license": "ISC",
   "scripts": {
-    "start": "npm install & nodemon node index.js"
+    "start": "npm install & nodemon node src/index.js",
+    "test": "npx jest"
   },
   "dependencies": {
     "apollo-server": "^3.13.0",
@@ -23,7 +24,7 @@
     "pg": "^8.11.5"
   },
   "devDependencies": {
-    "apollo-server-testing": "^2.20.0",
+    "apollo-server-testing": "^2.25.3",
     "graphql": "^15.9.0",
     "jest": "^25.0.0"
   }

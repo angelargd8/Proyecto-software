@@ -1,3 +1,4 @@
+global.TextEncoder = require("util").TextEncoder;
 const { Pool } = require("pg");
 require("dotenv").config();
 
@@ -6,8 +7,10 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: "ecomers",
-  port: 5432,
+  port: process.env.DB_PORT,
 });
+// server: 33065
+// local: 5432
 
 pool.query("SELECT NOW()", (err, res) => {
   if (err) {
