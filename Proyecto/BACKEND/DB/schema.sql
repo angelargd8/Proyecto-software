@@ -48,6 +48,7 @@ create table categorias
 (
 	id_categoria serial primary key,
 	nombre_categoria varchar(100) not null,
+	imagen_categoria TEXT,
 	id_pagina int
 );
 
@@ -139,4 +140,7 @@ INSERT INTO rol_permisos (id_rol, id_permiso) VALUES
 (2, 3); -- User solo con permiso de ver usuarios
 
 INSERT INTO USUARIOS (email, nombre, apellido, password, id_rol) 
-values('aguilar@gmail.com','Francis','Aguilar','123',2),('francis@gmail.com','Francis','Aguilar','123',1), ('admin@gmail.com','admin','','123',1)
+values('aguilar@gmail.com','Francis','Aguilar','123',2),('francis@gmail.com','Francis','Aguilar','123',1), ('admin@gmail.com','admin','','123',1);
+
+INSERT INTO paginas (nombre_pagina,email)
+values ('Picolin', 'francis@gmail.com');

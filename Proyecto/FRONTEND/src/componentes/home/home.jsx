@@ -47,6 +47,12 @@ function Home() {
         title: "Flores",
         imagen: "../src/assets/img/Flores/FLOR GRANDE.jpg",
       },
+      {
+        id: 6,
+        title: "Pegatina",
+        imagen:
+          "http://localhost:4000/uploads/1724605342859-411238410-438085825_2143037769396777_2320968923290748998_n.jpg",
+      },
     ];
 
     if (searchItem.trim() === "") {
