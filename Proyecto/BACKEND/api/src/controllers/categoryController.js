@@ -8,8 +8,8 @@ const getOneCategory = async (idCategory) => {
   return await categoryModel.getCategory(idCategory);
 };
 
-const addNewCategory = async (name, idPage) => {
-  return await categoryModel.setCategory(name, idPage);
+const addNewCategory = async (req, res) => {
+  return await categoryModel.addNewCategory(req, res);
 };
 
 module.exports = {

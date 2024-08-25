@@ -3,13 +3,17 @@ const cors = require("cors");
 const { ApolloServer } = require("apollo-server-express");
 const typeDefs = require("./schemas");
 const resolvers = require("./resolvers");
-const { uploadFile } = require("./controllers/itemController");
+const { addNewCategory } = require("./controllers/categoryController");
 const upload = require("./utils/multerConfig");
 
 const app = express();
 app.use(cors());
 
-app.post("/upload", upload.single("file"), uploadFile);
+// Prod
+// app.post("/upload", upload.single("file"), uploadFile);
+// app.use('/uploads', express.static('/app/uploads'));
+app.post("/addCategory", upload.single("file"), addNewCategory);
+app.use("/uploads", express.static("./uploads"));
 
 const server = new ApolloServer({
   typeDefs,

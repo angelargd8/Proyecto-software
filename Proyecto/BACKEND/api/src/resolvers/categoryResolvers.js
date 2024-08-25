@@ -12,24 +12,6 @@ const categoryResolver = {
       return category[0];
     },
   },
-  Mutation: {
-    addNewCategory: async (root, args) => {
-      const { name, idPage } = args;
-      const response = await categoryController.addNewCategory(name, idPage);
-      if (response.length > 0) {
-        return {
-          status: true,
-          message: "Se inserto con exito",
-          Category: response[0],
-        };
-      } else {
-        return {
-          status: false,
-          message: "Problema insertando",
-        };
-      }
-    },
-  },
 };
 
 module.exports = categoryResolver;

@@ -25,16 +25,6 @@ const categoryTypeDefs = gql`
     getCategories: [Categories]!
     getOneCategory(idCategory: Int!): Categories
   }
-
-  type statusCategoryInsert {
-    status: Boolean!
-    message: String
-    Category: Categories
-  }
-
-  type Mutation {
-    addNewCategory(name: String!, idPage: Int!): statusCategoryInsert
-  }
 `;
 
 module.exports = categoryTypeDefs;
