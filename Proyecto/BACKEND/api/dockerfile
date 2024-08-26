@@ -15,5 +15,6 @@ EXPOSE  4000
 ENV DB_HOST=postgres
 ENV DB_USER=ecomers_user
 ENV DB_PASS=ecomers_password
+ENV DB_PORT=5432
 
 CMD ["npm", "start"]
