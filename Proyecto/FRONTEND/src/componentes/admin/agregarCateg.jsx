@@ -40,7 +40,7 @@ function agregarCateg() {
     formData.append("idpage", 1);
 
     try {
-      const response = await fetch("http://localhost:4000/addCategory", {
+      const response = await fetch(import.meta.env.VITE_APIPORT_CATEGORY, {
         method: "POST",
         body: formData,
       });
