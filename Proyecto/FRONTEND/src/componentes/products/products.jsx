@@ -9,14 +9,14 @@ const Products = () => {
         <div className="container">
             {detail == 'Brillantina' && (
                 <>
-                <CardProduct id={"1"} title={"Carton de brillantina Tierra"} description={'Cartones de brillantina de 40 sobre estilo tierra'} image={'../src/assets/img/Brillantina-tierra.jpg'} precios={[["Unidad",12],["Docena",10]]}></CardProduct>
-                <CardProduct id={"2"} title={"Carton de brillantina Surtida"} description={'Cartones de brillantina de 40 sobre estilo surtida'} image={'../src/assets/img/Brillantina-surtida.jpg'} precios={[["Unidad",12],["Docena",10]]} ></CardProduct>
-                <CardProduct id={"3"} title={"Carton de brillantina Tornasol"} description={'Cartones de brillantina de 40 sobre estilo tornasol'} image={'../src/assets/img/Brillantina-tornasol.jpg'} precios={[["Unidad",12],["Docena",10]]}></CardProduct>
+                <CardProduct id={"1"} title={"Carton de brillantina Tierra"} description={'Cartones de brillantina de 40 sobre estilo tierra'} image={'../src/assets/img/Brillantina-tierra.jpg'} precios={[["Unidad",12, 1],["Docena",10,12],["millar", 9, 15]]}></CardProduct>
+                <CardProduct id={"2"} title={"Carton de brillantina Surtida"} description={'Cartones de brillantina de 40 sobre estilo surtida'} image={'../src/assets/img/Brillantina-surtida.jpg'} precios={[["Unidad",12, 1],["Docena",10, 12]]} ></CardProduct>
+                <CardProduct id={"3"} title={"Carton de brillantina Tornasol"} description={'Cartones de brillantina de 40 sobre estilo tornasol'} image={'../src/assets/img/Brillantina-tornasol.jpg'} precios={[["Unidad",12, 1],["Docena",10, 12]]}></CardProduct>
                 </>
             )}
             {detail == 'Ojos' && (
                 <>
-                <CardProduct id={"1"} title={"Carton ojitos pequeños"} description={'Cartones de ojos de 20 sobres tamaño pequeño'} image={'../src/assets/img/Ojos/OJITOS NO 1.jpg'} precios={[["Unidad",12],["Docena",10]]}></CardProduct>
+                <CardProduct id={"1"} title={"Carton ojitos pequeños"} description={'Cartones de ojos de 20 sobres tamaño pequeño'} image={'../src/assets/img/Ojos/OJITOS NO 1.jpg'} precios={[["Unidad",12, 12],["Docena",10]]}></CardProduct>
                 <CardProduct id={"2"} title={"Carton ojitos grandes"} description={'Cartones de ojos de 20 sobres tamaño grande'} image={'../src/assets/img/Ojos/OJITOS 2.jpg'} precios={[["Unidad",12],["Docena",10]]} ></CardProduct>
                 </>
             )}

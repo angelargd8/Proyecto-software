@@ -8,13 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 function Carrito(){
     const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } = useCarrito()
     const navigate = useNavigate();
-
-    const handleRegresar = () => {
-            navigate("/home");
-    };
     
-    
-
     const cambioCant = (producto, nuevaCantidad) =>{
         if (nuevaCantidad < 1){
             if(window.confirm("Se eliminara este producto del carrito, estas seguro de continuar?")){
@@ -25,6 +19,10 @@ function Carrito(){
         }
     }
 
+    const handleRegresar = () => {
+            navigate("/home");
+    };
+    
     const handlePagar = () => {
         navigate("/pago");
     }
@@ -40,25 +38,25 @@ function Carrito(){
     const envio = 15.00 //Temporal
 
     const calcularPrecioTotal = (cantidad, precios) => {
-        const precioDocena = precios[1][1] * 12
+        precios = precios.sort((a, b) => a[2] - b[2])
         const precioUnitario = precios[0][1]
-
-        // precios = precios.map((precio) => {
+        let precioFinal = 0
+        precios.forEach(precio => {
+            let cantidadProduct = precio[2]
+            let precioProducto = precio[1] * cantidadProduct
             
-        // })
+            if (cantidad >= cantidadProduct){
+                let docenas = Math.floor(cantidad / cantidadProduct)
+                let extras = cantidad % cantidadProduct
+                precioFinal =  (docenas * precioProducto) + (extras * precioUnitario)
+            }
+        });
 
-        console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
-        if (cantidad >= 12) {
-            const docenas = Math.floor(cantidad / 12)
-            const extras = cantidad % 12
-            return (docenas * precioDocena) + (extras * precioUnitario)
-        } else {
-            return cantidad * precioUnitario
-        }
+        return precioFinal
     }
 
     const Subtotal = carrito.reduce((total, producto) => {
-        if(carrito.length < 1) return total
+        if(producto.precios == undefined) return total
         const precioFinal = calcularPrecioTotal(producto.quantity, producto.precios)
         return total + precioFinal
     }, 0)
