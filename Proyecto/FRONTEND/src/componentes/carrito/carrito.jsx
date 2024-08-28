@@ -43,6 +43,10 @@ function Carrito(){
         const precioDocena = precios[1][1] * 12
         const precioUnitario = precios[0][1]
 
+        // precios = precios.map((precio) => {
+            
+        // })
+
         console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
         if (cantidad >= 12) {
             const docenas = Math.floor(cantidad / 12)
@@ -54,6 +58,7 @@ function Carrito(){
     }
 
     const Subtotal = carrito.reduce((total, producto) => {
+        if(carrito.length < 1) return total
         const precioFinal = calcularPrecioTotal(producto.quantity, producto.precios)
         return total + precioFinal
     }, 0)
