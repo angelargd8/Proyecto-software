@@ -220,13 +220,13 @@
 .vista{
     /* Espacio para la Foto del producto */
     display: flex;
+    position: relative;
     height: 100%;
     width: 30%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 10px;
-    padding: 0px;
 }
 
 .btn_eliminar {
@@ -239,13 +239,16 @@
     cursor: pointer;
 }
 
-.imgVista {
+#imgVistaC {
     /* foto del producto */
     display: flex;
+    position: absolute;
     height: 100px;
     width: 100px;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
+    top: 25%;
+    right: 25%;
     border-radius: 50%;
 }
 
@@ -269,6 +272,7 @@
     /* info del producto */
     padding: 0;
     margin: 0;
+    font-size: 1rem;
 }
 .nums {
     /* Contenedor para botones de sumar y restar y la cantidad */
@@ -633,15 +637,13 @@
     }
     .vista{
         display: flex;
-        /* flex-direction: column; */
+        position: relative;
+        flex-direction: 'column';
         height: 100%;
         width: 30%;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
         border-radius: 10px;
-        padding: 0px;
     }
+
     .btn_eliminar {
         display: flex;
         height: 20%;
@@ -650,15 +652,17 @@
         cursor: pointer;
     
     }
-    .imgVista {
+    #imgVistaC {
         display: flex;
-        height: 50px;
-        width: 50px;
+        position: absolute;
+        height: 50%;
+        width: 60%;
         align-items: center;
-        justify-content: center;    
+        justify-content: center;
         border-radius: 50%;
-        padding: 5%;
-        margin: 5%;
+        top: 25%;
+        right: 25%;
+        background-color: blue;
     }
     
     .info {

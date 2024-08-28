@@ -12,6 +12,8 @@ function Carrito(){
     const handleRegresar = () => {
             navigate("/home");
     };
+    
+    
 
     const cambioCant = (producto, nuevaCantidad) =>{
         if (nuevaCantidad < 1){
@@ -37,26 +39,26 @@ function Carrito(){
 
     const envio = 15.00 //Temporal
 
-    // const calcularPrecioTotal = (cantidad, precios) => {
-    //     const precioDocena = precios[1][1] * 12
-    //     const precioUnitario = precios[0][1]
+    const calcularPrecioTotal = (cantidad, precios) => {
+        const precioDocena = precios[1][1] * 12
+        const precioUnitario = precios[0][1]
 
-    //     console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
-    //     if (cantidad >= 12) {
-    //         const docenas = Math.floor(cantidad / 12)
-    //         const extras = cantidad % 12
-    //         return (docenas * precioDocena) + (extras * precioUnitario)
-    //     } else {
-    //         return cantidad * precioUnitario
-    //     }
-    // }
+        console.log(`Precios: ${precios}\n Precio Unitario: ${precioUnitario}\n PrecioDocena: ${precioDocena}`)
+        if (cantidad >= 12) {
+            const docenas = Math.floor(cantidad / 12)
+            const extras = cantidad % 12
+            return (docenas * precioDocena) + (extras * precioUnitario)
+        } else {
+            return cantidad * precioUnitario
+        }
+    }
 
-    // const Subtotal = carrito.reduce((total, producto) => {
-    //     const precioFinal = calcularPrecioTotal(producto.quantity, producto.precios)
-    //     return total + precioFinal
-    // }, 0)
+    const Subtotal = carrito.reduce((total, producto) => {
+        const precioFinal = calcularPrecioTotal(producto.quantity, producto.precios)
+        return total + precioFinal
+    }, 0)
 
-    // const Total = Subtotal + envio;
+    const Total = Subtotal + envio;
 
     return (
         <>
@@ -102,7 +104,7 @@ function Carrito(){
                                     <div className='product' key={producto.id}>
                                         <div className='vista'>
                                             <div className="btn_eliminar" onClick={() => eliminarDelCarrito(producto.id)}>x</div>
-                                            <img className='imgVista' src={producto.image} alt={producto.title} />
+                                            <img id='imgVistaC' src={producto.image} alt={producto.title} />
                                         </div>
                                         <div className='info'>
                                             <h3 className='textInfo'>{producto.title}</h3>
@@ -112,9 +114,9 @@ function Carrito(){
                                             <div id='xd'>
                                                 {console.log(producto.quantity)}
                                                 {console.log(producto.precios)}
-                                                <div className='btn_sumar' onClick={() => cambioCant(producto, producto.quantity + 1)}><b>+</b></div>
+                                                <div className='btn_sumar' onClick={() => cambioCant(producto, producto.quantity - 1)}><b>-</b></div>
                                                 <span className='cant'>{producto.quantity}</span>
-                                                <div className="btn_restar" onClick={() => cambioCant(producto, producto.quantity - 1)}><b>-</b></div>
+                                                <div className="btn_restar" onClick={() => cambioCant(producto, producto.quantity + 1)}><b>+</b></div>
                                             </div>
                                         </div>
                                     </div>
@@ -130,9 +132,9 @@ function Carrito(){
                                     Total
                                 </div>
                                 <div className="ColumnNo">
-                                    Q 0<br/>
-                                    Q {envio.toFixed(2)} <br />                            
-                                    Q 15.00
+                                    Q {Subtotal.toFixed(2)}<br/>
+                                    Q {envio.toFixed(2)}<br />
+                                    Q {Total.toFixed(2)}
                                 </div>
                             </div>
                             <button className='pagobtn' onClick={handlePagar}> Pagar </button>
