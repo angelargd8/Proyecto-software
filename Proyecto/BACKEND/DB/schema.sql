@@ -113,6 +113,8 @@ alter table paginas add constraint paginasfkusuarios foreign key (email) referen
 
 alter table categorias add constraint categoriasfkpaginas foreign key (id_pagina) references paginas(id_pagina);
 
+alter table articulos add constraint articuloscategorias foreign key (id_categoria) references catetorias(id_categoria);	
+
 alter table ordenes_articulos add constraint ordenes_articulosfkordenes foreign key (id_orden) references ordenes (id_orden);
 
 alter table ordenes_articulos add constraint ordenes_articulosfkarticulos foreign key (id_articulo) references articulos (id_articulo);
