@@ -44,7 +44,7 @@ function Login() {
 
     return JSON.parse(jsonPayload);
   }
-
+  //handle login google es para validar si el usuario ya esta registrado en la base de datos o si solamente se registro con google
   const handleLoginGoogle = () => {
     //4000 para devs
     const url = import.meta.env.VITE_APIPORT;
@@ -79,23 +79,18 @@ function Login() {
           console.error("Error en la consulta GraphQL:", data.errors);
         }
         if (data.data.validateEmail == null) {
-          console.error("Error el usuario  con esa contraseña no existe");
-          {
-            alert("Error el usuario  con esa contraseña no existe");
-          }
-        } else {
-          console.log(data.data.validateEmail);
-          //localStorage.setItem("name", data.data.validateEmail.name);
+          console.log("el usuario solo ingreso con google, no es un usuario registrado por el administrador");
+        } 
+        else{
+          
           const rol = localStorage.setItem(
             "rol",
             data.data.validateEmail.rol.name
           );
-          console.log(rol);
+          
           {
             alert("Bienvenir@ " + data.data.validateEmail.name + " a Picolin");
           }
-          
-
           navigate("/home");
         }
       } catch (error) {
