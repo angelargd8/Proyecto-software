@@ -97,6 +97,13 @@
     color: black;
 }
 
+.signup .roles{
+    color: #1f3350
+}
+
+.signup .escoger{
+    color: #757575
+}
 
 .signup .goBack{
     position: absolute;
