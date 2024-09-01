@@ -69,9 +69,7 @@ function SingUp(){
             }
             else {
               console.log(data.data.addnewUser);
-              localStorage.setItem('email', data.data.addnewUser.user.email);
-              localStorage.setItem('name', data.data.addnewUser.user.name);
-              {alert('Bienvenir@ '+data.data.addnewUser.user.name+' a Picolin')}
+              {alert('Usuario: '+data.data.addnewUser.user.name+' a sido registrado correctamente en Picolin!')}
               navigate("/home");
             }
             }catch(error){
@@ -95,25 +93,27 @@ function SingUp(){
           <div className="contenedor">
             <div className="imagen"></div>
             <div className="formulario">
-                  <h1 className='form-text'>Registro</h1>
-                  <input type="text" id="name" name="name" placeholder="Nombre" className="inputs"/>
-                  <input type="text" id="lastname" name="lastname" placeholder="Apellido" className="inputs"/>
-                    <input type="email" id="email" name="email" placeholder="Correo Electrónico" className="inputs"/>
-                    <input type="password" id="password" name="password" className="inputs" placeholder="Contraseña"/>
-                    <div className="roles">
-                      <label htmlFor="rol">Rol: </label>
-                      <select name="rol" id="rol" className="inputs">
-                        <option selected className="escoger">Escoger...</option>
-                        <option value="1">Administrador</option>
-                        <option value="2">Usuario</option>
-                      </select>
-                    </div>
+                <h1 className='form-text'>Registro</h1>
+                
+                <input type="text" id="name" name="name" placeholder="Nombre" className="inputs"/>
+                <input type="text" id="lastname" name="lastname" placeholder="Apellido" className="inputs"/>
+                <input type="email" id="email" name="email" placeholder="Correo Electrónico" className="inputs"/>
+                <input type="password" id="password" name="password" className="inputs" placeholder="Contraseña"/>
+                
+                <div className="roles">
+                  <label htmlFor="rol">Rol: </label>
+                  <select name="rol" id="rol" className="inputs">
+                    <option selected className="escoger">Escoger...</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Usuario</option>
+                  </select>
+                </div>
 
-                    <div className="boton">
-                        <button className= "btn" onClick={handleSignup}>
-                          Registrar
-                        </button>
-                      </div>
+                <div className="boton">
+                    <button className= "btn" onClick={handleSignup}>
+                      Registrar
+                    </button>
+                </div>
                       
             
               </div>
