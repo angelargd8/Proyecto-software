@@ -11,6 +11,8 @@ function Nabvar(){
     //local storage
     const userRol = localStorage.getItem('rol')
     const googleUser = localStorage.getItem('googleUser')
+    const name = localStorage.getItem('name')
+    const Googlename = localStorage.getItem('GoogleName')
     //search
     const [searchItem, setSearchItem] = useState('')
 
@@ -155,7 +157,29 @@ function Nabvar(){
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle botonUser" href="#" id="navbarDropdown boton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <button type="button" id="boton-user" >
-                                            <img class="imagen-btn" src="./src/assets/img/user.png" alt="User" />
+                                            <div className="icono">
+                                                <img class="imagen-btn-user" src="./src/assets/img/user.png" alt="User" />
+
+                                                {
+                                                    userRol === null && googleUser ===null &&  (
+                                                        <label class="Nombre-label" >Iniciar Sesión</label>
+                                                        
+                                                    )   
+                                                }
+                                                {
+                                                    userRol !== null &&(
+                                                        <label class="Nombre-label" >{name}</label>
+                                                    )
+                                                }
+                                                {
+                                                    googleUser !==null &&(
+                                                        <label class="Nombre-label" >{Googlename}</label>
+                                                    )
+                                                }
+                                                
+                                                
+                                            </div>
+                                   
                                         </button>
                                     </a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

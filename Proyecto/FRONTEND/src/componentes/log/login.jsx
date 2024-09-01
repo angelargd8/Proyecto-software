@@ -12,13 +12,15 @@ function Login() {
 
   const responseGoogle = (response) => {
     const credential = parseJwt(response.credential);
-
+    
     if (response && credential) {
-      const { email } = credential;
+      const { email, name } = credential;
       navigate("/home");
+      //separar nombre y apellido
+      const [firstName, lastName] = name.split(" ");
       //para que asi pueda cerrar sesion
       localStorage.setItem("googleUser", email);
-      console.log(localStorage.getItem("googleUser"));
+      localStorage.setItem("GoogleName", firstName );
       handleLoginGoogle(email);
     } else {
       alert("La autenticación con Google no se realizó correctamente");
@@ -83,6 +85,7 @@ function Login() {
           }
         } else {
           console.log(data.data.validateEmail);
+          //localStorage.setItem("name", data.data.validateEmail.name);
           const rol = localStorage.setItem(
             "rol",
             data.data.validateEmail.rol.name
@@ -91,6 +94,7 @@ function Login() {
           {
             alert("Bienvenir@ " + data.data.validateEmail.name + " a Picolin");
           }
+          
 
           navigate("/home");
         }
@@ -143,11 +147,13 @@ function Login() {
           }
         } else {
           console.log(data.data.validateCredentials);
-          //localStorage.setItem('name', data.data.validateCredentials.name);
+          
           const rol = localStorage.setItem(
             "rol",
             data.data.validateCredentials.rol.name
           );
+          localStorage.setItem('name', data.data.validateCredentials.name);
+          
           console.log(rol);
           {
             alert(
