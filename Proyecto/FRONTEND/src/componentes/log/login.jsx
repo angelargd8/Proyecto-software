@@ -2,6 +2,8 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import GoogleAuthProvider from "./GoogleAuthProvider";
+import cartulinaImage from '../../assets/img/Cartulinas2.jpg';
+
 
 function Login() {
   const navigate = useNavigate();
@@ -166,6 +168,19 @@ function Login() {
     validateCredentials();
   };
 
+
+  const YourComponent = () => (
+    <div className="texto-imagen">
+      <img src={cartulinaImage} alt="Cartulina" />
+    </div>
+  );
+
+  const YourComponent2 = () => (
+    <div className="texto-imagen">
+      <img src={cartulinaImage} alt="Cartulina" />
+    </div>
+  );
+
   return (
     <>
       <GoogleAuthProvider>
@@ -177,7 +192,26 @@ function Login() {
             </button>
           </div>
           <div className="contenedor">
-            <div className="imagen"></div>
+            <div className="contenido-imagen">
+              <div className="texto-imagenn">
+              <YourComponent></YourComponent>
+                <YourComponent></YourComponent>
+                <YourComponent></YourComponent>
+                <YourComponent></YourComponent>
+                <YourComponent></YourComponent>
+                <YourComponent></YourComponent>
+                <YourComponent></YourComponent>
+                <YourComponent></YourComponent>
+                
+               
+              </div>
+                <div className="texto-imagenn2">
+                  <YourComponent></YourComponent>
+                  <YourComponent></YourComponent>
+                  <YourComponent></YourComponent>
+                  <YourComponent></YourComponent>
+                </div>
+            </div>
             <div className="formulario">
               <h1 className="form-text">Inicia sesión</h1>
               <input

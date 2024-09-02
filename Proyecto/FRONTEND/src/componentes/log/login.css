@@ -25,13 +25,62 @@
     
 }
 
-.login .imagen{
-    width: 100%;
+
+.login .contenido-imagen {
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    overflow: hidden; /* Oculta las imágenes cuando están fuera de la pantalla */
+    white-space: nowrap; /* Evita que las imágenes se dividan en varias líneas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .login .texto-imagenn {
+    display: flex;
     height: 100%;
-    background-size: cover;
-    background-image: url(../../assets/img/Cartulinas2.jpg);
-    object-fit: fill;
-}
+    animation: marquee 20s linear infinite;
+  }
+
+  .login .texto-imagenn2 {
+    display: flex;
+    height: 100%;
+    animation: marquee2 10s linear infinite;
+  }
+  
+  .login .texto-imagenn img {
+    height: 20rem; /* Ajusta la altura de las imágenes */
+    width: 20rem;
+    margin: 20px;
+    vertical-align: middle; /* Alinea las imágenes verticalmente en el medio */ 
+  }
+  .login .texto-imagenn2 img {
+    height: 20rem; /* Ajusta la altura de las imágenes */
+    width: 20rem;
+    margin: 20px;
+    vertical-align: middle; /* Alinea las imágenes verticalmente en el medio */ 
+  }
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(70%); /* Comienza en su posición inicial */
+    }
+    to {
+      transform: translateX(-100%); /* Se desplaza completamente hacia la izquierda */
+    }
+  }
+  
+  @keyframes marquee2 {
+    from {
+      transform: translateX(-90%); /* Comienza en su posición inicial */
+    }
+    to {
+      transform: translateX(100%); /* Se desplaza completamente hacia la izquierda */
+    }
+  }
+  
 
 .login .formulario{
     display: flex;
