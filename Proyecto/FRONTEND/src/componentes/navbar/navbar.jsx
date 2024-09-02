@@ -193,7 +193,6 @@ function Nabvar(){
                                                     <div>
                                                     <a class="dropdown-item" href="/editarCategorias" onClick={handleAddProduct}>Editar Productos</a>
                                                     <a class="dropdown-item" href="/signup" onClick={handleSignup}>Registrar</a>
-                                                    <a class="dropdown-item" href="#">Perfil</a>
                                                     <a class="dropdown-item" href="#">Configuración</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item" onClick={handleLogOut} >Cerrar sesión</a>
