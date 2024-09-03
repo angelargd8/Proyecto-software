@@ -59,10 +59,12 @@
 .titulo{
     /* Titulo que esta dentro de header */
     height: 100%;
+    flex-direction: row;
     width: 10%;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     text-align: center;
     align-content: center;
+    white-space: nowrap;
 }
 
 .midHeader {
@@ -151,11 +153,14 @@
     align-items: center;
     text-align: center;
     padding: 1%;
+    font-size: 1rem;
+    font-weight: 500;
     border: 2px solid #1B4965;
     background-color: #1B4965;
     color: white;
     border-radius: 20px;
     cursor: pointer;
+    white-space: nowrap;
 
 }
 
@@ -387,9 +392,9 @@
     background-color: transparent;
     border-radius: 20px;
     resize: none;
-    text-align: center;    
     border: 1px solid #1B4965;
     overflow: hidden;
+    text-align: center;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -399,7 +404,7 @@
     /* Place holder que dice Codigo promocional */
     display: flex;
     color: #1B4965;
-    font-size: 20px;
+    font-size: 1rem;
     align-items: center;
     align-content: center;
     justify-content: center;
