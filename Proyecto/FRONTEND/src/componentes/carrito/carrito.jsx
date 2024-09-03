@@ -6,8 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function Carrito() {
-  const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
-    useCarrito();
+  const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } = useCarrito();
   const navigate = useNavigate();
 
   const cambioCant = (producto, nuevaCantidad) => {
@@ -30,6 +29,12 @@ function Carrito() {
 
   const handlePagar = () => {
     navigate("/pago");
+    let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
+    carrito.forEach((producto) => {
+      mensaje += `${producto.quantity} -- ${producto.title}\n`;
+    });
+    var url = `https://wa.me/50230868315?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
   };
 
   const handleDirecc = () => {
