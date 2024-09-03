@@ -9,7 +9,9 @@ function FloatingButton() {
 
   if (location.pathname !== "/home") {
     if (location.pathname !== "/contact") {
-      return;
+      if (location.pathname !== "/") {
+        return;
+      }
     }
   }
 
