@@ -2,11 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 5px;
+    /* margin: 5px; */
     padding: 0px;
     border-radius: 10%;
     width: 100%;
-    max-width: 330px;
+    max-width: 300px;
     height: auto;
     box-sizing: border-box;
 }
@@ -20,6 +20,7 @@
 
 .card-content-category {
     width: 100%;
+    min-height: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,6 +36,6 @@
 }
 
 #title-card {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     text-align: center;
 }
