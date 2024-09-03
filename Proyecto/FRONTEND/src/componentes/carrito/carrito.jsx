@@ -33,7 +33,7 @@ function Carrito() {
     carrito.forEach((producto) => {
       mensaje += `${producto.quantity} -- ${producto.title}\n`;
     });
-    var url = `https://wa.me/50230868315?text=${encodeURIComponent(mensaje)}`;
+    var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
   };
 
