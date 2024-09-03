@@ -71,9 +71,10 @@ function Home() {
       <div className="container-categorias">
         <h1 className="categorias">Categorias</h1>
         <p className="bienvenida">Bienvenido a la página de inicio</p>
+        <hr></hr>
         <div id="contenido-cartas">
           {listadoCards.map((elemento) => (
-            <div key={elemento.idCategory} className="category-card">
+            <div key={elemento.idCategory} className="categor-card">
               <Card
                 title={elemento.name}
                 imagen={elemento.image}

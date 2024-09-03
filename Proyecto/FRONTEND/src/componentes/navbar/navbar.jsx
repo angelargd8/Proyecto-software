@@ -148,7 +148,7 @@ function Nabvar(){
                         
                         {/* Carrito */}               
                         <button type="buton" onClick={handleCarrito} id='boton'>
-                            <img className ='imagen-btn' src='./src/assets/img/carrito.png' id='carrito-img' href="/carrito" onClick={handleCarrito}/>
+                            <img className ='imagen-btn-carrito' src='./src/assets/img/carrito.png' id='carrito-img' href="/carrito" onClick={handleCarrito}/>
                         </button>
 
                         {/* Manejo de sesión del Usuario */}

@@ -38,8 +38,15 @@
     justify-content: flex-start;
 }
 
-#navbar.scrolled{
-    display: none;
+#navbar {
+    transition: background-color 0.5s ease, backdrop-filter 0.5s ease, height 0.5s ease; /* Transición suave */
+}
+
+
+#navbar.scrolled {
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro con 50% de transparencia */
+    height: 10%;
 }
 
 .textos{
@@ -131,6 +138,14 @@
     justify-content: right; 
     border: none;
     
+}
+
+.imagen-btn-carrito:hover {
+    transform: scale(1.2); /* Aumenta el tamaño del botón al pasar el cursor */
+  }
+
+.imagen-btn-carrito{
+    transition: transform 0.5s ease; /* Transición suave para el efecto hover */
 }
 
 .imagen-btn{

@@ -1,8 +1,7 @@
 .container-home { 
     padding-top: 120px;
-    margin-top: 20px;
     position: absolute;
-    top: 0;
+    top: 20px;
     width: 100%;
 }
 
@@ -12,14 +11,16 @@
     background-color: white;
     flex-direction: row;
     justify-content: center;
+
 }
 
-.category-card{
-    margin: 10px;
+.categor-card{
     display: flex;
     min-width: 300px;
     align-items: center;
     justify-content: center;
+    margin: 20px;
+    margin-top: 50px;
 }
 
 .categorias{
