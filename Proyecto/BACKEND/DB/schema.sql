@@ -41,7 +41,8 @@ create table articulos
 	nombre_articulo varchar(100) not null,
 	cantidad_articulo int,
 	descripcion TEXT,
-	precio float not null
+	precio float not null,
+	id_categoria int
 );
 
 create table categorias
@@ -113,7 +114,7 @@ alter table paginas add constraint paginasfkusuarios foreign key (email) referen
 
 alter table categorias add constraint categoriasfkpaginas foreign key (id_pagina) references paginas(id_pagina);
 
-alter table articulos add constraint articuloscategorias foreign key (id_categoria) references catetorias(id_categoria);	
+alter table articulos add constraint articuloscategorias foreign key (id_categoria) references categorias(id_categoria);	
 
 alter table ordenes_articulos add constraint ordenes_articulosfkordenes foreign key (id_orden) references ordenes (id_orden);
 
