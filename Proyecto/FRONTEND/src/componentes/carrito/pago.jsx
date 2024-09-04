@@ -209,7 +209,7 @@ function Pago() {
               SIGUIENTE{" "}
             </div>
           </div>
-          <div className="bottom">
+          {/* <div className="bottom">
             <img
               className="logotipo"
               src="../src/assets/img/logo.png"
@@ -221,7 +221,7 @@ function Pago() {
               }}
             />
             Picolin
-          </div>
+          </div> */}
         </div>
       </div>
     </>

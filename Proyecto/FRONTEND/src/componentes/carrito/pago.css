@@ -176,7 +176,7 @@
 .Formulario {
   display: flex;
   width: 30%;
-  min-height: 100%;
+  min-height: 75%;
   background-color: white;
   margin-top: 10%;
   margin-bottom: 10%;
@@ -197,6 +197,13 @@
   font-family: proxima-nova, monospace;
   color: #1b4965;
   font-weight: 700;
+}
+
+.FormContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 
 .bottom {
