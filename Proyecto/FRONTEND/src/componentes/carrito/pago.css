@@ -161,6 +161,13 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  transition: ease-in-out;
+}
+
+.FotoCarrito:hover {
+  transition: 1000ms;
+  transform: rotateY(-90deg) translateZ(150px);
+  background-color: red;
 }
 
 .RowFormasPago {
@@ -188,7 +195,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  align-content: center;
   width: 100%;
   height: 10%;
   font-size: 2.5rem;
@@ -197,6 +203,26 @@
   font-family: proxima-nova, monospace;
   color: #1b4965;
   font-weight: 700;
+  overflow: hidden; /* Hide overflow for sliding effect */
+  position: relative;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.FormTitle::before {
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.FormTitle.fade-in::before {
+  transform: translateX(0);
+}
+
+.FormTitle.fade-out::before {
+  transform: translateX(100%);
 }
 
 .FormContent {

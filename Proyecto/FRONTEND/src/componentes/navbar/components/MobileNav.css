@@ -1,0 +1,35 @@
+@media only screen and (max-width: 991px) {
+  .mobileNav {
+    position: absolute;
+    top: -20px;
+    right: 100px;
+  }
+}
+
+.navList {
+  display: flex;
+  position: absolute;
+  top: 0;
+  flex-direction: column;
+  gap: 10px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #1f3350;
+}
+
+li {
+  color: var(--background);
+  display: block;
+  width: 100%;
+}
+
+ul,
+li {
+  list-style: none;
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+  cursor: pointer;
+}

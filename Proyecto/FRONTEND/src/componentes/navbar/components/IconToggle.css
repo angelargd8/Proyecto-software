@@ -1,0 +1,20 @@
+.iconButton {
+  display: none;
+}
+
+@media only screen and (max-width: 991px) {
+  .iconButton {
+    display: flex;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+}

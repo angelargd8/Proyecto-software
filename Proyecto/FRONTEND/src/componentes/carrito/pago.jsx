@@ -4,14 +4,21 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useNavigate } from "react-router-dom";
 import Carrusel from "./Components/carrusel";
 import BtnFormaPago from "./Components/FormaPagoBtn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import FormaPagoImg from "./Components/FormaPagoImg";
+import { motion } from "framer-motion";
 
 function Pago() {
   const navigate = useNavigate();
   const [formTitle, setFormtitle] = useState("Tarjeta");
+  const [isAnimating, setIsAnimating] = useState(false);
   const [pagoTypeImg, setPagoTypeImg] = useState(
     "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1"
   );
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [transitionClass, setTransitionClass] = useState("fade-in");
+
+  useEffect(() => {}, [formTitle]);
 
   const handleRegresar = () => {
     navigate("/carrito");
@@ -29,19 +36,29 @@ function Pago() {
 
   const handlePagoType = (text) => {
     setFormtitle(text);
+    setIsAnimating(!isAnimating);
 
     if (text == "Tarjeta") {
+      setCurrentIndex(0);
       setPagoTypeImg(
         "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1"
       );
     } else if (text == "Efectivo") {
+      setCurrentIndex(1);
       setPagoTypeImg("https://cdn-icons-png.flaticon.com/512/3832/3832329.png");
     } else if ((text = "Deposito")) {
+      setCurrentIndex(2);
       setPagoTypeImg(
         "https://png.pngtree.com/png-clipart/20230406/original/pngtree-bank-deposit-line-icon-png-image_9030315.png"
       );
     }
   };
+
+  const images = [
+    "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1",
+    "https://cdn-icons-png.flaticon.com/512/3832/3832329.png",
+    "https://png.pngtree.com/png-clipart/20230406/original/pngtree-bank-deposit-line-icon-png-image_9030315.png",
+  ];
 
   return (
     <>
@@ -137,10 +154,7 @@ function Pago() {
             </div>
           </div>
           <div className="middleP">
-            <div
-              className="FotoCarrito"
-              style={{ backgroundImage: `url(${pagoTypeImg})` }}
-            ></div>
+            <FormaPagoImg currentType={pagoTypeImg} />
             <div className="RowFormasPago">
               <BtnFormaPago
                 text="Tarjeta"
@@ -159,7 +173,16 @@ function Pago() {
               />
             </div>
             <div className="Formulario">
-              <div className="FormTitle">{formTitle}</div>
+              <motion.div
+                className={"FormTitle"}
+                animate={{
+                  scale: isAnimating ? 1.5 : 1, // Scale up when animated
+                  rotate: isAnimating ? 360 : 0, // Rotate 360 degrees
+                }}
+                transition={{ duration: 0.5 }} // Animation duration
+              >
+                {formTitle}
+              </motion.div>
             </div>
             <div className="ParteVenta">
               <h5

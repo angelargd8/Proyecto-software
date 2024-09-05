@@ -1,0 +1,19 @@
+.imgContainer {
+  min-height: 150px;
+  width: 150px;
+  margin-top: 5%;
+}
+
+.FormaPagoImg {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 768px) {
+  .imgContainer {
+    display: none;
+  }
+}

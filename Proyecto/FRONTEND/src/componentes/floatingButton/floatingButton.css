@@ -1,26 +1,26 @@
-.floatingButton-body{
-    position: fixed;
-    bottom: 5%;
-    color: white;
-    right: -4%;
-    z-index: 2;
+.floatingButton-body {
+  position: absolute;
+  bottom: 5%;
+  color: white;
+  right: -4%;
+  z-index: 2;
 }
 
-.imagen-btn-whatsapp{
-    background-color: transparent ;
-    background-repeat: no-repeat;
-    object-fit: cover;
-    align-items: center;
-    background-color: #1f3350 ;
-    border-radius: 70%;
-    width: 25%;
-    height: 75%;
+.imagen-btn-whatsapp {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  align-items: center;
+  background-color: #1f3350;
+  border-radius: 70%;
+  width: 25%;
+  height: 75%;
 }
 
-.imagen{
-    margin-left: -15%;
+.imagen {
+  margin-left: -15%;
 }
-.imagen-whatsapp{
-    width: 130%;
-    height: 130%;
+.imagen-whatsapp {
+  width: 130%;
+  height: 130%;
 }
