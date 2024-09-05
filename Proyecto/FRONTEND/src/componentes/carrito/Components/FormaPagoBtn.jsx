@@ -3,16 +3,16 @@ function BtnFormaPago({ text, extraStyles, onClick }) {
   return (
     <>
       <section
-        class="portfolio-experiment"
+        className="portfolio-experiment"
         style={extraStyles}
         onClick={() => onClick(text)}
       >
         <a>
-          <span class="text">{text}</span>
-          <span class="line -right"></span>
-          <span class="line -top"></span>
-          <span class="line -left"></span>
-          <span class="line -bottom"></span>
+          <span className="text">{text}</span>
+          <span className="line -right"></span>
+          <span className="line -top"></span>
+          <span className="line -left"></span>
+          <span className="line -bottom"></span>
         </a>
       </section>
     </>

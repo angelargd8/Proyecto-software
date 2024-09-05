@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { IconToggle } from "./IconToggle";
 import "./MobileNav.css";
 
-function MobileNav() {
+function MobileNav({ spanColor }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useCycle(false, true);
@@ -99,7 +99,7 @@ function MobileNav() {
         initial={false}
         animate={isOpen ? "open" : "closed"}
       >
-        <IconToggle toggle={() => setIsOpen()} />
+        <IconToggle toggle={() => setIsOpen()} spanColor={spanColor} />
       </motion.nav>
 
       <motion.ul
@@ -143,26 +143,30 @@ function MobileNav() {
         >
           Carrito
         </motion.li>
-        <motion.li
-          variants={itemVariants}
-          onClick={handleLogin}
-          whileHover={{
-            scale: 1.25,
-            transition: { duration: 0.3 },
-          }}
-        >
-          Login
-        </motion.li>
-        <motion.li
-          variants={itemVariants}
-          onClick={handleSignup}
-          whileHover={{
-            scale: 1.25,
-            transition: { duration: 0.3 },
-          }}
-        >
-          Sign Up
-        </motion.li>
+        {userRol == null && googleUser == null && (
+          <>
+            <motion.li
+              variants={itemVariants}
+              onClick={handleLogin}
+              whileHover={{
+                scale: 1.25,
+                transition: { duration: 0.3 },
+              }}
+            >
+              Login
+            </motion.li>
+            <motion.li
+              variants={itemVariants}
+              onClick={handleSignup}
+              whileHover={{
+                scale: 1.25,
+                transition: { duration: 0.3 },
+              }}
+            >
+              Sign Up
+            </motion.li>
+          </>
+        )}
       </motion.ul>
     </>
   );

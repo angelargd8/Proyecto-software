@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import "./carrito.css";
 import { useNavigate } from "react-router-dom";
 import { useCarrito } from "./carritoContext";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import MobileHdr from "./Components/MobileHdr";
 
 function Carrito() {
   const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
@@ -22,10 +21,6 @@ function Carrito() {
     } else {
       agregarAlCarrito(producto, nuevaCantidad);
     }
-  };
-
-  const handleRegresar = () => {
-    navigate("/home");
   };
 
   const handlePagar = () => {
@@ -49,7 +44,7 @@ function Carrito() {
     );
   }, [carrito]);
 
-  const envio = 15.0; //Temporal
+  const Tarifa = 5.0; //Temporal
 
   const calcularPrecioTotal = (cantidad, precios) => {
     precios = precios.sort((a, b) => a[2] - b[2]);
@@ -78,70 +73,12 @@ function Carrito() {
     return total + precioFinal;
   }, 0);
 
-  const Total = Subtotal + envio;
+  const Total = Subtotal + Tarifa;
 
   return (
     <>
       <div className="contenedor">
-        <div className="up">
-          <div className="regresar">
-            <div className="regresarbtn" onClick={() => handleRegresar()}>
-              {" "}
-              &lt;{" "}
-            </div>
-          </div>
-          <div className="CarritoHeader">
-            <div className="titulo">My Cart</div>
-            <div className="midHeader"></div>
-            <div className="logoBox">
-              <img
-                className="logotipo"
-                src="../src/assets/img/logo.png"
-                alt=""
-                width="60"
-                height="70"
-              />
-            </div>
-          </div>
-          <div className="opciones">
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span
-                style={{
-                  width: "30px",
-                  height: "3px",
-                  backgroundColor: "black",
-                  display: "block",
-                  marginBottom: "5px",
-                }}
-              ></span>
-              <span
-                style={{
-                  width: "30px",
-                  height: "3px",
-                  backgroundColor: "black",
-                  display: "block",
-                  marginBottom: "5px",
-                }}
-              ></span>
-              <span
-                style={{
-                  width: "30px",
-                  height: "3px",
-                  backgroundColor: "black",
-                  display: "block",
-                }}
-              ></span>
-            </button>
-          </div>
-        </div>
+        <MobileHdr />
         <div className="MidyBotm">
           <div className="columnPasosPagar">
             <div className="pasos">
@@ -239,7 +176,7 @@ function Carrito() {
                 </div>
                 <div className="ColumnNo">
                   Q {Subtotal.toFixed(2)}
-                  <br />Q {envio.toFixed(2)}
+                  <br />Q {Tarifa.toFixed(2)}
                   <br />Q {Total.toFixed(2)}
                 </div>
               </div>

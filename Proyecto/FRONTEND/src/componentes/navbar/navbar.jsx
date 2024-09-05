@@ -94,7 +94,7 @@ function Nabvar() {
         location.pathname !== "/resumen" && (
           <div className="nabvar-body" id="navbar">
             <div className="mobileNavContainer">
-              <MobileNav />
+              <MobileNav spanColor={"white"} />
             </div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
               <a className="navbar-brand" href="/">

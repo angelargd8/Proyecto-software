@@ -7,6 +7,7 @@ import BtnFormaPago from "./Components/FormaPagoBtn";
 import { useState, useEffect } from "react";
 import FormaPagoImg from "./Components/FormaPagoImg";
 import { motion } from "framer-motion";
+import MobileNav from "../navbar/components/MobileNav";
 
 function Pago() {
   const navigate = useNavigate();
@@ -85,42 +86,7 @@ function Pago() {
             </div>
           </div>
           <div className="opciones">
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span
-                style={{
-                  width: "30px",
-                  height: "3px",
-                  backgroundColor: "black",
-                  display: "block",
-                  marginBottom: "5px",
-                }}
-              ></span>
-              <span
-                style={{
-                  width: "30px",
-                  height: "3px",
-                  backgroundColor: "black",
-                  display: "block",
-                  marginBottom: "5px",
-                }}
-              ></span>
-              <span
-                style={{
-                  width: "30px",
-                  height: "3px",
-                  backgroundColor: "black",
-                  display: "block",
-                }}
-              ></span>
-            </button>
+            <MobileNav spanColor={"#1b4965"} />
           </div>
         </div>
         <div className="MidyBotmPago">
