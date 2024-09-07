@@ -1,4 +1,4 @@
-version: "2.2"
+version: "2.3"
 services:
   postgres:
     build: ./BACKEND/DB
@@ -24,6 +24,8 @@ services:
       - "8000:5173"
     environment:
       VITE_APIPORT: "http://5.161.104.98:3005/graphql"
+      VITE_APIPORT_IMAGE: "http://5.161.104.98:3005/"
+      VITE_APIPORT_CATEGORY: "http://5.161.104.98:3005/addCategory"
     depends_on:
       - api
       - postgres

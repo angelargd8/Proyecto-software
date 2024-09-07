@@ -4,35 +4,54 @@
     left:0;
     right: 0;
     bottom: 0;
-    background-image: url(../../assets/img/wallpaper8.jpg);
     background-repeat: no-repeat ;
     background-size: cover;
     background-attachment: fixed;
-    padding: 5px;
-    background-color: #154EE5;
     justify-content: center;
-    align-items: center;    
+    align-items: center;   
+    padding: 0%;
+    margin: 0%; 
 
 }
+
+.signup .contenedor{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    
+}
+
 .signup .formulario{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
-    background-color:#061a4dab; 
     padding: 35px;
-    border-radius: 80px;
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
-    color: white;
+    color: #000;
     border: none;
     width: 100%;
-    height: 90%;
-    margin-bottom: 35%;
-    margin-top: 3%;
+    height: 100%;
+}
+
+.signup .imagen{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-image: url(../../assets/img/Cartulinas2.jpg);
+    object-fit: fill;
 }
 
 .signup .form-text{
     padding: 5px;
     border-radius: 10px;
-    color: white;
-    border: none;
+    color: #1f3350;
+    border: #000;
     font-size: 40px;
     align-items: flex-start;
     display: flex;
@@ -42,12 +61,13 @@
     }
 
 .signup .btn{
-    margin: 2px;
-    padding: 15px;
+    padding-left: 70%;
+    padding-right: 70%;
+    margin-left: -70%;
     border-radius: 10px;
     background-color: #051336;
     color: white;
-    border: none;
+    border: #000;
     font-size: 20px;
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
     transition: 0.5s ease-in;
@@ -57,10 +77,9 @@
 
 
 .signup .boton{
-    display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
-    margin-left: 85px;
 }
 
 .signup  .btn:hover, .signup .btn2:hover{
@@ -70,15 +89,22 @@
 }
 
 .signup .inputs{
-    border: white;
-    background-color: white;
+    border: #000;
+    background-color: rgba(165, 165, 165, 0.425);
     font-size: 16px;
     padding: 10px;
-    margin: 8px;
+    margin: 10px;
     border-radius: 10px;
     color: black;
 }
 
+.signup .roles{
+    color: #1f3350
+}
+
+.signup .escoger{
+    color: #757575
+}
 
 .signup .goBack{
     position: absolute;
@@ -87,23 +113,25 @@
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
-    color: white;
+    color: #000;
     border: none;
     font-size: 20px;
     box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
     transition: 0.5s ease-in;
     font-weight: 700!important;
+    z-index: 2;
 
 }
 
 .signup .goBack-btn{
-    background-color: #0513366b;
+    background-color: #051336;
     color: white;
     border: none;
-    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+    /*box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);*/
     transition: 0.5s ease-in;
     font-weight: 700!important;
     margin-left: 20px;
+    
 }
 
 .signup .goBack-btn:hover{

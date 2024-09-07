@@ -1,0 +1,107 @@
+.contact{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;   
+    display: flex;
+    padding: 0%;
+    margin: 0%;
+    background-size: cover;
+    background-attachment: fixed;
+    flex-direction: column;
+}
+
+.contact .info{
+    margin-top: 7%;
+    position: relative;
+    color:  #1f3350;
+    height: 100%;
+    width: 100%;
+}
+
+.contact .main-text{
+    padding: 5px;
+    color: #1f3350;
+    border: #000;
+    font-size: 40px;
+    align-items: flex-start;
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;    
+}
+
+.contact .second-text{
+    padding: 5px;
+    color: #cea44a;
+    border: #000;
+    font-size: 20px;
+    display: flex;
+    margin: 5px;
+    justify-content: center;
+    align-items: center; 
+}
+
+.contact .text{
+    padding: 5px;
+    color: #cea44a;
+    border: #000;
+    font-size: 20px;
+    display: flex;
+    margin: 5px;  
+}
+
+.contact .cuadro{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1%;
+    color: #cea44a;
+    border: none;
+    height: 150%;
+    width: 80%;
+    
+}
+
+
+
+.contact-info{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 7%;
+    
+}
+
+.contact .container-image{
+    position: relative;
+    display: flex;
+    width: 30%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.contact .container-info{
+    height: 100%;
+    width: 70%;
+}
+
+.contact .imagen{
+    background-image: url('../../assets/img/logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 45%;
+    height: 100%;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+
+}

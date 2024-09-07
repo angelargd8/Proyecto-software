@@ -7,7 +7,6 @@
     background-repeat: no-repeat ;
     background-size: cover;
     background-attachment: fixed;
-    padding: 20px;
     justify-content: center;
     align-items: center;   
     display: flex;
@@ -26,13 +25,60 @@
     
 }
 
-.login .imagen{
-    width: 100%;
+/* CONTENIDO DE LA ANIMACION  */
+
+
+.login .contenido-imagen {
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    overflow: hidden; /* Oculta las imágenes cuando están fuera de la pantalla */
+    white-space: nowrap; /* Evita que las imágenes se dividan en varias líneas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .login .texto-imagenn {
+    display: flex;
     height: 100%;
-    background-size: cover;
-    background-image: url(../../assets/img/Cartulinas2.jpg);
-    object-fit: fill;
-}
+    animation: marquee 24s linear infinite;
+  }
+
+  .login .texto-imagenn2 {
+    display: flex;
+    height: 100%;
+    animation: marquee2 21s linear infinite;
+  }
+  
+  .login .contenido-imagen img {
+    height: 20rem; /* Ajusta la altura de las imágenes */
+    width: 20rem;
+    margin: 20px;
+    vertical-align: middle; /* Alinea las imágenes verticalmente en el medio */ 
+  }
+
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(85%); /* Comienza en su posición inicial */
+    }
+    to {
+      transform: translateX(-100%); /* Se desplaza completamente hacia la izquierda */
+    }
+  }
+  
+  @keyframes marquee2 {
+    from {
+      transform: translateX(-80%); /* Comienza en su posición inicial */
+    }
+    to {
+      transform: translateX(100%); /* Se desplaza completamente hacia la izquierda */
+    }
+  }
+  
+  /* TERMINA CONTENIDO DE LA ANIMACION */
 
 .login .formulario{
     display: flex;
@@ -87,7 +133,7 @@
 .login .form-text{
     padding: 5px;
     border-radius: 10px;
-    color: #000;
+    color: #1f3350;
     border: #000;
     font-size: 40px;
     align-items: flex-start;

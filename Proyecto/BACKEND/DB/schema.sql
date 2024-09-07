@@ -41,13 +41,15 @@ create table articulos
 	nombre_articulo varchar(100) not null,
 	cantidad_articulo int,
 	descripcion TEXT,
-	precio float not null
+	precio float not null,
+	id_categoria int
 );
 
 create table categorias
 (
 	id_categoria serial primary key,
 	nombre_categoria varchar(100) not null,
+	imagen_categoria TEXT,
 	id_pagina int
 );
 
@@ -112,6 +114,8 @@ alter table paginas add constraint paginasfkusuarios foreign key (email) referen
 
 alter table categorias add constraint categoriasfkpaginas foreign key (id_pagina) references paginas(id_pagina);
 
+alter table articulos add constraint articuloscategorias foreign key (id_categoria) references categorias(id_categoria);	
+
 alter table ordenes_articulos add constraint ordenes_articulosfkordenes foreign key (id_orden) references ordenes (id_orden);
 
 alter table ordenes_articulos add constraint ordenes_articulosfkarticulos foreign key (id_articulo) references articulos (id_articulo);
@@ -129,16 +133,17 @@ alter table categoria_promociones add constraint categoria_promocionesfkcategori
 alter table categoria_promociones add constraint categoria_promocionesfkpromociones foreign key (id_promocion) references promociones (id_promocion);
 
 
+INSERT INTO permisos (nombre_permiso) VALUES ('Crear Artículos'), ('Eliminar Artículos'), ('Ver Usuarios'), ('Modificar Configuraciones');
+-- insert de usuarios
+insert into roles (id_rol, nombre_rol) values (1, 'Admin'), (2, 'User');
+
 -- inserts necesarios
 INSERT INTO rol_permisos (id_rol, id_permiso) VALUES
 (1, 1), (1, 2), (1, 3), (1, 4), -- Admin con todos los permisos
 (2, 3); -- User solo con permiso de ver usuarios
-INSERT INTO permisos (nombre_permiso) VALUES ('Crear Artículos'), ('Eliminar Artículos'), ('Ver Usuarios'), ('Modificar Configuraciones');
-
-
--- insert de usuarios
-
-insert into roles (id_rol, nombre_rol) values (1, 'Admin'), (2, 'User')
 
 INSERT INTO USUARIOS (email, nombre, apellido, password, id_rol) 
-values('aguilar@gmail.com','Francis','Aguilar','123',2),('francis@gmail.com','Francis','Aguilar','123',1), ('admin@gmail.com','admin','','123',1)
+values('aguilar@gmail.com','Francis','Aguilar','123',2),('francis@gmail.com','Francis','Aguilar','123',1), ('admin@gmail.com','admin','','123',1);
+
+INSERT INTO paginas (nombre_pagina,email)
+values ('Picolin', 'francis@gmail.com');

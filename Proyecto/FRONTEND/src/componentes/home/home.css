@@ -1,8 +1,7 @@
 .container-home { 
     padding-top: 120px;
-    margin-top: 20px;
     position: absolute;
-    top: 0;
+    top: 20px;
     width: 100%;
 }
 
@@ -12,23 +11,25 @@
     background-color: white;
     flex-direction: row;
     justify-content: center;
+
 }
 
-.category-card{
-    margin: 10px;
+.categor-card{
     display: flex;
     min-width: 300px;
     align-items: center;
     justify-content: center;
+    margin: 20px;
+    margin-top: 50px;
 }
 
 .categorias{
     color: #1f3350;
 }
 .bienvenida{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /*font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;*/
     padding: 1%;
-    font-size: medium ;
-    color: #886415;
+    font-size: large ;
+    color: #cea44a;
     /*'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif*/
 }

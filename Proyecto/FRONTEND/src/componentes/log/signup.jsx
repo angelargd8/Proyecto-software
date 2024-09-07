@@ -1,7 +1,6 @@
 import './signup.css'
 import { useNavigate } from 'react-router-dom';
 
-
 function SingUp(){
 
   const navigate = useNavigate();
@@ -12,21 +11,31 @@ function SingUp(){
 
   const handleSignup = () => {
 
-    const url = ' http://localhost:4000/'
+    const url = import.meta.env.VITE_APIPORT;
         const query = `
-        mutation AddnewUser($email: String!, $nombre: String!, $password: String!, $appelido: String) {
-          addnewUser(email: $email, nombre: $nombre, password: $password, appelido: $appelido) {
-            message
+        mutation addnewUser(
+          $email: String!
+          $nombre: String!
+          $appelido: String
+          $password: String!
+          $rol: Int!
+        ) {
+          addnewUser(
+            email: $email
+            nombre: $nombre
+            appelido: $appelido
+            password: $password
+            rol: $rol
+          ) {
             status
+            message
             user {
+              email
               name
-               email
             }
           }
         }
-        
-        `;
-
+      `;
 
         
         async function crearteUser(){
@@ -40,27 +49,27 @@ function SingUp(){
                 query,
                 variables: {
                   email: document.getElementById('email').value,
-                  password: document.getElementById('password').value,
                   nombre: document.getElementById('name').value,
-                  appelido: document.getElementById('lastname').value
+                  apellido: document.getElementById('lastname').value,
+                  password: document.getElementById('password').value,
+                  rol: parseInt(document.getElementById('rol').value)
                 }
               })
             });
-
+            
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
             
             const data = await response.json();
+            console.log(data);
 
             if (data.error) {
               console.error('Error en la consulta GraphQL:', data.errors);
             }
             else {
               console.log(data.data.addnewUser);
-              localStorage.setItem('email', data.data.addnewUser.user.email);
-              localStorage.setItem('name', data.data.addnewUser.user.name);
-              {alert('Bienvenir@ '+data.data.addnewUser.user.name+' a Picolin')}
+              {alert('Usuario: '+data.data.addnewUser.user.name+' a sido registrado correctamente en Picolin!')}
               navigate("/home");
             }
             }catch(error){
@@ -75,24 +84,42 @@ function SingUp(){
     return (
         <>
         <div className="signup body">
-        <div className="goBack">
-              <button className="goBack-btn" onClick={handleHome}> &lt; regresar</button>
+          <div className="goBack">
+              <button className="goBack-btn" onClick={handleHome}>
+                {" "}
+                &lt;{" "}
+              </button>
             </div>
-          <div className="formulario">
-              <h1 className='form-text'>Registro</h1>
-              <input type="text" id="name" name="name" placeholder="Nombre" className="inputs"/>
-              <input type="text" id="lastname" name="lastname" placeholder="Apellido" className="inputs"/>
+          <div className="contenedor">
+            <div className="imagen"></div>
+            <div className="formulario">
+                <h1 className='form-text'>Registro</h1>
+                
+                <input type="text" id="name" name="name" placeholder="Nombre" className="inputs"/>
+                <input type="text" id="lastname" name="lastname" placeholder="Apellido" className="inputs"/>
                 <input type="email" id="email" name="email" placeholder="Correo Electrónico" className="inputs"/>
                 <input type="password" id="password" name="password" className="inputs" placeholder="Contraseña"/>
                 
+                <div className="roles">
+                  <label htmlFor="rol">Rol: </label>
+                  <select name="rol" id="rol" className="inputs">
+                    <option selected className="escoger">Escoger...</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Usuario</option>
+                  </select>
+                </div>
+
                 <div className="boton">
                     <button className= "btn" onClick={handleSignup}>
                       Registrar
                     </button>
-                  </div>
-                  
-        
-          </div>
+                </div>
+                      
+            
+              </div>
+        </div>
+
+          
         </div>
         </>
       )
