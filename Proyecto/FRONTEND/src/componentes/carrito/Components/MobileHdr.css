@@ -36,6 +36,7 @@
   color: white;
   font-family: "Gill Sans", "Gill Sans MT", sans-serif;
   font-size: xx-large;
+  cursor: pointer;
 }
 
 .titulo {
