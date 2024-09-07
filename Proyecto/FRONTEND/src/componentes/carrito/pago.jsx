@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import FormaPagoImg from "./Components/FormaPagoImg";
 import { motion } from "framer-motion";
 import MobileNav from "../navbar/components/MobileNav";
+import MobileHdr from "./Components/MobileHdr";
+import CarritoBtn from "./Components/CarritoBtn";
 
 function Pago() {
   const navigate = useNavigate();
@@ -64,31 +66,7 @@ function Pago() {
   return (
     <>
       <div className="contenedor">
-        <div className="up">
-          <div className="regresar">
-            <div className="regresarbtn" onClick={() => handleRegresar()}>
-              {" "}
-              &lt;{" "}
-            </div>
-          </div>
-          <div className="headerPago">
-            <div className="tituloDeskPago">My Cart</div>
-            <div className="tituloMovilPago">Detalles de Pedido</div>
-            <div className="midHeader"></div>
-            <div className="logoBox">
-              <img
-                className="logotipo"
-                src="../src/assets/img/logo.png"
-                alt=""
-                width="60"
-                height="70"
-              />
-            </div>
-          </div>
-          <div className="opciones">
-            <MobileNav spanColor={"#1b4965"} />
-          </div>
-        </div>
+        <MobileHdr title={"Detalles de Pedido"} lastPath={"/carrito"} />
         <div className="MidyBotmPago">
           <div className="columnPasosPagar">
             <div className="pasosP">
@@ -193,9 +171,8 @@ function Pago() {
                 <Carrusel></Carrusel>
               </div>
             </div>
-            <div className="BTNsiguiente" onClick={() => handleConfirmPago()}>
-              {" "}
-              SIGUIENTE{" "}
+            <div className="btnContainer">
+              <CarritoBtn text={"SIGUIENTE"} nextPath={"/resumen"} />
             </div>
           </div>
           {/* <div className="bottom">

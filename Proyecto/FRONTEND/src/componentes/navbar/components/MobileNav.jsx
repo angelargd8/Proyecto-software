@@ -2,11 +2,12 @@ import { useCycle, motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IconToggle } from "./IconToggle";
 import "./MobileNav.css";
+import { useState } from "react";
 
 function MobileNav({ spanColor }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useCycle(false, true);
+  const [isOpen, setIsOpen] = useState(false);
   //   Local Storage
   const userRol = localStorage.getItem("rol");
   const googleUser = localStorage.getItem("googleUser");
@@ -14,27 +15,37 @@ function MobileNav({ spanColor }) {
   const Googlename = localStorage.getItem("GoogleName");
 
   const handleHome = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/home");
   };
 
   const handleLogin = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/login");
   };
 
   const handleCarrito = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/carrito");
   };
 
   const handleContact = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/contact");
   };
 
   const handleLogOutGoogle = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     localStorage.removeItem("googleUser");
     localStorage.removeItem("rol");
     alert("Sesión cerrada");
@@ -42,19 +53,25 @@ function MobileNav({ spanColor }) {
   };
 
   const handleLogOut = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     localStorage.removeItem("rol");
     alert("Sesión cerrada");
     navigate("/home");
   };
 
   const handleSignup = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/signup");
   };
 
   const handleAddProduct = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/editarCategorias");
   };
 
@@ -99,7 +116,7 @@ function MobileNav({ spanColor }) {
         initial={false}
         animate={isOpen ? "open" : "closed"}
       >
-        <IconToggle toggle={() => setIsOpen()} spanColor={spanColor} />
+        <IconToggle toggle={() => setIsOpen(!isOpen)} spanColor={spanColor} />
       </motion.nav>
 
       <motion.ul

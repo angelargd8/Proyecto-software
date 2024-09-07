@@ -1038,17 +1038,13 @@
     box-shadow: 0px 0px 0px #a2a19b;
   }
 
-  .BTNsiguiente {
+  .btnContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
-    text-align: center;
     height: 7%;
     width: 90%;
-    background-color: #1b4965;
-    color: white;
-    border-radius: 20px;
     margin-top: 10%;
   }
 }

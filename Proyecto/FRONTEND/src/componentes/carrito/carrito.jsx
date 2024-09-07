@@ -3,6 +3,7 @@ import "./carrito.css";
 import { useNavigate } from "react-router-dom";
 import { useCarrito } from "./carritoContext";
 import MobileHdr from "./Components/MobileHdr";
+import CarritoBtn from "./Components/CarritoBtn";
 
 function Carrito() {
   const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
@@ -78,7 +79,7 @@ function Carrito() {
   return (
     <>
       <div className="contenedor">
-        <MobileHdr />
+        <MobileHdr title={"My Cart"} lastPath={"/home"} />
         <div className="MidyBotm">
           <div className="columnPasosPagar">
             <div className="pasos">
@@ -180,10 +181,7 @@ function Carrito() {
                   <br />Q {Total.toFixed(2)}
                 </div>
               </div>
-              <button className="pagobtn" onClick={handlePagar}>
-                {" "}
-                Pagar{" "}
-              </button>
+              <CarritoBtn text={"Pagar"} nextPath={"/pago"} />
             </div>
           </div>
           <div className="Dbottom" style={{ fontSize: "1.5vw" }}>
