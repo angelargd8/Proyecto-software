@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "./CarritoBtn.css";
 
 function CarritoBtn({ text, nextPath }) {
   const navigate = useNavigate();

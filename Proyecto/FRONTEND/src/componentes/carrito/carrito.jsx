@@ -4,25 +4,26 @@ import { useNavigate } from "react-router-dom";
 import { useCarrito } from "./carritoContext";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
+import InCartProduct from "./Components/InCartProduct";
 
 function Carrito() {
   const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
     useCarrito();
   const navigate = useNavigate();
 
-  const cambioCant = (producto, nuevaCantidad) => {
-    if (nuevaCantidad < 1) {
-      if (
-        window.confirm(
-          "Se eliminara este producto del carrito, estas seguro de continuar?"
-        )
-      ) {
-        eliminarDelCarrito(producto.id);
-      }
-    } else {
-      agregarAlCarrito(producto, nuevaCantidad);
-    }
-  };
+  // const cambioCant = (producto, nuevaCantidad) => {
+  //   if (nuevaCantidad < 1) {
+  //     if (
+  //       window.confirm(
+  //         "Se eliminara este producto del carrito, estas seguro de continuar?"
+  //       )
+  //     ) {
+  //       eliminarDelCarrito(producto.id);
+  //     }
+  //   } else {
+  //     agregarAlCarrito(producto, nuevaCantidad);
+  //   }
+  // };
 
   const handlePagar = () => {
     navigate("/pago");
@@ -38,12 +39,12 @@ function Carrito() {
     navigate("/carrito");
   };
 
-  useEffect(() => {
-    console.log(
-      "Estado actual del carrito después de agregar producto:",
-      carrito
-    );
-  }, [carrito]);
+  // useEffect(() => {
+  //   console.log(
+  //     "Estado actual del carrito después de agregar producto:",
+  //     carrito
+  //   );
+  // }, [carrito]);
 
   const Tarifa = 5.0; //Temporal
 
@@ -117,50 +118,7 @@ function Carrito() {
                   El carrito de compras está vacío.
                 </h4>
               ) : (
-                carrito.map((producto) => (
-                  <div className="product" key={producto.id}>
-                    <div className="vista">
-                      <div
-                        className="btn_eliminar"
-                        onClick={() => eliminarDelCarrito(producto.id)}
-                      >
-                        x
-                      </div>
-                      <img
-                        id="imgVistaC"
-                        src={producto.image}
-                        alt={producto.title}
-                      />
-                    </div>
-                    <div className="info">
-                      <h3 className="textInfo">{producto.title}</h3>
-                      <p className="textInfo">{producto.content}</p>
-                    </div>
-                    <div className="nums">
-                      <div id="xd">
-                        {console.log(producto.quantity)}
-                        {console.log(producto.precios)}
-                        <div
-                          className="btn_sumar"
-                          onClick={() =>
-                            cambioCant(producto, producto.quantity - 1)
-                          }
-                        >
-                          <b>-</b>
-                        </div>
-                        <span className="cant">{producto.quantity}</span>
-                        <div
-                          className="btn_restar"
-                          onClick={() =>
-                            cambioCant(producto, producto.quantity + 1)
-                          }
-                        >
-                          <b>+</b>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))
+                carrito.map((producto) => <InCartProduct producto={producto} />)
               )}
             </div>
             <div className="totales">
