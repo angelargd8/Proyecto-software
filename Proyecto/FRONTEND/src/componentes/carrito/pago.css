@@ -167,7 +167,6 @@
 .FotoCarrito:hover {
   transition: 1000ms;
   transform: rotateY(-90deg) translateZ(150px);
-  background-color: red;
 }
 
 .RowFormasPago {
