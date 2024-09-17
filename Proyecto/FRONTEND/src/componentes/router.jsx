@@ -11,7 +11,7 @@ import Products from './products/products.jsx';
 import Resumen from './carrito/resumen.jsx';
 import AgregarCateg from './admin/agregarCateg.jsx';
 import Contact from './contact/contact.jsx';
-import Configuracion from './admin/configuracion.jsx';
+import Configuracion from './config/configuracion.jsx';
 
 function AppRouter(){
 
