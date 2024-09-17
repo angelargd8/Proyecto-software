@@ -11,6 +11,7 @@ import Products from './products/products.jsx';
 import Resumen from './carrito/resumen.jsx';
 import AgregarCateg from './admin/agregarCateg.jsx';
 import Contact from './contact/contact.jsx';
+import Configuracion from './admin/configuracion.jsx';
 
 function AppRouter(){
 
@@ -25,6 +26,7 @@ function AppRouter(){
             <Route path="/pago" element = {<Pago />}/>
             <Route path="/resumen" element = {<Resumen />}/>
             <Route path="/contact" element = {<Contact />}/>
+            <Route path="/configuracion" element = {<Configuracion />}/>
             <Route path="/" element={<Home />} />
             {console.log(userRol)}
             {
