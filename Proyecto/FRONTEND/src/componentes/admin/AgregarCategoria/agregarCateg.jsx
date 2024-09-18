@@ -3,6 +3,7 @@
 // TODO: Arreglar los estilos y pasarlos a css porque ahorita est en styles
 import React, { useState, useEffect } from "react";
 import "./agregarCateg.css";
+import StepIndicator from "../../StepIndicator";
 
 function agregarCateg() {
   const [nameCategoria, setNameCategoria] = useState(null);
@@ -92,40 +93,10 @@ function agregarCateg() {
             }}
           />
         </label>
-        <label
-          style={{
-            position: "absolute",
-            top: 5,
-            left: 5,
-            fontSize: "16px",
-            padding: "2px 5px",
-            alignItems: "center",
-            borderRadius: "100%",
-            background: "#1F3350",
-            color: "white",
-          }}
-        >
-          1
-        </label>
+        <StepIndicator>1</StepIndicator>
       </div>
       <div className="upload-container" style={{ position: "relative" }}>
-        <label
-          style={{
-            position: "absolute",
-            top: 5,
-            left: 5,
-            fontSize: "16px",
-            padding: "2px 5px",
-            alignItems: "center",
-            borderRadius: "100%",
-            background: "#1F3350",
-            color: "white",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
-          2
-        </label>
+        <StepIndicator>2</StepIndicator>
         <div
           style={{
             height: "70%",
@@ -142,7 +113,7 @@ function agregarCateg() {
               left: 0,
               width: "100%",
               height: "100%",
-              opacity: 0, // Hacer el input invisible
+              opacity: 0,
               cursor: "pointer",
             }}
           />
