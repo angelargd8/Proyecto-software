@@ -32,7 +32,7 @@ function MobileHdr({ title, lastPath }) {
         </div>
       </div>
       <div className="opciones">
-        <MobileNav spanColor={"#1b4965"} extraStyles={{ marginBottom: 15 }} />
+        <MobileNav spanColor={"#1b4965"} iconStyles={{ marginBottom: 15 }} />
       </div>
     </div>
   );
