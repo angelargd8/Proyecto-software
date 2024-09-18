@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import "./agregarCateg.css";
 import StepIndicator from "../../StepIndicator";
+import InputImage from "../../InputImage";
 
 function agregarCateg() {
   const [nameCategoria, setNameCategoria] = useState(null);
@@ -97,63 +98,10 @@ function agregarCateg() {
       </div>
       <div className="upload-container" style={{ position: "relative" }}>
         <StepIndicator>2</StepIndicator>
-        <div
-          style={{
-            height: "70%",
-            width: "80%",
-            position: "relative",
-          }}
-        >
-          <input
-            type="file"
-            onChange={handleImageChange}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              opacity: 0,
-              cursor: "pointer",
-            }}
-          />
-          <img
-            src={
-              previewImage
-                ? previewImage
-                : "../src/assets/img/common/cloudUpload.png"
-            }
-            alt="nube"
-            style={{ height: "100%", width: "100%", objectFit: "contain" }}
-          />
-        </div>
-        <div
-          style={{
-            background: "#1F3350",
-            height: "20%",
-            width: "50%",
-            borderRadius: "30px",
-            alignContent: "center",
-            textAlign: "center",
-            position: "relative",
-            color: "white",
-          }}
-        >
-          <input
-            type="file"
-            onChange={handleImageChange}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              opacity: 0,
-              cursor: "pointer",
-            }}
-          />
-          Añadir una imagen
-        </div>
+        <InputImage
+          onImageChange={handleImageChange}
+          previewImage={previewImage}
+        />
       </div>
       <div
         style={{
