@@ -41,8 +41,16 @@ create table articulos
 	nombre_articulo varchar(100) not null,
 	cantidad_articulo int,
 	descripcion TEXT,
-	precio float not null,
 	id_categoria int
+);
+
+create table precios
+(
+	id_precio serial not null,
+	id_articulo int not null,
+	nombre_precio varchar not null,
+	cantidad_articulo float not null,
+	precio float not null
 );
 
 create table categorias
@@ -131,6 +139,9 @@ alter table articulos_promociones add constraint articulos_promocionesfkpromocio
 alter table categoria_promociones add constraint categoria_promocionesfkcategoria foreign key (id_categoria) references categorias (id_categoria);
 
 alter table categoria_promociones add constraint categoria_promocionesfkpromociones foreign key (id_promocion) references promociones (id_promocion);
+
+alter table precios add constraint articulosPrecios foreign key (id_articulo) references articulos(id_articulo);
+
 
 
 INSERT INTO permisos (nombre_permiso) VALUES ('Crear Artículos'), ('Eliminar Artículos'), ('Ver Usuarios'), ('Modificar Configuraciones');
