@@ -2,11 +2,11 @@ import "./MobileHdr.css";
 import MobileNav from "../../navbar/components/MobileNav";
 import { useNavigate } from "react-router-dom";
 
-function MobileHdr() {
+function MobileHdr({ title, lastPath }) {
   const navigate = useNavigate();
 
   const handleRegresar = () => {
-    navigate("/home");
+    navigate(`${lastPath}`);
   };
 
   return (
@@ -18,7 +18,7 @@ function MobileHdr() {
         </div>
       </div>
       <div className="CarritoHeader">
-        <div className="titulo">My Cart</div>
+        <div className="titulo">{title}</div>
         <div className="midHeader"></div>
         <div className="logoBox">
           <img

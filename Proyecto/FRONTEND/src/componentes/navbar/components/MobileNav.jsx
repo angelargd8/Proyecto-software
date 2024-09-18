@@ -2,39 +2,64 @@ import { useCycle, motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IconToggle } from "./IconToggle";
 import "./MobileNav.css";
+import { useEffect, useState } from "react";
 
 function MobileNav({ spanColor }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useCycle(false, true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [onScreen, setOnscreen] = useState(location.pathname);
   //   Local Storage
   const userRol = localStorage.getItem("rol");
   const googleUser = localStorage.getItem("googleUser");
   const name = localStorage.getItem("name");
   const Googlename = localStorage.getItem("GoogleName");
 
+  const isActive = (path) => location.pathname === path;
+
+  const handleNavigation = (path) => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+    navigate(path);
+  };
+
+  useEffect(() => {
+    setOnscreen(location.pathname);
+  }, [location.pathname]);
+
   const handleHome = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/home");
   };
 
   const handleLogin = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/login");
   };
 
   const handleCarrito = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/carrito");
   };
 
   const handleContact = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/contact");
   };
 
   const handleLogOutGoogle = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     localStorage.removeItem("googleUser");
     localStorage.removeItem("rol");
     alert("Sesión cerrada");
@@ -42,19 +67,25 @@ function MobileNav({ spanColor }) {
   };
 
   const handleLogOut = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     localStorage.removeItem("rol");
     alert("Sesión cerrada");
     navigate("/home");
   };
 
   const handleSignup = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/signup");
   };
 
   const handleAddProduct = () => {
-    setIsOpen();
+    if (isOpen === true) {
+      setIsOpen(!isOpen);
+    }
     navigate("/editarCategorias");
   };
 
@@ -99,7 +130,7 @@ function MobileNav({ spanColor }) {
         initial={false}
         animate={isOpen ? "open" : "closed"}
       >
-        <IconToggle toggle={() => setIsOpen()} spanColor={spanColor} />
+        <IconToggle toggle={() => setIsOpen(!isOpen)} spanColor={spanColor} />
       </motion.nav>
 
       <motion.ul
@@ -120,6 +151,10 @@ function MobileNav({ spanColor }) {
             scale: 1.25,
             transition: { duration: 0.3 },
           }}
+          style={{
+            fontWeight: isActive("/home") ? 600 : "normal",
+            scale: isActive("/home") ? 1.15 : 1,
+          }}
         >
           Inicio
         </motion.li>
@@ -130,6 +165,10 @@ function MobileNav({ spanColor }) {
             scale: 1.25,
             transition: { duration: 0.3 },
           }}
+          style={{
+            fontWeight: isActive("/contact") ? 600 : "normal",
+            scale: isActive("/contact") ? 1.15 : 1,
+          }}
         >
           Contáctanos
         </motion.li>
@@ -139,6 +178,10 @@ function MobileNav({ spanColor }) {
           whileHover={{
             scale: 1.25,
             transition: { duration: 0.3 },
+          }}
+          style={{
+            fontWeight: isActive("/carrito") ? 600 : "normal",
+            scale: isActive("/carrito") ? 1.15 : 1,
           }}
         >
           Carrito
@@ -152,6 +195,10 @@ function MobileNav({ spanColor }) {
                 scale: 1.25,
                 transition: { duration: 0.3 },
               }}
+              style={{
+                fontWeight: isActive("/login") ? 600 : "normal",
+                scale: isActive("/login") ? 1.15 : 1,
+              }}
             >
               Login
             </motion.li>
@@ -161,6 +208,10 @@ function MobileNav({ spanColor }) {
               whileHover={{
                 scale: 1.25,
                 transition: { duration: 0.3 },
+              }}
+              style={{
+                fontWeight: isActive("/signup") ? 600 : "normal",
+                scale: isActive("/signup") ? 1.15 : 1,
               }}
             >
               Sign Up

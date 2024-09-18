@@ -15,7 +15,6 @@ const Path = ({ spanColor, ...props }) => (
 export const IconToggle = ({ toggle, spanColor }) => (
   <button onClick={toggle} className="iconButton" id="iconButton" title="ttas">
     <svg width="23" height="23" viewBox="0 0 23 23" style={{ marginTop: 30 }}>
-      {console.warn(spanColor)}
       <Path
         variants={{
           closed: { d: "M 2 2.5 L 20 2.5" },

@@ -167,7 +167,6 @@
 .FotoCarrito:hover {
   transition: 1000ms;
   transform: rotateY(-90deg) translateZ(150px);
-  background-color: red;
 }
 
 .RowFormasPago {
@@ -243,148 +242,6 @@
   align-items: center;
   text-align: left;
   font-size: 1.5vw;
-}
-
-.pagobtn {
-  /* Boton de pagar en movil o siguiente en escritorio */
-  height: 30%;
-  width: 100%;
-  color: #fff;
-  margin-top: 5%;
-  align-self: center;
-  /* margin-left: 55%; */
-  background-color: #1b4965;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.product {
-  /* Aqui se va a mostrar la foto del producto, info del producto y botones para sumar y restar cantidad */
-  display: flex;
-  flex-direction: row;
-  background-color: transparent;
-  min-height: 50%;
-  max-height: 50%;
-  width: 95%;
-  padding: 2%;
-  margin: 1%;
-  border-bottom: 1px solid #1b4965;
-}
-
-.vista {
-  /* Espacio para la Foto del producto */
-  display: flex;
-  height: 100%;
-  width: 30%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 10px;
-  padding: 0px;
-}
-
-.btn_eliminar {
-  /* Boton para eliminar producto del carrito, esto esta dentro de vista */
-  display: flex;
-  height: 100%;
-  width: 40%;
-  color: #1b4965;
-  font-size: larger;
-}
-
-.imgVista {
-  /* foto del producto */
-  display: flex;
-  height: 100px;
-  width: 100px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  padding: 5%;
-  margin: 5%;
-  margin-top: -10px;
-}
-
-.info {
-  /* Epacio para la Info del producto, esta dentro de product */
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
-  text-align: left;
-  color: #1b4965;
-  height: 100%;
-  width: 50%;
-  border-radius: 10px;
-  font-size: small;
-  padding: 1%;
-}
-
-.textInfo {
-  /* info del producto */
-  padding: 0;
-  margin: 0;
-}
-.nums {
-  /* Contenedor para botones de sumar y restar y la cantidad */
-  display: flex;
-  height: 100%;
-  width: 20%;
-  border-radius: 10px;
-  align-items: center;
-  justify-content: center;
-}
-
-#xd {
-  /* Div para darle forma a los botones y el numero como solo una row y que este separada de la info */
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 30%;
-  align-items: center;
-  justify-content: center;
-  color: #bfbfbf;
-  background-color: #1b4965;
-  padding: 5%;
-}
-
-.btn_sumar {
-  /* Boton para sumar*/
-  display: flex;
-  color: #fff;
-  align-items: center;
-  justify-content: center;
-  background-color: #1b4965;
-  height: 100%;
-  width: 20%;
-  margin-right: 1%;
-  margin-left: 5%;
-  font-weight: bolder;
-}
-
-.cant {
-  /* Cantidad de cada producto */
-  display: flex;
-  color: white;
-  align-items: center;
-  font-size: 80%;
-  justify-content: center;
-  background-color: #1b4965;
-  height: 100%;
-  width: 60%;
-}
-
-.btn_restar {
-  /* Boton para restar */
-  display: flex;
-  color: #fff;
-  align-items: center;
-  justify-content: center;
-  background-color: #1b4965;
-  height: 100%;
-  width: 20%;
-  margin-right: 5%;
-  margin-left: 1%;
 }
 
 .columnCampo {
@@ -1038,17 +895,13 @@
     box-shadow: 0px 0px 0px #a2a19b;
   }
 
-  .BTNsiguiente {
+  .btnContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
-    text-align: center;
     height: 7%;
     width: 90%;
-    background-color: #1b4965;
-    color: white;
-    border-radius: 20px;
     margin-top: 10%;
   }
 }

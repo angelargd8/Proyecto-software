@@ -75,6 +75,10 @@ function Nabvar() {
     navigate("/editarCategorias");
   };
 
+  const handleConfig = () => {
+    navigate("/configuracion");
+  };
+
   /* search form */
   const handleSearch = (e) => {
     e.preventDefault();
@@ -242,7 +246,10 @@ function Nabvar() {
                                   >
                                     Registrar
                                   </a>
-                                  <a className="dropdown-item" href="#">
+                                  <a className="dropdown-item" 
+                                  href="/configuracion"
+                                  onClick={handleConfig}
+                                  >
                                     Configuración
                                   </a>
                                   <div className="dropdown-divider"></div>
