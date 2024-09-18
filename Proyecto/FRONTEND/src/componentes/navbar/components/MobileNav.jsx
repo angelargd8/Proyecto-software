@@ -4,7 +4,7 @@ import { IconToggle } from "./IconToggle";
 import "./MobileNav.css";
 import { useEffect, useState } from "react";
 
-function MobileNav({ spanColor }) {
+function MobileNav({ spanColor, extraStyles }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -130,7 +130,11 @@ function MobileNav({ spanColor }) {
         initial={false}
         animate={isOpen ? "open" : "closed"}
       >
-        <IconToggle toggle={() => setIsOpen(!isOpen)} spanColor={spanColor} />
+        <IconToggle
+          toggle={() => setIsOpen(!isOpen)}
+          spanColor={spanColor}
+          extraStyles={extraStyles}
+        />
       </motion.nav>
 
       <motion.ul

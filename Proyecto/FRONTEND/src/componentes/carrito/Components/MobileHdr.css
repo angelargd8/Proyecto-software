@@ -7,7 +7,6 @@
   height: 10%;
   width: 100%;
   box-shadow: 1px 1px 10px #a2a19b;
-  margin-bottom: 0.5%;
 }
 
 .CarritoHeader {
@@ -20,6 +19,7 @@
   justify-content: center;
   align-items: center;
   align-content: center;
+  text-align: center;
 }
 
 .regresar {
@@ -100,7 +100,7 @@
   }
   .regresar {
     height: 100%;
-    width: 10%;
+    width: 15%;
     padding-top: 2.5%;
     padding-bottom: 2.5%;
     padding-right: 0;
@@ -114,11 +114,12 @@
   }
   .opciones {
     display: flex;
+    position: relative;
     height: 100%;
-    width: 10%;
-    background-image: url(../assets/img/menu.png);
+    width: 15%;
     justify-content: center;
     align-items: center;
+    padding-bottom: 10;
     /* margin-right: 16%; */
     z-index: 3;
   }
