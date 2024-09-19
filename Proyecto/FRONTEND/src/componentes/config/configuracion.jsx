@@ -2,6 +2,7 @@
 import "./configuracion.css";
 import React from 'react'
 import LeftNav from './leftNav';
+import Account from "./account";
 
 function Configuracion() {
     return (
@@ -10,7 +11,7 @@ function Configuracion() {
                 <LeftNav/>
             </div>
             <div className="conten">
-                hola 
+                <Account/>
             </div>
         </div>
     )
