@@ -10,6 +10,7 @@ function ChangePasswordForm(){
                     <li>Contraseña Actual: <input type="password" /> </li>
                     <li>Nueva contraseña  <input type="password" /></li>
                     <li>Confirma contraseña <input type="password" /></li>
+                    <button>Cambiar contraseña</button>
                 </ul>
             </div>
         </div>
