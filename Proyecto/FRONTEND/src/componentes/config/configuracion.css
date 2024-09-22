@@ -1,15 +1,19 @@
 
 .containerConf{
     position: absolute;
-    top: 15%;
+    top: 16%;
     left: 0%;
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 2fr;
+    box-shadow: none;
+    background-color: #1f3350;
 }
 
 .leftNav{
     border: none;
-    height: 85%;
+    height: 84%;
+    border-color: #1f3350;
+    box-shadow: none;
 }
