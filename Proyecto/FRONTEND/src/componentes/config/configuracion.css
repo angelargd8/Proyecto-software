@@ -9,6 +9,7 @@
     grid-template-columns: 1fr 2fr;
     box-shadow: none;
     background-color: #1f3350;
+    color: #fff;
 }
 
 .leftNav{
