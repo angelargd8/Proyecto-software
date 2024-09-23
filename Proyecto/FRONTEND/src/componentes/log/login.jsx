@@ -33,6 +33,7 @@ function Login() {
       const [firstName, lastName] = name.split(" ");
       //para que asi pueda cerrar sesion
       localStorage.setItem("googleUser", email);
+      localStorage.setItem("email", email);
       localStorage.setItem("GoogleName", firstName );
       handleLoginGoogle(email);
     } else {
@@ -161,7 +162,7 @@ function Login() {
             data.data.validateCredentials.rol.name
           );
           localStorage.setItem('name', data.data.validateCredentials.name);
-          
+          localStorage.setItem("email", data.data.validateCredentials.email);
           console.log(rol);
           {
             alert(
