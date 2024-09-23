@@ -1,0 +1,10 @@
+.ButtonComponent {
+  padding: 10px 20px;
+  background-color: #1b4965;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  text-align: center;
+}
