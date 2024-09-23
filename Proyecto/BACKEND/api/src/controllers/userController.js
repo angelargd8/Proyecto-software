@@ -24,6 +24,14 @@ const deleteUser = async (email) => {
   return await UserModel.deleteUser(email);
 };
 
+const getOneUserById = async (email) => {
+  return await UserModel.getOneUserbyEmail(email);
+};
+
+const modifyUser = async (user) => {
+  return await UserModel.modifyUser(user);
+};
+
 module.exports = {
   getAllUsers,
   getRol,
@@ -31,4 +39,6 @@ module.exports = {
   validateEmail,
   createNewUser,
   deleteUser,
+  getOneUserById,
+  modifyUser,
 };

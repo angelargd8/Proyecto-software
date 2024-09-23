@@ -111,6 +111,43 @@ async function deleteUser(email) {
   return result;
 }
 
+async function getOneUserbyEmail(email) {
+  const result = await pool.query(
+    `SELECT * from usuarios where email = '${email}'`
+  );
+  let jsonResult = result.rows.map((user) => {
+    return {
+      email: user.email,
+      name: user.nombre,
+      lastName: user.apellido,
+      password: user.password,
+      IdRol: user.id_rol,
+    };
+  });
+
+  return jsonResult[0];
+}
+
+async function modifyUser({ name, lastName, password, idRol, email }) {
+  const result = await pool.query(
+    `update usuarios set nombre = '${name}', apellido = '${lastName}', password = '${password}', id_rol = ${idRol} where email = '${email}' RETURNING *`
+  );
+
+  let jsonResult = result.rows.map((user) => {
+    return {
+      email: user.email,
+      name: user.nombre,
+      lastName: user.apellido,
+      password: user.password,
+      IdRol: user.id_rol,
+    };
+  });
+
+  console.log(jsonResult);
+
+  return jsonResult;
+}
+
 module.exports = {
   getAllUsers,
   getRol,
@@ -118,4 +155,6 @@ module.exports = {
   validateEmail,
   createNewUser,
   deleteUser,
+  getOneUserbyEmail,
+  modifyUser,
 };

@@ -16,6 +16,11 @@ const userResolvers = {
       const user = await userController.validateEmail(email);
       return user[0];
     },
+    oneUser: async (root, args) => {
+      const { email } = args;
+      const user = await userController.getOneUserById(email);
+      return user;
+    },
   },
   Mutation: {
     addnewUser: async (root, args) => {
@@ -50,6 +55,22 @@ const userResolvers = {
         return {
           status: false,
           message: "Usuario no encontrado",
+        };
+      }
+    },
+    modifyUser: async (root, args) => {
+      const user = { ...args };
+      const response = await userController.modifyUser(user);
+      if (response.length > 0) {
+        return {
+          status: true,
+          message: "El usuario fue modificado con exito",
+          user: response[0],
+        };
+      } else {
+        return {
+          status: false,
+          message: "Fallo en la modificacion",
         };
       }
     },
