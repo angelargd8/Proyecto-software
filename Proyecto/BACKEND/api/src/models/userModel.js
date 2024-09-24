@@ -143,7 +143,59 @@ async function modifyUser({ name, lastName, password, idRol, email }) {
     };
   });
 
-  console.log(jsonResult);
+  return jsonResult;
+}
+
+async function modifyUserPassword(email, password) {
+  const result = await pool.query(
+    `update usuarios set password = '${password}' where email = '${email}' RETURNING *`
+  );
+
+  let jsonResult = result.rows.map((user) => {
+    return {
+      email: user.email,
+      name: user.nombre,
+      lastName: user.apellido,
+      password: user.password,
+      IdRol: user.id_rol,
+    };
+  });
+
+  return jsonResult;
+}
+
+async function modifyUserNameLastName(name, lastName, email) {
+  const result = await pool.query(
+    `update usuarios set nombre = '${name}', apellido = '${lastName}' where email = '${email}' RETURNING *`
+  );
+
+  let jsonResult = result.rows.map((user) => {
+    return {
+      email: user.email,
+      name: user.nombre,
+      lastName: user.apellido,
+      password: user.password,
+      IdRol: user.id_rol,
+    };
+  });
+
+  return jsonResult;
+}
+
+async function modifyRolUser(idRol, email) {
+  const result = await pool.query(
+    `update usuarios set id_rol = ${idRol} where email = '${email}' RETURNING *`
+  );
+
+  let jsonResult = result.rows.map((user) => {
+    return {
+      email: user.email,
+      name: user.nombre,
+      lastName: user.apellido,
+      password: user.password,
+      IdRol: user.id_rol,
+    };
+  });
 
   return jsonResult;
 }
@@ -157,4 +209,7 @@ module.exports = {
   deleteUser,
   getOneUserbyEmail,
   modifyUser,
+  modifyUserPassword,
+  modifyUserNameLastName,
+  modifyRolUser,
 };

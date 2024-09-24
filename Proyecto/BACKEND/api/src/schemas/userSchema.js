@@ -48,6 +48,19 @@ const userTypeDefs = gql`
       idRol: Int!
       email: String!
     ): UserValidationResult
+    modifyUserPassword(
+      email: String! 
+      password: String!
+    ): UserValidationResult
+    modifyUserNameLastName(
+      email: String!
+      name: String!
+      lastName: String!
+    ): UserValidationResult
+    modifyRolUser(
+      idRol: Int!
+      email: String!
+    ): UserValidationResult
   }
 `;
 
