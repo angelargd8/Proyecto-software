@@ -57,8 +57,8 @@ function InfoAccountForm() {
         const mutation = `
             mutation ModifyUser($name: String!, $lastName: String!) {
                 modifyUser(name: $name, lastName: $lastName) {
-                    name
-                    lastName
+                  name 
+                  lastname  
                 }
             }
         `;
