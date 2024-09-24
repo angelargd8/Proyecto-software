@@ -17,13 +17,6 @@ function MobileNav({ spanColor, iconStyles }) {
 
   const isActive = (path) => location.pathname === path;
 
-  const handleNavigation = (path) => {
-    if (isOpen) {
-      setIsOpen(false);
-    }
-    navigate(path);
-  };
-
   useEffect(() => {
     setOnscreen(location.pathname);
   }, [location.pathname]);

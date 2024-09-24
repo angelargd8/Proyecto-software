@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./CarritoBtn.css";
 
 function CarritoBtn({ text, nextPath }) {
@@ -19,10 +20,16 @@ function CarritoBtn({ text, nextPath }) {
   };
   return (
     <>
-      <button className="pagobtn" onClick={handleFunction}>
+      <motion.button
+        className="pagobtn"
+        onClick={handleFunction}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      >
         {" "}
         {text}{" "}
-      </button>
+      </motion.button>
     </>
   );
 }
