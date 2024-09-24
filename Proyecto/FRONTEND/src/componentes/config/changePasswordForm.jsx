@@ -37,7 +37,6 @@ function ChangePasswordForm() {
                     }),
                 });
                 const data = await response.json();
-                console.log(data);
                 if (data.errors) {
                     setError(data.errors);
                     console.error("Error en la consulta GraphQL:", data.errors);
@@ -57,9 +56,6 @@ function ChangePasswordForm() {
 
     const handleUpdatePassword = async () => {
         if (enteredCurrentPassword !== currentPassword) {
-            console.log("current password", currentPassword);
-            console.log("entered ",enteredCurrentPassword);
-
             setError(new Error("La contraseña actual no es correcta"));
             return;
         }
@@ -91,9 +87,7 @@ function ChangePasswordForm() {
                     variables: { email, password: newPassword }
                 }),
             });
-            const data = await response.json();
-            console.log(data);
-            
+            const data = await response.json();            
             if (data.errors) {
                 setError(data.errors);
                 console.error("Error en la mutación GraphQL:", data.errors);
