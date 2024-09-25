@@ -33,7 +33,6 @@ function InfoAccountForm() {
                     }),
                 });
                 const data = await response.json();
-                console.log(data);
                 if (data.errors) {
                     setError(data.errors);
                     console.error("Error en la consulta GraphQL:", data.errors);
@@ -76,7 +75,6 @@ function InfoAccountForm() {
                 }),
             });
             const data = await response.json();
-            console.log(data);
             if (data.errors) {
                 setError(data.errors);
                 console.error("Error en la mutación GraphQL:", data.errors);
