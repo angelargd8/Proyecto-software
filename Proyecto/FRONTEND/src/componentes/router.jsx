@@ -27,7 +27,7 @@ function AppRouter() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/configuracion" element={<Configuracion />} />
       <Route path="/" element={<Home />} />
-      {userRol === "Admin" &&
+      {userRol === "Admin" ? (
         (console.log(userRol),
         (
           <>
@@ -36,7 +36,10 @@ function AppRouter() {
             <Route path="/editarCategorias" element={<EditarCateg />} />
             <Route path="/editarProductos/:detail" element={<EditarProds />} />
           </>
-        ))}
+        ))
+      ) : (
+        <Route path="/home" element={<Home />} />
+      )}
       <Route path="/detalles/:detail" element={<Products />} />
     </Routes>
   );
