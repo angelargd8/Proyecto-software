@@ -2,30 +2,31 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import GoogleAuthProvider from "./GoogleAuthProvider";
-import foto from '../../assets/img/Cartulinas2.jpg';
-import foto2 from '../../assets/img/Brillantina-tierra.jpg';
-import foto3 from '../../assets/img/Cartulina.jpg';
-import foto4 from '../../assets/img/floresF.jpg';
-import foto5 from '../../assets/img/Brillantina-tornasol.jpg';
-import foto6 from '../../assets/img/Flores/FLOR GRANDE.jpg';
-import foto7 from '../../assets/img/Flores/FLOR PEQUEÑA.jpg';
-import foto8 from '../../assets/img/Colorante/AÑELINA.jpg';
-import foto9 from '../../assets/img/Colorante/COLORANTE VEGETAL.jpg';
-import foto10 from '../../assets/img/Brillantina-surtida.jpg';
-
-  
-  
+import foto from "../../assets/img/Cartulinas2.jpg";
+import foto2 from "../../assets/img/Brillantina-tierra.jpg";
+import foto3 from "../../assets/img/Cartulina.jpg";
+import foto4 from "../../assets/img/floresF.jpg";
+import foto5 from "../../assets/img/Brillantina-tornasol.jpg";
+import foto6 from "../../assets/img/Flores/FLOR GRANDE.jpg";
+import foto7 from "../../assets/img/Flores/FLOR PEQUEÑA.jpg";
+import foto8 from "../../assets/img/Colorante/AÑELINA.jpg";
+import foto9 from "../../assets/img/Colorante/COLORANTE VEGETAL.jpg";
+import foto10 from "../../assets/img/Brillantina-surtida.jpg";
+import { useState } from "react";
 
 function Login() {
   const navigate = useNavigate();
-  
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleHome = () => {
     navigate("/home");
   };
 
   const responseGoogle = (response) => {
     const credential = parseJwt(response.credential);
-    
+
     if (response && credential) {
       const { email, name } = credential;
       navigate("/home");
@@ -34,13 +35,13 @@ function Login() {
       //para que asi pueda cerrar sesion
       localStorage.setItem("googleUser", email);
       localStorage.setItem("email", email);
-      localStorage.setItem("GoogleName", firstName );
+      localStorage.setItem("GoogleName", firstName);
       handleLoginGoogle(email);
     } else {
       alert("La autenticación con Google no se realizó correctamente");
     }
   };
-  
+
   //parsear la credencial a datos de google, como foto, nombre, email, etc
   function parseJwt(token) {
     //token = credencial
@@ -48,18 +49,18 @@ function Login() {
     var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
     var jsonPayload = decodeURIComponent(
       window
-      .atob(base64)
-      .split("")
-      .map(function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
+        .atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
         .join("")
-      );
+    );
 
-      return JSON.parse(jsonPayload);
-    }
+    return JSON.parse(jsonPayload);
+  }
   //handle login google es para validar si el usuario ya esta registrado en la base de datos o si solamente se registro con google
-  const handleLoginGoogle = () => {
+  const handleLoginGoogle = (email) => {
     //4000 para devs
     const url = import.meta.env.VITE_APIPORT;
     const query = `
@@ -84,7 +85,7 @@ function Login() {
           body: JSON.stringify({
             query,
             variables: {
-              email: document.getElementById("email").value,
+              email: email,
             },
           }),
         });
@@ -93,15 +94,15 @@ function Login() {
           console.error("Error en la consulta GraphQL:", data.errors);
         }
         if (data.data.validateEmail == null) {
-          console.log("el usuario solo ingreso con google, no es un usuario registrado por el administrador");
-        } 
-        else{
-          
+          console.log(
+            "el usuario solo ingreso con google, no es un usuario registrado por el administrador"
+          );
+        } else {
           const rol = localStorage.setItem(
             "rol",
             data.data.validateEmail.rol.name
           );
-          
+
           {
             alert("Bienvenir@ " + data.data.validateEmail.name + " a Picolin");
           }
@@ -129,7 +130,7 @@ function Login() {
               }
               
         `;
-        async function validateCredentials() {
+    async function validateCredentials() {
       try {
         const response = await fetch(url, {
           method: "POST",
@@ -139,8 +140,8 @@ function Login() {
           body: JSON.stringify({
             query,
             variables: {
-              email: document.getElementById("email").value,
-              password: document.getElementById("password").value,
+              email: email,
+              password: password,
             },
           }),
         });
@@ -156,12 +157,12 @@ function Login() {
           }
         } else {
           console.log(data.data.validateCredentials);
-          
+
           const rol = localStorage.setItem(
             "rol",
             data.data.validateCredentials.rol.name
           );
-          localStorage.setItem('name', data.data.validateCredentials.name);
+          localStorage.setItem("name", data.data.validateCredentials.name);
           localStorage.setItem("email", data.data.validateCredentials.email);
           console.log(rol);
           {
@@ -169,7 +170,7 @@ function Login() {
               "Bienvenir@ " + data.data.validateCredentials.name + " a Picolin"
             );
           }
-          
+
           navigate("/home");
         }
       } catch (error) {
@@ -179,24 +180,31 @@ function Login() {
     //navigate("/home");
     validateCredentials();
   };
-  
-  
-  const imagenes = [foto,foto6, foto2, foto3, foto4, foto5, foto7,foto8,foto10];
-  
-  const imageGallery = ({images}) => (
+
+  const imagenes = [
+    foto,
+    foto6,
+    foto2,
+    foto3,
+    foto4,
+    foto5,
+    foto7,
+    foto8,
+    foto10,
+  ];
+
+  const imageGallery = ({ images }) => (
     <div className="texto-imagen">
-      {imagenes.map((image, index) =>(
+      {imagenes.map((image, index) => (
         <div
           key={index}
           className="imagen"
-          style={{backgroundImage: `url(${image})`}}
+          style={{ backgroundImage: `url(${image})` }}
         ></div>
       ))}
     </div>
   );
-  
 
-  
   return (
     <>
       <GoogleAuthProvider>
@@ -210,15 +218,13 @@ function Login() {
           <div className="contenedor">
             <div className="contenido-imagen">
               <div className="texto-imagenn">
-                    {imagenes.map((imagen, index) => (
-                  <img src={imagen} alt="Imagen"
-                  ></img>
+                {imagenes.map((imagen, index) => (
+                  <img src={imagen} alt="Imagen"></img>
                 ))}
               </div>
               <div className="texto-imagenn2">
-                    {imagenes.map((imagen, index) => (
-                  <img src={imagen} alt="Imagen"
-                  ></img>
+                {imagenes.map((imagen, index) => (
+                  <img src={imagen} alt="Imagen"></img>
                 ))}
               </div>
             </div>
@@ -226,6 +232,8 @@ function Login() {
               <h1 className="form-text">Inicia sesión</h1>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 id="email"
                 name="email"
                 placeholder="Correo Electrónico"
@@ -234,6 +242,8 @@ function Login() {
 
               <input
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 id="password"
                 name="password"
                 className="inputs"
