@@ -27,7 +27,6 @@ function AppRouter() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/configuracion" element={<Configuracion />} />
       <Route path="/" element={<Home />} />
-      {console.log(userRol)}
       {userRol === "Admin" &&
         (console.log(userRol),
         (

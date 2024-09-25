@@ -18,6 +18,7 @@ const userTypeDefs = gql`
     allUsers: [Users]!
     validateCredentials(email: String!, password: String!): Users
     validateEmail(email: String!): Users
+    oneUser(email: String!): Users
   }
 
   type UserValidationResult {
@@ -40,6 +41,26 @@ const userTypeDefs = gql`
       rol: Int!
     ): UserValidationResult
     deleteUser(email: String!): StatusUserDelete
+    modifyUser(
+      name: String!
+      lastName: String!
+      password: String!
+      idRol: Int!
+      email: String!
+    ): UserValidationResult
+    modifyUserPassword(
+      email: String! 
+      password: String!
+    ): UserValidationResult
+    modifyUserNameLastName(
+      email: String!
+      name: String!
+      lastName: String!
+    ): UserValidationResult
+    modifyRolUser(
+      idRol: Int!
+      email: String!
+    ): UserValidationResult
   }
 `;
 

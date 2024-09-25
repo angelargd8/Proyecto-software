@@ -53,10 +53,10 @@ function InCartProduct({ producto }) {
 
   return (
     <div className="containerINP">
-      <div className="product" key={producto.id}>
+      <div className="productCar" key={producto.id}>
         <div className="vista">
           <div
-            className="btn_eliminar"
+            className="btn_eliminarCar"
             onClick={() => eliminarDelCarrito(producto.id)}
           >
             x

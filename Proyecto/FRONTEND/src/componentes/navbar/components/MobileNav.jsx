@@ -4,7 +4,7 @@ import { IconToggle } from "./IconToggle";
 import "./MobileNav.css";
 import { useEffect, useState } from "react";
 
-function MobileNav({ spanColor }) {
+function MobileNav({ spanColor, iconStyles }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -16,13 +16,6 @@ function MobileNav({ spanColor }) {
   const Googlename = localStorage.getItem("GoogleName");
 
   const isActive = (path) => location.pathname === path;
-
-  const handleNavigation = (path) => {
-    if (isOpen) {
-      setIsOpen(false);
-    }
-    navigate(path);
-  };
 
   useEffect(() => {
     setOnscreen(location.pathname);
@@ -130,7 +123,11 @@ function MobileNav({ spanColor }) {
         initial={false}
         animate={isOpen ? "open" : "closed"}
       >
-        <IconToggle toggle={() => setIsOpen(!isOpen)} spanColor={spanColor} />
+        <IconToggle
+          toggle={() => setIsOpen(!isOpen)}
+          spanColor={spanColor}
+          extraStyles={iconStyles}
+        />
       </motion.nav>
 
       <motion.ul

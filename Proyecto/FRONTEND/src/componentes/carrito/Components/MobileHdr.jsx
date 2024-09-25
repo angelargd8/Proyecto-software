@@ -1,6 +1,7 @@
 import "./MobileHdr.css";
 import MobileNav from "../../navbar/components/MobileNav";
 import { useNavigate } from "react-router-dom";
+import { px } from "framer-motion";
 
 function MobileHdr({ title, lastPath }) {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ function MobileHdr({ title, lastPath }) {
         </div>
       </div>
       <div className="opciones">
-        <MobileNav spanColor={"#1b4965"} />
+        <MobileNav spanColor={"#1b4965"} iconStyles={{ marginBottom: 15 }} />
       </div>
     </div>
   );
