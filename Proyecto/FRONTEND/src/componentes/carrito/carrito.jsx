@@ -13,6 +13,12 @@ function Carrito() {
 
   const handlePagar = () => {
     navigate("/pago");
+    // let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
+    // carrito.forEach((producto) => {
+    //   mensaje += `${producto.quantity} -- ${producto.title}\n`;
+    // });
+    // var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
+    // window.open(url, "_blank");
   };
 
   const handleDirecc = () => {

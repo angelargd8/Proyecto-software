@@ -146,7 +146,6 @@ function Login() {
           }),
         });
         const data = await response.json();
-        console.warn(data);
         if (data.error) {
           console.error("Error en la consulta GraphQL:", data.errors);
         }
