@@ -3,7 +3,7 @@ import Login from "./log/login.jsx";
 import Home from "./home/home.jsx";
 import SingUp from "./log/signup.jsx";
 import Carrito from "./carrito/carrito.jsx";
-import AgregarProducto from "./admin/agregarProd.jsx";
+import AgregarProducto from "./admin/AgregarProducto/agregarProd.jsx";
 import EditarProds from "./admin/editarProd.jsx";
 import EditarCateg from "./admin/editarCateg.jsx";
 import Pago from "./carrito/pago.jsx";

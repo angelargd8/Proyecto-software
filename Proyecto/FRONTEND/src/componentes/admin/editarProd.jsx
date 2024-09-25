@@ -1,17 +1,14 @@
 import "./editarProd.css";
 import { useState } from "react";
 import Proptypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const EditarProds = ({
-  id,
-  title,
-  content,
-  image,
-  precios,
-  styleCard,
-  styleImage,
-}) => {
+const EditarProds = ({ precios, styleCard, styleImage }) => {
+  const location = useLocation();
+  const { cardInfo } = location.state;
+  console.log(cardInfo);
+  const { idCategory, title, content, image } = cardInfo;
+
   const [editTitle, setEditTitle] = useState(title);
   const [editContent, setEditContent] = useState(content);
   const [editImage] = useState(image);
@@ -31,7 +28,7 @@ const EditarProds = ({
   };
 
   const handleAddProduct = () => {
-    navigate("/agregarProducto");
+    navigate("/agregarProducto", { state: { id: idCategory } });
   };
 
   return (

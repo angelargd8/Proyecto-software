@@ -1,6 +1,16 @@
 const InputImage = ({ previewImage, onImageChange }) => {
   return (
-    <>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div
         style={{
           height: "70%",
@@ -58,7 +68,7 @@ const InputImage = ({ previewImage, onImageChange }) => {
         />
         Añadir una imagen
       </div>
-    </>
+    </div>
   );
 };
 
