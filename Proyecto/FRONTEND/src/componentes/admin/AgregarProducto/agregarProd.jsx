@@ -28,7 +28,7 @@ const AgregarProducto = () => {
     }
   };
 
-  const handleAddPRoduct = () => {
+  const handleAddPRoduct = async () => {
     const formData = new FormData();
 
     if (!nameProduct) {
@@ -60,6 +60,12 @@ const AgregarProducto = () => {
     formData.append("name", nameProduct);
     formData.append("image", image);
     formData.append("idCategory", id);
+    formData.append("description", description);
+
+    const response = await fetch(import.meta.env.VITE_APIPORT_CATEGORY, {
+      method: "POST",
+      body: formData,
+    });
   };
 
   const [precios, setPrecios] = useState([
