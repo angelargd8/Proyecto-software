@@ -11,34 +11,79 @@ const AgregarProducto = () => {
 
   const [nameProduct, setNameProduct] = useState("");
   const [description, setDescription] = useState("");
+  const [previewImage, setPreviwImage] = useState(null);
+  const [image, setImage] = useState(null);
 
-  // Estado inicial con al menos un precio (nombre, precio, cantidad)
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviwImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setPreviwImage(null);
+    }
+  };
+
+  const handleAddPRoduct = () => {
+    const formData = new FormData();
+
+    if (!nameProduct) {
+      alert("Ingrese nombre al producto");
+      return;
+    }
+
+    if (!image) {
+      alert("Please select an image to upload.");
+      return;
+    }
+
+    if (!description) {
+      alert("ingrese una descripcion al producto");
+      return;
+    }
+
+    const filterPrecios = precios.filter(
+      (precio) =>
+        precio.nombre !== "" && precio.precio !== "" && precio.cantidad !== ""
+    );
+
+    if (filterPrecios.length < 1) {
+      alert("Ingrese al menos un precio");
+      return;
+    }
+
+    formData.append("prices", JSON.stringify(filterPrecios));
+    formData.append("name", nameProduct);
+    formData.append("image", image);
+    formData.append("idCategory", id);
+  };
+
   const [precios, setPrecios] = useState([
     { nombre: "", precio: "", cantidad: "" },
   ]);
 
-  // Función para manejar el cambio de valor en los inputs
   const handleInputChange = (index, name, value) => {
     const nuevosPrecios = [...precios];
     nuevosPrecios[index] = {
       ...nuevosPrecios[index],
-      [name]: value, // Actualiza el campo específico con el valor
+      [name]: value,
     };
     setPrecios(nuevosPrecios);
   };
 
-  // Función para agregar una nueva fila de precio
   const handleAgregarPrecio = () => {
     setPrecios([...precios, { nombre: "", precio: "", cantidad: "" }]);
   };
 
-  // Función para eliminar una fila de precio
   const handleEliminarPrecio = (index) => {
-    const nuevosPrecios = precios.filter((_, i) => i !== index); // Filtra el elemento que se quiere eliminar
+    const nuevosPrecios = precios.filter((_, i) => i !== index);
     setPrecios(nuevosPrecios);
   };
 
-  // Función para manejar el envío del formulario (puedes modificar esto)
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Precios enviados: ", precios);
@@ -122,7 +167,10 @@ const AgregarProducto = () => {
             <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
               Agrega una imagen de tu producto
             </div>
-            <InputImage />
+            <InputImage
+              previewImage={previewImage}
+              onImageChange={handleImageChange}
+            />
           </div>
         </div>
 
@@ -191,7 +239,7 @@ const AgregarProducto = () => {
                   }}
                 >
                   <NormalInput
-                    placeHolder={"Nombre del precio"}
+                    placeHolder={"Nombre. Ej: unidad"}
                     value={precio.value}
                     name="nombre"
                     onChangeValue={(value) =>
@@ -199,7 +247,7 @@ const AgregarProducto = () => {
                     }
                   />
                   <NormalInput
-                    placeHolder={"Cantidad para el precio"}
+                    placeHolder={"Cantidad. Ej: 1"}
                     value={precio.cantidad}
                     name="cantidad"
                     type="number"
@@ -209,7 +257,7 @@ const AgregarProducto = () => {
                   />
                   <NormalInput
                     value={precio.precio}
-                    placeHolder={"Precio"}
+                    placeHolder={"Precio. Ej: 10"}
                     name="precio"
                     type="number"
                     onChangeValue={(e) => handleInputChange(index, "precio", e)}
@@ -229,7 +277,7 @@ const AgregarProducto = () => {
       </div>
 
       <div>
-        <Button>Agregar nuevo producto</Button>
+        <Button onClick={handleAddPRoduct}>Agregar nuevo producto</Button>
       </div>
     </div>
   );
