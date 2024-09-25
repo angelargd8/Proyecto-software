@@ -11,40 +11,13 @@ function Carrito() {
     useCarrito();
   const navigate = useNavigate();
 
-  // const cambioCant = (producto, nuevaCantidad) => {
-  //   if (nuevaCantidad < 1) {
-  //     if (
-  //       window.confirm(
-  //         "Se eliminara este producto del carrito, estas seguro de continuar?"
-  //       )
-  //     ) {
-  //       eliminarDelCarrito(producto.id);
-  //     }
-  //   } else {
-  //     agregarAlCarrito(producto, nuevaCantidad);
-  //   }
-  // };
-
   const handlePagar = () => {
     navigate("/pago");
-    // let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
-    // carrito.forEach((producto) => {
-    //   mensaje += `${producto.quantity} -- ${producto.title}\n`;
-    // });
-    // var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
-    // window.open(url, '_blank');
   };
 
   const handleDirecc = () => {
     navigate("/carrito");
   };
-
-  // useEffect(() => {
-  //   console.log(
-  //     "Estado actual del carrito después de agregar producto:",
-  //     carrito
-  //   );
-  // }, [carrito]);
 
   const Tarifa = 5.0; //Temporal
 
@@ -85,7 +58,6 @@ function Carrito() {
           <div className="columnPasosPagar">
             <div className="pasos">
               <div className="nombrePaso" onClick={() => handleDirecc()}>
-                {" "}
                 Direccion
               </div>
               <div className="separador"> ------------- </div>
@@ -94,7 +66,6 @@ function Carrito() {
                 style={{ backgroundColor: "transparent", color: "#1B4965" }}
                 onClick={() => handlePagar()}
               >
-                {" "}
                 Forma de Pago
               </div>
               <div className="separador"> ------------- </div>
@@ -106,7 +77,6 @@ function Carrito() {
                   color: "#1B4965",
                 }}
               >
-                {" "}
                 Ultimo Paso
               </div>
             </div>
@@ -118,7 +88,9 @@ function Carrito() {
                   El carrito de compras está vacío.
                 </h4>
               ) : (
-                carrito.map((producto) => <InCartProduct producto={producto} />)
+                carrito.map((producto) => (
+                  <InCartProduct key={producto.id} producto={producto} />
+                ))
               )}
             </div>
             <div className="totales">

@@ -120,10 +120,10 @@ function Pago() {
               <motion.div
                 className={"FormTitle"}
                 animate={{
-                  scale: isAnimating ? 1.5 : 1, // Scale up when animated
-                  rotate: isAnimating ? 360 : 0, // Rotate 360 degrees
+                  scale: isAnimating ? 1.5 : 1,
+                  rotate: isAnimating ? 360 : 0,
                 }}
-                transition={{ duration: 0.5 }} // Animation duration
+                transition={{ duration: 0.5 }}
               >
                 {formTitle}
               </motion.div>
