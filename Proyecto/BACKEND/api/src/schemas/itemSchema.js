@@ -3,17 +3,23 @@ const { gql } = require("apollo-server");
 //TODO: hay que cambiar las querys para los objetos
 
 const itemTypeDefs = gql`
+  type Prices {
+    idPrice: Int!
+    name: String!
+    quantity: Float!
+    price: Float!
+  }
+
   type Items {
     idItems: Int!
     name: String!
     quantity: Int
-    price: Float!
     description: String
-    promotions: [Promotions]
+    prices: [Prices]
   }
 
   type Query {
-    getItems: [Items]!
+    getItemsByCategory(idCategory: Int!): [Items]!
     getOneItem(idItem: Int!): Items
   }
 

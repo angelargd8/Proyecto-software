@@ -14,6 +14,9 @@ const resolvers = {
   Users: {
     ...userResolvers.Users,
   },
+  Items: {
+    ...itemResolvers.Items,
+  },
 };
 
 module.exports = resolvers;

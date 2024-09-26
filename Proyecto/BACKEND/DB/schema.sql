@@ -41,6 +41,7 @@ create table articulos
 	nombre_articulo varchar(100) not null,
 	cantidad_articulo int,
 	descripcion TEXT,
+	category_image TEXT,
 	id_categoria int
 );
 
@@ -49,7 +50,7 @@ create table precios
 	id_precio serial not null,
 	id_articulo int not null,
 	nombre_precio varchar not null,
-	cantidad_articulo float not null,
+	cantidad_precio float not null,
 	precio float not null
 );
 

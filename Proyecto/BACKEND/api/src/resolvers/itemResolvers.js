@@ -4,8 +4,10 @@ const itemController = require("../controllers/itemController");
 
 const itemResolver = {
   Query: {
-    getItems: async () => {
-      const items = await itemController.getAllItems();
+    getItemsByCategory: async (root, args) => {
+      const { idCategory } = args;
+      // const items = await itemController.getAllItems();
+      const items = await itemController.getAllItems(idCategory);
       return items;
     },
     getOneItem: async (root, args) => {
@@ -36,6 +38,12 @@ const itemResolver = {
       const newItem = { ...args };
       const response = await itemController.updateItem(newItem);
       return response;
+    },
+  },
+  Items: {
+    prices: async (root) => {
+      const prices = await itemController.getItemPrices(root.idItems);
+      return prices;
     },
   },
 };
