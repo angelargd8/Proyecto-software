@@ -1,4 +1,4 @@
-FROM postgres:latest
+FROM postgres:16
 
 # Configura las variables de entorno para PostgreSQL
 ENV POSTGRES_DB=ecomers
