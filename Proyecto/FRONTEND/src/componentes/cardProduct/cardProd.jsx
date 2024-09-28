@@ -69,13 +69,16 @@ const CardProduct = ({
   // }
 
   const handleAddToCart = () => {
-    // const precioFinal = calcularPrecioTotal(quantity)
-    // console.log(`Precio Final: ${precioFinal}`)
-    const producto = { id, title, description, image, quantity, precios };
-    // console.log(producto)
-    // console.log(precios)
-    agregarAlCarrito(producto, quantity);
-    alert(`Agregado ${quantity} ${title} al carrito`);
+    if (quantity != 0) {
+      // const precioFinal = calcularPrecioTotal(quantity)
+      // console.log(`Precio Final: ${precioFinal}`)
+      const producto = { id, title, description, image, quantity, precios };
+      // console.log(producto)
+      // console.log(precios)
+      agregarAlCarrito(producto, quantity);
+      alert(`Agregado ${quantity} ${title} al carrito`);
+    }
+  
   };
 
   return (
