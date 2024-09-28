@@ -1,6 +1,6 @@
 import { useState } from "react";
 import InputImage from "../../InputImage";
-import NormalInput from "../../normalInput";
+import NormalInput from "../../NormalInput";
 import StepIndicator from "../../StepIndicator";
 import "./AgregarProd.css";
 import { useLocation } from "react-router-dom";
