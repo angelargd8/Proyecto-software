@@ -16,6 +16,7 @@ const itemTypeDefs = gql`
     quantity: Int
     description: String
     prices: [Prices]
+    image: String
   }
 
   type Query {

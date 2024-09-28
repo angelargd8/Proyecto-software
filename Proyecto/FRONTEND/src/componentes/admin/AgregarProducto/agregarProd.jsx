@@ -58,14 +58,25 @@ const AgregarProducto = () => {
 
     formData.append("prices", JSON.stringify(filterPrecios));
     formData.append("name", nameProduct);
-    formData.append("image", image);
+    formData.append("file", image);
     formData.append("idCategory", id);
     formData.append("description", description);
 
-    const response = await fetch(import.meta.env.VITE_APIPORT_CATEGORY, {
+    console.log(formData);
+
+    const response = await fetch(import.meta.env.VITE_APIPORT_PRODUCT, {
       method: "POST",
       body: formData,
     });
+
+    if (response.ok) {
+      // const result = await response.json();
+      // console.warn("File uploaded successfully:", result);
+      alert("Se agrego el producto");
+    } else {
+      // alert("Failed to upload image.");
+      console.error("Error:", response.statusText);
+    }
   };
 
   const [precios, setPrecios] = useState([

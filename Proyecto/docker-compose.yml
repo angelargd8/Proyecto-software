@@ -26,6 +26,7 @@ services:
       VITE_APIPORT: "http://5.161.104.98:3005/graphql"
       VITE_APIPORT_IMAGE: "http://5.161.104.98:3005/"
       VITE_APIPORT_CATEGORY: "http://5.161.104.98:3005/addCategory"
+      VITE_APIPORT_PRODUCT: "http://5.161.104.98:3005/addProduct"
     depends_on:
       - api
       - postgres

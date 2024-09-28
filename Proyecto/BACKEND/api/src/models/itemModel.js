@@ -11,6 +11,7 @@ async function getAllItems(idCategory) {
       quantity: row.cantidad_articulo,
       price: row.precio,
       description: row.descripcion,
+      image: row.category_image,
     };
   });
   return jsonResult;
@@ -88,7 +89,7 @@ async function addNewItem(req, res) {
 
       await pool.query(
         `
-        INSERT INTO precios (id_articulo, nombre_precio, cantidad_articulo, precio)
+        INSERT INTO precios (id_articulo, nombre_precio, cantidad_precio, precio)
         VALUES ($1, $2, $3, $4);
       `,
         [idArticulo, nombre, cantidad, precio]
