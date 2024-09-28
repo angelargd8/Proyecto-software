@@ -3,6 +3,7 @@ import Proptypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useCarrito } from "../carrito/carritoContext";
 import Button from "../Button";
+import Swal from 'sweetalert2';
 
 // eslint-disable-next-line react/prop-types
 const CardProduct = ({
@@ -87,7 +88,12 @@ const CardProduct = ({
       // console.log(producto)
       // console.log(precios)
       agregarAlCarrito(producto, quantity);
-      alert(`Agregado ${quantity} ${title} al carrito`);
+      Swal.fire({
+        icon: "success",
+        title: `Se agregó ${quantity} ${title} al carrito`,
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
   
   };

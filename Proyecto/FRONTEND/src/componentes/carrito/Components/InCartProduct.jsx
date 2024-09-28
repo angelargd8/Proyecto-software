@@ -16,6 +16,21 @@ function InCartProduct({ producto }) {
       ) {
         eliminarDelCarrito(producto.id);
       }
+      // Swal.fire({
+      //   title: "¿Deseas eliminar este producto del carrito?",
+      //   icon: "warning",
+      //   showCancelButton: true,
+      //   confirmButtonColor: "#3085d6",
+      //   cancelButtonColor: "#d33",
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
+      //     Swal.fire({
+      //       title: "Se eliminó el producto del carrito",
+      //       icon: "success"
+      //     });
+      //     eliminarDelCarrito(producto.id);
+      //   }
+      // });
     } else {
       agregarAlCarrito(producto, nuevaCantidad);
     }

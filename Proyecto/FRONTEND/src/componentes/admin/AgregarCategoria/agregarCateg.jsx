@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import "./agregarCateg.css";
 import StepIndicator from "../../StepIndicator";
 import InputImage from "../../InputImage";
+import Swal from 'sweetalert2';
 
 function agregarCateg() {
   const [nameCategoria, setNameCategoria] = useState(null);

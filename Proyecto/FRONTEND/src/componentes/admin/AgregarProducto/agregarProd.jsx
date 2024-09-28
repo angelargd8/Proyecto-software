@@ -5,6 +5,8 @@ import StepIndicator from "../../StepIndicator";
 import "./AgregarProd.css";
 import { useLocation } from "react-router-dom";
 import Button from "../../Button";
+import Swal from 'sweetalert2';
+
 const AgregarProducto = () => {
   const location = useLocation();
   const { id } = location.state;
