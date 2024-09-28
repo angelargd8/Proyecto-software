@@ -1,11 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import { useCarrito } from "../carritoContext";
 import "./inCartProduct.css";
+import { useEffect, useState } from "react";
 
 function InCartProduct({ producto }) {
   const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
     useCarrito();
   const navigate = useNavigate();
+
+  const [img, setImag] = useState(null);
+
+  useEffect(() => {
+    const getImage = async () => {
+      let url = import.meta.env.VITE_APIPORT_IMAGE + producto.image;
+      const result = await fetch(url);
+      setImag(result.url);
+    };
+    getImage();
+  }, []);
 
   const cambioCant = (producto, nuevaCantidad) => {
     if (nuevaCantidad < 1) {
@@ -55,7 +67,7 @@ function InCartProduct({ producto }) {
           >
             x
           </div>
-          <img id="imgVistaC" src={producto.image} alt={producto.title} />
+          <img id="imgVistaC" src={img} alt={producto.title} />
         </div>
         <div className="info">
           <h3 className="textInfo">{producto.title}</h3>
