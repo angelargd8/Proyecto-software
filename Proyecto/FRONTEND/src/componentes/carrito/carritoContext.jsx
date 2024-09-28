@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect , useState } from 'react'
-
+import Swal from 'sweetalert2';
 
 const CarritoContext = createContext();
 
@@ -41,12 +41,24 @@ export const CarritoProvider = ({ children }) => {
     console.log('Estado del carrito después de agregar:', carrito)
   }
 
-  const eliminarDelCarrito = (id) => {
-    if(window.confirm("Se eliminara este producto del carrito, estas seguro de continuar?")){  
-      const nuevaCarrito = carrito.filter((producto) => producto.id !== id)
-      setCarrito(nuevaCarrito)
-      guardarCarritoStorage(nuevaCarrito)
-    }
+  const eliminarDelCarrito = (id, title) => {
+    Swal.fire({
+      title: `¿Deseas eliminar ${title} del carrito?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `Se eliminó ${title} del carrito`,
+          icon: "success"
+        });
+        const nuevaCarrito = carrito.filter((producto) => producto.id !== id)
+        setCarrito(nuevaCarrito)
+        guardarCarritoStorage(nuevaCarrito)
+      }
+    });
   }
 
   const limpiarCarrito = () => {

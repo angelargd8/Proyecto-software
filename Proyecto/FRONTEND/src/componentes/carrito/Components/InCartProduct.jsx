@@ -9,28 +9,7 @@ function InCartProduct({ producto }) {
 
   const cambioCant = (producto, nuevaCantidad) => {
     if (nuevaCantidad < 1) {
-      if (
-        window.confirm(
-          "Se eliminara este producto del carrito, estas seguro de continuar?"
-        )
-      ) {
-        eliminarDelCarrito(producto.id);
-      }
-      // Swal.fire({
-      //   title: "¿Deseas eliminar este producto del carrito?",
-      //   icon: "warning",
-      //   showCancelButton: true,
-      //   confirmButtonColor: "#3085d6",
-      //   cancelButtonColor: "#d33",
-      // }).then((result) => {
-      //   if (result.isConfirmed) {
-      //     Swal.fire({
-      //       title: "Se eliminó el producto del carrito",
-      //       icon: "success"
-      //     });
-      //     eliminarDelCarrito(producto.id);
-      //   }
-      // });
+      eliminarDelCarrito(producto.id, producto.title);
     } else {
       agregarAlCarrito(producto, nuevaCantidad);
     }
@@ -72,7 +51,7 @@ function InCartProduct({ producto }) {
         <div className="vista">
           <div
             className="btn_eliminarCar"
-            onClick={() => eliminarDelCarrito(producto.id)}
+            onClick={() => eliminarDelCarrito(producto.id, producto.title)}
           >
             x
           </div>
