@@ -1,5 +1,6 @@
 import './signup.css'
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function SingUp(){
 

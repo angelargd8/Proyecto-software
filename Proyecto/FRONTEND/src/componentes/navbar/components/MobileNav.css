@@ -1,11 +1,14 @@
-@media only screen and (max-width: 991px) {
-  .mobileNav {
-    position: absolute;
-    top: -20px;
-    right: 100px;
-  }
+.mobileNav {
+  position: absolute;
+  top: -20px;
+  right: 100px;
 }
 
+@media only screen and (min-width: 991px) {
+  .mobileNav {
+    display: none;
+  }
+}
 .navList {
   display: flex;
   position: absolute;

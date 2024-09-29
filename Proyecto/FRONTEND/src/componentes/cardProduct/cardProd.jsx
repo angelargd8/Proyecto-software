@@ -3,6 +3,7 @@ import Proptypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useCarrito } from "../carrito/carritoContext";
 import Button from "../Button";
+import Swal from 'sweetalert2';
 
 // eslint-disable-next-line react/prop-types
 const CardProduct = ({
@@ -80,13 +81,21 @@ const CardProduct = ({
   // }
 
   const handleAddToCart = () => {
-    // const precioFinal = calcularPrecioTotal(quantity)
-    // console.log(`Precio Final: ${precioFinal}`)
-    const producto = { id, title, description, image, quantity, precios };
-    // console.log(producto)
-    // console.log(precios)
-    agregarAlCarrito(producto, quantity);
-    alert(`Agregado ${quantity} ${title} al carrito`);
+    if (quantity != 0) {
+      // const precioFinal = calcularPrecioTotal(quantity)
+      // console.log(`Precio Final: ${precioFinal}`)
+      const producto = { id, title, description, image, quantity, precios };
+      // console.log(producto)
+      // console.log(precios)
+      agregarAlCarrito(producto, quantity);
+      Swal.fire({
+        icon: "success",
+        title: `Se agregó ${quantity} ${title} al carrito`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  
   };
 
   return (

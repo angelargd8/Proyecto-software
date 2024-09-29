@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { IconToggle } from "./IconToggle";
 import "./MobileNav.css";
 import { useEffect, useState } from "react";
+import Swal from 'sweetalert2';
 
 function MobileNav({ spanColor, iconStyles }) {
   const location = useLocation();

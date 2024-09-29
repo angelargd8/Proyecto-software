@@ -48,7 +48,7 @@ function Home() {
       setCards(cards);
     } else {
       const filteredCards = cards.filter((card) =>
-        card.title.toLowerCase().includes(searchItem.toLowerCase())
+        card.name.toLowerCase().includes(searchItem.toLowerCase())
       );
       setCards(filteredCards);
     }

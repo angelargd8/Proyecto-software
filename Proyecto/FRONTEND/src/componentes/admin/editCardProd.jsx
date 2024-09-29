@@ -1,6 +1,7 @@
 import './editCardProd.css';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const CardProductEdit = ({ id, title, description, image, precios }) => {
     const [quantity, setQuantity] = useState(0);

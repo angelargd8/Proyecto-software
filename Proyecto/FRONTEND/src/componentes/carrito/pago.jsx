@@ -65,7 +65,7 @@ function Pago() {
 
   return (
     <>
-      <div className="contenedor">
+      <div className="contenedor-pago">
         <MobileHdr title={"Detalles de Pedido"} lastPath={"/carrito"} />
         <div className="MidyBotmPago">
           <div className="columnPasosPagar">

@@ -1,11 +1,15 @@
-// useMutation.js
 import { useState } from 'react';
 
 const useMutation = (url, query) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const mutate = async (variables) => {
+    setLoading(true);
+    setError(null);
+    setData(null);
+
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -25,10 +29,12 @@ const useMutation = (url, query) => {
       }
     } catch (err) {
       setError(err);
+    } finally {
+      setLoading(false);
     }
   };
 
-  return { data, error, mutate };
+  return { data, error, loading, mutate };
 };
 
 export default useMutation;
