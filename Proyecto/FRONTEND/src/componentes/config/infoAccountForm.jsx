@@ -1,13 +1,14 @@
 import "./configuracion.css";
 import "./forms.css";
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 function InfoAccountForm() {
     const [userInfo, setUserInfo] = useState({ name: '', lastname: '', email: '' });
     const [error, setError] = useState(null);
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(localStorage.getItem('email')|| '');
 
     useEffect(() => {
         const getInfoAccount = async () => {
@@ -33,7 +34,6 @@ function InfoAccountForm() {
                     }),
                 });
                 const data = await response.json();
-                console.log(data);
                 if (data.errors) {
                     setError(data.errors);
                     console.error("Error en la consulta GraphQL:", data.errors);
@@ -55,10 +55,12 @@ function InfoAccountForm() {
     const handleUpdateUser = async () => {
         const url = import.meta.env.VITE_APIPORT;
         const mutation = `
-            mutation ModifyUser($name: String!, $lastName: String!) {
-                modifyUser(name: $name, lastName: $lastName) {
-                  name 
-                  lastname  
+            mutation ModifyUserNameLastName($email: String!, $name: String!, $lastName: String!) {
+                modifyUserNameLastName(email: $email, name: $name, lastName: $lastName) {
+                    user {
+                        name
+                        lastName
+                    }  
                 }
             }
         `;
@@ -70,16 +72,17 @@ function InfoAccountForm() {
                 },
                 body: JSON.stringify({
                     query: mutation,
-                    variables: { name, lastName, email }
+                    variables: { email: localStorage.getItem('email'), name, lastName }
                 }),
             });
             const data = await response.json();
-            console.log(data);
             if (data.errors) {
                 setError(data.errors);
                 console.error("Error en la mutación GraphQL:", data.errors);
             } else {
                 setUserInfo(data.data.modifyUser);
+                alert("Datos modificados correctamente");
+
             }
         } catch (error) {
             setError(error);
@@ -95,7 +98,7 @@ function InfoAccountForm() {
                 <ul>
                     <li>Nombre: <input type="text" className="input" value={name} onChange={(e) => setName(e.target.value)} /> </li>
                     <li>Apellido: <input type="text" className="input" value={lastName} onChange={(e) => setLastName(e.target.value)} /> </li>
-                    <li>Correo electrónico: <input type="email" className="input" value={email} /></li>
+                    <li>Correo electrónico: <input type="email" className="input" value={email} disabled/></li>
                     <button className="botonForms" onClick={handleUpdateUser}>Cambiar credenciales</button>
                 </ul>
             </div>

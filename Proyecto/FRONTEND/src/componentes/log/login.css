@@ -43,13 +43,13 @@
   .login .texto-imagenn {
     display: flex;
     height: 100%;
-    animation: marquee 24s linear infinite;
+    animation: marquee2 32s linear infinite;
   }
 
   .login .texto-imagenn2 {
     display: flex;
     height: 100%;
-    animation: marquee2 21s linear infinite;
+    animation: marquee2 40s linear infinite;
   }
   
   .login .contenido-imagen img {

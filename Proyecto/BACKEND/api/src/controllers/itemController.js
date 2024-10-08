@@ -1,33 +1,28 @@
 const itemModel = require("../models/itemModel");
-const getAllItems = async () => {
-  return await itemModel.getAllItems();
+const getAllItems = async (idCategory) => {
+  return await itemModel.getAllItems(idCategory);
 };
 
 const getOneItem = async (idItem) => {
   return await itemModel.getOneItem(idItem);
 };
 
-const addNewItem = async (args) => {
-  return await itemModel.setNewItem(args);
-};
-
 const updateItem = async (item) => {
   return await itemModel.updateItem(item);
 };
 
-const uploadFile = (req, res) => {
-  res.json({
-    filename: req.file.filename,
-    mimetype: req.file.mimetype,
-    encoding: "7bit",
-    path: req.file.path,
-  });
+const addNewProduct = async (req, res) => {
+  return itemModel.addNewItem(req, res);
+};
+
+const getItemPrices = async (idItem) => {
+  return itemModel.getItemPrices(idItem);
 };
 
 module.exports = {
   getAllItems,
   getOneItem,
-  addNewItem,
   updateItem,
-  uploadFile,
+  addNewProduct,
+  getItemPrices,
 };

@@ -13,6 +13,12 @@ function Carrito() {
 
   const handlePagar = () => {
     navigate("/pago");
+    // let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
+    // carrito.forEach((producto) => {
+    //   mensaje += `${producto.quantity} -- ${producto.title}\n`;
+    // });
+    // var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
+    // window.open(url, "_blank");
   };
 
   const handleDirecc = () => {
@@ -22,12 +28,12 @@ function Carrito() {
   const Tarifa = 5.0; //Temporal
 
   const calcularPrecioTotal = (cantidad, precios) => {
-    precios = precios.sort((a, b) => a[2] - b[2]);
-    const precioUnitario = precios[0][1];
+    precios = precios.sort((a, b) => a.quantity - b.quantity);
+    const precioUnitario = precios[0].price;
     let precioFinal = 0;
     precios.forEach((precio) => {
-      let cantidadProduct = precio[2];
-      let precioProducto = precio[1] * cantidadProduct;
+      let cantidadProduct = precio.quantity;
+      let precioProducto = precio.price * cantidadProduct;
 
       if (cantidad >= cantidadProduct) {
         let docenas = Math.floor(cantidad / cantidadProduct);

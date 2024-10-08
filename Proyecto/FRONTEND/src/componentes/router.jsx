@@ -3,7 +3,7 @@ import Login from "./log/login.jsx";
 import Home from "./home/home.jsx";
 import SingUp from "./log/signup.jsx";
 import Carrito from "./carrito/carrito.jsx";
-import AgregarProducto from "./admin/agregarProd.jsx";
+import AgregarProducto from "./admin/AgregarProducto/agregarProd.jsx";
 import EditarProds from "./admin/editarProd.jsx";
 import EditarCateg from "./admin/editarCateg.jsx";
 import Pago from "./carrito/pago.jsx";
@@ -27,7 +27,7 @@ function AppRouter() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/configuracion" element={<Configuracion />} />
       <Route path="/" element={<Home />} />
-      {userRol === "Admin" &&
+      {userRol === "Admin" ? (
         (console.log(userRol),
         (
           <>
@@ -36,7 +36,10 @@ function AppRouter() {
             <Route path="/editarCategorias" element={<EditarCateg />} />
             <Route path="/editarProductos/:detail" element={<EditarProds />} />
           </>
-        ))}
+        ))
+      ) : (
+        <Route path="/home" element={<Home />} />
+      )}
       <Route path="/detalles/:detail" element={<Products />} />
     </Routes>
   );

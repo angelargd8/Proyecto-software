@@ -1,8 +1,9 @@
 import "./cardProducto.css";
 import Proptypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCarrito } from "../carrito/carritoContext";
 import Button from "../Button";
+import Swal from 'sweetalert2';
 
 // eslint-disable-next-line react/prop-types
 const CardProduct = ({
@@ -14,9 +15,20 @@ const CardProduct = ({
   styleCard,
   styleImage,
 }) => {
+  // console.log(precios);
   const [quantity, setQuantity] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
   const { agregarAlCarrito } = useCarrito();
+  const [img, setImag] = useState(null);
+
+  useEffect(() => {
+    const getImage = async () => {
+      let url = import.meta.env.VITE_APIPORT_IMAGE + image;
+      const result = await fetch(url);
+      setImag(result.url);
+    };
+    getImage();
+  }, []);
 
   const onHandlerClickButton = (type) => {
     switch (type) {
@@ -69,19 +81,27 @@ const CardProduct = ({
   // }
 
   const handleAddToCart = () => {
-    // const precioFinal = calcularPrecioTotal(quantity)
-    // console.log(`Precio Final: ${precioFinal}`)
-    const producto = { id, title, description, image, quantity, precios };
-    // console.log(producto)
-    // console.log(precios)
-    agregarAlCarrito(producto, quantity);
-    alert(`Agregado ${quantity} ${title} al carrito`);
+    if (quantity != 0) {
+      // const precioFinal = calcularPrecioTotal(quantity)
+      // console.log(`Precio Final: ${precioFinal}`)
+      const producto = { id, title, description, image, quantity, precios };
+      // console.log(producto)
+      // console.log(precios)
+      agregarAlCarrito(producto, quantity);
+      Swal.fire({
+        icon: "success",
+        title: `Se agregó ${quantity} ${title} al carrito`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  
   };
 
   return (
     <div className="cardProducto" style={styleCard}>
       <div className="containerImage" style={styleImage}>
-        <img className="imageProduct" src={image}></img>
+        <img className="imageProduct" src={img}></img>
       </div>
       <div className="containerInfo">
         <div className="title">{title}</div>
@@ -108,7 +128,10 @@ const CardProduct = ({
           <div style={{ fontWeight: "bold" }}>Precios:</div>
           {precios &&
             precios.map((precio, index) => {
-              return <div key={index}>{`${precio[0]}: Q ${precio[1]}.00`}</div>;
+              // return <div key={index}>{`${precio[0]}: Q ${precio[1]}.00`}</div>;
+              return (
+                <div key={index}>{`${precio.name}: Q ${precio.price}.00`}</div>
+              );
             })}
         </div>
       </div>
