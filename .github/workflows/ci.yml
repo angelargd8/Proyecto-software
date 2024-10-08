@@ -23,7 +23,7 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: Proyecto/BACKEND/API
+      working-directory: Proyecto/BACKEND/api
 
     - name: Run tests
       run: npx jest
