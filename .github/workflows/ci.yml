@@ -27,11 +27,11 @@ jobs:
 
     - name: Run tests
       run: npx jest
-      working-directory: Proyecto/BACKEND/API
+      working-directory: Proyecto/BACKEND/api
 
     - name: Build project
       run: npm start
-      working-directory: Proyecto/BACKEND/API
+      working-directory: Proyecto/BACKEND/api
 
   frontend:
     runs-on: ubuntu-latest
