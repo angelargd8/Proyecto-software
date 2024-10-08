@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - develop
   pull_request:
     branches:
-      - main
+      - develop
 
 jobs:
   backend:
@@ -21,15 +21,15 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Install dependencies
+    - name: Install backend dependencies
       run: npm install
       working-directory: Proyecto/BACKEND/api
 
-    - name: Run tests
-      run: npx jest
+    - name: Run backend tests
+      run: npx jest --config Proyecto/BACKEND/jest.config.js
       working-directory: Proyecto/BACKEND/api
 
-    - name: Build project
+    - name: Build backend project
       run: npm start
       working-directory: Proyecto/BACKEND/api
 
@@ -45,14 +45,14 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Install dependencies
+    - name: Install frontend dependencies
       run: npm install
       working-directory: Proyecto/FRONTEND
 
-    - name: Run tests
-      run: npx jest
+    - name: Run frontend tests
+      run: npx jest --config Proyecto/FRONTEND/jest.config.js
       working-directory: Proyecto/FRONTEND
 
-    - name: Build project
+    - name: Build frontend project
       run: npm run build
       working-directory: Proyecto/FRONTEND
