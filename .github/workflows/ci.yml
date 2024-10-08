@@ -26,7 +26,7 @@ jobs:
       working-directory: Proyecto/BACKEND/api
 
     - name: Run backend tests
-      run: npx jest --config Proyecto/BACKEND/jest.config.js
+      run: npx jest --config Proyecto/BACKEND/jest.config.mjs
       working-directory: Proyecto/BACKEND/api
 
     - name: Build backend project
