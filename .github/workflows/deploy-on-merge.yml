@@ -18,7 +18,7 @@ jobs:
 
     - name: Start ssh-agent and add SSH key
       run: |
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > private_key 
         chmod 600 private_key
         eval $(ssh-agent -s)
         echo "$SSH_PASSPHRASE" | ssh-add private_key
