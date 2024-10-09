@@ -26,5 +26,5 @@ jobs:
           docker rm $(docker ps -a -q)
           docker rmi $(docker images -q)
           cd /var/www/html/picolin/Proyecto-software/Proyecto
-          docker-compose up --build
+          docker-compose up --build -d
         EOF
