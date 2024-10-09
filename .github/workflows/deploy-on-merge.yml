@@ -16,29 +16,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Start ssh-agent and add SSH key
-      run: |
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > private_key 
-        chmod 600 private_key
-        eval $(ssh-agent -s)
-        echo "$SSH_PASSPHRASE" | ssh-add private_key
-        rm private_key
-
-      env:
-        SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
-
+    - name: Install sshpass
+      run: sudo apt-get update && sudo apt-get install -y sshpass
+      
     - name: Deploy to Docker Server
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-        
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           docker stop $(docker ps -q)
-          
           docker rm $(docker ps -a -q)
-
           docker rmi $(docker images -q)
-
           cd /var/www/html/picolin/Proyecto-software/Proyecto
-
           docker-compose up --build
-
         EOF
