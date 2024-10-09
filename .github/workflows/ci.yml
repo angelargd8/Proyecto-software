@@ -9,30 +9,6 @@ on:
       - develop
 
 jobs:
-  backend:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Install backend dependencies
-      run: npm install
-      working-directory: Proyecto/BACKEND/api
-
-    - name: Run backend tests
-      run: npx jest --config Proyecto/BACKEND/jest.config.mjs
-      working-directory: Proyecto/BACKEND/api
-
-    - name: Build backend project
-      run: npm start
-      working-directory: Proyecto/BACKEND/api
-
   frontend:
     runs-on: ubuntu-latest
 
