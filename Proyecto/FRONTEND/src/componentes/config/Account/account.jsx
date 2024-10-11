@@ -1,8 +1,9 @@
 
 import './account.css';
-import ChangePasswordForm from './changePasswordForm'
+import ChangePasswordForm from './changePasswordForm';
 import React, { useState } from 'react';
 import InfoAccountForm from './infoAccountForm';
+
 
 function Account() {
 
@@ -18,7 +19,11 @@ function Account() {
 
 
     return (
+        
         <div className="AccountContainer">
+            <div>
+                <h2>Tu cuenta</h2>
+            </div>
             {/* si el active form no es change password solo va a mostrar lo de informacion de la cuenta*/
             activeForm !== 'changePassword' && (
                 <button onClick={handleShowInfoForm}>
