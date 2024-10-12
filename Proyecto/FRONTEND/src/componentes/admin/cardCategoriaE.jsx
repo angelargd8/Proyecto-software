@@ -19,6 +19,7 @@ function CardCategoria({ title, imagen, onClick }) {
       <div className="card-content-category-e">
         <img className="imagen-category-e" src={img} alt="Imagen no disponible" />
       </div>
+      
       <h2 id="title-carde">{title}</h2>
     </div>
   );
