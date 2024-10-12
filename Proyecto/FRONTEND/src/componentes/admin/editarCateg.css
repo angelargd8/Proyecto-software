@@ -4,14 +4,13 @@
     align-items: center;
 }
 
-.header {
+.headerc {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     padding: 20px;
-    box-sizing: border-box;
 }
 
 .header h1 {
@@ -30,6 +29,7 @@
     font-size: 15px;
     position: absolute;
     right: 20px;
+    margin-right: 100px;
 }
 
 .agregar-categoria-button:hover {
@@ -37,11 +37,7 @@
 }
 
   
-#contenido-cartas {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
+
 
 .eliminar-button {
     margin-top: 10px;
@@ -52,20 +48,60 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 15px;
+    height: 60%;
+    width: 200px;
+    max-width: 70%;
+    align-self: center;
+    margin: 5px;
+    transition: background-color 0.5s ease;
 }
 
 .eliminar-button:hover {
-    background-color: #e60000;
+    background-color: black;
+}
+
+.editar-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #43a233;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    height: 60%;
+    width: 200px;
+    max-width: 70%;
+    align-self: center;
+    margin: 5px;
+    margin-left: 50px;
+    transition: background-color 0.5s ease;
+}
+
+.editar-button:hover {
+    background-color: black;
 }
   
-.category-card {
+#contenido-cartase {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 50px;
+}
+
+.category-carde {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
     margin: 20px;
+    height: 150px;
+    width: 100%;
     padding: 20px;
     background-color: white;
     text-align: center;
+    border: 0.5px solid rgb(173, 173, 173);
+
 }
 
 .button-container {

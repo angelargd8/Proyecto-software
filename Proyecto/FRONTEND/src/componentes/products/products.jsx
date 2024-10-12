@@ -104,7 +104,7 @@ const Products = () => {
           })}
         </>
       )}
-      {detail == "Ojos" && (
+      {/* {detail == "Ojos" && (
         <>
           <CardProduct
             id={"1"}
@@ -199,7 +199,7 @@ const Products = () => {
             ]}
           ></CardProduct>
         </>
-      )}
+      )} */}
     </div>
   );
 };

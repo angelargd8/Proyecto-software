@@ -1,0 +1,9 @@
+.imagen-category-e{
+    width: 30%;
+    max-height: 250px;
+}
+
+.card-category-e{
+    display: flex;
+    flex-direction: row;
+}
