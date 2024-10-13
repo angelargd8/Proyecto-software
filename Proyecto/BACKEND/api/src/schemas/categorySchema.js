@@ -26,6 +26,14 @@ const categoryTypeDefs = gql`
     getCategories: [Categories]!
     getOneCategory(idCategory: Int!): Categories
   }
+
+  type StatusCategoryDelete{
+    status: Boolean!
+    message: String
+  }
+  type Mutation{
+    deleteCategory(idCategory: Int!): StatusCategoryDelete
+  }
 `;
 
 module.exports = categoryTypeDefs;
