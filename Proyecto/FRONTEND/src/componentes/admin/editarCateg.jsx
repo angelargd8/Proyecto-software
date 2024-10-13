@@ -16,8 +16,9 @@ function EditCateg() {
 
   // Eliminar categoría
   const eliminarCategoria = (id) => {
-    const newCards = listadoCards.filter((card) => card.id !== id);
+    const newCards = [...listadoCards].filter((card) => card.idCategory !== id);
     setCards(newCards);
+    console.log(id, newCards);
   };
 
   // Agregar categoría
@@ -89,11 +90,11 @@ function EditCateg() {
             <CardCategoria
               title={elemento.name}
               imagen={elemento.image}
-              onClick={() => info(elemento.name, elemento)}
+              
             />
             <button
               className="editar-button"
-              onClick={() => eliminarCategoria(elemento.idCategory)}
+              onClick={() => info(elemento.name, elemento)}
             >
               Editar
             </button>
