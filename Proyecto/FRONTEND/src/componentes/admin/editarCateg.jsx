@@ -96,7 +96,7 @@ function EditCateg() {
               className="editar-button"
               onClick={() => info(elemento.name, elemento)}
             >
-              Editar
+              Editar productos
             </button>
             <button
               className="eliminar-button"
