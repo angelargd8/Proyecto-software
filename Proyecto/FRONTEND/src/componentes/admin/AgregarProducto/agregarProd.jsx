@@ -110,13 +110,14 @@ const AgregarProducto = () => {
 
   return (
     <div
+      className = "container"
       style={{
         height: "100%",
         width: "100%",
         display: "flex",
         flexDirection: "column",
         position: "absolute",
-        top: 115,
+        top: 65,
         paddingLeft: 15,
         gap: 15,
       }}

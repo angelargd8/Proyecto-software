@@ -15,7 +15,7 @@ function Contact() {
           </div>
           <div className="container-info">
             <div className="contact-info">
-              <h1 className="text">WhatsApp: 37067222</h1>
+              <h1 className="text">WhatsApp: 3706-7222</h1>
               <h1 className="text">Correo: picolinescolor@gmail.com </h1>
             </div>
           </div>

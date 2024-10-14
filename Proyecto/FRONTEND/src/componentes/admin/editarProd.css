@@ -39,7 +39,8 @@
     flex-direction: column;
     text-align: initial;
     font-weight: bold;
-    font-family: "Gill Sans", sans-serif;
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 600;
     margin-bottom: 10px;
 }
 

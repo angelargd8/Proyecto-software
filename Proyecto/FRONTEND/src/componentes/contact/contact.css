@@ -23,6 +23,9 @@
 }
 
 .contact .main-text{
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 600;
+    font-style: normal;
     padding: 5px;
     color: #1f3350;
     border: #000;
@@ -35,6 +38,7 @@
 }
 
 .contact .second-text{
+    font-family: 'Merriweather', sans-serif;
     padding: 5px;
     color: #cea44a;
     border: #000;
@@ -46,6 +50,7 @@
 }
 
 .contact .text{
+    font-family: 'Poppins', sans-serif;
     padding: 5px;
     color: #cea44a;
     border: #000;
