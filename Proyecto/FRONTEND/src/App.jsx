@@ -20,16 +20,18 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const isAuthPage = location.pathname === "/login" || location.pathname === "/register" | location.pathname === "/carrito";
-
+  const isPageWithNoNav = location.pathname === "/login" | location.pathname === "/signup" | location.pathname === "/carrito" ;
+  const isPageWithNoFooter = location.pathname === "/login" | location.pathname === "/signup" | location.pathname === "/carrito" | location.pathname === "/configuracion";
   return (
     <>
-      {!isAuthPage && <Nabvar />}
+      {!isPageWithNoNav && <Nabvar />}
       <FloatingButton />
-      <div className={`contenedor ${isAuthPage ? 'no-margin' : ''}`}>
+      <div className={`contenedor ${isPageWithNoNav ? 'no-margin' : ''}`}>
         <AppRouter />
       </div>
-      {/* <Footer/> */}
+      {!isPageWithNoFooter  && <Footer />}
+
+     
     </>
   );
 }

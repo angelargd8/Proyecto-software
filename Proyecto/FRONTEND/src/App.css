@@ -2,8 +2,10 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  display: flex;
   text-align: center;
   flex-direction: column;
+  justify-content: center;
 }
 
 .AppContainer{
@@ -13,13 +15,14 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+  flex-grow: 1;
 }
 .contenedor{
-  position: absolute;
-  margin-top: 15%;
+  display: flex;
+  margin-top: 0;
   width: 100%;
   height: 100%;
-  /* background-color: tomato; */
+  
 }
 .no-margin {
   margin-top: 0;
