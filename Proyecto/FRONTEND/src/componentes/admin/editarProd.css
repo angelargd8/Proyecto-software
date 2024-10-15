@@ -1,9 +1,11 @@
 .bigSquare {
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 18%;
+    justify-content: center;
 }
 
 .cardProducto {
