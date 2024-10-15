@@ -103,6 +103,8 @@ async function deleteCategory(idCategory) {
     const productCheck = await pool.query(
       `SELECT * FROM productos WHERE id_categoria = ${idCategory}`
     );
+    console.log(productCheck.rows);
+
 
     if (productCheck.rowCount > 0) {
       return {
@@ -113,8 +115,10 @@ async function deleteCategory(idCategory) {
 
     // Si no tiene productos asociados, procedemos a eliminar la categoría
     const result = await pool.query(
-      `DELETE FROM categorias WHERE id_categoria = ${idCategory}`
+      `DELETE FROM categorias WHERE id_categorias = ${idCategory}`
     );
+
+    console.log(result.rows);
 
     if (result.rowCount > 0) {
       return {

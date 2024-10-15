@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, useCycle } from "framer-motion";
 import { IconToggle } from "./components/IconToggle";
 import MobileNav from "./components/MobileNav";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 function Nabvar() {
   //router
@@ -277,9 +277,10 @@ function Nabvar() {
                                   >
                                     Registrar
                                   </a>
-                                  <a className="dropdown-item" 
-                                  href="/configuracion"
-                                  onClick={handleConfig}
+                                  <a
+                                    className="dropdown-item"
+                                    href="/configuracion"
+                                    onClick={handleConfig}
                                   >
                                     Configuración
                                   </a>

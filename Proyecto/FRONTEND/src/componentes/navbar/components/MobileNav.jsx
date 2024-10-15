@@ -3,20 +3,35 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { IconToggle } from "./IconToggle";
 import "./MobileNav.css";
 import { useEffect, useState } from "react";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 function MobileNav({ spanColor, iconStyles }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(null);
   const [onScreen, setOnscreen] = useState(location.pathname);
+  const [changed, setChanged] = useState(false);
+  const [toggle, setToggle] = useState(false);
+  const [isNull, setIsNull] = useState(true);
   //   Local Storage
   const userRol = localStorage.getItem("rol");
   const googleUser = localStorage.getItem("googleUser");
   const name = localStorage.getItem("name");
   const Googlename = localStorage.getItem("GoogleName");
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   const isActive = (path) => location.pathname === path;
+
+  useEffect(() => {
+    if (isOpen !== null) {
+      setToggle(isOpen);
+    }
+  }, [isOpen]);
+
+  const handleTouch = () => {
+    setIsOpen((prev) => (prev === null ? true : !prev)); // Handles null state
+  };
 
   useEffect(() => {
     setOnscreen(location.pathname);
@@ -117,15 +132,19 @@ function MobileNav({ spanColor, iconStyles }) {
     },
   };
 
+  if (!isMobile) {
+    return null;
+  }
+
   return (
     <>
       <motion.nav
         className="mobileNav"
         initial={false}
-        animate={isOpen ? "open" : "closed"}
+        animate={toggle ? "open" : "closed"}
       >
         <IconToggle
-          toggle={() => setIsOpen(!isOpen)}
+          toggle={() => handleTouch()}
           spanColor={spanColor}
           extraStyles={iconStyles}
         />
@@ -136,11 +155,11 @@ function MobileNav({ spanColor, iconStyles }) {
         className="navList"
         style={{
           position: "absolute",
-          pointerEvents: isOpen ? "auto" : "none",
+          pointerEvents: toggle ? "auto" : "none",
           top: 80,
           right: 20,
         }}
-        animate={isOpen ? "open" : "closed"}
+        animate={toggle ? "open" : "closed"}
       >
         <motion.li
           variants={itemVariants}

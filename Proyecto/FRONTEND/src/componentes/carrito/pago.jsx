@@ -19,7 +19,14 @@ function Pago() {
     "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1"
   );
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [transitionClass, setTransitionClass] = useState("fade-in");
+  const [showTitle, setShowTitle] = useState(true);
+  const [nextTitle, setNextTitle] = useState(formTitle);
+
+  const images = [
+    "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1",
+    "https://cdn-icons-png.flaticon.com/512/3832/3832329.png",
+    "https://png.pngtree.com/png-clipart/20230406/original/pngtree-bank-deposit-line-icon-png-image_9030315.png",
+  ];
 
   useEffect(() => {}, [formTitle]);
 
@@ -43,26 +50,15 @@ function Pago() {
 
     if (text == "Tarjeta") {
       setCurrentIndex(0);
-      setPagoTypeImg(
-        "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1"
-      );
+      setPagoTypeImg(images[0]);
     } else if (text == "Efectivo") {
       setCurrentIndex(1);
-      setPagoTypeImg("https://cdn-icons-png.flaticon.com/512/3832/3832329.png");
+      setPagoTypeImg(images[1]);
     } else if ((text = "Deposito")) {
       setCurrentIndex(2);
-      setPagoTypeImg(
-        "https://png.pngtree.com/png-clipart/20230406/original/pngtree-bank-deposit-line-icon-png-image_9030315.png"
-      );
+      setPagoTypeImg(images[2]);
     }
   };
-
-  const images = [
-    "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1",
-    "https://cdn-icons-png.flaticon.com/512/3832/3832329.png",
-    "https://png.pngtree.com/png-clipart/20230406/original/pngtree-bank-deposit-line-icon-png-image_9030315.png",
-  ];
-
   return (
     <>
       <div className="contenedor-pago">
