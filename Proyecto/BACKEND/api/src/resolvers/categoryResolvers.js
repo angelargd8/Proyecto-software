@@ -19,13 +19,13 @@ const categoryResolver = {
       const result = await categoryController.deleteCategory(idCategory);
       if (result.rowCount>0){
         return {
-          success: true,
+          status: true,
           message: "Category deleted successfully",
         };
       }
       else {
         return {
-          success: false,
+          status: false,
           message: "Error deleting category: ",
         };
       }
