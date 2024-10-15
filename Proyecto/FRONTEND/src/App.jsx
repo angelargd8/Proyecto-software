@@ -21,7 +21,7 @@ function App() {
 function AppContent() {
   const location = useLocation();
   const isPageWithNoNav = location.pathname === "/login" | location.pathname === "/signup" | location.pathname === "/carrito" ;
-  const isPageWithNoFooter = location.pathname === "/login" | location.pathname === "/signup" | location.pathname === "/carrito" | location.pathname === "/configuracion";
+  const isPageWithNoFooter = location.pathname === "/login" | location.pathname === "/signup" | location.pathname === "/carrito" | location.pathname === "/configuracion" | location.pathname === "/pago" | location.pathname === "/resumen" | location.pathname === "/editarCategorias" | location.pathname === "/detalles" | location.pathname === "/agregarCategoria";
   return (
     <>
       {!isPageWithNoNav && <Nabvar />}
