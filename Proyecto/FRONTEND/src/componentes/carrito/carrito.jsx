@@ -5,6 +5,7 @@ import { useCarrito } from "./carritoContext";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
 import InCartProduct from "./Components/InCartProduct";
+import DropList from "./Components/DropList";
 
 function Carrito() {
   const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
@@ -94,6 +95,7 @@ function Carrito() {
                   El carrito de compras está vacío.
                 </h4>
               ) : (
+                // <DropList type={"Pago"} />
                 carrito.map((producto) => (
                   <InCartProduct key={producto.id} producto={producto} />
                 ))
