@@ -72,6 +72,7 @@ function agregarCateg() {
         alignItems: "center",
         justifyContent: "center",
         gap: "5px",
+        marginTop: "18%",
       }}
     >
       <div
@@ -108,7 +109,7 @@ function agregarCateg() {
         style={{
           background: "#1F3350",
           height: "8%",
-          width: "10%",
+          width: "50%",
           borderRadius: "30px",
           alignContent: "center",
           textAlign: "center",
