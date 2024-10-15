@@ -31,6 +31,7 @@ const categoryTypeDefs = gql`
     status: Boolean!
     message: String
   }
+    
   type Mutation{
     deleteCategory(idCategory: Int!): StatusCategoryDelete
   }
