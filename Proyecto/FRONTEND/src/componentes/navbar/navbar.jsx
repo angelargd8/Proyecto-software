@@ -58,14 +58,44 @@ function Nabvar() {
   const handleLogOutGoogle = () => {
     localStorage.removeItem("googleUser");
     localStorage.removeItem("rol");
-    alert("Sesión cerrada");
-    navigate("/home");
+    Swal.fire({
+      title: `¿Seguro que quieres cerrar sesión?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `Sesión cerrada correctamente`,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000
+        });
+        navigate("/home");
+      }
+    });
   };
 
   const handleLogOut = () => {
     localStorage.removeItem("rol");
-    alert("Sesión cerrada");
-    navigate("/home");
+    Swal.fire({
+      title: `¿Seguro que quieres cerrar sesión?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `Sesión cerrada correctamente`,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000
+        });
+        navigate("/home");
+      }
+    });
   };
 
   const handleSignup = () => {
