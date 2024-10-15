@@ -1,24 +1,41 @@
-import './App.css'
-import AppRouter from './componentes/router.jsx'
-import Nabvar from './componentes/navbar/navbar.jsx'
-//import { useState } from 'react'
-//import { useEffect, useState } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'; 
+import './App.css';
+import AppRouter from './componentes/router.jsx';
+import Nabvar from './componentes/navbar/navbar.jsx';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 import { CarritoProvider } from './componentes/carrito/carritoContext.jsx';
 import FloatingButton from './componentes/floatingButton/floatingButton.jsx';
+import Footer from './componentes/footer/footer.jsx';
+
 function App() {
-  //const [rutaActual, setRutaActual] = useState("app")
   return (
-    <CarritoProvider>
-    <Router> 
-      <Nabvar/>
-      <FloatingButton/>
-      <div className="contenedor">
-        <AppRouter/>
-      </div>
-      </Router>
-    </CarritoProvider>
-  )
+    <div className="AppContainer">
+      <CarritoProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </CarritoProvider>
+    </div>
+  );
 }
 
-export default App
+function AppContent() {
+  const location = useLocation();
+  const isPageWithNoNav = location.pathname === "/login" | location.pathname === "/signup" | location.pathname === "/carrito" ;
+  const isPageWithNoFooter = location.pathname === "/login" | location.pathname === "/signup" | location.pathname === "/carrito" | location.pathname === "/configuracion" | location.pathname === "/pago" | location.pathname === "/resumen" | location.pathname === "/editarCategorias" | location.pathname === "/detalles" | location.pathname === "/agregarCategoria";
+  return (
+    <>
+      {!isPageWithNoNav && <Nabvar />}
+      <FloatingButton />
+      <div className={`contenedor ${isPageWithNoNav ? 'no-margin' : ''}`}>
+        <AppRouter />
+      </div>
+      {!isPageWithNoFooter  && <Footer />}
+
+     
+    </>
+  );
+}
+
+export default App;
+
+

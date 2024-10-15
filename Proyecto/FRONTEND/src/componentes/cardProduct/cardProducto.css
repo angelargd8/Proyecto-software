@@ -1,6 +1,8 @@
 .cardProducto {
   width: 90%;
-  background-color: rgb(205, 255, 238);
+  background-color: #1b496527;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 600;
   height: 80%;
   margin-top: 1%;
   display: flex;
@@ -28,7 +30,9 @@
   flex-direction: column;
   text-align: initial;
   font-weight: bold;
-  font-family: "Gill Sans", sans-serif;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 600;
+
 }
 
 .containerInfo {

@@ -1,5 +1,5 @@
 /* --------------------------------------------Contenedor General----------------------------------------------------- */
-.contenedor {
+.contenedorCarrito {
   display: flex;
   flex-direction: column;
   position: absolute;

@@ -58,7 +58,7 @@ function Carrito() {
 
   return (
     <>
-      <div className="contenedor">
+      <div className="contenedorCarrito">
         <MobileHdr title={"My Cart"} lastPath={"/home"} />
         <div className="MidyBotm">
           <div className="columnPasosPagar">
