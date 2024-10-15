@@ -1,0 +1,11 @@
+.dropList-container {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  background-color: rebeccapurple;
+}
+
+#dataItem {
+  height: 40px;
+  width: 100%;
+}
