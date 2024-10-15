@@ -1,6 +1,16 @@
 const StepIndicator = ({ children, style }) => {
   return (
-    <label style={{ ...styles.circleIndicator, ...style }}>{children}</label>
+    <div style={{ ...styles.circleIndicator, ...style }}>
+      <div
+        style={{
+          position: "absolute",
+          left: 8,
+          bottom: 1,
+        }}
+      >
+        {children}
+      </div>
+    </div>
   );
 };
 
@@ -15,6 +25,8 @@ const styles = {
     borderRadius: "100%",
     background: "#1F3350",
     color: "white",
+    height: 25,
+    width: 25,
   },
 };
 

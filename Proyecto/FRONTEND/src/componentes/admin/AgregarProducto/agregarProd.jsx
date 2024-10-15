@@ -5,7 +5,7 @@ import StepIndicator from "../../StepIndicator";
 import "./AgregarProd.css";
 import { useLocation } from "react-router-dom";
 import Button from "../../Button";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const AgregarProducto = () => {
   const location = useLocation();
@@ -114,6 +114,7 @@ const AgregarProducto = () => {
         height: "100%",
         width: "100%",
         display: "flex",
+        background: "#E2E8F0",
         flexDirection: "column",
         position: "absolute",
         top: 115,
@@ -132,22 +133,51 @@ const AgregarProducto = () => {
       >
         Agregar nuevo producto
       </div>
+
       <div
         style={{
-          width: "100%",
+          width: 600,
           position: "relative",
           boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
           backgroundColor: "white",
           borderRadius: "8px",
+          alignSelf: "center",
         }}
       >
-        <StepIndicator>1</StepIndicator>
-        <NormalInput
-          value={nameProduct}
-          onChangeValue={setNameProduct}
-          text={"Escriba el nombre del producto"}
-          style={{ textAlign: "center" }}
-        />
+        <StepIndicator
+          style={{
+            left: 25,
+            top: 25,
+          }}
+        >
+          1
+        </StepIndicator>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            padding: 10,
+            paddingLeft: 50,
+          }}
+        >
+          <label>Nombre del Prducto: </label>
+          <input
+            value={nameProduct}
+            onChange={(e) => setNameProduct(e.target.value)}
+            type="text"
+            placeholder="Escriba nombre del producto"
+            style={{
+              width: "100%",
+              background: "none",
+              border: "none",
+              borderBottom: "2px solid black",
+              padding: "5px 0",
+              color: "#1F3350",
+              outline: "none",
+              fontSize: 20,
+            }}
+          />
+        </div>
       </div>
       <div
         style={{
@@ -158,18 +188,130 @@ const AgregarProducto = () => {
           justifyContent: "center",
         }}
       >
+        <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
+          <div style={{ width: 600, height: 120, position: "relative" }}>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                background: "white",
+                display: "flex",
+                // backgroundColor: "red",
+                borderRadius: "8px",
+                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+                flexDirection: "column",
+                gap: "10px",
+                position: "relative",
+                alignContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <StepIndicator>2</StepIndicator>
+              <div>Ingrese la descripcion del producto</div>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Escriba la descripcion del producto"
+                style={{
+                  width: "100%",
+                  background: "transparent",
+                  color: "black",
+                  height: "100%",
+                  border: "none",
+                  backgroundColor: "transparent",
+                  // borderBottom: "2px solid black",
+                }}
+              ></textarea>
+            </div>
+          </div>
+
+          <div style={{ width: 600, height: 180 }}>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                background: "white",
+                display: "flex",
+                // backgroundColor: "red",
+                borderRadius: "8px",
+                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+                flexDirection: "column",
+                gap: "10px",
+                position: "relative",
+                alignContent: "center",
+                alignItems: "center",
+                overflowY: "auto",
+                msOverflowStyle: "none",
+              }}
+            >
+              <StepIndicator>3</StepIndicator>
+              <div>Agregar Precio</div>
+              <div>
+                {/* <h2>Agregar Precios</h2> */}
+                {precios.map((precio, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      marginBottom: "10px",
+                      display: "flex",
+                      flexDirection: "row",
+                      width: "100%",
+                    }}
+                  >
+                    <NormalInput
+                      placeHolder={"Nombre. Ej: unidad"}
+                      value={precio.value}
+                      name="nombre"
+                      onChangeValue={(value) =>
+                        handleInputChange(index, "nombre", value)
+                      }
+                    />
+                    <NormalInput
+                      placeHolder={"Cantidad. Ej: 1"}
+                      value={precio.cantidad}
+                      name="cantidad"
+                      type="number"
+                      onChangeValue={(e) =>
+                        handleInputChange(index, "cantidad", e)
+                      }
+                    />
+                    <NormalInput
+                      value={precio.precio}
+                      placeHolder={"Precio. Ej: 10"}
+                      name="precio"
+                      type="number"
+                      onChangeValue={(e) =>
+                        handleInputChange(index, "precio", e)
+                      }
+                    />
+
+                    {precios.length > 1 && (
+                      <Button onClick={() => handleEliminarPrecio(index)}>
+                        Eliminar
+                      </Button>
+                    )}
+                  </div>
+                ))}
+                <Button onClick={handleAgregarPrecio}>
+                  Agregar otro precio
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             width: 250,
+            height: 320,
             gap: 15,
           }}
         >
           <div
             style={{
               width: "100%",
-              height: 300,
+              height: "100%",
               background: "white",
               display: "flex",
               // backgroundColor: "red",
@@ -182,7 +324,7 @@ const AgregarProducto = () => {
               alignItems: "center",
             }}
           >
-            <StepIndicator>2</StepIndicator>
+            <StepIndicator>4</StepIndicator>
             <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
               Agrega una imagen de tu producto
             </div>
@@ -190,107 +332,6 @@ const AgregarProducto = () => {
               previewImage={previewImage}
               onImageChange={handleImageChange}
             />
-          </div>
-        </div>
-
-        <div style={{ width: 450, height: 300, position: "relative" }}>
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "white",
-              display: "flex",
-              // backgroundColor: "red",
-              borderRadius: "8px",
-              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-              flexDirection: "column",
-              gap: "10px",
-              position: "relative",
-              alignContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <StepIndicator>3</StepIndicator>
-            <div>Ingrese la descripcion del producto</div>
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              style={{
-                width: "100%",
-                background: "transparent",
-                color: "black",
-                height: "100%",
-              }}
-            ></textarea>
-          </div>
-        </div>
-        <div style={{ width: 600, height: 300 }}>
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "white",
-              display: "flex",
-              // backgroundColor: "red",
-              borderRadius: "8px",
-              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-              flexDirection: "column",
-              gap: "10px",
-              position: "relative",
-              alignContent: "center",
-              alignItems: "center",
-              overflowY: "auto",
-              msOverflowStyle: "none",
-            }}
-          >
-            <StepIndicator>4</StepIndicator>
-            <div>Agregar Precio</div>
-            <div>
-              {/* <h2>Agregar Precios</h2> */}
-              {precios.map((precio, index) => (
-                <div
-                  key={index}
-                  style={{
-                    marginBottom: "10px",
-                    display: "flex",
-                    flexDirection: "row",
-                    width: "100%",
-                  }}
-                >
-                  <NormalInput
-                    placeHolder={"Nombre. Ej: unidad"}
-                    value={precio.value}
-                    name="nombre"
-                    onChangeValue={(value) =>
-                      handleInputChange(index, "nombre", value)
-                    }
-                  />
-                  <NormalInput
-                    placeHolder={"Cantidad. Ej: 1"}
-                    value={precio.cantidad}
-                    name="cantidad"
-                    type="number"
-                    onChangeValue={(e) =>
-                      handleInputChange(index, "cantidad", e)
-                    }
-                  />
-                  <NormalInput
-                    value={precio.precio}
-                    placeHolder={"Precio. Ej: 10"}
-                    name="precio"
-                    type="number"
-                    onChangeValue={(e) => handleInputChange(index, "precio", e)}
-                  />
-
-                  {precios.length > 1 && (
-                    <Button onClick={() => handleEliminarPrecio(index)}>
-                      Eliminar
-                    </Button>
-                  )}
-                </div>
-              ))}
-              <Button onClick={handleAgregarPrecio}>Agregar otro precio</Button>
-            </div>
           </div>
         </div>
       </div>
