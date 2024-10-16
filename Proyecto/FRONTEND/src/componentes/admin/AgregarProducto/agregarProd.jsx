@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputImage from "../../InputImage";
 import NormalInput from "../../NormalInput";
 import StepIndicator from "../../StepIndicator";
