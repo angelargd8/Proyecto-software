@@ -33,6 +33,8 @@ const EditarProds = ({ precios, styleCard, styleImage }) => {
 
   return (
     <div className="bigSquare">
+      
+      <h1>Editar productos</h1>
       <button className="agregarProductoButton" onClick={handleAddProduct}>
         Agregar Producto
       </button>
