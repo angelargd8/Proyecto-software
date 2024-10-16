@@ -11,6 +11,7 @@ import MobileNav from "../navbar/components/MobileNav";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
 import FormData from "./Components/FormData";
+import CarritoSteps from "./Components/CarritoSteps";
 
 function Pago() {
   const navigate = useNavigate();
@@ -65,35 +66,7 @@ function Pago() {
       <div className="contenedor-pago">
         <MobileHdr title={"Detalles de Pedido"} lastPath={"/carrito"} />
         <div className="MidyBotmPago">
-          <div className="columnPasosPagar">
-            <div className="pasosP">
-              <div
-                className="nombrePaso "
-                style={{ backgroundColor: "transparent", color: "#1B4965" }}
-                onClick={() => handleRegresar()}
-              >
-                {" "}
-                Direccion
-              </div>
-              <div className="separador"> ------------- </div>
-              <div
-                className="nombrePaso"
-                style={{ backgroundColor: "#1B4965", color: "white" }}
-              >
-                {" "}
-                Forma de Pago
-              </div>
-              <div className="separador"> ------------- </div>
-              <div
-                className="nombrePaso"
-                style={{ backgroundColor: "transparent", color: "#1B4965" }}
-                onClick={() => handleConfirmPago()}
-              >
-                {" "}
-                Ultimo Paso
-              </div>
-            </div>
-          </div>
+          <CarritoSteps />
           <div className="middleP">
             <FormaPagoImg currentType={pagoTypeImg} />
             <div className="RowFormasPago">
