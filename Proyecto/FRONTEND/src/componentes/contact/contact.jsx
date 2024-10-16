@@ -1,5 +1,6 @@
 import logo from '../../assets/img/logo.png';
 import "./contact.css";
+import { LogoWhatsapp, MailOutline } from 'react-ionicons';
 
 function Contact() {
   return (
@@ -12,22 +13,27 @@ function Contact() {
         <hr />
         <div className="cuadro">
           <div className="container-image">
-            <div className="imagen" 
-            style={{ 
-              backgroundImage: `url(${logo})`, 
-              backgroundRepeat: 'no-repeat', 
-              backgroundSize: 'cover', 
-              backgroundPosition: 'center', 
-              width: '100%', 
-              height: '190px', 
-              
-            }}>
+            <div className="imagen"
+              style={{
+                backgroundImage: `url(${logo})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '100%',
+                height: '150px',
+              }}>
             </div>
           </div>
           <div className="container-info">
             <div className="contact-info">
-              <h1 className="text">WhatsApp: 3706-7222</h1>
-              <h1 className="text">Correo: picolinescolor@gmail.com</h1>
+              <h1 className="text">
+                <LogoWhatsapp color="#cea44a" />
+                 :3706-7222
+              </h1>
+              <h1 className="text">
+                <MailOutline color="#cea44a" />
+                 :picolinescolor@gmail.com
+              </h1>
             </div>
           </div>
         </div>
