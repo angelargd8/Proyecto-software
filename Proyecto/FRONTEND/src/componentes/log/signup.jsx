@@ -70,7 +70,10 @@ function SingUp(){
             }
             else {
               console.log(data.data.addnewUser);
-              {alert('Usuario: '+data.data.addnewUser.user.name+' a sido registrado correctamente en Picolin!')}
+              Swal.fire({
+                title: `${data.data.addnewUser.user.name} a sido registrado correctamente en Picolin!`,
+                icon: "success"
+              });
               navigate("/home");
             }
             }catch(error){

@@ -81,7 +81,10 @@ function InfoAccountForm() {
                 console.error("Error en la mutación GraphQL:", data.errors);
             } else {
                 setUserInfo(data.data.modifyUser);
-                alert("Datos modificados correctamente");
+                Swal.fire({
+                    title: "Los datos se crearon correctamente",
+                    icon: "success"
+                });
 
             }
         } catch (error) {

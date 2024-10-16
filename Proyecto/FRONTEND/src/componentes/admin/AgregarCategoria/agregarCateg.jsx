@@ -55,7 +55,7 @@ function agregarCateg() {
         const result = await response.json();
         console.warn("File uploaded successfully:", result);
         Swal.fire({
-          title: `Se creó la categoría ${formData.nameCategoria}`,
+          title: `Se creó la categoría ${nameCategoria}`,
           icon: "success"
         });
       } else {
@@ -64,7 +64,7 @@ function agregarCateg() {
           icon: "error"
         });
         console.error("Error:", response.statusText);
-        console.log(formData.nameCategoria)
+        console.log(nameCategoria)
       }
     } catch (error) {
       Swal.fire({

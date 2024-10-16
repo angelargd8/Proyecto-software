@@ -71,7 +71,12 @@ function MobileNav({ spanColor, iconStyles }) {
     }
     localStorage.removeItem("googleUser");
     localStorage.removeItem("rol");
-    alert("Sesión cerrada");
+    Swal.fire({
+      title: `Sesión cerrada correctamente`,
+      icon: "success",
+      showConfirmButton: false,
+      timer: 2000
+    });
     navigate("/home");
   };
 
@@ -80,7 +85,12 @@ function MobileNav({ spanColor, iconStyles }) {
       setIsOpen(!isOpen);
     }
     localStorage.removeItem("rol");
-    alert("Sesión cerrada");
+    Swal.fire({
+      title: `Sesión cerrada correctamente`,
+      icon: "success",
+      showConfirmButton: false,
+      timer: 2000
+    });
     navigate("/home");
   };
 

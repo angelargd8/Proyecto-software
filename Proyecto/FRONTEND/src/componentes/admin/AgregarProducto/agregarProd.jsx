@@ -34,17 +34,26 @@ const AgregarProducto = () => {
     const formData = new FormData();
 
     if (!nameProduct) {
-      alert("Ingrese nombre al producto");
+      Swal.fire({
+        title: "Debe agregar un nombre para el producto",
+        icon: "warning"
+      });
       return;
     }
 
     if (!image) {
-      alert("Please select an image to upload.");
+      Swal.fire({
+        title: "Debe agregar una imagen para el producto",
+        icon: "warning"
+      });
       return;
     }
 
     if (!description) {
-      alert("ingrese una descripcion al producto");
+      Swal.fire({
+        title: "Debe agregar una descripción para el producto",
+        icon: "warning"
+      });
       return;
     }
 
@@ -54,7 +63,10 @@ const AgregarProducto = () => {
     );
 
     if (filterPrecios.length < 1) {
-      alert("Ingrese al menos un precio");
+      Swal.fire({
+        title: "Debe agregar al menos un precio para el producto",
+        icon: "warning"
+      });
       return;
     }
 
@@ -74,9 +86,15 @@ const AgregarProducto = () => {
     if (response.ok) {
       // const result = await response.json();
       // console.warn("File uploaded successfully:", result);
-      alert("Se agrego el producto");
+      Swal.fire({
+        title: `Se agregó el producto ${nameProduct}`,
+        icon: "success"
+      });
     } else {
-      // alert("Failed to upload image.");
+      Swal.fire({
+        title: "Error al crear el producto",
+        icon: "error"
+      });
       console.error("Error:", response.statusText);
     }
   };
