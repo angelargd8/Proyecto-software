@@ -32,7 +32,10 @@ function agregarCateg() {
 
   const handleSubmit = async () => {
     if (!image) {
-      alert("Please select an image to upload.");
+      Swal.fire({
+        title: "Debe agregar una imagen para la categoría",
+        icon: "warning"
+      });
       return;
     }
 
@@ -51,13 +54,23 @@ function agregarCateg() {
       if (response.ok) {
         const result = await response.json();
         console.warn("File uploaded successfully:", result);
-        alert("Image uploaded successfully!");
+        Swal.fire({
+          title: `Se creó la categoría ${formData.nameCategoria}`,
+          icon: "success"
+        });
       } else {
-        alert("Failed to upload image.");
+        Swal.fire({
+          title: "Error al crear la categoría",
+          icon: "error"
+        });
         console.error("Error:", response.statusText);
+        console.log(formData.nameCategoria)
       }
     } catch (error) {
-      alert("Error en el servidor");
+      Swal.fire({
+        title: "Error en el servidor",
+        icon: "error"
+      });
     }
   };
 
