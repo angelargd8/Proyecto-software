@@ -44,7 +44,6 @@ function CarritoSteps() {
           }}
           onClick={() => handleDirecc()}
         >
-          {" "}
           Direccion
         </div>
         <div> ------------- </div>
@@ -56,7 +55,6 @@ function CarritoSteps() {
           }}
           onClick={() => handlePago()}
         >
-          {" "}
           Forma de Pago
         </div>
         <div> ------------- </div>
@@ -68,7 +66,6 @@ function CarritoSteps() {
           }}
           onClick={() => handleResumen()}
         >
-          {" "}
           Ultimo Paso
         </div>
       </div>

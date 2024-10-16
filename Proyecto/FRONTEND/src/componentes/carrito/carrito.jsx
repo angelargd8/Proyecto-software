@@ -6,6 +6,7 @@ import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
 import InCartProduct from "./Components/InCartProduct";
 import DropList from "./Components/DropList";
+import CarritoSteps from "./Components/CarritoSteps";
 
 function Carrito() {
   const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
@@ -66,33 +67,7 @@ function Carrito() {
       <div className="contenedorCarrito">
         <MobileHdr title={"My Cart"} lastPath={"/home"} />
         <div className="MidyBotm">
-          <div className="columnPasosPagar">
-            <div className="pasos">
-              <div className="nombrePaso" onClick={() => handleDirecc()}>
-                Direccion
-              </div>
-              <div className="separador"> ------------- </div>
-              <div
-                className="nombrePaso"
-                style={{ backgroundColor: "transparent", color: "#1B4965" }}
-                onClick={() => handlePagar()}
-              >
-                Forma de Pago
-              </div>
-              <div className="separador"> ------------- </div>
-              <div
-                className="nombrePaso"
-                style={{
-                  fontSize: "1vw",
-                  backgroundColor: "transparent",
-                  color: "#1B4965",
-                }}
-                onClick={() => handleResumen()}
-              >
-                Ultimo Paso
-              </div>
-            </div>
-          </div>
+          <CarritoSteps />
           <div className="middle">
             <div className="carrito">
               {carrito.length === 0 ? (
