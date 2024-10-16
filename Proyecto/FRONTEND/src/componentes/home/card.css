@@ -8,6 +8,7 @@
     width: 100%;
     max-width: 300px;
     height: auto;
+    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -20,7 +21,8 @@
 
 .card-content-category {
     width: 100%;
-    min-height: 380px;
+    min-height: 350px;
+    max-height: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,7 +32,8 @@
 
 .imagen-category {
     width: 100%;
-    height: auto;
+    height: 100%;
+    overflow: hidden;
     object-fit: cover;
     border-radius: 5%;
 }
