@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import MobileNav from "../navbar/components/MobileNav";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
+import FormData from "./Components/FormData";
 
 function Pago() {
   const navigate = useNavigate();
@@ -48,13 +49,13 @@ function Pago() {
     setFormtitle(text);
     setIsAnimating(!isAnimating);
 
-    if (text == "Tarjeta") {
+    if (text === "Tarjeta") {
       setCurrentIndex(0);
       setPagoTypeImg(images[0]);
-    } else if (text == "Efectivo") {
+    } else if (text === "Contra Entrega") {
       setCurrentIndex(1);
       setPagoTypeImg(images[1]);
-    } else if ((text = "Deposito")) {
+    } else if (text === "Deposito") {
       setCurrentIndex(2);
       setPagoTypeImg(images[2]);
     }
@@ -107,7 +108,7 @@ function Pago() {
                 onClick={handlePagoType}
               />
               <BtnFormaPago
-                text="Efectivo"
+                text="Contra Entrega"
                 extraStyles={extraStyles}
                 onClick={handlePagoType}
               />
@@ -115,14 +116,11 @@ function Pago() {
             <div className="Formulario">
               <motion.div
                 className={"FormTitle"}
-                animate={{
-                  scale: isAnimating ? 1.5 : 1,
-                  rotate: isAnimating ? 360 : 0,
-                }}
                 transition={{ duration: 0.5 }}
               >
                 {formTitle}
               </motion.div>
+              <FormData infoType={formTitle} />
             </div>
             <div className="ParteVenta">
               <h5
