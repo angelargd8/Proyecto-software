@@ -13,7 +13,7 @@ import foto8 from "../../assets/img/Colorante/AÑELINA.jpg";
 import foto9 from "../../assets/img/Colorante/COLORANTE VEGETAL.jpg";
 import foto10 from "../../assets/img/Brillantina-surtida.jpg";
 import { useState } from "react";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 function Login() {
   const navigate = useNavigate();
@@ -107,10 +107,12 @@ function Login() {
             "rol",
             data.data.validateEmail.rol.name
           );
-
-          {
-            alert("Bienvenir@ " + data.data.validateEmail.name + " a Picolin");
-          }
+          Swal.fire({
+            icon: "success",
+            title: `${data.data.validateCredentials.name}, bienvenid@ a Picolin`,
+            showConfirmButton: false,
+            timer: 2000
+          });
           navigate("/home");
         }
       } catch (error) {
@@ -173,11 +175,12 @@ function Login() {
           localStorage.setItem("name", data.data.validateCredentials.name);
           localStorage.setItem("email", data.data.validateCredentials.email);
           console.log(rol);
-          {
-            alert(
-              "Bienvenir@ " + data.data.validateCredentials.name + " a Picolin"
-            );
-          }
+          Swal.fire({
+            icon: "success",
+            title: `${data.data.validateCredentials.name}, bienvenid@ a Picolin`,
+            showConfirmButton: false,
+            timer: 2000
+          });
 
           navigate("/home");
         }
