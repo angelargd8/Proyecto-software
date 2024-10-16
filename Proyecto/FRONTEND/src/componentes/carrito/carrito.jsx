@@ -26,6 +26,10 @@ function Carrito() {
     navigate("/carrito");
   };
 
+  const handleResumen = () => {
+    navigate("/resumen");
+  };
+
   const Tarifa = 5.0; //Temporal
 
   const calcularPrecioTotal = (cantidad, precios) => {
@@ -83,6 +87,7 @@ function Carrito() {
                   backgroundColor: "transparent",
                   color: "#1B4965",
                 }}
+                onClick={() => handleResumen()}
               >
                 Ultimo Paso
               </div>
