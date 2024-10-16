@@ -35,7 +35,9 @@ function AppContent() {
     (location.pathname === "/resumen") |
     (location.pathname === "/editarCategorias") |
     (location.pathname === "/detalles") |
+    (location.pathname === "/agregarProducto") |
     (location.pathname === "/agregarCategoria");
+    
   return (
     <>
       {!isPageWithNoNav && <Nabvar />}
