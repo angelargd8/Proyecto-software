@@ -48,6 +48,7 @@ function FormData({ infoType }) {
       {console.log(arrayInfo)}
       {arrayInfo.map((name, index) => (
         <DataRow
+          key={index}
           dataName={name}
           value={inputValues[index]}
           onChange={(value) =>

@@ -121,7 +121,18 @@ function Pago() {
                 {formTitle}
               </motion.div>
               <FormData infoType={formTitle} />
+              <div className="desktopButtonCont">
+                <CarritoBtn
+                  text={"SIGUIENTE"}
+                  nextPath={"/resumen"}
+                  styles={{
+                    height: "70%",
+                    marginBottom: 50,
+                  }}
+                />
+              </div>
             </div>
+
             <div className="ParteVenta">
               <h5
                 style={{
@@ -165,23 +176,11 @@ function Pago() {
                 <Carrusel></Carrusel>
               </div>
             </div>
-            <div className="btnContainer">
+
+            <div className="mobileButtonCont">
               <CarritoBtn text={"SIGUIENTE"} nextPath={"/resumen"} />
             </div>
           </div>
-          {/* <div className="bottom">
-            <img
-              className="logotipo"
-              src="../src/assets/img/logo.png"
-              style={{
-                width: 60,
-                height: 70,
-                marginLeft: "1%",
-                marginRight: "2%",
-              }}
-            />
-            Picolin
-          </div> */}
         </div>
       </div>
     </>
