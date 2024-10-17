@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 function CarritoSteps() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const handleDirecc = () => {
     navigate("/carrito");
@@ -32,6 +35,10 @@ function CarritoSteps() {
       return "#1B4965";
     }
   };
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <div style={styles.stepsContainer}>

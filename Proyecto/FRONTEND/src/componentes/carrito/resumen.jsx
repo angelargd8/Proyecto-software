@@ -15,10 +15,10 @@ const Resumen = () => {
 
   return (
     <>
-      <div className="contenedorResumen" style={styles.contenedorGeneral}>
+      <div style={styles.contenedorGeneral}>
         <MobileHdr title={"Resumen de Pedido"} lastPath={"/pago"} />
         <CarritoSteps />
-        <div className="content"></div>.
+        <div className="content"></div>
       </div>
     </>
   );
