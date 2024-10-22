@@ -51,7 +51,7 @@ function CarritoSteps() {
           }}
           onClick={() => handleDirecc()}
         >
-          Direccion
+          Articulos
         </div>
         <div> ------------- </div>
         <div
@@ -73,7 +73,7 @@ function CarritoSteps() {
           }}
           onClick={() => handleResumen()}
         >
-          Ultimo Paso
+          Último Paso
         </div>
       </div>
     </div>
