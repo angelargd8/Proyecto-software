@@ -127,45 +127,65 @@ const AgregarProducto = () => {
   };
 
   return (
+    <div className="AddProductContainer">
+    {/* Contenedor general*/}
     <div
       className="container"
       style={{
-        display: "flex",
+        all: "unset",   
+        display: "block",
+        position : "absolute",
         background: "#E2E8F0",
         flexDirection: "column",
-        height: "100vh",
-        width: "100vw",
-        top: 65,
+        height: "100%",
+        width: "100%",
+        top: "17%",
+        right:0,
+        left: 0,
+        bottom: 0,
         paddingLeft: 15,
         gap: 15,
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
+
+      
+      {/* Contenedor del text principal*/}
       <div
         style={{
           top: 0,
           width: "100%",
           fontSize: "25px",
           fontFamily: "bold",
-          textAlign: "left",
+          textAlign: "center",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 10,
         }}
       >
         Agregar nuevo producto
       </div>
-
+        {/* Contenedor del paso 1 principal*/}
       <div
         style={{
-          width: 600,
+          width: "57%",
           position: "relative",
           boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
           backgroundColor: "white",
           borderRadius: "8px",
           alignSelf: "center",
+          marginTop: 10,
+          display: "flex",  
+          marginLeft: "21.5%",      
+          
         }}
       >
         <StepIndicator
           style={{
             left: 25,
             top: 25,
+            backgroundColor: "#1F3350",
           }}
         >
           1
@@ -175,10 +195,10 @@ const AgregarProducto = () => {
             display: "flex",
             flexDirection: "row",
             padding: 10,
-            paddingLeft: 50,
+            paddingLeft: 50,            
           }}
         >
-          <label>Nombre del Prducto: </label>
+          <label>Nombre del Producto: </label>
           <input
             value={nameProduct}
             onChange={(e) => setNameProduct(e.target.value)}
@@ -193,16 +213,21 @@ const AgregarProducto = () => {
               color: "#1F3350",
               outline: "none",
               fontSize: 20,
+ 
             }}
           />
         </div>
       </div>
+      {/* Contenedor de los pasos 2, 3 y 4*/}
       <div
         style={{
+          position: "relative",
           width: "100%",
           display: "flex",
           flexDirection: "row",
-          gap: 15,
+          gap: 3,
+          marginTop: 5,
+          padding: 10,
           justifyContent: "center",
         }}
       >
@@ -212,7 +237,7 @@ const AgregarProducto = () => {
               style={{
                 width: "100%",
                 height: "100%",
-                background: "white",
+                backgroundColor: "white",
                 display: "flex",
                 // backgroundColor: "red",
                 borderRadius: "8px",
@@ -357,6 +382,7 @@ const AgregarProducto = () => {
       <div>
         <Button onClick={handleAddPRoduct}>Agregar nuevo producto</Button>
       </div>
+    </div>
     </div>
   );
 };
