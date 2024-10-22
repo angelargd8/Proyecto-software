@@ -27,9 +27,10 @@
 .middle {
   /* Medio, aqui esta totales y carrito */
   display: flex;
-  background-color: #f9f6ee;
+  /* background-color: #f9f6ee; */
+  background-color: white;
   flex-direction: row;
-  height: 80%;
+  height: 100%;
   width: 100%;
   border-radius: 20px;
 }

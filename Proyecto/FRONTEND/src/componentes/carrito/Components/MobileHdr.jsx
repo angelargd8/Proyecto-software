@@ -11,7 +11,7 @@ function MobileHdr({ title, lastPath }) {
   };
 
   return (
-    <div className="up">
+    <div className="mobileHeaderCont">
       <div className="regresar">
         <div className="regresarbtn" onClick={() => handleRegresar()}>
           {" "}
@@ -37,5 +37,24 @@ function MobileHdr({ title, lastPath }) {
     </div>
   );
 }
+
+// const DeskStyles = {
+//   up: {
+//     display: "flex",
+//     alignItems: "center",
+//     justifyContent: "center",
+//     textJustify: "center",
+//     height: "10%",
+//     width: "100%",
+//     borderBottom: "#1b4965",
+//   },
+//   leftSection: {
+//     display: "flex",
+//     height: "100%",
+//     width: "10%",
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+// };
 
 export default MobileHdr;

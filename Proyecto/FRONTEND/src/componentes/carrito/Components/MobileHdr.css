@@ -1,4 +1,4 @@
-.up {
+.mobileHeaderCont {
   /*este es el header*/
   display: flex;
   align-items: center;
@@ -7,6 +7,7 @@
   height: 10%;
   width: 100%;
   box-shadow: 1px 1px 10px #a2a19b;
+  background-color: #1b4965;
 }
 
 .CarritoHeader {
@@ -14,7 +15,7 @@
   display: flex;
   height: 100%;
   width: 90%;
-  color: #1b4965;
+  color: white;
   font-family: "Gill Sans", "Gill Sans MT", sans-serif;
   justify-content: center;
   align-items: center;

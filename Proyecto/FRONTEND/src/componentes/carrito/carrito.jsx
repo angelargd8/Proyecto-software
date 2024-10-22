@@ -102,7 +102,7 @@ function Carrito() {
               <CarritoBtn text={"Pagar"} nextPath={"/pago"} />
             </div>
           </div>
-          <div className="Dbottom" style={{ fontSize: "1.5vw" }}>
+          {/* <div className="Dbottom" style={{ fontSize: "1.5vw" }}>
             <img
               className="logotipo"
               src="../src/assets/img/logo.png"
@@ -114,7 +114,7 @@ function Carrito() {
               }}
             />
             Picolin
-          </div>
+          </div> */}
         </div>
       </div>
     </>

@@ -84,7 +84,8 @@ const styles = {
   stepsContainer: {
     display: "flex",
     flexDirection: "row",
-    backgroundColor: "#f9f6ee",
+    // backgroundColor: "#f9f6ee",
+    backgroundColor: "white",
     height: "10%",
     width: "100%",
   },
