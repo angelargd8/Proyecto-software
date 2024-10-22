@@ -10,87 +10,6 @@
   align-items: center;
   justify-content: center;
 }
-/* --------------------------------------------Header----------------------------------------------------- */
-
-.up {
-  /*este es el header*/
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-justify: center;
-  height: 10%;
-  width: 100%;
-  box-shadow: 1px 1px 10px #a2a19b;
-  margin-bottom: 0.5%;
-}
-
-.headerPago {
-  /*lo que esta dentro de up*/
-  display: flex;
-  height: 100%;
-  width: 90%;
-  color: #1b4965;
-  font-family: "Gill Sans", "Gill Sans MT", sans-serif;
-  justify-content: left;
-  align-items: center;
-  align-content: center;
-}
-
-.tituloDeskPago {
-  /* Titulo que esta dentro de header */
-  height: 100%;
-  width: 10%;
-  font-size: 1.6rem;
-  text-align: center;
-  align-content: center;
-}
-
-.tituloMovilPago {
-  display: none;
-}
-
-.midHeader {
-  height: 100%;
-  width: 70%;
-  /* background-color: purple; */
-}
-
-.logoBox {
-  display: flex;
-  height: 100%;
-  width: 20%;
-  /* background-color: aqua; */
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.regresar {
-  /* Espacio para poner boton */
-  display: flex;
-  height: 100%;
-  width: 10%;
-  justify-content: center;
-  align-items: center;
-}
-
-.regresarbtn {
-  /* Boton regresar: < */
-  color: #1b4965;
-  font-family: "Gill Sans", "Gill Sans MT", sans-serif;
-  font-size: xx-large;
-}
-
-.opciones {
-  /* Las tres lineas a la derecha superior */
-  display: none;
-  height: 100%;
-  width: 10%;
-  color: #1b4965;
-  justify-content: center;
-  align-items: center;
-  /* margin-right: 16%; */
-}
-
 /* --------------------------------------------Medio y Bottom ----------------------------------------------------- */
 
 .MidyBotmPago {
@@ -650,18 +569,6 @@
     align-items: center;
     /* margin-right: 16%; */
     z-index: 3;
-  }
-  .up {
-    display: flex;
-    height: 20%;
-    align-items: center;
-    justify-content: center;
-    text-justify: center;
-    margin-left: 1%;
-    background-color: white;
-
-    height: 10%;
-    width: 100%;
   }
   .bottom {
     display: none;
