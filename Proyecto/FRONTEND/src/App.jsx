@@ -1,10 +1,12 @@
 import "./App.css";
 import AppRouter from "./componentes/router.jsx";
 import Nabvar from "./componentes/navbar/navbar.jsx";
+import navBar2 from "./componentes/navbar/navbar2.jsx";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import { CarritoProvider } from "./componentes/carrito/carritoContext.jsx";
 import FloatingButton from "./componentes/floatingButton/floatingButton.jsx";
 import Footer from "./componentes/footer/footer.jsx";
+import NavBar2 from "./componentes/navbar/navbar2.jsx";
 
 function App() {
   return (
@@ -37,10 +39,12 @@ function AppContent() {
     (location.pathname === "/detalles") |
     (location.pathname === "/agregarProducto") |
     (location.pathname === "/agregarCategoria");
-    
+
   return (
     <>
-      {!isPageWithNoNav && <Nabvar />}
+      {/* {!isPageWithNoNav && <Nabvar />} */}
+      {/* {!isPageWithNoNav && <NavBar2 />} */}
+      <NavBar2 />
       <FloatingButton />
       <div className={`contenedor ${isPageWithNoNav ? "no-margin" : ""}`}>
         <AppRouter />

@@ -13,7 +13,7 @@ import foto8 from "../../assets/img/Colorante/AÑELINA.jpg";
 import foto9 from "../../assets/img/Colorante/COLORANTE VEGETAL.jpg";
 import foto10 from "../../assets/img/Brillantina-surtida.jpg";
 import { useState } from "react";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 function Login() {
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ function Login() {
       Swal.fire({
         icon: "error",
         title: "Oh no",
-        text: "La autenticación con Google no se realizó correctamente."
+        text: "La autenticación con Google no se realizó correctamente.",
       });
     }
   };
@@ -111,7 +111,7 @@ function Login() {
             icon: "success",
             title: `${data.data.validateCredentials.name}, bienvenid@ a Picolin`,
             showConfirmButton: false,
-            timer: 2000
+            timer: 2000,
           });
           navigate("/home");
         }
@@ -162,7 +162,7 @@ function Login() {
             Swal.fire({
               icon: "error",
               title: "Error",
-              text: "Usuario o contraseña incorrectos"
+              text: "Usuario o contraseña incorrectos",
             });
           }
         } else {
@@ -179,10 +179,14 @@ function Login() {
             icon: "success",
             title: `${data.data.validateCredentials.name}, bienvenid@ a Picolin`,
             showConfirmButton: false,
-            timer: 2000
+            timer: 2000,
           });
 
-          navigate("/home");
+          if (data.data.validateCredentials.rol.name === "Admin") {
+            navigate("/editarCategorias");
+          } else {
+            navigate("/home");
+          }
         }
       } catch (error) {
         console.error("Error:", error);

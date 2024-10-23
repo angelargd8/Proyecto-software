@@ -1,4 +1,5 @@
-body, html{
+body,
+html {
   width: 100%;
   margin: 0;
 }
@@ -10,10 +11,10 @@ body, html{
   text-align: center;
   flex-direction: column;
   justify-content: center;
-  min-height: 100vh
+  min-height: 100vh;
 }
 
-.AppContainer{
+.AppContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -22,12 +23,11 @@ body, html{
   justify-content: center;
   flex-grow: 1;
 }
-.contenedor{
+.contenedor {
   display: flex;
   margin-top: 0;
   width: 100%;
   height: 100%;
-  
 }
 .no-margin {
   margin-top: 0;
@@ -69,8 +69,7 @@ body, html{
   color: #888;
 }
 
-
-.formulario{
+.formulario {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -82,12 +81,11 @@ body, html{
   box-shadow: 0 0 10px rgba(133, 130, 130, 0.1);
 }
 
-
-.elemento-formulario{
+.elemento-formulario {
   margin-bottom: 20px;
   padding: 20%;
 }
-.boton{
+.boton {
   color: white;
   padding: 13px;
   border: none;

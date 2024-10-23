@@ -70,7 +70,7 @@ function Nabvar() {
           title: `Sesión cerrada correctamente`,
           icon: "success",
           showConfirmButton: false,
-          timer: 2000
+          timer: 2000,
         });
         navigate("/home");
       }
@@ -91,7 +91,7 @@ function Nabvar() {
           title: `Sesión cerrada correctamente`,
           icon: "success",
           showConfirmButton: false,
-          timer: 2000
+          timer: 2000,
         });
         navigate("/home");
       }
@@ -164,7 +164,14 @@ function Nabvar() {
                     </li>
                   </ul>
 
-                  <div className="items-end">
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      height: 90,
+                      background: "red",
+                    }}
+                  >
                     {/* Busqueda */}
                     <form
                       className="d-flex buscar"
@@ -206,6 +213,17 @@ function Nabvar() {
                         onClick={handleCarrito}
                       />
                     </button>
+
+                    <div style={{ height: 80, width: 100 }}>
+                      <button
+                        type="button"
+                        style={{
+                          height: 80,
+                          width: 100,
+                          backgroundColor: "blue",
+                        }}
+                      />
+                    </div>
 
                     {/* Manejo de sesión del Usuario */}
                     <div className="collapse navbar-collapse" id="navbarNav">
