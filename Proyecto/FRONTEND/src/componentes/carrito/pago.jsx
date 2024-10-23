@@ -10,6 +10,8 @@ import { motion } from "framer-motion";
 import MobileNav from "../navbar/components/MobileNav";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
+import FormData from "./Components/FormData";
+import CarritoSteps from "./Components/CarritoSteps";
 
 function Pago() {
   const navigate = useNavigate();
@@ -19,7 +21,14 @@ function Pago() {
     "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1"
   );
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [transitionClass, setTransitionClass] = useState("fade-in");
+  const [showTitle, setShowTitle] = useState(true);
+  const [nextTitle, setNextTitle] = useState(formTitle);
+
+  const images = [
+    "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1",
+    "https://cdn-icons-png.flaticon.com/512/3832/3832329.png",
+    "https://png.pngtree.com/png-clipart/20230406/original/pngtree-bank-deposit-line-icon-png-image_9030315.png",
+  ];
 
   useEffect(() => {}, [formTitle]);
 
@@ -41,62 +50,23 @@ function Pago() {
     setFormtitle(text);
     setIsAnimating(!isAnimating);
 
-    if (text == "Tarjeta") {
+    if (text === "Tarjeta") {
       setCurrentIndex(0);
-      setPagoTypeImg(
-        "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1"
-      );
-    } else if (text == "Efectivo") {
+      setPagoTypeImg(images[0]);
+    } else if (text === "Contra Entrega") {
       setCurrentIndex(1);
-      setPagoTypeImg("https://cdn-icons-png.flaticon.com/512/3832/3832329.png");
-    } else if ((text = "Deposito")) {
+      setPagoTypeImg(images[1]);
+    } else if (text === "Deposito") {
       setCurrentIndex(2);
-      setPagoTypeImg(
-        "https://png.pngtree.com/png-clipart/20230406/original/pngtree-bank-deposit-line-icon-png-image_9030315.png"
-      );
+      setPagoTypeImg(images[2]);
     }
   };
-
-  const images = [
-    "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1",
-    "https://cdn-icons-png.flaticon.com/512/3832/3832329.png",
-    "https://png.pngtree.com/png-clipart/20230406/original/pngtree-bank-deposit-line-icon-png-image_9030315.png",
-  ];
-
   return (
     <>
       <div className="contenedor-pago">
         <MobileHdr title={"Detalles de Pedido"} lastPath={"/carrito"} />
         <div className="MidyBotmPago">
-          <div className="columnPasosPagar">
-            <div className="pasosP">
-              <div
-                className="nombrePaso "
-                style={{ backgroundColor: "transparent", color: "#1B4965" }}
-                onClick={() => handleRegresar()}
-              >
-                {" "}
-                Direccion
-              </div>
-              <div className="separador"> ------------- </div>
-              <div
-                className="nombrePaso"
-                style={{ backgroundColor: "#1B4965", color: "white" }}
-              >
-                {" "}
-                Forma de Pago
-              </div>
-              <div className="separador"> ------------- </div>
-              <div
-                className="nombrePaso"
-                style={{ backgroundColor: "transparent", color: "#1B4965" }}
-                onClick={() => handleConfirmPago()}
-              >
-                {" "}
-                Ultimo Paso
-              </div>
-            </div>
-          </div>
+          <CarritoSteps />
           <div className="middleP">
             <FormaPagoImg currentType={pagoTypeImg} />
             <div className="RowFormasPago">
@@ -111,7 +81,7 @@ function Pago() {
                 onClick={handlePagoType}
               />
               <BtnFormaPago
-                text="Efectivo"
+                text="Contra Entrega"
                 extraStyles={extraStyles}
                 onClick={handlePagoType}
               />
@@ -119,15 +89,23 @@ function Pago() {
             <div className="Formulario">
               <motion.div
                 className={"FormTitle"}
-                animate={{
-                  scale: isAnimating ? 1.5 : 1,
-                  rotate: isAnimating ? 360 : 0,
-                }}
                 transition={{ duration: 0.5 }}
               >
                 {formTitle}
               </motion.div>
+              <FormData infoType={formTitle} />
+              <div className="desktopButtonCont">
+                <CarritoBtn
+                  text={"SIGUIENTE"}
+                  nextPath={"/resumen"}
+                  styles={{
+                    height: "70%",
+                    marginBottom: 50,
+                  }}
+                />
+              </div>
             </div>
+
             <div className="ParteVenta">
               <h5
                 style={{
@@ -171,23 +149,11 @@ function Pago() {
                 <Carrusel></Carrusel>
               </div>
             </div>
-            <div className="btnContainer">
+
+            <div className="mobileButtonCont">
               <CarritoBtn text={"SIGUIENTE"} nextPath={"/resumen"} />
             </div>
           </div>
-          {/* <div className="bottom">
-            <img
-              className="logotipo"
-              src="../src/assets/img/logo.png"
-              style={{
-                width: 60,
-                height: 70,
-                marginLeft: "1%",
-                marginRight: "2%",
-              }}
-            />
-            Picolin
-          </div> */}
         </div>
       </div>
     </>

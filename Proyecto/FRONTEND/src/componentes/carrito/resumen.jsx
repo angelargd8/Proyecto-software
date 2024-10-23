@@ -1,57 +1,41 @@
-import { Navigate, useNavigate } from 'react-router-dom'
-import './resumen.css'
+import { Navigate, useNavigate } from "react-router-dom";
+import MobileHdr from "./Components/MobileHdr";
+import CarritoSteps from "./Components/CarritoSteps";
 
 const Resumen = () => {
-    const navigate = useNavigate()
-    
-    const handleRegresar = () => {
-        navigate("/pago")
-    }
+  const navigate = useNavigate();
 
-    return (
-        <>
-        <div className="contenedorResumen">
-            <div className="header">
-                <div className="BtnRegresar" onClick={() => handleRegresar()}>&lt; </div>
-                <div className="title"> Confirma tu Pedido </div>
-                <div className="menu">
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block', marginBottom: '5px'}}></span>
-                        <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block', marginBottom: '5px'}}></span>
-                        <span style={{width: '30px', height: '3px', backgroundColor: 'black', display: 'block'}}></span>
-                    </button>
-                </div>
-            </div>
-            <div className="body">
-                <div className="sector">
-                    <div className="subtitle">Destino </div>
-                    <div className="content">
-                        <div className="ubicacionRes">
-                            <div className="map"></div>
-                            <div className="UbiName"> Universidad del Valle de Guatemala</div>
-                        </div>
-                        <div className="deliveryTimeRes">
-                            <div className="DeliveryImg"></div>
-                            <div className="DeliveryTxt"> Delivery 30-45 min</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="sector">
-                    <div className="subtitle">Propoina</div>
-                    <div className="content"></div>
-                </div>
-                <div className="sector">
-                    <div className="subtitle"> Total</div>
-                    <div className="content"></div>
-                </div>
-            </div>
-            <div className="footer">
-                <div className="btnConfirm">Confirmar</div>
-            </div>
-        </div>
-        </>
-    )
+  const handlePago = () => {
+    navigate("/pago");
+  };
 
-}
+  const handleDirecc = () => {
+    navigate("/carrito");
+  };
 
-export default Resumen
+  return (
+    <>
+      <div style={styles.contenedorGeneral}>
+        <MobileHdr title={"Resumen de Pedido"} lastPath={"/pago"} />
+        <CarritoSteps />
+        <div className="content"></div>
+      </div>
+    </>
+  );
+};
+
+const styles = {
+  contenedorGeneral: {
+    display: "flex",
+    flexDirection: "column",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+};
+
+export default Resumen;

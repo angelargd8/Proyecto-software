@@ -1,0 +1,34 @@
+.Container-footer {
+  all: unset;
+  display: block;
+  position: relative;
+  bottom: 0;
+  display: flex;
+  width: 110%;
+  justify-content: center;
+  align-items: center;
+  color: #1f3350e7;
+  font-weight: bold;
+  font-family: "Merriweather", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.RowContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0%;
+  padding: 8%;
+}
+
+@media only screen and (max-width: 768px) {
+  .Container-footer {
+    display: none;
+  }
+
+  .RowContainer {
+    display: none;
+  }
+}

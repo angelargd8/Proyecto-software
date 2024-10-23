@@ -1,4 +1,4 @@
-import Card from "../home/card";
+import CardCategoria from "./cardCategoriaE";
 import "./editarCateg.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,8 +16,9 @@ function EditCateg() {
 
   // Eliminar categoría
   const eliminarCategoria = (id) => {
-    const newCards = listadoCards.filter((card) => card.id !== id);
+    const newCards = [...listadoCards].filter((card) => card.idCategory !== id);
     setCards(newCards);
+    console.log(id, newCards);
   };
 
   // Agregar categoría
@@ -77,25 +78,31 @@ function EditCateg() {
 
   return (
     <div className="container-home">
-      <div className="header">
+      <div className="headerc">
         <h1>Editar Categorías</h1>
         <button className="agregar-categoria-button" onClick={agregarCategoria}>
           Agregar Categoría
         </button>
       </div>
-      <div id="contenido-cartas">
+      <div id="contenido-cartase">
         {listadoCards.map((elemento) => (
-          <div key={elemento.idCategory} className="category-card">
-            <Card
+          <div key={elemento.idCategory} className="category-carde">
+            <CardCategoria
               title={elemento.name}
               imagen={elemento.image}
-              onClick={() => info(elemento.name, elemento)}
+              
             />
+            <button
+              className="editar-button"
+              onClick={() => info(elemento.name, elemento)}
+            >
+              Editar productos
+            </button>
             <button
               className="eliminar-button"
               onClick={() => eliminarCategoria(elemento.idCategory)}
             >
-              Eliminar Categoría
+              Eliminar 
             </button>
           </div>
         ))}

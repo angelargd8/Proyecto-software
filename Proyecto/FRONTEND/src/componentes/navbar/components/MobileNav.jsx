@@ -3,20 +3,40 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { IconToggle } from "./IconToggle";
 import "./MobileNav.css";
 import { useEffect, useState } from "react";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 function MobileNav({ spanColor, iconStyles }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(null);
   const [onScreen, setOnscreen] = useState(location.pathname);
+  const [changed, setChanged] = useState(false);
+  const [toggle, setToggle] = useState(false);
+  const [touched, setTouched] = useState(0);
   //   Local Storage
   const userRol = localStorage.getItem("rol");
   const googleUser = localStorage.getItem("googleUser");
   const name = localStorage.getItem("name");
   const Googlename = localStorage.getItem("GoogleName");
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   const isActive = (path) => location.pathname === path;
+
+  useEffect(() => {
+    if (isOpen !== null) {
+      setToggle(isOpen);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    setTouched(0);
+  }, [location.pathname]);
+
+  const handleTouch = () => {
+    setIsOpen((prev) => (prev === null ? true : !prev));
+    setTouched(touched + 1);
+  };
 
   useEffect(() => {
     setOnscreen(location.pathname);
@@ -56,7 +76,12 @@ function MobileNav({ spanColor, iconStyles }) {
     }
     localStorage.removeItem("googleUser");
     localStorage.removeItem("rol");
-    alert("Sesión cerrada");
+    Swal.fire({
+      title: `Sesión cerrada correctamente`,
+      icon: "success",
+      showConfirmButton: false,
+      timer: 2000,
+    });
     navigate("/home");
   };
 
@@ -65,7 +90,12 @@ function MobileNav({ spanColor, iconStyles }) {
       setIsOpen(!isOpen);
     }
     localStorage.removeItem("rol");
-    alert("Sesión cerrada");
+    Swal.fire({
+      title: `Sesión cerrada correctamente`,
+      icon: "success",
+      showConfirmButton: false,
+      timer: 2000,
+    });
     navigate("/home");
   };
 
@@ -117,106 +147,112 @@ function MobileNav({ spanColor, iconStyles }) {
     },
   };
 
+  if (!isMobile) {
+    return null;
+  }
+
   return (
     <>
       <motion.nav
         className="mobileNav"
         initial={false}
-        animate={isOpen ? "open" : "closed"}
+        animate={toggle ? "open" : "closed"}
       >
         <IconToggle
-          toggle={() => setIsOpen(!isOpen)}
+          toggle={() => handleTouch()}
           spanColor={spanColor}
           extraStyles={iconStyles}
         />
       </motion.nav>
 
-      <motion.ul
-        variants={ULvariants}
-        className="navList"
-        style={{
-          position: "absolute",
-          pointerEvents: isOpen ? "auto" : "none",
-          top: 80,
-          right: 20,
-        }}
-        animate={isOpen ? "open" : "closed"}
-      >
-        <motion.li
-          variants={itemVariants}
-          onClick={handleHome}
-          whileHover={{
-            scale: 1.25,
-            transition: { duration: 0.3 },
-          }}
+      {touched > 0 && (
+        <motion.ul
+          variants={ULvariants}
+          className="navList"
           style={{
-            fontWeight: isActive("/home") ? 600 : "normal",
-            scale: isActive("/home") ? 1.15 : 1,
+            position: "absolute",
+            pointerEvents: toggle ? "auto" : "none",
+            top: 80,
+            right: 20,
           }}
+          animate={toggle ? "open" : "closed"}
         >
-          Inicio
-        </motion.li>
-        <motion.li
-          variants={itemVariants}
-          onClick={handleContact}
-          whileHover={{
-            scale: 1.25,
-            transition: { duration: 0.3 },
-          }}
-          style={{
-            fontWeight: isActive("/contact") ? 600 : "normal",
-            scale: isActive("/contact") ? 1.15 : 1,
-          }}
-        >
-          Contáctanos
-        </motion.li>
-        <motion.li
-          variants={itemVariants}
-          onClick={handleCarrito}
-          whileHover={{
-            scale: 1.25,
-            transition: { duration: 0.3 },
-          }}
-          style={{
-            fontWeight: isActive("/carrito") ? 600 : "normal",
-            scale: isActive("/carrito") ? 1.15 : 1,
-          }}
-        >
-          Carrito
-        </motion.li>
-        {userRol == null && googleUser == null && (
-          <>
-            <motion.li
-              variants={itemVariants}
-              onClick={handleLogin}
-              whileHover={{
-                scale: 1.25,
-                transition: { duration: 0.3 },
-              }}
-              style={{
-                fontWeight: isActive("/login") ? 600 : "normal",
-                scale: isActive("/login") ? 1.15 : 1,
-              }}
-            >
-              Login
-            </motion.li>
-            <motion.li
-              variants={itemVariants}
-              onClick={handleSignup}
-              whileHover={{
-                scale: 1.25,
-                transition: { duration: 0.3 },
-              }}
-              style={{
-                fontWeight: isActive("/signup") ? 600 : "normal",
-                scale: isActive("/signup") ? 1.15 : 1,
-              }}
-            >
-              Sign Up
-            </motion.li>
-          </>
-        )}
-      </motion.ul>
+          <motion.li
+            variants={itemVariants}
+            onClick={handleHome}
+            whileHover={{
+              scale: 1.25,
+              transition: { duration: 0.3 },
+            }}
+            style={{
+              fontWeight: isActive("/home") ? 600 : "normal",
+              scale: isActive("/home") ? 1.15 : 1,
+            }}
+          >
+            Inicio
+          </motion.li>
+          <motion.li
+            variants={itemVariants}
+            onClick={handleContact}
+            whileHover={{
+              scale: 1.25,
+              transition: { duration: 0.3 },
+            }}
+            style={{
+              fontWeight: isActive("/contact") ? 600 : "normal",
+              scale: isActive("/contact") ? 1.15 : 1,
+            }}
+          >
+            Contáctanos
+          </motion.li>
+          <motion.li
+            variants={itemVariants}
+            onClick={handleCarrito}
+            whileHover={{
+              scale: 1.25,
+              transition: { duration: 0.3 },
+            }}
+            style={{
+              fontWeight: isActive("/carrito") ? 600 : "normal",
+              scale: isActive("/carrito") ? 1.15 : 1,
+            }}
+          >
+            Carrito
+          </motion.li>
+          {userRol == null && googleUser == null && (
+            <>
+              <motion.li
+                variants={itemVariants}
+                onClick={handleLogin}
+                whileHover={{
+                  scale: 1.25,
+                  transition: { duration: 0.3 },
+                }}
+                style={{
+                  fontWeight: isActive("/login") ? 600 : "normal",
+                  scale: isActive("/login") ? 1.15 : 1,
+                }}
+              >
+                Login
+              </motion.li>
+              <motion.li
+                variants={itemVariants}
+                onClick={handleSignup}
+                whileHover={{
+                  scale: 1.25,
+                  transition: { duration: 0.3 },
+                }}
+                style={{
+                  fontWeight: isActive("/signup") ? 600 : "normal",
+                  scale: isActive("/signup") ? 1.15 : 1,
+                }}
+              >
+                Sign Up
+              </motion.li>
+            </>
+          )}
+        </motion.ul>
+      )}
     </>
   );
 }

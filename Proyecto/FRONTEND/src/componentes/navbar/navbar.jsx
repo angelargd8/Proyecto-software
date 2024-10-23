@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, useCycle } from "framer-motion";
 import { IconToggle } from "./components/IconToggle";
 import MobileNav from "./components/MobileNav";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 function Nabvar() {
   //router
@@ -58,14 +58,44 @@ function Nabvar() {
   const handleLogOutGoogle = () => {
     localStorage.removeItem("googleUser");
     localStorage.removeItem("rol");
-    alert("Sesión cerrada");
-    navigate("/home");
+    Swal.fire({
+      title: `¿Seguro que quieres cerrar sesión?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `Sesión cerrada correctamente`,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000
+        });
+        navigate("/home");
+      }
+    });
   };
 
   const handleLogOut = () => {
     localStorage.removeItem("rol");
-    alert("Sesión cerrada");
-    navigate("/home");
+    Swal.fire({
+      title: `¿Seguro que quieres cerrar sesión?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `Sesión cerrada correctamente`,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000
+        });
+        navigate("/home");
+      }
+    });
   };
 
   const handleSignup = () => {
@@ -247,9 +277,10 @@ function Nabvar() {
                                   >
                                     Registrar
                                   </a>
-                                  <a className="dropdown-item" 
-                                  href="/configuracion"
-                                  onClick={handleConfig}
+                                  <a
+                                    className="dropdown-item"
+                                    href="/configuracion"
+                                    onClick={handleConfig}
                                   >
                                     Configuración
                                   </a>

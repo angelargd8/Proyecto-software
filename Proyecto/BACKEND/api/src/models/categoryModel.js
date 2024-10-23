@@ -97,8 +97,53 @@ async function addNewCategory(req, res) {
   return [];
 }
 
+async function deleteCategory(idCategory) {
+  try {
+    // Verificamos si la categoría tiene productos asociados
+    const productCheck = await pool.query(
+      `SELECT * FROM productos WHERE id_categoria = ${idCategory}`
+    );
+    console.log(productCheck.rows);
+
+
+    if (productCheck.rowCount > 0) {
+      return {
+        status: false,
+        message: "No se puede eliminar la categoría porque tiene productos asociados.",
+      };
+    }
+
+    // Si no tiene productos asociados, procedemos a eliminar la categoría
+    const result = await pool.query(
+      `DELETE FROM categorias WHERE id_categorias = ${idCategory}`
+    );
+
+    console.log(result.rows);
+
+    if (result.rowCount > 0) {
+      return {
+        status: true,
+        message: "Categoría eliminada exitosamente.",
+      };
+    } else {
+      return {
+        status: false,
+        message: "No se encontró la categoría para eliminar.",
+      };
+    }
+  } catch (error) {
+    console.error(error);
+    return {
+      status: false,
+      message: "Error al eliminar la categoría: " + error.message,
+    };
+  }
+}
+
+
 module.exports = {
   getCategories,
   getCategory,
   addNewCategory,
+  deleteCategory,
 };

@@ -1,10 +1,13 @@
 .pagobtn {
   /* Boton de pagar en movil o siguiente en escritorio */
+  display: flex;
   height: 30%;
   width: 90%;
   color: #fff;
   margin-top: 5%;
   align-self: center;
+  justify-content: center;
+  align-items: center;
   /* margin-left: 55%; */
   background-color: #1b4965;
   border-radius: 20px;

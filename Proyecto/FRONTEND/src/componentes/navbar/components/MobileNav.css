@@ -1,13 +1,26 @@
-.mobileNav {
-  position: absolute;
-  top: -20px;
-  right: 100px;
-}
-
 @media only screen and (min-width: 991px) {
   .mobileNav {
     display: none;
   }
+
+  .navList {
+    display: none;
+  }
+
+  li {
+    display: none;
+  }
+
+  ul,
+  li {
+    display: none;
+  }
+}
+
+.mobileNav {
+  position: absolute;
+  top: -20px;
+  right: 100px;
 }
 .navList {
   display: flex;

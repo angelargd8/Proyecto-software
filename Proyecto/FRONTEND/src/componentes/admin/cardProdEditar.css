@@ -10,6 +10,7 @@
   align-items: center;
 }
 
+
 .containerImage {
   width: 20%;
   height: 90%;
@@ -54,14 +55,28 @@
   margin-top: 10px;
 }
 
-.button {
-  width: 30%;
-  border-radius: 10%;
+.editarButon {
+  width: 50%;
+  border-radius: 5%;
   cursor: pointer;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   background-color: #1b4965;
+  color: white;
+  justify-content: center;
+  margin-right: 5%;
+  transition: opacity 0.3s ease;
+}
+
+.eliminarButon {
+  width: 50%;
+  border-radius: 5%;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #d83030;
   color: white;
   justify-content: center;
   margin-right: 5%;
@@ -93,19 +108,3 @@ input[type="number"]::-webkit-outer-spin-button {
   align-items: center;
 }
 
-.addToCartButton {
-  width: 90%;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #1b4965;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 15px;
-  text-align: center;
-}
-
-.addToCartButton:hover {
-  background-color: #12324a;
-}

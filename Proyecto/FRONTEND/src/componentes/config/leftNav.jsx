@@ -1,16 +1,18 @@
 
 import './leftNav.css';
+import React from 'react'
 
-function LeftNav(){
+function LeftNav({setView}){
 
     return(
         <div className="containerNav">
             <div className="content">
                 <ul className="containerList">
-                    <li>Tu cuenta</li>
-                    <li>Privacidad y seguridad</li>
-                    <li>Configuración</li>
-                    <li>Ayuda</li>
+                    <li onClick = {() => setView('account')}>Tu cuenta</li>
+                    <li onClick = {() => setView('privacy')}>Privacidad y seguridad</li>
+                    <li onClick = {() => setView('help')}>Ayuda</li>
+                    {/* <li onClick = {() => setView('settings')}>Configuración</li> */}
+                    
                 </ul>
             </div>
 

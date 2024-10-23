@@ -5,6 +5,8 @@ import { useCarrito } from "./carritoContext";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
 import InCartProduct from "./Components/InCartProduct";
+import DropList from "./Components/DropList";
+import CarritoSteps from "./Components/CarritoSteps";
 
 function Carrito() {
   const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
@@ -23,6 +25,10 @@ function Carrito() {
 
   const handleDirecc = () => {
     navigate("/carrito");
+  };
+
+  const handleResumen = () => {
+    navigate("/resumen");
   };
 
   const Tarifa = 5.0; //Temporal
@@ -58,35 +64,10 @@ function Carrito() {
 
   return (
     <>
-      <div className="contenedor">
+      <div className="contenedorCarrito">
         <MobileHdr title={"My Cart"} lastPath={"/home"} />
         <div className="MidyBotm">
-          <div className="columnPasosPagar">
-            <div className="pasos">
-              <div className="nombrePaso" onClick={() => handleDirecc()}>
-                Direccion
-              </div>
-              <div className="separador"> ------------- </div>
-              <div
-                className="nombrePaso"
-                style={{ backgroundColor: "transparent", color: "#1B4965" }}
-                onClick={() => handlePagar()}
-              >
-                Forma de Pago
-              </div>
-              <div className="separador"> ------------- </div>
-              <div
-                className="nombrePaso"
-                style={{
-                  fontSize: "1vw",
-                  backgroundColor: "transparent",
-                  color: "#1B4965",
-                }}
-              >
-                Ultimo Paso
-              </div>
-            </div>
-          </div>
+          <CarritoSteps />
           <div className="middle">
             <div className="carrito">
               {carrito.length === 0 ? (
@@ -94,6 +75,7 @@ function Carrito() {
                   El carrito de compras está vacío.
                 </h4>
               ) : (
+                // <DropList type={"Pago"} />
                 carrito.map((producto) => (
                   <InCartProduct key={producto.id} producto={producto} />
                 ))
@@ -120,7 +102,7 @@ function Carrito() {
               <CarritoBtn text={"Pagar"} nextPath={"/pago"} />
             </div>
           </div>
-          <div className="Dbottom" style={{ fontSize: "1.5vw" }}>
+          {/* <div className="Dbottom" style={{ fontSize: "1.5vw" }}>
             <img
               className="logotipo"
               src="../src/assets/img/logo.png"
@@ -132,7 +114,7 @@ function Carrito() {
               }}
             />
             Picolin
-          </div>
+          </div> */}
         </div>
       </div>
     </>
