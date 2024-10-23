@@ -73,7 +73,7 @@ function CarritoSteps() {
           }}
           onClick={() => handleResumen()}
         >
-          Último Paso
+          Resumen Pedido
         </div>
       </div>
     </div>
