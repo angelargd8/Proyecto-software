@@ -99,7 +99,11 @@ function Carrito() {
                   <br />Q {Total.toFixed(2)}
                 </div>
               </div>
-              <CarritoBtn text={"Pagar"} nextPath={"/pago"} />
+              <CarritoBtn
+                text={"Pagar"}
+                nextPath={"/pago"}
+                styles={{ backgroundColor: "#1f3350" }}
+              />
             </div>
           </div>
           {/* <div className="Dbottom" style={{ fontSize: "1.5vw" }}>

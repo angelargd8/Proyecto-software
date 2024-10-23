@@ -1,7 +1,6 @@
 .imgContainer {
-  min-height: 150px;
+  height: 150px;
   width: 150px;
-  margin-top: 5%;
 }
 
 .FormaPagoImg {
