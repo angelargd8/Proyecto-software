@@ -1,7 +1,7 @@
 import "./FormaPagoBtn.scss";
-function BtnFormaPago({ text, extraStyles, onClick }) {
+function BtnFormaPago({ text, extraStyles, onClick, contenedorStyles }) {
   return (
-    <>
+    <div className="FormaPagoBtn" style={contenedorStyles}>
       <section
         className="portfolio-experiment"
         style={extraStyles}
@@ -15,7 +15,7 @@ function BtnFormaPago({ text, extraStyles, onClick }) {
           <span className="line -bottom"></span>
         </a>
       </section>
-    </>
+    </div>
   );
 }
 
