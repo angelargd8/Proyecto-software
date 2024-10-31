@@ -25,6 +25,14 @@ jobs:
       run: npm install
       working-directory: Proyecto/FRONTEND
 
+    - name: Set up environment variables
+      run: |
+        echo "VITE_APIPORT=${{ secrets.VITE_APIPORT }}" >> $GITHUB_ENV
+        echo "VITE_APIPORT_IMAGE=${{ secrets.VITE_APIPORT_IMAGE }}" >> $GITHUB_ENV
+        echo "VITE_APIPORT_CATEGORY=${{ secrets.VITE_APIPORT_CATEGORY }}" >> $GITHUB_ENV
+        echo "VITE_APIPORT_PRODUCT=${{ secrets.VITE_APIPORT_PRODUCT }}" >> $GITHUB_ENV
+
+
     - name: Run frontend tests
       run: npx jest 
       working-directory: Proyecto/FRONTEND

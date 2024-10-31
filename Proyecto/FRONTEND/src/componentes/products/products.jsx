@@ -1,7 +1,7 @@
 import CardProduct from "../cardProduct/cardProd";
 import { useParams } from "react-router-dom";
 import "./products.css";
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const Products = () => {
@@ -14,6 +14,8 @@ const Products = () => {
   useEffect(() => {
     const getProducts = async () => {
       const url = import.meta.env.VITE_APIPORT;
+      // tests: 
+      // var url = process.env.VITE_APIPORT;
       const query = `
             query GetItemsByCategory($idCategory: Int!) {
                 getItemsByCategory(idCategory: $idCategory) {

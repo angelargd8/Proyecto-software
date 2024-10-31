@@ -12,7 +12,7 @@ import foto7 from "../../assets/img/Flores/FLOR PEQUEÑA.jpg";
 import foto8 from "../../assets/img/Colorante/AÑELINA.jpg";
 import foto9 from "../../assets/img/Colorante/COLORANTE VEGETAL.jpg";
 import foto10 from "../../assets/img/Brillantina-surtida.jpg";
-import { useState } from "react";
+import React, { useState } from "react";
 import Swal from 'sweetalert2';
 
 function Login() {
@@ -68,6 +68,8 @@ function Login() {
   const handleLoginGoogle = (email) => {
     //4000 para devs
     const url = import.meta.env.VITE_APIPORT;
+    // tests: 
+    // var url = process.env.VITE_APIPORT;
     const query = `
       query validateEmail($email: String!){
         validateEmail(email: $email) {
@@ -124,6 +126,8 @@ function Login() {
 
   const handleLogin = () => {
     const url = import.meta.env.VITE_APIPORT;
+    // tests: 
+    // var url = process.env.VITE_APIPORT;
     console.warn(url);
     const query = `
         query validateCredentials($email: String!, $password: String!){
@@ -230,12 +234,12 @@ function Login() {
             <div className="contenido-imagen">
               <div className="texto-imagenn">
                 {imagenes.map((imagen, index) => (
-                  <img src={imagen} alt="Imagen"></img>
+                  <img key={index} src={imagen} alt="Imagen"></img>
                 ))}
               </div>
               <div className="texto-imagenn2">
                 {imagenes.map((imagen, index) => (
-                  <img src={imagen} alt="Imagen"></img>
+                  <img key={index} src={imagen} alt="Imagen"></img>
                 ))}
               </div>
             </div>

@@ -1,6 +1,7 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoSteps from "./Components/CarritoSteps";
+import React from "react";
 
 const Resumen = () => {
   const navigate = useNavigate();

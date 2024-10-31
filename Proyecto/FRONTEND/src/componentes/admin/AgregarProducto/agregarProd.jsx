@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputImage from "../../InputImage";
 import NormalInput from "../../NormalInput";
 import StepIndicator from "../../StepIndicator";
@@ -77,8 +77,10 @@ const AgregarProducto = () => {
     formData.append("description", description);
 
     console.log(formData);
-
-    const response = await fetch(import.meta.env.VITE_APIPORT_PRODUCT, {
+    const url  = import.meta.env.VITE_APIPORT_PRODUCT;
+    // tests: 
+    // var url = process.env.VITE_APIPORT_PRODUCT;
+    const response = await fetch(url, {
       method: "POST",
       body: formData,
     });

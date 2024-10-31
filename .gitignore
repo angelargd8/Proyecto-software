@@ -35,3 +35,5 @@
 **/*.rvi
 **/.#*
 **/CVS/**
+Proyecto/FRONTEND/src/tests/jest.setupEnv.js
+Proyecto/FRONTEND/src/tests/jest.setupEnv.js

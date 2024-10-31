@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useNavigate } from "react-router-dom";
 import Carrusel from "./Components/carrusel";
 import BtnFormaPago from "./Components/FormaPagoBtn";
-import { useState, useEffect } from "react";
+import React,{ useState, useEffect } from "react";
 import FormaPagoImg from "./Components/FormaPagoImg";
 import { motion } from "framer-motion";
 import MobileNav from "../navbar/components/MobileNav";

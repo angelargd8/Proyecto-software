@@ -1,3 +1,4 @@
+import React from 'react';
 import Card from "./card.jsx";
 import "./home.css";
 import { useState, useEffect } from "react";
@@ -22,6 +23,8 @@ function Home() {
     const searchItem = searchParams.get("search") || "";
 
     const url = import.meta.env.VITE_APIPORT;
+    // tests: 
+    // var url = process.env.VITE_APIPORT;
     const query = `
       query GetCategories {
           getCategories {
