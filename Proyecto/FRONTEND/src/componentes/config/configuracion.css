@@ -7,15 +7,16 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     box-shadow: none;
-    background-color: #1f3350;
-    color: #fff;
+    /* background-color: #1f3350; */
+    /* color: #fff; */
+    color: #1f3350;
     font-family: 'Poppins', sans-serif;
-    margin-top: -16%;
+    margin-top: -15%;
 }
 
 .leftNav{
     border: none;
     height: 84%;
-    border-color: #1f3350;
+    /* border-color: #1f3350; */
     box-shadow: none;
 }

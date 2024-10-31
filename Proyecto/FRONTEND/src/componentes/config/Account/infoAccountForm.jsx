@@ -95,7 +95,7 @@ function InfoAccountForm() {
 
     return (
         <div className="InfoContainer">
-            <h1>Información de la cuenta</h1>
+            <h3>Información de la cuenta</h3>
             <div className="InfoAccount">
                 {error && <p className="error">Error al cargar la información de la cuenta: {error.message}</p>}
                 <div className="ul">

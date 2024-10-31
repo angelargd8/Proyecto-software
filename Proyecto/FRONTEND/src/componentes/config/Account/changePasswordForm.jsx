@@ -103,7 +103,7 @@ function ChangePasswordForm() {
 
     return (
         <div className="ChangePasswordContainer">
-            <h1>Cambia la contraseña</h1>
+            <h2>Cambia la contraseña</h2>
             <div className="ChangePassword">
                 {error && <p className="error">Error: {error.message}</p>}
                 <div className="ul">
