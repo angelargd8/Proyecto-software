@@ -38,14 +38,13 @@ function FormData({ infoType }) {
     case "Deposito":
       arrayInfo = depositoInfo;
       break;
-    case "Contra Entrega":
+    case "Efectivo":
       arrayInfo = efectivoInfo;
       break;
   }
 
   return (
     <div id="FormData" style={styles.formData}>
-      {console.log(arrayInfo)}
       {arrayInfo.map((name, index) => (
         <DataRow
           key={index}
@@ -71,10 +70,9 @@ function FormData({ infoType }) {
 const styles = {
   formData: {
     flexDirection: "column",
-    height: "85%",
+    height: "80%",
     width: "100%",
     textAlign: "left",
-    marginTop: 25,
     padding: 25,
   },
 };

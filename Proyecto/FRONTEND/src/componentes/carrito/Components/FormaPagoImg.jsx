@@ -1,9 +1,9 @@
 import "../Components/FormaPagoImg.css";
 
-function FormaPagoImg({ currentType }) {
+function FormaPagoImg({ currentType, styles }) {
   return (
     <>
-      <div className="imgContainer">
+      <div className="imgContainer" style={styles}>
         <div
           className="FormaPagoImg"
           style={{

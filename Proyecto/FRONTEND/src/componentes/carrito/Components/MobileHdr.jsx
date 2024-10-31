@@ -13,7 +13,11 @@ function MobileHdr({ title, lastPath }) {
   return (
     <div className="mobileHeaderCont">
       <div className="regresar">
-        <div className="regresarbtn" onClick={() => handleRegresar()}>
+        <div
+          className="regresarbtn"
+          onClick={() => handleRegresar()}
+          style={{ color: "white" }}
+        >
           {" "}
           &lt;{" "}
         </div>
@@ -32,7 +36,7 @@ function MobileHdr({ title, lastPath }) {
         </div>
       </div>
       <div className="opciones">
-        <MobileNav spanColor={"#1b4965"} iconStyles={{ marginBottom: 15 }} />
+        <MobileNav spanColor={"white"} iconStyles={{ marginBottom: 15 }} />
       </div>
     </div>
   );

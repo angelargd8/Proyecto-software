@@ -95,15 +95,16 @@ function InfoAccountForm() {
 
     return (
         <div className="InfoContainer">
-            <h1>Información de la cuenta</h1>
+            <h3>Información de la cuenta</h3>
             <div className="InfoAccount">
                 {error && <p className="error">Error al cargar la información de la cuenta: {error.message}</p>}
-                <ul>
+                <div className="ul">
                     <li>Nombre: <input type="text" className="input" value={name} onChange={(e) => setName(e.target.value)} /> </li>
                     <li>Apellido: <input type="text" className="input" value={lastName} onChange={(e) => setLastName(e.target.value)} /> </li>
                     <li>Correo electrónico: <input type="email" className="input" value={email} disabled/></li>
                     <button className="botonForms" onClick={handleUpdateUser}>Cambiar credenciales</button>
-                </ul>
+                </div> 
+                
             </div>
         </div>
     );
