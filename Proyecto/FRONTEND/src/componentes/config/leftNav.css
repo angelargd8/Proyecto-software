@@ -12,12 +12,10 @@
     left: 0;
     position: relative;
     margin: 0;
-    /* box-sizing: border-box; */
     display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
-    /* background-color: tomato; */
 }
 
 /*Lista del contenedor*/
@@ -32,6 +30,9 @@
     border-width: 1px;
     border-style: solid; 
     border-right-color: #2c3e5059;
+    border-left-color: #fff;
+    border-top-color: #fff;
+    border-bottom-color: #fff;
 }
 
 /*cada elemento de la lista*/
