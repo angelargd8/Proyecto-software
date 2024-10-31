@@ -67,9 +67,10 @@ function Login() {
   //handle login google es para validar si el usuario ya esta registrado en la base de datos o si solamente se registro con google
   const handleLoginGoogle = (email) => {
     //4000 para devs
-    const url = import.meta.env.VITE_APIPORT;
+    // const url = import.meta.env.VITE_APIPORT;
     // tests: 
     // var url = process.env.VITE_APIPORT;
+    const url = typeof process !== 'undefined' && process.env.VITE_APIPORT ? process.env.VITE_APIPORT : import.meta.env.VITE_APIPORT;
     const query = `
       query validateEmail($email: String!){
         validateEmail(email: $email) {
@@ -125,9 +126,10 @@ function Login() {
   };
 
   const handleLogin = () => {
-    const url = import.meta.env.VITE_APIPORT;
+    //const url = import.meta.env.VITE_APIPORT;
     // tests: 
     // var url = process.env.VITE_APIPORT;
+    const url = typeof process !== 'undefined' && process.env.VITE_APIPORT ? process.env.VITE_APIPORT : import.meta.env.VITE_APIPORT;
     console.warn(url);
     const query = `
         query validateCredentials($email: String!, $password: String!){
