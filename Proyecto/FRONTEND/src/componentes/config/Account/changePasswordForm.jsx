@@ -106,12 +106,12 @@ function ChangePasswordForm() {
             <h1>Cambia la contraseña</h1>
             <div className="ChangePassword">
                 {error && <p className="error">Error: {error.message}</p>}
-                <ul>
+                <div className="ul">
                     <li>Contraseña Actual: <input type="password" className="input" value={enteredCurrentPassword} onChange={(e) => setEnteredCurrentPassword(e.target.value)} /> </li>
                     <li>Nueva contraseña: <input type="password" className="input" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} /></li>
                     <li>Confirma contraseña: <input type="password" className="input" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} /></li>
                     <button className="botonForms" onClick={handleUpdatePassword}>Cambiar contraseña</button>
-                </ul>
+                </div>
             </div>
         </div>
     );

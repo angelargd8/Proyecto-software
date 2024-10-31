@@ -1,9 +1,8 @@
 
 import './account.css';
-import ChangePasswordForm from './changePasswordForm';
 import React, { useState } from 'react';
 import InfoAccountForm from './infoAccountForm';
-
+import ChangePasswordForm from './changePasswordForm';
 
 function Account() {
 
@@ -11,6 +10,7 @@ function Account() {
 
     const handleShowInfoForm = () => {
         setActiveForm(activeForm === 'info' ? null : 'info');
+        console.log(activeForm);
     }
 
     const handleChangePasswordForm = () => {
