@@ -25,15 +25,6 @@ jobs:
       run: npm install
       working-directory: Proyecto/FRONTEND
 
-    - name: Create jest.setupEnv.js
-      run: |
-        echo "import dotenv from 'dotenv';" > Proyecto/FRONTEND/src/tests/jest.setupEnv.js
-        echo "dotenv.config();" >> Proyecto/FRONTEND/src/tests/jest.setupEnv.js
-        echo "process.env.VITE_APIPORT = process.env.VITE_APIPORT || '${{ secrets.VITE_APIPORT }}';" >> Proyecto/FRONTEND/src/tests/jest.setupEnv.js
-        echo "process.env.VITE_APIPORT_IMAGE = process.env.VITE_APIPORT_IMAGE || '${{ secrets.VITE_APIPORT_IMAGE }}';" >> Proyecto/FRONTEND/src/tests/jest.setupEnv.js
-        echo "process.env.VITE_APIPORT_CATEGORY = process.env.VITE_APIPORT_CATEGORY || '${{ secrets.VITE_APIPORT_CATEGORY }}';" >> Proyecto/FRONTEND/src/tests/jest.setupEnv.js
-        echo "process.env.VITE_APIPORT_PRODUCT = process.env.VITE_APIPORT_PRODUCT || '${{ secrets.VITE_APIPORT_PRODUCT }}';" >> Proyecto/FRONTEND/src/tests/jest.setupEnv.js
-
     - name: Run frontend tests
       run: npx jest 
       working-directory: Proyecto/FRONTEND
