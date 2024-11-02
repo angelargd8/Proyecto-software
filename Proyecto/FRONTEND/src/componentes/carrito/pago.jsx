@@ -1,6 +1,7 @@
 import "./pago.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import $ from 'jquery'; 
 import { useNavigate } from "react-router-dom";
 import Carrusel from "./Components/carrusel";
 import BtnFormaPago from "./Components/FormaPagoBtn";
