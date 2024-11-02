@@ -25,6 +25,10 @@ jobs:
       run: npm install
       working-directory: Proyecto/FRONTEND
 
+    - name: Install jQuery
+      run: npm install jquery
+      working-directory: Proyecto/FRONTEND
+
     - name: Create jest.setupEnv.js
       run: |
         echo "import dotenv from 'dotenv';" > Proyecto/FRONTEND/src/tests/jest.setupEnv.js
