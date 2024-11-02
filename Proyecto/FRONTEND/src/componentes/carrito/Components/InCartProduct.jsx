@@ -12,9 +12,10 @@ function InCartProduct({ producto }) {
 
   useEffect(() => {
     const getImage = async () => {
-      let url = import.meta.env.VITE_APIPORT_IMAGE + producto.image;
+      // let url = import.meta.env.VITE_APIPORT_IMAGE + producto.image;
       // tests: 
-      // var url = process.env.VITE_APIPORT_IMAGE + producto.image;
+      var url = process.env.VITE_APIPORT_IMAGE + producto.image;
+
       const result = await fetch(url);
       setImag(result.url);
     };

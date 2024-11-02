@@ -77,9 +77,9 @@ const AgregarProducto = () => {
     formData.append("description", description);
 
     console.log(formData);
-    const url  = import.meta.env.VITE_APIPORT_PRODUCT;
+    // const url  = import.meta.env.VITE_APIPORT_PRODUCT;
     // tests: 
-    // var url = process.env.VITE_APIPORT_PRODUCT;
+    var url = process.env.VITE_APIPORT_PRODUCT;
     const response = await fetch(url, {
       method: "POST",
       body: formData,

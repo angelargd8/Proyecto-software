@@ -43,6 +43,58 @@ test('renders Signup component for /signup route', async () => {
   expect(await screen.findByText(/Registro/i)).toBeInTheDocument();
 });
 
+test('renders Contact component for /contact route', async () => {
+  fetchMock.mockResponseOnce(JSON.stringify({ data: { message: 'Hello World' } }));
+
+  render(
+    <MemoryRouter initialEntries={['/contact']}>
+      <AppRouter />
+    </MemoryRouter>
+  );
+
+  expect(await screen.findByText(/Contáctanos/i)).toBeInTheDocument();
+}
+);
+
+test('renders Configuracion component for /configuracion route', async () => {
+  fetchMock.mockResponseOnce(JSON.stringify({ data: { message: 'Hello World' } }));
+
+  render(
+    <MemoryRouter initialEntries={['/configuracion']}>
+      <AppRouter />
+    </MemoryRouter>
+  );
+
+  expect(await screen.findByText(/Información de la cuenta/i)).toBeInTheDocument();
+}
+);
+
+test('renders Home component for / route', async () => {
+  fetchMock.mockResponseOnce(JSON.stringify({ data: { message: 'Hello World' } }));
+
+  render(
+    <MemoryRouter initialEntries={['/']}>
+      <AppRouter />
+    </MemoryRouter>
+  );
+
+  expect(await screen.findByText(/Bienvenido a la página de inicio/i)).toBeInTheDocument();
+});
+
+// test('renders agregarCategoria component for /agregarCategoria route', async () => {
+//   fetchMock.mockResponseOnce(JSON.stringify({ data: { message: 'Hello World' } }));
+
+//   render(
+//     <MemoryRouter initialEntries={['/agregarCategoria']}>
+//       <AppRouter />
+//     </MemoryRouter>
+//   );
+
+//   expect(await screen.findByText(/Escriba el nombre de la categoria/i)).toBeInTheDocument();
+// }
+// );
+
+
 // test('renders Carrito component for /carrito route', async () => {
 //   fetchMock.mockResponseOnce(JSON.stringify({ data: { message: 'Hello World' } }));
 
@@ -52,7 +104,7 @@ test('renders Signup component for /signup route', async () => {
 //     </MemoryRouter>
 //   );
 
-//   expect(await screen.findByText(/carrito/i)).toBeInTheDocument();
+//   expect(await screen.findByText(/Subtotal/i)).toBeInTheDocument();
 // }
 // );
 
@@ -65,7 +117,7 @@ test('renders Signup component for /signup route', async () => {
 //     </MemoryRouter>
 //   );
 
-//   expect(await screen.findByText(/Pago/i)).toBeInTheDocument();
+//   expect(await screen.findByText(/Forma de pago/i)).toBeInTheDocument();
 // }
 // );
 
@@ -82,73 +134,6 @@ test('renders Signup component for /signup route', async () => {
 // }
 // );
 
-// test('renders Contact component for /contact route', async () => {
-//   fetchMock.mockResponseOnce(JSON.stringify({ data: { message: 'Hello World' } }));
-
-//   render(
-//     <MemoryRouter initialEntries={['/contact']}>
-//       <AppRouter />
-//     </MemoryRouter>
-//   );
-
-//   expect(await screen.findByText(/Contáctanos/i)).toBeInTheDocument();
-// }
-// );
-
-// test('renders Signup component for /signup route', () => {
-//   render(
-//     <MemoryRouter initialEntries={['/signup']}>
-//       <AppRouter />
-//     </MemoryRouter>
-//   );
-//   expect(screen.getByText(/Signup/i)).toBeInTheDocument();
-// });
-
-
-
-
-// test('renders Resumen component for /resumen route', () => {
-//     render(
-//         <MemoryRouter initialEntries={['/resumen']}>
-//         <AppRouter />
-//         </MemoryRouter>
-//     );
-//     expect(screen.getByText(/Resumen/i)).toBeInTheDocument();
-//     }
-// );
-
-// test('renders Contact component for /contact route', () => {
-//     render(
-//         <MemoryRouter initialEntries={['/contact']}>
-//         <AppRouter />
-//         </MemoryRouter>
-//     );
-//     expect(screen.getByText(/Contact/i)).toBeInTheDocument();
-//     }
-// );
-
-
-// test('renders Configuracion component for /configuracion route', () => {
-
-//     render(
-//         <MemoryRouter initialEntries={['/configuracion']}>
-//         <AppRouter />
-//         </MemoryRouter>
-//     );
-//     expect(screen.getByText(/Configuracion/i)).toBeInTheDocument();
-//     }
-// );
-
-
-// test('renders Home component for / route', () => {
-//     render(
-//         <MemoryRouter initialEntries={['/']}>
-//         <AppRouter />
-//         </MemoryRouter>
-//     );
-//     expect(screen.getByText(/Home/i)).toBeInTheDocument();
-//     }
-// );
 
 // test('renders AgregarProducto component for /agregarProducto route', () => {
 //     render(
@@ -160,12 +145,3 @@ test('renders Signup component for /signup route', async () => {
 //     }
 // );
 
-// test('renders AgregarCategoria component for /agregarCategoria route', () => {
-//     render(
-//         <MemoryRouter initialEntries={['/agregarCategoria']}>
-//         <AppRouter />
-//         </MemoryRouter>
-//     );
-//     expect(screen.getByText(/AgregarCategoria/i)).toBeInTheDocument();
-//     }
-// );

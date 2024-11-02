@@ -31,9 +31,9 @@ function EditCateg() {
     const searchParams = new URLSearchParams(location.search);
     const searchItem = searchParams.get("search") || "";
 
-    const url = import.meta.env.VITE_APIPORT;
+    // const url = import.meta.env.VITE_APIPORT;
     // tests: 
-    // var url = process.env.VITE_APIPORT;
+    var url = process.env.VITE_APIPORT;
     const query = `
       query GetCategories {
           getCategories {

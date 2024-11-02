@@ -69,8 +69,8 @@ function Login() {
     //4000 para devs
     // const url = import.meta.env.VITE_APIPORT;
     // tests: 
-    // var url = process.env.VITE_APIPORT;
-    const url = typeof process !== 'undefined' && process.env.VITE_APIPORT ? process.env.VITE_APIPORT : import.meta.env.VITE_APIPORT;
+    var url = process.env.VITE_APIPORT;
+    //const url = typeof process !== 'undefined' && process.env.VITE_APIPORT ? process.env.VITE_APIPORT : import.meta.env.VITE_APIPORT;
     const query = `
       query validateEmail($email: String!){
         validateEmail(email: $email) {
@@ -128,8 +128,8 @@ function Login() {
   const handleLogin = () => {
     //const url = import.meta.env.VITE_APIPORT;
     // tests: 
-    // var url = process.env.VITE_APIPORT;
-    const url = typeof process !== 'undefined' && process.env.VITE_APIPORT ? process.env.VITE_APIPORT : import.meta.env.VITE_APIPORT;
+    var url = process.env.VITE_APIPORT;
+    //const url = typeof process !== 'undefined' && process.env.VITE_APIPORT ? process.env.VITE_APIPORT : import.meta.env.VITE_APIPORT;
     console.warn(url);
     const query = `
         query validateCredentials($email: String!, $password: String!){

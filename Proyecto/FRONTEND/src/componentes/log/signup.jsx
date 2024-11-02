@@ -13,9 +13,10 @@ function SingUp(){
 
   const handleSignup = () => {
 
-    const url = import.meta.env.VITE_APIPORT;
+    // const url = import.meta.env.VITE_APIPORT;
     // tests: 
-    // var url = process.env.VITE_APIPORT;
+    var url = process.env.VITE_APIPORT;
+    // const url = typeof process !== 'undefined' && process.env.VITE_APIPORT ? process.env.VITE_APIPORT : import.meta.env.VITE_APIPORT;
         const query = `
         mutation addnewUser(
           $email: String!

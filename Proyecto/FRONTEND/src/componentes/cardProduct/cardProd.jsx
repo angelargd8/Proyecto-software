@@ -23,9 +23,9 @@ const CardProduct = ({
 
   useEffect(() => {
     const getImage = async () => {
-      let url = import.meta.env.VITE_APIPORT_IMAGE + image;
+      // let url = import.meta.env.VITE_APIPORT_IMAGE + image;
       // tests: 
-      // var url = process.env.VITE_APIPORT_IMAGE + image;
+      var url = process.env.VITE_APIPORT_IMAGE + image;
       const result = await fetch(url);
       setImag(result.url);
     };

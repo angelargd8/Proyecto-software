@@ -44,9 +44,9 @@ function agregarCateg() {
     formData.append("name", nameCategoria);
     //TODO: arreglar esta parte del idpage (BACKEND)
     formData.append("idpage", 1);
-    const url = import.meta.env.VITE_APIPORT_CATEGORY;
+    // const url = import.meta.env.VITE_APIPORT_CATEGORY;
     // tests: 
-    // var url = process.env.VITE_APIPORT_CATEGORY;
+    var url = process.env.VITE_APIPORT_CATEGORY;
     try {
       const response = await fetch(url, {
         method: "POST",

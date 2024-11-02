@@ -13,9 +13,9 @@ const Products = () => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const url = import.meta.env.VITE_APIPORT;
+      // const url = import.meta.env.VITE_APIPORT;
       // tests: 
-      // var url = process.env.VITE_APIPORT;
+      var url = process.env.VITE_APIPORT;
       const query = `
             query GetItemsByCategory($idCategory: Int!) {
                 getItemsByCategory(idCategory: $idCategory) {

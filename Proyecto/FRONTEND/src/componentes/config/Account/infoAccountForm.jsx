@@ -12,9 +12,9 @@ function InfoAccountForm() {
 
     useEffect(() => {
         const getInfoAccount = async () => {
-            const url = import.meta.env.VITE_APIPORT;
+            // const url = import.meta.env.VITE_APIPORT;
             // tests: 
-            // var url = process.env.VITE_APIPORT;
+            var url = process.env.VITE_APIPORT;
             const query = `
                 query OneUser($email: String!) {
                     oneUser(email: $email) {
@@ -55,9 +55,9 @@ function InfoAccountForm() {
     }, []);
 
     const handleUpdateUser = async () => {
-        const url = import.meta.env.VITE_APIPORT;
+        // const url = import.meta.env.VITE_APIPORT;
         // tests: 
-        // var url = process.env.VITE_APIPORT;
+        var url = process.env.VITE_APIPORT;
         const mutation = `
             mutation ModifyUserNameLastName($email: String!, $name: String!, $lastName: String!) {
                 modifyUserNameLastName(email: $email, name: $name, lastName: $lastName) {
