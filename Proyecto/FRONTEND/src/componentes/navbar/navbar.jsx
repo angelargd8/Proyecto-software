@@ -98,14 +98,14 @@ const NavBar2 = () => {
   const handleNavigatePage = (link) => {
     setIsMenuOpen(false);
     if (link === "/logout" || link === "/logoutGoogle") {
-      handleLogOut(link === "/logoutGoogle");
+      handleLogOut();
     } else {
       navigate(link);
     }
   };
 
   /* Cerrar sesión */
-  const handleLogOut = (isGoogleUser) => {
+  const handleLogOut = () => {
     Swal.fire({
       title: `¿Seguro que quieres cerrar sesión?`,
       icon: "warning",
@@ -115,11 +115,9 @@ const NavBar2 = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem("rol");
-        isGoogleUser && localStorage.removeItem("googleUser");
-
-        isGoogleUser
-          ? localStorage.removeItem("GoogleName")
-          : localStorage.removeItem("name");
+        localStorage.removeItem("googleUser");
+        localStorage.removeItem("GoogleName");
+        localStorage.removeItem("name");
 
         Swal.fire({
           title: `Sesión cerrada correctamente`,

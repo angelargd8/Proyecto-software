@@ -108,11 +108,13 @@ function Login() {
           console.log(
             "el usuario solo ingreso con google, no es un usuario registrado por el administrador"
           );
+          const rol = localStorage.setItem("rol", "usuario");
         } else {
           const rol = localStorage.setItem(
             "rol",
             data.data.validateEmail.rol.name
           );
+          console.log(rol);
           Swal.fire({
             icon: "success",
             title: `${data.data.validateCredentials.name}, bienvenid@ a Picolin`,
