@@ -36,7 +36,7 @@ const AgregarProducto = () => {
     if (!nameProduct) {
       Swal.fire({
         title: "Debe agregar un nombre para el producto",
-        icon: "warning"
+        icon: "warning",
       });
       return;
     }
@@ -44,7 +44,7 @@ const AgregarProducto = () => {
     if (!image) {
       Swal.fire({
         title: "Debe agregar una imagen para el producto",
-        icon: "warning"
+        icon: "warning",
       });
       return;
     }
@@ -52,7 +52,7 @@ const AgregarProducto = () => {
     if (!description) {
       Swal.fire({
         title: "Debe agregar una descripción para el producto",
-        icon: "warning"
+        icon: "warning",
       });
       return;
     }
@@ -65,7 +65,7 @@ const AgregarProducto = () => {
     if (filterPrecios.length < 1) {
       Swal.fire({
         title: "Debe agregar al menos un precio para el producto",
-        icon: "warning"
+        icon: "warning",
       });
       return;
     }
@@ -77,8 +77,8 @@ const AgregarProducto = () => {
     formData.append("description", description);
 
     console.log(formData);
-    const url  = import.meta.env.VITE_APIPORT_PRODUCT;
-    // tests: 
+    const url = import.meta.env.VITE_APIPORT_PRODUCT;
+    // tests:
     // var url = process.env.VITE_APIPORT_PRODUCT;
     const response = await fetch(url, {
       method: "POST",
@@ -90,12 +90,12 @@ const AgregarProducto = () => {
       // console.warn("File uploaded successfully:", result);
       Swal.fire({
         title: `Se agregó el producto ${nameProduct}`,
-        icon: "success"
+        icon: "success",
       });
     } else {
       Swal.fire({
         title: "Error al crear el producto",
-        icon: "error"
+        icon: "error",
       });
       console.error("Error:", response.statusText);
     }
@@ -130,147 +130,225 @@ const AgregarProducto = () => {
 
   return (
     <div className="AddProductContainer">
-    {/* Contenedor general*/}
-    <div
-      className="container"
-      style={{
-        all: "unset",   
-        display: "block",
-        position : "absolute",
-        background: "#E2E8F0",
-        flexDirection: "column",
-        height: "100%",
-        width: "100%",
-        top: "17%",
-        right:0,
-        left: 0,
-        bottom: 0,
-        paddingLeft: 15,
-        gap: 15,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-
-      
-      {/* Contenedor del text principal*/}
+      {/* Contenedor general*/}
       <div
+        className="container"
         style={{
-          top: 0,
+          all: "unset",
+          display: "block",
+          position: "absolute",
+          background: "#E2E8F0",
+          flexDirection: "column",
+          height: "100%",
           width: "100%",
-          fontSize: "25px",
-          fontFamily: "bold",
-          textAlign: "center",
+          top: "17%",
+          right: 0,
+          left: 0,
+          bottom: 0,
+          paddingLeft: 15,
+          gap: 15,
           justifyContent: "center",
           alignItems: "center",
-          marginTop: 10,
         }}
       >
-        Agregar nuevo producto
-      </div>
-        {/* Contenedor del paso 1 principal*/}
-      <div
-        style={{
-          width: "57%",
-          position: "relative",
-          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-          backgroundColor: "white",
-          borderRadius: "8px",
-          alignSelf: "center",
-          marginTop: 10,
-          display: "flex",  
-          marginLeft: "21.5%",      
-          
-        }}
-      >
-        <StepIndicator
-          style={{
-            left: 25,
-            top: 25,
-            backgroundColor: "#1F3350",
-          }}
-        >
-          1
-        </StepIndicator>
+        {/* Contenedor del text principal*/}
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            padding: 10,
-            paddingLeft: 50,            
+            top: 0,
+            width: "100%",
+            fontSize: "25px",
+            fontFamily: "bold",
+            textAlign: "center",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 10,
           }}
         >
-          <label>Nombre del Producto: </label>
-          <input
-            value={nameProduct}
-            onChange={(e) => setNameProduct(e.target.value)}
-            type="text"
-            placeholder="Escriba nombre del producto"
-            style={{
-              width: "100%",
-              background: "none",
-              border: "none",
-              borderBottom: "2px solid black",
-              padding: "5px 0",
-              color: "#1F3350",
-              outline: "none",
-              fontSize: 20,
- 
-            }}
-          />
+          Agregar nuevo producto
         </div>
-      </div>
-      {/* Contenedor de los pasos 2, 3 y 4*/}
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          gap: 3,
-          marginTop: 5,
-          padding: 10,
-          justifyContent: "center",
-        }}
-      >
-        <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
-          <div style={{ width: 600, height: 120, position: "relative" }}>
-            <div
+        {/* Contenedor del paso 1 principal*/}
+        <div
+          style={{
+            width: "57%",
+            position: "relative",
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+            backgroundColor: "white",
+            borderRadius: "8px",
+            alignSelf: "center",
+            marginTop: 10,
+            display: "flex",
+            marginLeft: "21.5%",
+          }}
+        >
+          <StepIndicator
+            style={{
+              left: 25,
+              top: 25,
+              backgroundColor: "#1F3350",
+            }}
+          >
+            1
+          </StepIndicator>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              padding: 10,
+              paddingLeft: 50,
+            }}
+          >
+            <label>Nombre del Producto: </label>
+            <input
+              value={nameProduct}
+              onChange={(e) => setNameProduct(e.target.value)}
+              type="text"
+              placeholder="Escriba nombre del producto"
               style={{
                 width: "100%",
-                height: "100%",
-                backgroundColor: "white",
-                display: "flex",
-                // backgroundColor: "red",
-                borderRadius: "8px",
-                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-                flexDirection: "column",
-                gap: "10px",
-                position: "relative",
-                alignContent: "center",
-                alignItems: "center",
+                background: "none",
+                border: "none",
+                borderBottom: "2px solid black",
+                padding: "5px 0",
+                color: "#1F3350",
+                outline: "none",
+                fontSize: 20,
               }}
-            >
-              <StepIndicator>2</StepIndicator>
-              <div>Ingrese la descripcion del producto</div>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Escriba la descripcion del producto"
+            />
+          </div>
+        </div>
+        {/* Contenedor de los pasos 2, 3 y 4*/}
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            gap: 3,
+            marginTop: 5,
+            padding: 10,
+            justifyContent: "center",
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
+            <div style={{ width: 600, height: 120, position: "relative" }}>
+              <div
                 style={{
                   width: "100%",
-                  background: "transparent",
-                  color: "black",
                   height: "100%",
-                  border: "none",
-                  backgroundColor: "transparent",
-                  // borderBottom: "2px solid black",
+                  backgroundColor: "white",
+                  display: "flex",
+                  // backgroundColor: "red",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+                  flexDirection: "column",
+                  gap: "10px",
+                  position: "relative",
+                  alignContent: "center",
+                  alignItems: "center",
                 }}
-              ></textarea>
+              >
+                <StepIndicator>2</StepIndicator>
+                <div>Ingrese la descripcion del producto</div>
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Escriba la descripcion del producto"
+                  style={{
+                    width: "100%",
+                    background: "transparent",
+                    color: "black",
+                    height: "100%",
+                    border: "none",
+                    backgroundColor: "transparent",
+                    // borderBottom: "2px solid black",
+                  }}
+                ></textarea>
+              </div>
+            </div>
+
+            <div style={{ width: 600, height: 180 }}>
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  background: "white",
+                  display: "flex",
+                  // backgroundColor: "red",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+                  flexDirection: "column",
+                  gap: "10px",
+                  position: "relative",
+                  alignContent: "center",
+                  alignItems: "center",
+                  overflowY: "auto",
+                  msOverflowStyle: "none",
+                }}
+              >
+                <StepIndicator>3</StepIndicator>
+                <div>Agregar Precio</div>
+                <div>
+                  {/* <h2>Agregar Precios</h2> */}
+                  {precios.map((precio, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        marginBottom: "10px",
+                        display: "flex",
+                        flexDirection: "row",
+                        width: "100%",
+                      }}
+                    >
+                      <NormalInput
+                        placeHolder={"Nombre. Ej: unidad"}
+                        value={precio.value}
+                        name="nombre"
+                        onChangeValue={(value) =>
+                          handleInputChange(index, "nombre", value)
+                        }
+                      />
+                      <NormalInput
+                        placeHolder={"Cantidad. Ej: 1"}
+                        value={precio.cantidad}
+                        name="cantidad"
+                        type="number"
+                        onChangeValue={(e) =>
+                          handleInputChange(index, "cantidad", e)
+                        }
+                      />
+                      <NormalInput
+                        value={precio.precio}
+                        placeHolder={"Precio. Ej: 10"}
+                        name="precio"
+                        type="number"
+                        onChangeValue={(e) =>
+                          handleInputChange(index, "precio", e)
+                        }
+                      />
+
+                      {precios.length > 1 && (
+                        <Button onClick={() => handleEliminarPrecio(index)}>
+                          Eliminar
+                        </Button>
+                      )}
+                    </div>
+                  ))}
+                  <Button onClick={handleAgregarPrecio}>
+                    Agregar otro precio
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div style={{ width: 600, height: 180 }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: 250,
+              height: 320,
+              gap: 15,
+            }}
+          >
             <div
               style={{
                 width: "100%",
@@ -285,106 +363,24 @@ const AgregarProducto = () => {
                 position: "relative",
                 alignContent: "center",
                 alignItems: "center",
-                overflowY: "auto",
-                msOverflowStyle: "none",
               }}
             >
-              <StepIndicator>3</StepIndicator>
-              <div>Agregar Precio</div>
-              <div>
-                {/* <h2>Agregar Precios</h2> */}
-                {precios.map((precio, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      marginBottom: "10px",
-                      display: "flex",
-                      flexDirection: "row",
-                      width: "100%",
-                    }}
-                  >
-                    <NormalInput
-                      placeHolder={"Nombre. Ej: unidad"}
-                      value={precio.value}
-                      name="nombre"
-                      onChangeValue={(value) =>
-                        handleInputChange(index, "nombre", value)
-                      }
-                    />
-                    <NormalInput
-                      placeHolder={"Cantidad. Ej: 1"}
-                      value={precio.cantidad}
-                      name="cantidad"
-                      type="number"
-                      onChangeValue={(e) =>
-                        handleInputChange(index, "cantidad", e)
-                      }
-                    />
-                    <NormalInput
-                      value={precio.precio}
-                      placeHolder={"Precio. Ej: 10"}
-                      name="precio"
-                      type="number"
-                      onChangeValue={(e) =>
-                        handleInputChange(index, "precio", e)
-                      }
-                    />
-
-                    {precios.length > 1 && (
-                      <Button onClick={() => handleEliminarPrecio(index)}>
-                        Eliminar
-                      </Button>
-                    )}
-                  </div>
-                ))}
-                <Button onClick={handleAgregarPrecio}>
-                  Agregar otro precio
-                </Button>
+              <StepIndicator>4</StepIndicator>
+              <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
+                Agrega una imagen de tu producto
               </div>
+              <InputImage
+                previewImage={previewImage}
+                onImageChange={handleImageChange}
+              />
             </div>
           </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: 250,
-            height: 320,
-            gap: 15,
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "white",
-              display: "flex",
-              // backgroundColor: "red",
-              borderRadius: "8px",
-              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-              flexDirection: "column",
-              gap: "10px",
-              position: "relative",
-              alignContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <StepIndicator>4</StepIndicator>
-            <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
-              Agrega una imagen de tu producto
-            </div>
-            <InputImage
-              previewImage={previewImage}
-              onImageChange={handleImageChange}
-            />
-          </div>
-        </div>
-      </div>
 
-      <div>
-        <Button onClick={handleAddPRoduct}>Agregar nuevo producto</Button>
+        <div>
+          <Button onClick={handleAddPRoduct}>Agregar nuevo producto</Button>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

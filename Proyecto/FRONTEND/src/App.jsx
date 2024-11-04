@@ -1,12 +1,12 @@
 import "./App.css";
 import AppRouter from "./componentes/router.jsx";
 import Nabvar from "./componentes/navbar/navbar.jsx";
-import navBar2 from "./componentes/navbar/navbar2.jsx";
+import navBar2 from "./componentes/navbar/navbar.jsx";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import { CarritoProvider } from "./componentes/carrito/carritoContext.jsx";
 import FloatingButton from "./componentes/floatingButton/floatingButton.jsx";
 import Footer from "./componentes/footer/footer.jsx";
-import NavBar2 from "./componentes/navbar/navbar2.jsx";
+import NavBar from "./componentes/navbar/navbar.jsx";
 
 function App() {
   return (
@@ -42,9 +42,7 @@ function AppContent() {
 
   return (
     <>
-      {/* {!isPageWithNoNav && <Nabvar />} */}
-      {/* {!isPageWithNoNav && <NavBar2 />} */}
-      <NavBar2 />
+      {!isPageWithNoNav && <NavBar />}
       <FloatingButton />
       <div className={`contenedor ${isPageWithNoNav ? "no-margin" : ""}`}>
         <AppRouter />

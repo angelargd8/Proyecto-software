@@ -1,19 +1,18 @@
-
-.containerConf{
-    position: absolute;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    box-shadow: none;
-    color: #1f3350;
-    font-family: 'Poppins', sans-serif;
-    margin-top: -15%;
+.containerConf {
+  position: absolute;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  box-shadow: none;
+  color: #1f3350;
+  font-family: "Poppins", sans-serif;
+  margin-top: -15%;
 }
 
-.leftNav{
-    border: none;
-    height: 84%;
-    box-shadow: none;
+.leftNav {
+  border: none;
+  height: 84%;
+  box-shadow: none;
 }
