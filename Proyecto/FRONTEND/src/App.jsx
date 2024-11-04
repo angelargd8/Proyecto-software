@@ -44,7 +44,7 @@ function AppContent() {
     <>
       {/* {!isPageWithNoNav && <Nabvar />} */}
       {/* {!isPageWithNoNav && <NavBar2 />} */}
-      <Nabvar />
+      <NavBar2 />
       <FloatingButton />
       <div className={`contenedor ${isPageWithNoNav ? "no-margin" : ""}`}>
         <AppRouter />

@@ -1,132 +1,273 @@
 import { useState } from "react";
 
 import React, { useEffect } from "react";
+import useIsMobile from "../../hooks/useDevice";
+import "./navbar2.css";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
+import { useNavigate, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const useWindowDimensions = () => {
-  const [windowDimensions, setWindowDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+const navbarPages = [
+  { name: "Inicio", link: "/home" },
+  { name: "Contáctanos", link: "/contact" },
+];
+
+const menuActionsAdmin = [{ name: "Configuración", link: "/configuracion" }];
+
+const hideNavBarOnPaths = [
+  "/login",
+  "/signup",
+  "/carrito",
+  "/pago",
+  "/resumen",
+];
+
+const NavBar2 = () => {
+  const { width } = useWindowDimensions();
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [inUseMenuActions, setInUseMenuActions] = useState([
+    { name: "Iniciar Sesión", link: "/login" },
+  ]);
+  const [displayName, setDisplayName] = useState("Iniciar Sesión");
+  const [searchItem, setSearchItem] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const userRol = localStorage.getItem("rol");
+  const googleUser = localStorage.getItem("googleUser");
+  const name = localStorage.getItem("name");
+  const Googlename = localStorage.getItem("GoogleName");
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  return windowDimensions;
-};
+  /*
+    Este useEffect es para habilitar opciones de menu dependiendo del rol del usuario
+  */
+  useEffect(() => {
+    if (userRol === null) {
+      setInUseMenuActions([{ name: "Iniciar Sesión", link: "/login" }]);
+      return;
+    }
 
-const NavBar2 = () => {
-  const { width, height } = useWindowDimensions();
+    if (userRol === "Admin") {
+      setInUseMenuActions([
+        ...menuActionsAdmin,
+        { name: "Cerrar Sesión", link: "/logout" },
+      ]);
+    } else {
+      const isGoogleUser = googleUser !== null;
+      setInUseMenuActions([
+        {
+          name: "Cerrar Sesión",
+          link: isGoogleUser ? "/logoutGoogle" : "/logout",
+        },
+      ]);
+    }
+  }, [userRol]);
+
+  /*
+    Este useEffect es para cambiar el nombre de usuario
+  */
+  useEffect(() => {
+    if (googleUser) {
+      setDisplayName(Googlename);
+    } else {
+      if (name) setDisplayName(name);
+      else setDisplayName("Iniciar Sesión");
+    }
+  }, [googleUser, name, Googlename]);
+
+  /*
+    Mejor Busqueda
+  */
+  useEffect(() => {
+    if (location.pathname !== "/home") return;
+    if (searchItem.trim()) {
+      navigate(`/home?search=${encodeURIComponent(searchItem)}`);
+    } else {
+      navigate("/home");
+    }
+  }, [searchItem]);
+
+  /* Abrir y cerrar menu */
+  const toggleOpenMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  /* Navegar a una pagina */
+  const handleNavigatePage = (link) => {
+    setIsMenuOpen(false);
+    if (link === "/logout" || link === "/logoutGoogle") {
+      handleLogOut(link === "/logoutGoogle");
+    } else {
+      navigate(link);
+    }
+  };
+
+  /* Cerrar sesión */
+  const handleLogOut = (isGoogleUser) => {
+    Swal.fire({
+      title: `¿Seguro que quieres cerrar sesión?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("rol");
+        isGoogleUser && localStorage.removeItem("googleUser");
+
+        isGoogleUser
+          ? localStorage.removeItem("GoogleName")
+          : localStorage.removeItem("name");
+
+        Swal.fire({
+          title: `Sesión cerrada correctamente`,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        navigate("/home");
+      }
+    });
+  };
+
+  const isMobile = useIsMobile();
   return (
-    <div
-      style={{
-        background: "#1f3350",
-        height: 100,
-        width: width,
-        position: "sticky",
-        zIndex: 999,
-        top: 0,
-        display: "flex",
-        flexDirection: "row",
-        padding: 20,
-        gap: 20,
-      }}
-    >
-      <div
-        style={{
-          height: "100%",
-          color: "#fff",
-          justifyContent: "center",
-          alignContent: "center",
-          fontSize: 30,
-          fontWeight: "bold",
-        }}
-      >
-        PICOLIN
-      </div>
-
-      <div
-        style={{
-          height: "100%",
-          color: "#d8d8d8",
-          fontSize: 20,
-          marginLeft: 20,
-          justifyContent: "center",
-          alignContent: "end",
-          paddingBottom: 12,
-          fontWeight: "bold",
-        }}
-      >
-        Inicio
-      </div>
-
-      <div
-        style={{
-          height: "100%",
-          color: "#d8d8d8",
-          fontSize: 20,
-          marginLeft: 20,
-          justifyContent: "center",
-          alignContent: "end",
-          paddingBottom: 12,
-          fontWeight: "bold",
-        }}
-      >
-        Contánctanos
-      </div>
-
-      <div
-        style={{
-          height: "100%",
-          backgroundColor: "red",
-          alignSelf: "flex-end",
-          marginLeft: "auto",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-            height: "100%",
-            position: "relative",
-          }}
-        >
-          <input
-            type="text"
-            placeholder="Search"
+    <>
+      {hideNavBarOnPaths.includes(location.pathname) ? null : (
+        <>
+          {/* 
+            Este div es para que siempre existan los 100px de espacio del navbar
+            ya que esta en position: "fixed" es como un absolute y este height 100
+            Ayuda a hacer un falso navbar relative
+          */}
+          <div style={{ height: 100 }}></div>
+          <div
+            className="navbar-general-container"
             style={{
-              backgroundColor: "#d8d8d8",
-              paddingRight: "10%",
-              border: "none",
-              borderRadius: 10,
-              fontSize: "small",
-              flexGrow: 0,
-              height: 35,
-              color: "gray",
+              background:
+                scrollPosition == 0 ? "#1f3350" : "rgba(128, 128, 128, 0.5)",
+              backdropFilter: scrollPosition == 0 ? "none" : "blur(10px)",
+              height: scrollPosition == 0 ? 100 : 80,
+              width: width,
             }}
-          />
-          <img
-            style={{ height: 30, width: 30, right: 0, position: "absolute" }}
-            src="./src/assets/img/buscar.png"
-            alt="Buscar"
-          />
-        </div>
-      </div>
-    </div>
+          >
+            {!isMobile && (
+              <>
+                {/* Parte Izquierda del navbar */}
+                <div className="navbar-picolin-text">PICOLIN</div>
+                {navbarPages.map((page) => (
+                  <div
+                    className="navbar-text"
+                    onClick={() => {
+                      handleNavigatePage(page.link);
+                    }}
+                  >
+                    {page.name}
+                  </div>
+                ))}
+
+                {/* Parte Derecha del navbar */}
+                <div className="user-actions-container">
+                  <div className="search-bar-container">
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      value={searchItem}
+                      onChange={(e) => {
+                        setSearchItem(e.target.value);
+                      }}
+                    />
+                    <img src="./src/assets/img/buscar.png" alt="Buscar" />
+                  </div>
+                  <div
+                    onClick={() => {
+                      handleNavigatePage("/carrito");
+                    }}
+                    className="carrito-navbar-container"
+                  >
+                    <img
+                      src="./src/assets/img/carrito.png"
+                      id="carrito-img"
+                      href="/carrito"
+                    />
+                    <div>Carrito</div>
+                  </div>
+                  {userRol === "Admin" && (
+                    <div
+                      className="toggle-admin-view-button"
+                      onClick={() => {
+                        if (location.pathname === "/home") {
+                          navigate("/editarCategorias");
+                        } else {
+                          navigate("/home");
+                        }
+                      }}
+                    >
+                      {location.pathname === "/home" && "Ir a Vista de Admin"}
+                      {location.pathname === "/editarCategorias" &&
+                        "Ir a Vista de Usuario"}
+                    </div>
+                  )}
+                  <div
+                    className="navbar-user-container"
+                    onClick={toggleOpenMenu}
+                  >
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <img src="./src/assets/img/user.png" alt="User" />
+                      <div
+                        className="navbar-user-triangle"
+                        style={{
+                          transform: isMenuOpen
+                            ? "rotate(-180deg)"
+                            : "rotate(0deg)",
+                        }}
+                      />
+                    </div>
+                    <div className="navbar-user-name-text">{displayName}</div>
+                  </div>
+                  {isMenuOpen && (
+                    <div
+                      className={`menu-navbar-container ${
+                        isMenuOpen ? "appear" : ""
+                      }`}
+                      style={{
+                        opacity: isMenuOpen ? 1 : 0,
+                        top: scrollPosition == 0 ? 80 : 70,
+                      }}
+                    >
+                      {inUseMenuActions.map((action) => (
+                        <div
+                          className="menu-navbar-text"
+                          onClick={() => {
+                            handleNavigatePage(action.link);
+                          }}
+                        >
+                          {action.name}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

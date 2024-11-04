@@ -1,0 +1,213 @@
+.navbar-general-container {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  transition: height 0.3s ease;
+}
+
+/* NAVBAR MAIN PAGE NAME */
+.navbar-picolin-text {
+  height: 100%;
+  color: #fff;
+  justify-content: center;
+  align-content: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* NAVBAR PAGES TEXT */
+
+.navbar-text {
+  height: 100%;
+  color: #d8d8d8;
+  font-size: 20px;
+  margin-left: 20px;
+  justify-content: center;
+  align-content: end;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar-text:hover {
+  color: #9c9c9c;
+  text-decoration: underline;
+}
+
+/* USER ACTIONS CONTAINER */
+
+.user-actions-container {
+  height: 100%;
+  align-self: flex-end;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  padding-right: 40px;
+}
+
+/* SEARCH BAR CONTAINER */
+
+.search-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.search-bar-container input {
+  background-color: #d8d8d8;
+  padding-right: 10%;
+  border: none;
+  border-radius: 10px;
+  font-size: small;
+  flex-grow: 0;
+  height: 35px;
+  padding-left: 10px;
+  color: gray;
+  width: 400px;
+}
+
+.search-bar-container img {
+  height: 30px;
+  width: 30px;
+  right: 0;
+  position: absolute;
+}
+
+/* NAVBAR ADMIN Vista */
+
+.toggle-admin-view-button {
+  width: 100px;
+  height: 50px;
+  background-color: green;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.toggle-admin-view-button:hover {
+  background-color: darkgreen;
+  transform: scale(1.05);
+}
+
+/* CARRITO NAVBAR CONTAINER */
+.carrito-navbar-container {
+  border: none;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.carrito-navbar-container:hover {
+  opacity: 0.5;
+}
+
+.carrito-navbar-container img {
+  height: 30px;
+  width: 40px;
+}
+
+.carrito-navbar-container div {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* NAVBAR USER CONTAINER */
+
+.navbar-user-container {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-user-container:hover {
+  opacity: 0.5;
+}
+
+.navbar-user-container img {
+  height: 30px;
+  width: 30px;
+}
+
+.navbar-user-triangle {
+  width: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid white;
+  align-self: center;
+  transition: transform 0.3s ease;
+}
+
+.navbar-user-name-text {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* NAVBAR MENU USER */
+
+.menu-navbar-container {
+  background-color: white;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  width: 150px;
+  position: absolute;
+  right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: top 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-navbar-text {
+  background-color: initialColor;
+  transition: background-color 0.3s ease;
+  color: black;
+  cursor: pointer;
+  padding: 10px;
+  justify-content: left;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.menu-navbar-text:hover {
+  background-color: #d8d8d8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.appear {
+  animation: fadeIn 0.3s ease-out forwards;
+}
