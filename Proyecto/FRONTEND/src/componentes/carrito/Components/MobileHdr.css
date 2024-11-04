@@ -7,7 +7,7 @@
   height: 10%;
   width: 100%;
   box-shadow: 1px 1px 10px #a2a19b;
-  background-color: #1b4965;
+  background-color: #1f3350;
 }
 
 .CarritoHeader {
@@ -108,7 +108,7 @@
     padding-left: 0;
   }
   .regresarbtn {
-    color: #1b4965;
+    color: white;
     background-color: transparent;
     font-size: xx-large;
     border: none;

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import React,{ useState } from "react";
 
 function CarritoSteps() {
   const navigate = useNavigate();
@@ -73,7 +73,7 @@ function CarritoSteps() {
           }}
           onClick={() => handleResumen()}
         >
-          Último Paso
+          Resumen Pedido
         </div>
       </div>
     </div>

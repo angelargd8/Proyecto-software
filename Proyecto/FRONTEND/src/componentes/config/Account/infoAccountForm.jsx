@@ -13,6 +13,8 @@ function InfoAccountForm() {
     useEffect(() => {
         const getInfoAccount = async () => {
             const url = import.meta.env.VITE_APIPORT;
+            // tests: 
+            // var url = process.env.VITE_APIPORT;
             const query = `
                 query OneUser($email: String!) {
                     oneUser(email: $email) {
@@ -54,6 +56,8 @@ function InfoAccountForm() {
 
     const handleUpdateUser = async () => {
         const url = import.meta.env.VITE_APIPORT;
+        // tests: 
+        // var url = process.env.VITE_APIPORT;
         const mutation = `
             mutation ModifyUserNameLastName($email: String!, $name: String!, $lastName: String!) {
                 modifyUserNameLastName(email: $email, name: $name, lastName: $lastName) {
@@ -95,15 +99,16 @@ function InfoAccountForm() {
 
     return (
         <div className="InfoContainer">
-            <h1>Información de la cuenta</h1>
+            <h3>Información de la cuenta</h3>
             <div className="InfoAccount">
                 {error && <p className="error">Error al cargar la información de la cuenta: {error.message}</p>}
-                <ul>
+                <div className="ul">
                     <li>Nombre: <input type="text" className="input" value={name} onChange={(e) => setName(e.target.value)} /> </li>
                     <li>Apellido: <input type="text" className="input" value={lastName} onChange={(e) => setLastName(e.target.value)} /> </li>
                     <li>Correo electrónico: <input type="email" className="input" value={email} disabled/></li>
                     <button className="botonForms" onClick={handleUpdateUser}>Cambiar credenciales</button>
-                </ul>
+                </div> 
+                
             </div>
         </div>
     );

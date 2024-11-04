@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useNavigate } from "react-router-dom";
 import Carrusel from "./Components/carrusel";
 import BtnFormaPago from "./Components/FormaPagoBtn";
-import { useState, useEffect } from "react";
+import React,{ useState, useEffect } from "react";
 import FormaPagoImg from "./Components/FormaPagoImg";
 import { motion } from "framer-motion";
 import MobileNav from "../navbar/components/MobileNav";
@@ -12,6 +12,7 @@ import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
 import FormData from "./Components/FormData";
 import CarritoSteps from "./Components/CarritoSteps";
+import { right } from "@popperjs/core";
 
 function Pago() {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ function Pago() {
     if (text === "Tarjeta") {
       setCurrentIndex(0);
       setPagoTypeImg(images[0]);
-    } else if (text === "Contra Entrega") {
+    } else if (text === "Efectivo") {
       setCurrentIndex(1);
       setPagoTypeImg(images[1]);
     } else if (text === "Deposito") {
@@ -68,44 +69,6 @@ function Pago() {
         <div className="MidyBotmPago">
           <CarritoSteps />
           <div className="middleP">
-            <FormaPagoImg currentType={pagoTypeImg} />
-            <div className="RowFormasPago">
-              <BtnFormaPago
-                text="Tarjeta"
-                extraStyles={extraStyles}
-                onClick={handlePagoType}
-              />
-              <BtnFormaPago
-                text="Deposito"
-                extraStyles={extraStyles}
-                onClick={handlePagoType}
-              />
-              <BtnFormaPago
-                text="Contra Entrega"
-                extraStyles={extraStyles}
-                onClick={handlePagoType}
-              />
-            </div>
-            <div className="Formulario">
-              <motion.div
-                className={"FormTitle"}
-                transition={{ duration: 0.5 }}
-              >
-                {formTitle}
-              </motion.div>
-              <FormData infoType={formTitle} />
-              <div className="desktopButtonCont">
-                <CarritoBtn
-                  text={"SIGUIENTE"}
-                  nextPath={"/resumen"}
-                  styles={{
-                    height: "70%",
-                    marginBottom: 50,
-                  }}
-                />
-              </div>
-            </div>
-
             <div className="ParteVenta">
               <h5
                 style={{

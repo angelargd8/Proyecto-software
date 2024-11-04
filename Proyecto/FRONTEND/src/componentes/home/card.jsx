@@ -8,6 +8,8 @@ function Card({ title, imagen, onClick }) {
   useEffect(() => {
     const getImage = async () => {
       let url = import.meta.env.VITE_APIPORT_IMAGE + imagen;
+      // tests: 
+      // var url = process.env.VITE_APIPORT_IMAGE + imagen;
       const result = await fetch(url);
       setImag(result.url);
     };

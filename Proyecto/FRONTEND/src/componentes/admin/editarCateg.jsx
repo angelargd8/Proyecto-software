@@ -1,6 +1,6 @@
 import CardCategoria from "./cardCategoriaE";
 import "./editarCateg.css";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
@@ -32,6 +32,8 @@ function EditCateg() {
     const searchItem = searchParams.get("search") || "";
 
     const url = import.meta.env.VITE_APIPORT;
+    // tests: 
+    // var url = process.env.VITE_APIPORT;
     const query = `
       query GetCategories {
           getCategories {

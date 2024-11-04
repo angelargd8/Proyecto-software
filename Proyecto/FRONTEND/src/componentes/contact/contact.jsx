@@ -1,6 +1,7 @@
 import logo from '../../assets/img/logo.png';
 import "./contact.css";
 import { LogoWhatsapp, MailOutline } from 'react-ionicons';
+import React from "react";
 
 function Contact() {
   return (

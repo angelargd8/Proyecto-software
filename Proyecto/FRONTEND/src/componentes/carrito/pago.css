@@ -22,16 +22,31 @@
   justify-content: center;
 }
 
-.middleP {
+.FormTypeSelector {
   display: flex;
   flex-direction: column;
-  background-color: #f9f6ee;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 40%;
+  height: 50%;
+  padding: 0;
+  /* margin-left: 10%; */
+  margin-right: 2%;
+  margin-bottom: 12%;
+  margin-left: 11%;
+  box-shadow: 1px 1px 10px #a2a19b;
+}
+
+.middleP {
+  display: flex;
+  flex-direction: row;
+  /* background-color: #f9f6ee; */
+  background-color: white;
   align-items: center;
   height: 100%;
   width: 100%;
-  margin: 0px;
-  padding: 0px;
-  overflow-y: scroll;
 }
 
 .columnPasosPagar {
@@ -91,8 +106,8 @@
 .RowFormasPago {
   display: flex;
   flex-direction: row;
-  width: 10%;
-  height: 15%;
+  width: 100%;
+  height: 50%;
   margin-top: 35px;
   justify-content: center;
   align-items: center;
@@ -101,12 +116,26 @@
 .Formulario {
   display: flex;
   flex-direction: column;
-  width: 30%;
   background-color: white;
-  margin-top: 5%;
-  margin-bottom: 10%;
-  border: 2px solid #1b4965;
-  border-radius: 10px;
+  /* height: 80%; */
+  /* width: 50%; */
+  margin-left: 3%;
+  box-shadow: 1px 1px 10px #a2a19b;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.FormDataContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 75%;
+  width: 100%;
+  overflow-y: scroll;
 }
 
 .FormTitle {
@@ -117,13 +146,12 @@
   height: 10%;
   font-size: 2.5rem;
   text-align: center;
-  margin-top: 10px;
   font-family: proxima-nova, monospace;
   color: #1b4965;
   font-weight: 700;
-  overflow: hidden; /* Hide overflow for sliding effect */
+  overflow: hidden;
   position: relative;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
 .FormTitle::before {
@@ -324,12 +352,15 @@
   }
 
   .middleP {
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
     padding: 0px;
     margin: 0px;
+    height: 100%;
     overflow-y: hidden;
+    overflow-x: hidden;
   }
 
   .ParteVenta {

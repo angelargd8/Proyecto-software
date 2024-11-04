@@ -1,3 +1,4 @@
+import React from 'react';
 import './signup.css'
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -13,6 +14,8 @@ function SingUp(){
   const handleSignup = () => {
 
     const url = import.meta.env.VITE_APIPORT;
+    // tests: 
+    // var url = process.env.VITE_APIPORT;
         const query = `
         mutation addnewUser(
           $email: String!
@@ -106,8 +109,8 @@ function SingUp(){
                 
                 <div className="roles">
                   <label htmlFor="rol">Rol: </label>
-                  <select name="rol" id="rol" className="inputs">
-                    <option selected className="escoger">Escoger...</option>
+                  <select name="rol" id="rol" className="inputs" defaultValue="1">
+                    <option  className="escoger"  >Escoger...</option>
                     <option value="1">Administrador</option>
                     <option value="2">Usuario</option>
                   </select>
