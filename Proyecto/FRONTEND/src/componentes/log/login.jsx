@@ -13,7 +13,7 @@ import foto8 from "../../assets/img/Colorante/AÑELINA.jpg";
 import foto9 from "../../assets/img/Colorante/COLORANTE VEGETAL.jpg";
 import foto10 from "../../assets/img/Brillantina-surtida.jpg";
 import React, { useState } from "react";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 function Login() {
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ function Login() {
       Swal.fire({
         icon: "error",
         title: "Oh no",
-        text: "La autenticación con Google no se realizó correctamente."
+        text: "La autenticación con Google no se realizó correctamente.",
       });
     }
   };
@@ -68,9 +68,12 @@ function Login() {
   const handleLoginGoogle = (email) => {
     //4000 para devs
     // const url = import.meta.env.VITE_APIPORT;
-    // tests: 
+    // tests:
     // var url = process.env.VITE_APIPORT;
-    const url = typeof process !== 'undefined' && process.env.VITE_APIPORT ? process.env.VITE_APIPORT : import.meta.env.VITE_APIPORT;
+    const url =
+      typeof process !== "undefined" && process.env.VITE_APIPORT
+        ? process.env.VITE_APIPORT
+        : import.meta.env.VITE_APIPORT;
     const query = `
       query validateEmail($email: String!){
         validateEmail(email: $email) {
@@ -105,16 +108,18 @@ function Login() {
           console.log(
             "el usuario solo ingreso con google, no es un usuario registrado por el administrador"
           );
+          const rol = localStorage.setItem("rol", "usuario");
         } else {
           const rol = localStorage.setItem(
             "rol",
             data.data.validateEmail.rol.name
           );
+          console.log(rol);
           Swal.fire({
             icon: "success",
             title: `${data.data.validateCredentials.name}, bienvenid@ a Picolin`,
             showConfirmButton: false,
-            timer: 2000
+            timer: 2000,
           });
           navigate("/home");
         }
@@ -127,9 +132,12 @@ function Login() {
 
   const handleLogin = () => {
     //const url = import.meta.env.VITE_APIPORT;
-    // tests: 
+    // tests:
     // var url = process.env.VITE_APIPORT;
-    const url = typeof process !== 'undefined' && process.env.VITE_APIPORT ? process.env.VITE_APIPORT : import.meta.env.VITE_APIPORT;
+    const url =
+      typeof process !== "undefined" && process.env.VITE_APIPORT
+        ? process.env.VITE_APIPORT
+        : import.meta.env.VITE_APIPORT;
     console.warn(url);
     const query = `
         query validateCredentials($email: String!, $password: String!){
@@ -168,7 +176,7 @@ function Login() {
             Swal.fire({
               icon: "error",
               title: "Error",
-              text: "Usuario o contraseña incorrectos"
+              text: "Usuario o contraseña incorrectos",
             });
           }
         } else {
@@ -185,10 +193,14 @@ function Login() {
             icon: "success",
             title: `${data.data.validateCredentials.name}, bienvenid@ a Picolin`,
             showConfirmButton: false,
-            timer: 2000
+            timer: 2000,
           });
 
-          navigate("/home");
+          if (data.data.validateCredentials.rol.name === "Admin") {
+            navigate("/editarCategorias");
+          } else {
+            navigate("/home");
+          }
         }
       } catch (error) {
         console.error("Error:", error);
