@@ -4,6 +4,8 @@ function DropDown({
   title = "Seleccionar opción",
   options = [],
   onSelect = () => {},
+  outerContainerStyles = {},
+  innerContainerStyles = {},
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
@@ -17,8 +19,11 @@ function DropDown({
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.trigger} onClick={() => setIsOpen(!isOpen)}>
+    <div style={{ ...styles.container, ...outerContainerStyles }}>
+      <div
+        style={{ ...styles.trigger, ...innerContainerStyles }}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <span>{selectedOption?.label || title}</span>
         <span style={styles.arrow}>{isOpen ? "▲" : "▼"}</span>
       </div>
@@ -52,7 +57,6 @@ const styles = {
   },
   trigger: {
     padding: "12px 16px",
-    backgroundColor: "white",
     border: "1px solid #1b4965",
     borderRadius: "8px",
     display: "flex",

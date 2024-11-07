@@ -1,19 +1,38 @@
 import "./pago.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Carrusel from "./PagoComponents/carrusel";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
 import CarritoSteps from "./Components/CarritoSteps";
-import DetallesPago from "./PagoComponents/detallesPago";
-function Pago() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+import DropDown from "./PagoComponents/dropDown";
 
+function Pago() {
+  const [ubicacion, setUbicacion] = useState("");
+  const [receptor, setReceptor] = useState("");
+  const [pagoType, setPagoType] = useState("");
+
+  const UBICACIONES = [
+    { label: "Universidad del Valle de Guatemala", value: "uvg" },
+    { label: "Casa", value: "casa" },
+    { label: "Trabajo", value: "trabajo" },
+  ];
+
+  const RECEPTORES = [
+    { label: "Kimberly Daniela Morales Ortega", value: "kim" },
+    { label: "Enrique Fernando Echeverria Leal", value: "fer" },
+    { label: "Diego Garcia del Valle", value: "diego" },
+  ];
+
+  const METODOS_PAGO = [
+    { label: "Tarjeta de Crédito/Débito", value: "tarjeta" },
+    { label: "Efectivo", value: "efectivo" },
+    { label: "Depósito Bancario", value: "deposito" },
+  ];
   return (
     <>
       <div className="contenedor-pago">
         <MobileHdr title={"Detalles de Pedido"} lastPath={"/carrito"} />
-        {!isMobile && <DetallesPago />}
         <div className="MidyBotmPago">
           <CarritoSteps />
 
@@ -30,33 +49,51 @@ function Pago() {
               </h5>
               <div className="ubicacion">
                 <div className="fotoubi"></div>
-                <div className="nombreUbi">
-                  Universidad del Valle de Guatemala
-                </div>
+                <DropDown
+                  title="Selecciona ubicación"
+                  options={UBICACIONES}
+                  onSelect={setUbicacion}
+                  innerContainerStyles={{ padding: 5, border: "none" }}
+                  outerContainerStyles={{ marginLeft: 10 }}
+                />
               </div>
               <div className="divisionLine"></div>
               <div className="receptor">
                 <div className="fotoRec"></div>
-                <div className="nombreRec">Kimberly Daniela Morales Ortega</div>
+                <DropDown
+                  title="Selecciona receptor"
+                  options={RECEPTORES}
+                  onSelect={setReceptor}
+                  innerContainerStyles={{ padding: 5, border: "none" }}
+                  outerContainerStyles={{ marginLeft: 10 }}
+                />
               </div>
             </div>
             <div className="PartePago">
               <h5 style={{ position: "absolute", bottom: "100%" }}>
-                {" "}
                 Metodos de Pago
               </h5>
               <div className="ubicacion">
                 <div className="fotoTarj"></div>
-                <div className="nombreUbi">Tarjeta de Credito/Debito</div>
-              </div>
-              <div className="divisionLine" style={{ height: "1.8%" }}></div>
-              <div className="receptor">
-                <div className="fotoEfct"></div>
-                <div className="nombreRec">Efectivo</div>
+                <DropDown
+                  title="Metodo de Pago"
+                  options={METODOS_PAGO}
+                  onSelect={setPagoType}
+                  innerContainerStyles={{ padding: 5, border: "none" }}
+                  outerContainerStyles={{ marginLeft: 10 }}
+                />
               </div>
             </div>
             <div className="ParteExtras">
-              <h5 style={{ position: "absolute", bottom: "100%" }}>Extras</h5>
+              <h5
+                style={{
+                  position: "absolute",
+                  bottom: "100%",
+                  marginBottom: 20,
+                }}
+              >
+                Extras
+              </h5>
               <div className="carruselExtra">
                 <Carrusel />
               </div>
