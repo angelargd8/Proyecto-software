@@ -22,7 +22,7 @@ function Contact() {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   width: '100%',
-                  height: '315px',
+                  height: '280px',
                 }}>
               </div>
             </div>
