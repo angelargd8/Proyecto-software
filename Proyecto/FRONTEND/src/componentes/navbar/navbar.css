@@ -37,8 +37,9 @@
 }
 
 .navbar-text:hover {
-  color: #9c9c9c;
-  text-decoration: underline;
+  color: #d8d8d8da;
+  transform: scale(1.05);
+
 }
 
 /* USER ACTIONS CONTAINER */
