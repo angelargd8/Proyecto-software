@@ -176,6 +176,8 @@ const styles = {
   infoContainer: {
     display: "flex",
     flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     gap: "10px",
     marginTop: "15px",
   },
@@ -189,7 +191,7 @@ const styles = {
     fontSize: "14px",
   },
   divider: {
-    width: "90%",
+    width: "100%",
     height: "2px",
     backgroundColor: "#1b4965",
     margin: "5px auto",
@@ -225,7 +227,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: "15px",
-    width: "100%",
+    width: "85%",
   },
   iconContainer: {
     minWidth: "40px",
