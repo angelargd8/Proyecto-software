@@ -1,6 +1,6 @@
 import CarritoBtn from "../Components/CarritoBtn";
 import DropDown from "./dropDown";
-import CarruselPago from "./carruselPago";
+import Carrusel from "./carrusel";
 import React from "react";
 import iconoUbicacion from "../../../assets/img/FotoUbi.png";
 import iconoUsuario from "../../../assets/img/FotoReceptor.png";
@@ -109,7 +109,7 @@ function DetallesPago({ setShowModal }) {
           </Seccion>
 
           <Seccion titulo="Extras" styles={styles}>
-            <CarruselPago />
+            <Carrusel />
           </Seccion>
 
           <div style={styles.buttonContainer}>

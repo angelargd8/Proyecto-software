@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./carruselPago.css";
+import "./carrusel.css";
 
-const CarruselPago = () => {
+const Carrusel = () => {
   const [selectedItem, setSelectedItem] = useState("item-1");
   const navigate = useNavigate();
 
@@ -67,4 +67,4 @@ const CarruselPago = () => {
   );
 };
 
-export default CarruselPago;
+export default Carrusel;
