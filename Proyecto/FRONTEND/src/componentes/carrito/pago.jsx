@@ -1,19 +1,13 @@
 import "./pago.css";
 import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useNavigate } from "react-router-dom";
 import Carrusel from "./Components/carrusel";
-import BtnFormaPago from "./Components/FormaPagoBtn";
-import React,{ useState, useEffect } from "react";
-import FormaPagoImg from "./Components/FormaPagoImg";
-import { motion } from "framer-motion";
-import MobileNav from "../navbar/components/MobileNav";
+// import CarruselPago from "./PagoComponents/carruselPago";
+import React, { useState, useEffect } from "react";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
-import FormData from "./Components/FormData";
 import CarritoSteps from "./Components/CarritoSteps";
-import { right } from "@popperjs/core";
-
+import DetallesPago from "./PagoComponents/detallesPago";
 function Pago() {
   const navigate = useNavigate();
   const [formTitle, setFormtitle] = useState("Tarjeta");
@@ -24,6 +18,7 @@ function Pago() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showTitle, setShowTitle] = useState(true);
   const [nextTitle, setNextTitle] = useState(formTitle);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const images = [
     "https://i0.wp.com/clubdecompras.tv/wp-content/uploads/2020/05/logo-pago-tarjeta-1.png?fit=512%2C512&ssl=1",
@@ -66,8 +61,10 @@ function Pago() {
     <>
       <div className="contenedor-pago">
         <MobileHdr title={"Detalles de Pedido"} lastPath={"/carrito"} />
+        {!isMobile && <DetallesPago />}
         <div className="MidyBotmPago">
           <CarritoSteps />
+
           <div className="middleP">
             <div className="ParteVenta">
               <h5

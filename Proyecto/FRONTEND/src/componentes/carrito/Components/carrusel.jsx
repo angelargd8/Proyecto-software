@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./carrusel.css";
 
-const Carrusel = () => {
+const Carrusel = ({ styles }) => {
   const [selectedItem, setSelectedItem] = useState("item-1");
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const Carrusel = () => {
   };
 
   return (
-    <div className="carrusel-container">
+    <div className="carrusel-container" style={styles}>
       <input
         type="radio"
         name="slider-1"

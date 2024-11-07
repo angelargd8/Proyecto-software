@@ -1,39 +1,40 @@
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import React,{ useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function CarritoSteps() {
+function CarritoSteps({ setShowModal }) {
   const navigate = useNavigate();
   const location = useLocation();
-
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const handleDirecc = () => {
     navigate("/carrito");
   };
 
-  const handleResumen = () => {
-    navigate("/resumen");
+  const handlePago = () => {
+    if (isMobile) {
+      navigate("/pago");
+    } else {
+      setShowModal(true);
+    }
   };
 
-  const handlePago = () => {
-    navigate("/pago");
+  const handleResumen = () => {
+    navigate("/resumen");
   };
 
   const getBackColor = (pathname) => {
     if (location.pathname === pathname) {
       return "#1B4965";
-    } else {
-      return "transparent";
     }
+    return "transparent";
   };
 
   const getColor = (pathname) => {
     if (location.pathname === pathname) {
       return "white";
-    } else {
-      return "#1B4965";
     }
+    return "#1B4965";
   };
 
   if (isMobile) {
@@ -49,7 +50,7 @@ function CarritoSteps() {
             color: getColor("/carrito"),
             ...styles.stepName,
           }}
-          onClick={() => handleDirecc()}
+          onClick={handleDirecc}
         >
           Articulos
         </div>
@@ -60,9 +61,9 @@ function CarritoSteps() {
             color: getColor("/pago"),
             ...styles.stepName,
           }}
-          onClick={() => handlePago()}
+          onClick={handlePago}
         >
-          Forma de Pago
+          Detalles de Pago
         </div>
         <div> ------------- </div>
         <div
@@ -71,7 +72,7 @@ function CarritoSteps() {
             color: getColor("/resumen"),
             ...styles.stepName,
           }}
-          onClick={() => handleResumen()}
+          onClick={handleResumen}
         >
           Resumen Pedido
         </div>
