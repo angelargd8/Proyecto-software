@@ -6,22 +6,40 @@ import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
 import CarritoSteps from "./Components/CarritoSteps";
 import DropDown from "./PagoComponents/dropDown";
+import Swal from "sweetalert2";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Pago() {
   const [ubicacion, setUbicacion] = useState("");
   const [receptor, setReceptor] = useState("");
   const [pagoType, setPagoType] = useState("");
 
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    if (ubicacion === "" || receptor === "" || pagoType === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "Necesitas llenar todos los campos antes de continuar.",
+        showConfirmButton: true,
+      });
+    } else {
+      navigate("/resumen");
+    }
+  };
+
   const UBICACIONES = [
     { label: "Universidad del Valle de Guatemala", value: "uvg" },
     { label: "Casa", value: "casa" },
     { label: "Trabajo", value: "trabajo" },
+    { label: "Otro...", value: "otro" },
   ];
 
   const RECEPTORES = [
     { label: "Kimberly Daniela Morales Ortega", value: "kim" },
     { label: "Enrique Fernando Echeverria Leal", value: "fer" },
     { label: "Diego Garcia del Valle", value: "diego" },
+    { label: "Otro...", value: "otro" },
   ];
 
   const METODOS_PAGO = [
@@ -44,7 +62,6 @@ function Pago() {
                   bottom: "100%",
                 }}
               >
-                {" "}
                 Detalles de Entrega
               </h5>
               <div className="ubicacion">
@@ -100,7 +117,7 @@ function Pago() {
             </div>
 
             <div className="mobileButtonCont">
-              <CarritoBtn text={"SIGUIENTE"} nextPath={"/resumen"} />
+              <CarritoBtn text={"SIGUIENTE"} onClick={handleNext} />
             </div>
           </div>
         </div>

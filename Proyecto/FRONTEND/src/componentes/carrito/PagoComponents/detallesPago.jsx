@@ -6,6 +6,8 @@ import iconoUbicacion from "../../../assets/img/FotoUbi.png";
 import iconoUsuario from "../../../assets/img/FotoReceptor.png";
 import iconoPago from "../../../assets/img/FotoEfectivo.png";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const OPCIONES = {
   UBICACIONES: [
@@ -73,13 +75,25 @@ const Seccion = ({ titulo, children, styles }) => (
 );
 
 function DetallesPago({ setShowModal }) {
+  const [ubicacion, setUbicacion] = useState("");
+  const [receptor, setReceptor] = useState("");
+  const [pagoType, setPagoType] = useState("");
+
   const navigate = useNavigate();
   const handleClick = () => {
     if (setShowModal) {
-      setShowModal(false);
+      if (ubicacion === "" || receptor === "" || pagoType === "") {
+        Swal.fire({
+          icon: "warning",
+          title: "Necesitas llenar todos los campos antes de continuar.",
+          showConfirmButton: true,
+        });
+      } else {
+        navigate("/resumen");
+      }
     }
-    navigate("/resumen");
   };
+
   return (
     <>
       <style>{bounceAnimation}</style>
@@ -93,11 +107,13 @@ function DetallesPago({ setShowModal }) {
             <DropDown
               title="Seleccionar ubicación"
               options={OPCIONES.UBICACIONES}
+              onSelect={setUbicacion}
             />
             <div style={styles.divider} />
             <DropDown
               title="Seleccionar receptor"
               options={OPCIONES.USUARIOS}
+              onSelect={setReceptor}
             />
           </Seccion>
 
@@ -105,6 +121,7 @@ function DetallesPago({ setShowModal }) {
             <DropDown
               title="Seleccionar método de pago"
               options={OPCIONES.METODOS_PAGO}
+              onSelect={setPagoType}
             />
           </Seccion>
 

@@ -19,11 +19,14 @@ const Resumen = () => {
 
   return (
     <>
-      <div style={styles.contenedorGeneral}>
-        <MobileHdr title={"Resumen de Pedido"} lastPath={"/pago"} />
-        <CarritoSteps setShowModal={setShowModal} />
-        <div className="content"></div>
-      </div>
+      {!isMobile && (
+        <div style={styles.contenedorGeneral}>
+          <MobileHdr title={"Resumen de Pedido"} lastPath={"/pago"} />
+          <CarritoSteps setShowModal={setShowModal} />
+          <div className="content"></div>
+        </div>
+      )}
+
       {showModal && !isMobile && (
         <div style={styles.modalOverlay}>
           <DetallesPago setShowModal={setShowModal} />

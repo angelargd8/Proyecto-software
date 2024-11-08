@@ -463,8 +463,8 @@
 
   .fotoTarj {
     display: flex;
-    width: 12%;
-    height: 100%;
+    width: 35px;
+    height: 35px;
     background-image: url("../../assets/img/FotoTarjeta.jpg");
     background-position: center;
     background-size: contain;
