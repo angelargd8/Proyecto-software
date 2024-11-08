@@ -3,11 +3,15 @@ import MobileHdr from "./Components/MobileHdr";
 import CarritoSteps from "./Components/CarritoSteps";
 import React, { useState } from "react";
 import DetallesPago from "./PagoComponents/detallesPago";
+import { useContext } from "react";
+import { CarritoContext } from "./carritoContext";
 
 const Resumen = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  const { ubicacion, receptor, pagoType } = useContext(CarritoContext);
 
   const handlePago = () => {
     navigate("/pago");
@@ -23,7 +27,20 @@ const Resumen = () => {
         <div style={styles.contenedorGeneral}>
           <MobileHdr title={"Resumen de Pedido"} lastPath={"/pago"} />
           <CarritoSteps setShowModal={setShowModal} />
-          <div className="content"></div>
+          <div className="content">
+            <div style={styles.infoRow}>
+              <span style={styles.label}>Ubicación:</span>
+              <span style={styles.value}>{ubicacion}</span>
+            </div>
+            <div style={styles.infoRow}>
+              <span style={styles.label}>Receptor:</span>
+              <span style={styles.value}>{receptor}</span>
+            </div>
+            <div style={styles.infoRow}>
+              <span style={styles.label}>Tipo de Pago:</span>
+              <span style={styles.value}>{pagoType}</span>
+            </div>
+          </div>
         </div>
       )}
 
@@ -59,6 +76,18 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1000,
+  },
+  infoRow: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "300px",
+    marginBottom: "10px",
+  },
+  label: {
+    fontWeight: "bold",
+  },
+  value: {
+    marginLeft: "20px",
   },
 };
 

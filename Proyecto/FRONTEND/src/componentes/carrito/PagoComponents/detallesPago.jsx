@@ -7,23 +7,33 @@ import iconoUsuario from "../../../assets/img/FotoReceptor.png";
 import iconoPago from "../../../assets/img/FotoEfectivo.png";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useContext } from "react";
+import { CarritoContext } from "../carritoContext";
 
 const OPCIONES = {
   UBICACIONES: [
-    { label: "Universidad del Valle de Guatemala", value: "uvg" },
-    { label: "Casa", value: "casa" },
-    { label: "Trabajo", value: "trabajo" },
+    {
+      label: "Universidad del Valle de Guatemala",
+      value: "Universidad del Valle de Guatemala",
+    },
+    { label: "Casa", value: "Casa" },
+    { label: "Trabajo", value: "Trabajo" },
   ],
   USUARIOS: [
-    { label: "Kimberly Daniela Morales Ortega", value: "kim" },
-    { label: "Enrique Fernando Echeverria Leal", value: "fer" },
-    { label: "Diego Garcia del Valle", value: "diego" },
+    {
+      label: "Kimberly Daniela Morales Ortega",
+      value: "Kimberly Daniela Morales Ortega",
+    },
+    {
+      label: "Enrique Fernando Echeverria Leal",
+      value: "Enrique Fernando Echeverria Leal",
+    },
+    { label: "Diego Garcia del Valle", value: "Diego Garcia del Valle" },
   ],
   METODOS_PAGO: [
-    { label: "Tarjeta de Crédito/Débito", value: "tarjeta" },
-    { label: "Efectivo", value: "efectivo" },
-    { label: "Depósito Bancario", value: "deposito" },
+    { label: "Tarjeta de Crédito/Débito", value: "Tarjeta de Crédito/Débito" },
+    { label: "Efectivo", value: "Efectivo" },
+    { label: "Depósito Bancario", value: "Depósito Bancario" },
   ],
 };
 
@@ -75,9 +85,14 @@ const Seccion = ({ titulo, children, styles }) => (
 );
 
 function DetallesPago({ setShowModal }) {
-  const [ubicacion, setUbicacion] = useState("");
-  const [receptor, setReceptor] = useState("");
-  const [pagoType, setPagoType] = useState("");
+  const {
+    ubicacion,
+    setUbicacion,
+    receptor,
+    setReceptor,
+    pagoType,
+    setPagoType,
+  } = useContext(CarritoContext);
 
   const navigate = useNavigate();
   const handleClick = () => {
