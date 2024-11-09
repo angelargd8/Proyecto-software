@@ -1,15 +1,16 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoSteps from "./Components/CarritoSteps";
 import React, { useState } from "react";
 import DetallesPago from "./PagoComponents/detallesPago";
 import { useContext } from "react";
 import { CarritoContext } from "./carritoContext";
+import FinalTicket from "./resumenComponents/finalTicket";
 
 const Resumen = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile] = useState(window.innerWidth < 768);
   const { ubicacion, receptor, pagoType } = useContext(CarritoContext);
 
   const handlePago = () => {
@@ -38,34 +39,7 @@ const Resumen = () => {
           <MobileHdr title={"Resumen de Pedido"} onClick={handleDirecc} />
           <CarritoSteps setShowModal={setShowModal} />
           <div style={styles.content}>
-            <div style={styles.ticket}>
-              <div style={styles.infoRow}>
-                <span style={styles.label}>Pedido ID:</span>
-                <span style={styles.value}>001</span>
-              </div>
-              <div style={styles.infoRow}>
-                <span style={styles.label}>Ubicación:</span>
-                <span style={styles.value}>
-                  {ubicacion ? ubicacion : "No seleccionado"}
-                </span>
-              </div>
-              <div style={styles.infoRow}>
-                <span style={styles.label}>Receptor:</span>
-                <span style={styles.value}>
-                  {receptor ? receptor : "No seleccionado"}
-                </span>
-              </div>
-              <div style={styles.infoRow}>
-                <span style={styles.label}>Tipo de Pago:</span>
-                <span style={styles.value}>
-                  {pagoType ? pagoType : "No seleccionado"}
-                </span>
-              </div>
-              <div style={{ ...styles.infoRow, borderTop: "2px solid black" }}>
-                <span style={styles.label}>Total a pagar:</span>
-                <span style={styles.value}>$100</span>
-              </div>
-            </div>
+            <FinalTicket />
           </div>
         </div>
       )}
@@ -120,16 +94,6 @@ const styles = {
     alignItems: "center",
     alignContent: "center",
   },
-  ticket: {
-    minWidth: "25%",
-    backgroundColor: "#1b496543",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
-    padding: 20,
-    borderRadius: 20,
-    borderBottom: "5px solid #1b4965",
-  },
   modalOverlay: {
     position: "fixed",
     top: 0,
@@ -141,27 +105,6 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1000,
-  },
-  infoRow: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "10px",
-  },
-  label: {
-    fontWeight: "bold",
-    textAlign: "left",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
-    minWidth: 120,
-    color: "#1b4965",
-  },
-  value: {
-    marginLeft: "20px",
-    multiline: false,
-    minWidth: 250,
-    textAlign: "right",
-    color: "#1b4965",
   },
 };
 
