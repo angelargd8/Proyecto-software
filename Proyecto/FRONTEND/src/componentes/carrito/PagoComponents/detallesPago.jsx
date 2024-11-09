@@ -104,6 +104,7 @@ function DetallesPago({ setShowModal }) {
           showConfirmButton: true,
         });
       } else {
+        setShowModal(false);
         navigate("/resumen");
       }
     }
@@ -123,12 +124,14 @@ function DetallesPago({ setShowModal }) {
               title="Seleccionar ubicación"
               options={OPCIONES.UBICACIONES}
               onSelect={setUbicacion}
+              selectedValue={ubicacion}
             />
             <div style={styles.divider} />
             <DropDown
               title="Seleccionar receptor"
               options={OPCIONES.USUARIOS}
               onSelect={setReceptor}
+              selectedValue={receptor}
             />
           </Seccion>
 
@@ -137,6 +140,7 @@ function DetallesPago({ setShowModal }) {
               title="Seleccionar método de pago"
               options={OPCIONES.METODOS_PAGO}
               onSelect={setPagoType}
+              selectedValue={pagoType}
             />
           </Seccion>
 
@@ -144,7 +148,7 @@ function DetallesPago({ setShowModal }) {
             <Carrusel />
           </Seccion>
 
-          <div style={styles.buttonContainer}>
+          <div>
             <CarritoBtn
               text="SIGUIENTE"
               onClick={() => handleClick()}

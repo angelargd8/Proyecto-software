@@ -3,11 +3,15 @@ import MobileNav from "../../navbar/components/MobileNav";
 import { useNavigate } from "react-router-dom";
 import { px } from "framer-motion";
 
-function MobileHdr({ title, lastPath }) {
+function MobileHdr({ title, lastPath, onClick }) {
   const navigate = useNavigate();
 
   const handleRegresar = () => {
-    navigate(`${lastPath}`);
+    if (onClick) {
+      onClick();
+    } else if (lastPath) {
+      navigate(`${lastPath}`);
+    }
   };
 
   return (

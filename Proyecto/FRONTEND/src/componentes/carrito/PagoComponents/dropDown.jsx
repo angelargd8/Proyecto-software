@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function DropDown({
   title = "Seleccionar opción",
@@ -6,14 +6,21 @@ function DropDown({
   onSelect = () => {},
   outerContainerStyles = {},
   innerContainerStyles = {},
+  selectedValue = "",
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValueState, setSelectedValueState] = useState(selectedValue);
 
-  const selectedOption = options.find((opt) => opt.value === selectedValue);
+  useEffect(() => {
+    setSelectedValueState(selectedValue);
+  }, [selectedValue]);
+
+  const selectedOption = options.find(
+    (opt) => opt.value === selectedValueState
+  );
 
   const handleSelect = (value) => {
-    setSelectedValue(value);
+    setSelectedValueState(value);
     setIsOpen(false);
     onSelect(value);
   };
@@ -36,7 +43,7 @@ function DropDown({
               style={{
                 ...styles.option,
                 backgroundColor:
-                  selectedValue === option.value ? "#f0f0f0" : "white",
+                  selectedValueState === option.value ? "#f0f0f0" : "white",
               }}
               onClick={() => handleSelect(option.value)}
             >
