@@ -3,11 +3,13 @@ import "./editarCateg.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import useGraphqlApi from "../../hooks/useGraphqlApi";
 
 function EditCateg() {
   const [listadoCards, setCards] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
+  const { fetchData } = useGraphqlApi();
 
   // Ir al apartado de edición de productos
   const info = (title, cardInfo) => {
@@ -15,10 +17,28 @@ function EditCateg() {
   };
 
   // Eliminar categoría
-  const eliminarCategoria = (id) => {
-    const newCards = [...listadoCards].filter((card) => card.idCategory !== id);
-    setCards(newCards);
-    console.log(id, newCards);
+  const eliminarCategoria = async (id) => {
+    const query = `
+      mutation DeleteCategory($idCategory: Int!) {
+        deleteCategory(idCategory: $idCategory) {
+          message
+          status  
+        }
+      }
+    `;
+    const data = await fetchData(query, { idCategory: id });
+    console.log(data);
+    console.log(data.deleteCategory);
+    console.log(data.deleteCategory.status);
+
+    if (data) {
+      if (data.deleteCategory) {
+        console.log("Categoria eliminada");
+        cargarCards();
+        setCards(newCards);
+        console.log(id, newCards);
+      }
+    }
   };
 
   // Agregar categoría
@@ -31,9 +51,6 @@ function EditCateg() {
     const searchParams = new URLSearchParams(location.search);
     const searchItem = searchParams.get("search") || "";
 
-    const url = import.meta.env.VITE_APIPORT;
-    // tests: 
-    // var url = process.env.VITE_APIPORT;
     const query = `
       query GetCategories {
           getCategories {
@@ -43,26 +60,18 @@ function EditCateg() {
           }
       }
     `;
-    const result = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query,
-      }),
-    });
+    const data = await fetchData(query);
 
-    let data = await result.json();
-    const cards = data.data.getCategories;
-
-    if (searchItem.trim() === "") {
-      setCards(cards);
-    } else {
-      const filteredCards = cards.filter((card) =>
-        card.title.toLowerCase().includes(searchItem.toLowerCase())
-      );
-      setCards(filteredCards);
+    if (data) {
+      const cards = data.getCategories;
+      if (searchItem.trim() === "") {
+        setCards(cards);
+      } else {
+        const filteredCards = cards.filter((card) =>
+          card.title.toLowerCase().includes(searchItem.toLowerCase())
+        );
+        setCards(filteredCards);
+      }
     }
   };
 
@@ -89,11 +98,7 @@ function EditCateg() {
       <div id="contenido-cartase">
         {listadoCards.map((elemento) => (
           <div key={elemento.idCategory} className="category-carde">
-            <CardCategoria
-              title={elemento.name}
-              imagen={elemento.image}
-              
-            />
+            <CardCategoria title={elemento.name} imagen={elemento.image} />
             <button
               className="editar-button"
               onClick={() => info(elemento.name, elemento)}
@@ -104,7 +109,7 @@ function EditCateg() {
               className="eliminar-button"
               onClick={() => eliminarCategoria(elemento.idCategory)}
             >
-              Eliminar 
+              Eliminar
             </button>
           </div>
         ))}

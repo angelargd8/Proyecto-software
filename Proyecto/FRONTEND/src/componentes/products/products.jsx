@@ -10,7 +10,7 @@ import useWindowSize from "../../hooks/useWindowDimensions";
 const Products = () => {
   const location = useLocation();
   const [products, setProducts] = useState([]);
-  const { fetchData, loading, error } = useGraphqlApi();
+  const { fetchData, loading } = useGraphqlApi();
   const { cardInfo } = location.state;
   const { idCategory } = cardInfo;
 
@@ -60,7 +60,7 @@ const Products = () => {
         <EmptyCardProd />
       ) : (
         <h2 style={{ alignSelf: "center" }}>
-          No hay productos para esta categoria
+          Actualmente no hay productos para esta categoria
         </h2>
       )}
     </div>

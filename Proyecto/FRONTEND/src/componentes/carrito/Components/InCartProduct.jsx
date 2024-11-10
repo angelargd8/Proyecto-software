@@ -2,24 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { useCarrito } from "../carritoContext";
 import "./inCartProduct.css";
 import { useEffect, useState } from "react";
+import useFetchImage from "../../../hooks/useFetchImage";
 
 function InCartProduct({ producto }) {
   const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
     useCarrito();
-  const navigate = useNavigate();
 
-  const [img, setImag] = useState(null);
-
-  useEffect(() => {
-    const getImage = async () => {
-      let url = import.meta.env.VITE_APIPORT_IMAGE + producto.image;
-      // tests: 
-      // var url = process.env.VITE_APIPORT_IMAGE + producto.image;
-      const result = await fetch(url);
-      setImag(result.url);
-    };
-    getImage();
-  }, []);
+  const img = useFetchImage(producto.image);
 
   const cambioCant = (producto, nuevaCantidad) => {
     if (nuevaCantidad < 1) {
