@@ -5,7 +5,6 @@ const useIsMobile = () => {
 
   useEffect(() => {
     const checkIsMobile = () => {
-      // Verifica si el dispositivo es móvil por el userAgent o el ancho de la pantalla
       const isMobileDevice =
         /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
           navigator.userAgent
@@ -13,11 +12,11 @@ const useIsMobile = () => {
       setIsMobile(isMobileDevice);
     };
 
-    checkIsMobile(); // Comprueba inicialmente si es móvil
+    checkIsMobile();
 
-    window.addEventListener("resize", checkIsMobile); // Escucha cambios en el tamaño de la pantalla
+    window.addEventListener("resize", checkIsMobile);
 
-    return () => window.removeEventListener("resize", checkIsMobile); // Limpia el event listener al desmontarse el componente
+    return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
   return isMobile;

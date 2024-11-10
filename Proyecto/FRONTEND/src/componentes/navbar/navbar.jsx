@@ -188,7 +188,7 @@ const NavBar2 = () => {
                           setSearchItem(e.target.value);
                         }}
                       />
-                      <img src="./src/assets/img/buscar.png" alt="Buscar" />
+                      <img src="/img/buscar.png" alt="Buscar" />
                     </div>
                   </form>
                   <div
@@ -198,7 +198,7 @@ const NavBar2 = () => {
                     className="carrito-navbar-container"
                   >
                     <img
-                      src="./src/assets/img/carrito.png"
+                      src="/img/carrito.png"
                       id="carrito-img"
                       href="/carrito"
                     />
@@ -227,7 +227,7 @@ const NavBar2 = () => {
                     onClick={toggleOpenMenu}
                   >
                     <div style={{ display: "flex", flexDirection: "row" }}>
-                      <img src="./src/assets/img/user.png" alt="User" />
+                      <img src="/img/user.png" alt="User" />
                       <div
                         className="navbar-user-triangle"
                         style={{
