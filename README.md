@@ -1,5 +1,10 @@
 # Proyecto-software
-
+## Integrantes
+* Gerardo Pineda
+* Francis Aguilar
+* Cesar Lopez
+* Angela Garcia
+* Digo Garcia
 ## Contenido de carpetas
 
 ## Avances 1
@@ -19,3 +24,5 @@
 
 ## Scrum
 * sin contenido aun
+
+
