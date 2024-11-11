@@ -41,14 +41,21 @@ function AppContent() {
     (location.pathname === "/agregarCategoria");
 
   return (
-    <>
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       {!isPageWithNoNav && <NavBar />}
       <FloatingButton />
       <div className={`contenedor ${isPageWithNoNav ? "no-margin" : ""}`}>
         <AppRouter />
       </div>
       {!isPageWithNoFooter && <Footer />}
-    </>
+    </div>
   );
 }
 
