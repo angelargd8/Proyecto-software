@@ -25,6 +25,7 @@ jobs:
     - name: Deploy to Docker Server
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+          git pull
           docker stop $(docker ps -q)
           docker rm $(docker ps -a -q)
           docker rmi $(docker images -q)
