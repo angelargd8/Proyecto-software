@@ -204,6 +204,7 @@ const NavBar2 = () => {
                     />
                     <div>Carrito</div>
                   </div>
+
                   {userRol === "Admin" &&
                     (location.pathname === "/home" ||
                       location.pathname === "/editarCategorias") && (
@@ -222,6 +223,7 @@ const NavBar2 = () => {
                           "Ir a Vista de Usuario"}
                       </div>
                     )}
+
                   <div
                     className="navbar-user-container"
                     onClick={toggleOpenMenu}
@@ -239,6 +241,7 @@ const NavBar2 = () => {
                     </div>
                     <div className="navbar-user-name-text">{displayName}</div>
                   </div>
+
                   {isMenuOpen && (
                     <div
                       className={`menu-navbar-container ${
