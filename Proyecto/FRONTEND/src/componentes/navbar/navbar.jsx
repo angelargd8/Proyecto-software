@@ -142,7 +142,7 @@ const NavBar2 = () => {
 
   const isMobile = useIsMobile();
   return (
-    <>
+    <div style={{ width: "100%" }}>
       {hideNavBarOnPaths.includes(location.pathname) ? null : (
         <>
           {/* 
@@ -267,7 +267,7 @@ const NavBar2 = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 
