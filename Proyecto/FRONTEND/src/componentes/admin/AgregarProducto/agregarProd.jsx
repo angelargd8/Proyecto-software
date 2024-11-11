@@ -129,23 +129,18 @@ const AgregarProducto = () => {
   };
 
   return (
-    <div className="AddProductContainer">
+    <div
+      className="AddProductContainer"
+      style={{ height: "100%", width: "100%", backgroundColor: "#E2E8F0" }}
+    >
       {/* Contenedor general*/}
       <div
-        className="container"
         style={{
-          all: "unset",
-          display: "block",
           position: "absolute",
           background: "#E2E8F0",
           flexDirection: "column",
           height: "100%",
           width: "100%",
-          top: "17%",
-          right: 0,
-          left: 0,
-          bottom: 0,
-          paddingLeft: 15,
           gap: 15,
           justifyContent: "center",
           alignItems: "center",
