@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import "./agregarCateg.css";
 import StepIndicator from "../../StepIndicator";
 import InputImage from "../../InputImage";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 function agregarCateg() {
   const [nameCategoria, setNameCategoria] = useState(null);
@@ -34,7 +34,7 @@ function agregarCateg() {
     if (!image) {
       Swal.fire({
         title: "Debe agregar una imagen para la categoría",
-        icon: "warning"
+        icon: "warning",
       });
       return;
     }
@@ -44,9 +44,11 @@ function agregarCateg() {
     formData.append("name", nameCategoria);
     //TODO: arreglar esta parte del idpage (BACKEND)
     formData.append("idpage", 1);
-
+    const url = import.meta.env.VITE_APIPORT_CATEGORY;
+    // tests:
+    // var url = process.env.VITE_APIPORT_CATEGORY;
     try {
-      const response = await fetch(import.meta.env.VITE_APIPORT_CATEGORY, {
+      const response = await fetch(url, {
         method: "POST",
         body: formData,
       });
@@ -56,20 +58,20 @@ function agregarCateg() {
         console.warn("File uploaded successfully:", result);
         Swal.fire({
           title: `Se creó la categoría ${nameCategoria}`,
-          icon: "success"
+          icon: "success",
         });
       } else {
         Swal.fire({
           title: "Error al crear la categoría",
-          icon: "error"
+          icon: "error",
         });
         console.error("Error:", response.statusText);
-        console.log(nameCategoria)
+        console.log(nameCategoria);
       }
     } catch (error) {
       Swal.fire({
         title: "Error en el servidor",
-        icon: "error"
+        icon: "error",
       });
     }
   };
@@ -85,7 +87,6 @@ function agregarCateg() {
         alignItems: "center",
         justifyContent: "center",
         gap: "5px",
-        marginTop: "18%",
       }}
     >
       <div

@@ -1,116 +1,42 @@
-.contact{
-    display: flex;
-    justify-content: center;
-    align-items: center;  
-    background-size: cover;
-    flex-direction: column;
-    margin-top: 17%;
-    width: 100vh;
-    height: 120%;
-}
-.contact .ContainerContac{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+.contact-container {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
 }
 
-.contact .info{
-    position: relative;
-    color:  #1f3350;
-    height: 100%;
-    width: 100%;
+.contact-container .header-text {
+  font-size: 60px;
+  font-family: "Merriweather";
+  font-weight: 600;
+  color: #1f3350;
+  border: #000;
+  font-style: normal;
 }
 
-.contact .main-text{
-    height: 100%;
-    width: 100%;
-    font-family: 'Merriweather', sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    padding: 5px;
-    color: #1f3350;
-    border: #000;
-    font-size: 40px;
-    align-items: flex-start;
-    justify-content: center;
-    align-items: center;    
+.contact-container .info-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  color: #cea44a;
+  justify-content: center;
+  align-items: center;
 }
 
-.contact .second-text{
-    height: 100%;
-    width: 100%;
-    font-family: 'Merriweather', sans-serif;
-    padding: 5px;
-    color: #cea44a;
-    border: #000;
-    font-size: 20px;
-    display: flex;
-    margin: 5px;
-    justify-content: center;
-    align-items: center; 
+.contact-info-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-
-.contact .text{
-    height: 100%;
-    width: 100%;
-    font-family: 'Poppins', sans-serif;
-    padding: 5px;
-    color: #cea44a;
-    border: #000;
-    font-size: 20px;
-    display: flex;
-    margin: 5px;  
-}
-
-.contact .cuadro{
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 1%;
-    color: #cea44a;
-    border: none;
-    height: 150%;
-    width: 100%;
-}
-
-
-
-.contact-info{
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: left;
-    margin-left: 20%;
-    flex-direction: column;
-    
-}
-
-.contact .container-image{
-    position: relative;
-    display: flex;
-    width: 30%;
-    height: 100%;
-    justify-content: flex-end;
-    align-items: center;
-}
-.contact .container-info{
-    height: 100%;
-    width: 70%;
-}
-
-.contact .imagen{
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-
+.contact-info-container div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border: #000;
+  font-size: 20px;
+  font-family: "Merriweather";
+  font-weight: 600;
+  font-style: normal;
 }

@@ -19,6 +19,8 @@ function ChangePasswordForm() {
     useEffect(() => {
         const getPassword = async () => {
             const url = import.meta.env.VITE_APIPORT;
+            // tests: 
+            // var url = process.env.VITE_APIPORT;
             const query = `
                 query OneUser($email: String!) {
                     oneUser(email: $email) {
@@ -65,6 +67,8 @@ function ChangePasswordForm() {
             return;
         }
         const url = import.meta.env.VITE_APIPORT;
+        // tests: 
+        // var url = process.env.VITE_APIPORT;
         const mutation = `
             mutation ModifyUserPassword($email: String!, $password: String!) {
                 modifyUserPassword(email: $email, password: $password) {

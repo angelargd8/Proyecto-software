@@ -1,27 +1,49 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./carrito.css";
 import { useNavigate } from "react-router-dom";
 import { useCarrito } from "./carritoContext";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
 import InCartProduct from "./Components/InCartProduct";
-import DropList from "./Components/DropList";
 import CarritoSteps from "./Components/CarritoSteps";
-
+import DetallesPago from "./PagoComponents/detallesPago";
 function Carrito() {
   const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
     useCarrito();
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768); // Puedes ajustar este valor según necesites
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
 
   const handlePagar = () => {
-    navigate("/pago");
-    // let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
-    // carrito.forEach((producto) => {
-    //   mensaje += `${producto.quantity} -- ${producto.title}\n`;
-    // });
-    // var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
-    // window.open(url, "_blank");
+    if (isMobile) {
+      navigate("/pago");
+    } else {
+      setShowModal(true);
+    }
   };
+
+  // const handlePagar = () => {
+  //   navigate("/pago");
+  //   // let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
+  //   // carrito.forEach((producto) => {
+  //   //   mensaje += `${producto.quantity} -- ${producto.title}\n`;
+  //   // });
+  //   // var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
+  //   // window.open(url, "_blank");
+  // };
 
   const handleDirecc = () => {
     navigate("/carrito");
@@ -31,7 +53,7 @@ function Carrito() {
     navigate("/resumen");
   };
 
-  const Tarifa = 5.0; //Temporal
+  const Tarifa = carrito.length === 0 ? 0 : 5.0; //Temporal
 
   const calcularPrecioTotal = (cantidad, precios) => {
     precios = precios.sort((a, b) => a.quantity - b.quantity);
@@ -67,7 +89,7 @@ function Carrito() {
       <div className="contenedorCarrito">
         <MobileHdr title={"My Cart"} lastPath={"/home"} />
         <div className="MidyBotm">
-          <CarritoSteps />
+          <CarritoSteps setShowModal={setShowModal} />
           <div className="middle">
             <div className="carrito">
               {carrito.length === 0 ? (
@@ -75,7 +97,6 @@ function Carrito() {
                   El carrito de compras está vacío.
                 </h4>
               ) : (
-                // <DropList type={"Pago"} />
                 carrito.map((producto) => (
                   <InCartProduct key={producto.id} producto={producto} />
                 ))
@@ -90,39 +111,56 @@ function Carrito() {
               <div className="rowDatos">
                 <div className="ColumnCampo">
                   Subtotal <br />
-                  Tarifa Servicio <br />
+                  {carrito.length === 0 ? null : (
+                    <>
+                      Tarifa Servicio <br />
+                    </>
+                  )}
                   Total
                 </div>
                 <div className="ColumnNo">
                   Q {Subtotal.toFixed(2)}
-                  <br />Q {Tarifa.toFixed(2)}
+                  {carrito.length === 0 ? (
+                    <></>
+                  ) : (
+                    <>
+                      <br />Q {Tarifa.toFixed(2)}
+                    </>
+                  )}
                   <br />Q {Total.toFixed(2)}
                 </div>
               </div>
               <CarritoBtn
                 text={"Pagar"}
-                nextPath={"/pago"}
+                onClick={handlePagar}
                 styles={{ backgroundColor: "#1f3350" }}
               />
             </div>
           </div>
-          {/* <div className="Dbottom" style={{ fontSize: "1.5vw" }}>
-            <img
-              className="logotipo"
-              src="../src/assets/img/logo.png"
-              style={{
-                width: 60,
-                height: 70,
-                marginLeft: "1%",
-                marginRight: "2%",
-              }}
-            />
-            Picolin
-          </div> */}
         </div>
       </div>
+      {showModal && !isMobile && (
+        <div style={styles.modalOverlay}>
+          <DetallesPago setShowModal={setShowModal} />
+        </div>
+      )}
     </>
   );
 }
+
+const styles = {
+  modalOverlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000,
+  },
+};
 
 export default Carrito;

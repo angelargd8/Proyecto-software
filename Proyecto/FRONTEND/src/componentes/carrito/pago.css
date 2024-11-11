@@ -373,7 +373,7 @@
     min-height: 20%;
     width: 100%;
     padding: 5%;
-    /* margin-top: 5%; */
+    margin-top: 5%;
     box-shadow: 1px 1px 5px #1b4965;
     background-color: #f9f6ee;
   }
@@ -410,7 +410,7 @@
   }
 
   .divisionLine {
-    width: 80%;
+    width: 90%;
     height: 1.5%;
     background-color: #1b4965;
   }
@@ -453,7 +453,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    min-height: 20%;
+    min-height: 10%;
     width: 100%;
     padding: 5%;
     margin-top: 15%;
@@ -463,8 +463,8 @@
 
   .fotoTarj {
     display: flex;
-    width: 12%;
-    height: 100%;
+    width: 35px;
+    height: 35px;
     background-image: url("../../assets/img/FotoTarjeta.jpg");
     background-position: center;
     background-size: contain;

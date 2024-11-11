@@ -38,25 +38,6 @@ async function getCategory(idCategory) {
   }
 }
 
-// async function setCategory(name, idPage) {
-//   try {
-//     const result =
-//       await pool.query(`insert into categorias (nombre_categoria, id_pagina)
-//         values ('${name}', ${idPage}) returning id_categoria`);
-//     let jsonResult = [
-//       {
-//         idCategory: result.rows[0].id_categoria,
-//         name: name,
-//         idPage: idPage,
-//       },
-//     ];
-//     return jsonResult;
-//   } catch (error) {
-//     console.log(error);
-//     return [];
-//   }
-// }
-
 async function addNewCategory(req, res) {
   let categoryName = req.body.name;
   let idPage = req.body.idpage;
@@ -101,24 +82,23 @@ async function deleteCategory(idCategory) {
   try {
     // Verificamos si la categoría tiene productos asociados
     const productCheck = await pool.query(
-      `SELECT * FROM productos WHERE id_categoria = ${idCategory}`
+      `SELECT * FROM articulos WHERE id_categoria = ${idCategory}`
     );
-    console.log(productCheck.rows);
-
 
     if (productCheck.rowCount > 0) {
       return {
         status: false,
-        message: "No se puede eliminar la categoría porque tiene productos asociados.",
+        message:
+          "No se puede eliminar la categoría porque tiene productos asociados.",
       };
     }
 
     // Si no tiene productos asociados, procedemos a eliminar la categoría
     const result = await pool.query(
-      `DELETE FROM categorias WHERE id_categorias = ${idCategory}`
+      `DELETE FROM categorias WHERE id_categoria = ${idCategory}`
     );
 
-    console.log(result.rows);
+    console.log(result.rowCount);
 
     if (result.rowCount > 0) {
       return {
@@ -139,7 +119,6 @@ async function deleteCategory(idCategory) {
     };
   }
 }
-
 
 module.exports = {
   getCategories,

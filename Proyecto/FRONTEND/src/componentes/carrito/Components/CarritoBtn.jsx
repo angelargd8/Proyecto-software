@@ -1,12 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./CarritoBtn.css";
-
-function CarritoBtn({ text, nextPath, styles }) {
+import { useState } from "react";
+function CarritoBtn({ text, nextPath, styles, onClick }) {
   const navigate = useNavigate();
 
   const handleFunction = () => {
     navigate(`${nextPath}`);
+  };
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    } else if (nextPath) {
+      navigate(nextPath);
+    }
   };
 
   const handlePagar = () => {
@@ -22,7 +30,7 @@ function CarritoBtn({ text, nextPath, styles }) {
     <>
       <motion.button
         className="pagobtn"
-        onClick={handleFunction}
+        onClick={handleClick}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}

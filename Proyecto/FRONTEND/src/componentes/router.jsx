@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./log/login.jsx";
 import Home from "./home/home.jsx";
@@ -12,9 +13,15 @@ import Resumen from "./carrito/resumen.jsx";
 import AgregarCateg from "./admin/AgregarCategoria/agregarCateg.jsx";
 import Contact from "./contact/contact.jsx";
 import Configuracion from "./config/configuracion.jsx";
+import { useLocation } from "react-router-dom";
 
 function AppRouter() {
   const userRol = localStorage.getItem("rol");
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <Routes>

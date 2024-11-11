@@ -1,198 +1,194 @@
-.login{
-    position: absolute;
-    top:0;
-    left:0;
-    right: 0;
-    bottom: 0;
-    background-repeat: no-repeat ;
-    background-size: cover;
-    background-attachment: fixed;
-    justify-content: center;
-    align-items: center;   
-    display: flex;
-    padding: 0%;
-    margin: 0%;
+.login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 0%;
+  margin: 0%;
 }
 
-.login .contenedor{
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    
+.login .contenedor {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
 
 /* CONTENIDO DE LA ANIMACION  */
 
-
 .login .contenido-imagen {
-    width: 100%; /* Ocupa todo el ancho de la pantalla */
-    overflow: hidden; /* Oculta las imágenes cuando están fuera de la pantalla */
-    white-space: nowrap; /* Evita que las imágenes se dividan en varias líneas */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    box-sizing: border-box;
-    position: relative;
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  overflow: hidden; /* Oculta las imágenes cuando están fuera de la pantalla */
+  white-space: nowrap; /* Evita que las imágenes se dividan en varias líneas */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  box-sizing: border-box;
+  position: relative;
+}
+
+.login .texto-imagenn {
+  display: flex;
+  height: 100%;
+  animation: marquee2 32s linear infinite;
+}
+
+.login .texto-imagenn2 {
+  display: flex;
+  height: 100%;
+  animation: marquee2 40s linear infinite;
+}
+
+.login .contenido-imagen img {
+  height: 20rem; /* Ajusta la altura de las imágenes */
+  width: 20rem;
+  margin: 20px;
+  vertical-align: middle; /* Alinea las imágenes verticalmente en el medio */
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(85%); /* Comienza en su posición inicial */
   }
-  
-  .login .texto-imagenn {
-    display: flex;
-    height: 100%;
-    animation: marquee2 32s linear infinite;
+  to {
+    transform: translateX(
+      -100%
+    ); /* Se desplaza completamente hacia la izquierda */
   }
+}
 
-  .login .texto-imagenn2 {
-    display: flex;
-    height: 100%;
-    animation: marquee2 40s linear infinite;
+@keyframes marquee2 {
+  from {
+    transform: translateX(-80%); /* Comienza en su posición inicial */
   }
-  
-  .login .contenido-imagen img {
-    height: 20rem; /* Ajusta la altura de las imágenes */
-    width: 20rem;
-    margin: 20px;
-    vertical-align: middle; /* Alinea las imágenes verticalmente en el medio */ 
+  to {
+    transform: translateX(
+      100%
+    ); /* Se desplaza completamente hacia la izquierda */
   }
-
-  
-  @keyframes marquee {
-    from {
-      transform: translateX(85%); /* Comienza en su posición inicial */
-    }
-    to {
-      transform: translateX(-100%); /* Se desplaza completamente hacia la izquierda */
-    }
-  }
-  
-  @keyframes marquee2 {
-    from {
-      transform: translateX(-80%); /* Comienza en su posición inicial */
-    }
-    to {
-      transform: translateX(100%); /* Se desplaza completamente hacia la izquierda */
-    }
-  }
-  
-  /* TERMINA CONTENIDO DE LA ANIMACION */
-
-.login .formulario{
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 35px;
-    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
-    color: #000;
-    border: none;
-    width: 100%;
-    height: 100%;
 }
 
-.login .goBack{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    color: #000;
-    border: none;
-    font-size: 20px;
-    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
-    transition: 0.5s ease-in;
-    font-weight: 700!important;
-    z-index: 2;
+/* TERMINA CONTENIDO DE LA ANIMACION */
 
+.login .formulario {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 35px;
+  box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+  color: #000;
+  border: none;
+  width: 100%;
+  height: 100%;
 }
 
-.login .goBack-btn{
-    background-color: #051336;
-    color: white;
-    border: none;
-    /*box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);*/
-    transition: 0.5s ease-in;
-    font-weight: 700!important;
-    margin-left: 20px;
-    
+.login .goBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  color: #000;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+  transition: 0.5s ease-in;
+  font-weight: 700 !important;
+  z-index: 2;
 }
 
-.login .goBack-btn:hover{
-    background-color: transparent;
-    color:  #FFF;
-    border: none;
-
+.login .goBack-btn {
+  background-color: #051336;
+  color: white;
+  border: none;
+  /*box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);*/
+  transition: 0.5s ease-in;
+  font-weight: 700 !important;
+  margin-left: 20px;
 }
 
-
-.login .form-text{
-    padding: 5px;
-    border-radius: 10px;
-    color: #1f3350;
-    border: #000;
-    font-size: 40px;
-    align-items: flex-start;
-    display: flex;
-    margin: 50px;
-    justify-content: center;
-    align-items: center;    
-    }
-
-.login .btn{
-    margin: 8px;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #051336;
-    color: white;
-    border: #000;
-    font-size: 20px;
-    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
-    transition: 0.5s ease-in;
-    font-weight: 700!important;
+.login .goBack-btn:hover {
+  background-color: transparent;
+  color: #fff;
+  border: none;
 }
 
-.login .btn2{
-    border-radius: 10px;
-    background-color: #2D62EE;
-    color: white;
-    border: none;
-    box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
-    transition: 0.5s ease-in;
-    font-weight: 700!important;
-
+.login .form-text {
+  padding: 5px;
+  border-radius: 10px;
+  color: #1f3350;
+  border: #000;
+  font-size: 40px;
+  align-items: flex-start;
+  display: flex;
+  margin: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
-.login .boton{
-    position: relative;
-    justify-content: center;
-    align-items: center;
-
+.login .btn {
+  margin: 8px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #051336;
+  color: white;
+  border: #000;
+  font-size: 20px;
+  box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+  transition: 0.5s ease-in;
+  font-weight: 700 !important;
 }
 
-.login  .btn:hover, .login .btn2:hover{
-    background-color: #2D62EE;
-    color: white;
-    border: none;
+.login .btn2 {
+  border-radius: 10px;
+  background-color: #2d62ee;
+  color: white;
+  border: none;
+  box-shadow: 0 0 30px rgba(0, -0, 0, -0.568);
+  transition: 0.5s ease-in;
+  font-weight: 700 !important;
 }
 
-.login .inputs{
-    border: #000;
-    background-color: rgba(165, 165, 165, 0.425);
-    font-size: 16px;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    color: black;
+.login .boton {
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
-.login .googleAuth{
-    margin-top: 15px;
-    display: flex;
-    position: relative;
-    justify-content: center;
+.login .btn:hover,
+.login .btn2:hover {
+  background-color: #2d62ee;
+  color: white;
+  border: none;
+}
+
+.login .inputs {
+  border: #000;
+  background-color: rgba(165, 165, 165, 0.425);
+  font-size: 16px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  color: black;
+}
+
+.login .googleAuth {
+  margin-top: 15px;
+  display: flex;
+  position: relative;
+  justify-content: center;
 }
