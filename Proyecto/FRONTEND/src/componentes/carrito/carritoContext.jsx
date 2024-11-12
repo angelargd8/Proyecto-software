@@ -19,6 +19,21 @@ export const CarritoProvider = ({ children }) => {
     if (storedCarrito) {
       setCarrito(JSON.parse(storedCarrito));
     }
+
+    const storedUbicacion = localStorage.getItem("ubicacion");
+    if (storedUbicacion) {
+      setUbicacion(storedUbicacion);
+    }
+
+    const storedReceptor = localStorage.getItem("receptor");
+    if (storedReceptor) {
+      setReceptor(storedReceptor);
+    }
+
+    const storedPagoType = localStorage.getItem("pagoType");
+    if (storedPagoType) {
+      setPagoType(storedPagoType);
+    }
   }, []);
 
   const guardarCarritoStorage = (carrito) => {
@@ -70,6 +85,18 @@ export const CarritoProvider = ({ children }) => {
     localStorage.removeItem("carrito");
   };
 
+  const guardarUbicacionStorage = (ubicacion) => {
+    localStorage.setItem("ubicacion", ubicacion);
+  };
+
+  const guardarReceptorStorage = (receptor) => {
+    localStorage.setItem("receptor", receptor);
+  };
+
+  const guardarPagoTypeStorage = (pagoType) => {
+    localStorage.setItem("pagoType", pagoType);
+  };
+
   return (
     <CarritoContext.Provider
       value={{
@@ -80,11 +107,20 @@ export const CarritoProvider = ({ children }) => {
         setCarrito,
         guardarCarritoStorage,
         ubicacion,
-        setUbicacion,
+        setUbicacion: (value) => {
+          setUbicacion(value);
+          guardarUbicacionStorage(value);
+        },
         receptor,
-        setReceptor,
+        setReceptor: (value) => {
+          setReceptor(value);
+          guardarReceptorStorage(value);
+        },
         pagoType,
-        setPagoType,
+        setPagoType: (value) => {
+          setPagoType(value);
+          guardarPagoTypeStorage(value);
+        },
       }}
     >
       {children}
