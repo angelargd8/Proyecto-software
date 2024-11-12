@@ -1,8 +1,9 @@
 import { CarritoContext } from "../carritoContext";
 import { useContext } from "react";
 import { useCarrito } from "../carritoContext";
+import CarritoBtn from "../Components/carritoBtn";
 
-const precioXProducto = (cantidad, precios) => {
+export const precioXProducto = (cantidad, precios) => {
   precios = precios.sort((a, b) => a.quantity - b.quantity);
   const precioUnitario = precios[0].price;
   let precioFinal = 0;
@@ -21,7 +22,13 @@ const precioXProducto = (cantidad, precios) => {
 };
 
 const FinalTicket = () => {
-  const { ubicacion, receptor, pagoType } = useContext(CarritoContext);
+  const {
+    ubicacion,
+    receptor,
+    pagoType,
+    agregarTicket,
+    obtenerUltimoTicketId,
+  } = useContext(CarritoContext);
   const { carrito } = useCarrito();
 
   const total = carrito.reduce(
@@ -35,7 +42,7 @@ const FinalTicket = () => {
       <div style={styles.ticket}>
         <div style={styles.infoRow}>
           <span style={styles.label}>Pedido ID:</span>
-          <span style={styles.value}>001</span>
+          <span style={styles.value}>{obtenerUltimoTicketId()}</span>
         </div>
         <div style={styles.infoRow}>
           <span style={styles.label}>Ubicación:</span>
@@ -85,6 +92,11 @@ const FinalTicket = () => {
           <span style={styles.value}>{total}</span>
         </div>
       </div>
+      <CarritoBtn
+        styles={{ height: "10%", width: "28%" }}
+        text={"Aceptar"}
+        onClick={agregarTicket}
+      />
     </>
   );
 };

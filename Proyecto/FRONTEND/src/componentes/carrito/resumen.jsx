@@ -93,7 +93,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
-    flexDirection: "row",
+    flexDirection: "column",
   },
   modalOverlay: {
     position: "fixed",

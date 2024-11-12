@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { precioXProducto } from "./resumenComponents/finalTicket";
 
 export const CarritoContext = createContext();
 
@@ -13,6 +14,7 @@ export const CarritoProvider = ({ children }) => {
   const [pagoType, setPagoType] = useState("");
 
   const [carrito, setCarrito] = useState([]);
+  const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
     const storedCarrito = localStorage.getItem("carrito");
@@ -33,6 +35,13 @@ export const CarritoProvider = ({ children }) => {
     const storedPagoType = localStorage.getItem("pagoType");
     if (storedPagoType) {
       setPagoType(storedPagoType);
+    }
+
+    const storedTickets = localStorage.getItem("tickets");
+    if (storedTickets) {
+      const parsedTickets = JSON.parse(storedTickets);
+      setTickets(parsedTickets);
+      console.warn("Tickets guardados actualmente:", parsedTickets);
     }
   }, []);
 
@@ -97,6 +106,39 @@ export const CarritoProvider = ({ children }) => {
     localStorage.setItem("pagoType", pagoType);
   };
 
+  const guardarTicketsStorage = (tickets) => {
+    localStorage.setItem("tickets", JSON.stringify(tickets));
+  };
+
+  const obtenerUltimoTicketId = () => {
+    const storedId = localStorage.getItem("ultimoTicketId");
+    return storedId ? parseInt(storedId, 10) : 0;
+  };
+
+  const guardarUltimoTicketId = (id) => {
+    localStorage.setItem("ultimoTicketId", id);
+  };
+
+  const agregarTicket = () => {
+    const nuevoId = obtenerUltimoTicketId() + 1;
+    const nuevoTicket = {
+      id: nuevoId,
+      ubicacion,
+      receptor,
+      productos: carrito,
+      pagoType,
+      total: carrito.reduce(
+        (acc, producto) =>
+          acc + precioXProducto(producto.quantity, producto.precios),
+        0
+      ),
+    };
+    const nuevosTickets = [...tickets, nuevoTicket];
+    setTickets(nuevosTickets);
+    guardarTicketsStorage(nuevosTickets);
+    guardarUltimoTicketId(nuevoId);
+  };
+
   return (
     <CarritoContext.Provider
       value={{
@@ -121,6 +163,8 @@ export const CarritoProvider = ({ children }) => {
           setPagoType(value);
           guardarPagoTypeStorage(value);
         },
+        agregarTicket,
+        obtenerUltimoTicketId,
       }}
     >
       {children}
