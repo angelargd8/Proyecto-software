@@ -4,6 +4,7 @@ import { useCarrito } from "../carritoContext";
 import CarritoBtn from "../Components/carritoBtn";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export const precioXProducto = (cantidad, precios) => {
   precios = precios.sort((a, b) => a.quantity - b.quantity);
@@ -64,9 +65,20 @@ const FinalTicket = () => {
     });
   };
 
+  const animationVariants = {
+    hidden: { scale: 0.5, opacity: 0 },
+    visible: { scale: 1, opacity: 1 },
+  };
+
   return (
     <>
-      <div style={styles.ticket}>
+      <motion.div
+        style={styles.ticket}
+        initial="hidden"
+        animate="visible"
+        variants={animationVariants}
+        transition={{ type: "spring", stiffness: 150 }}
+      >
         <div style={styles.infoRow}>
           <span style={styles.label}>Pedido ID:</span>
           <span style={styles.value}>{obtenerUltimoTicketId()}</span>
@@ -118,7 +130,7 @@ const FinalTicket = () => {
           <span style={styles.label}>Total a pagar:</span>
           <span style={styles.value}>{total}</span>
         </div>
-      </div>
+      </motion.div>
       <CarritoBtn
         styles={{ height: "10%", width: "28%" }}
         text={"Aceptar"}

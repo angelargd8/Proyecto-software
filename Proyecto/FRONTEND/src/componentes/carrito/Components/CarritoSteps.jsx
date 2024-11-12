@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+import { useCarrito } from "../carritoContext";
 
 function CarritoSteps({ setShowModal }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const { ubicacion, receptor, pagoType } = useCarrito();
 
   const handleDirecc = () => {
     navigate("/carrito");
@@ -20,7 +23,16 @@ function CarritoSteps({ setShowModal }) {
   };
 
   const handleResumen = () => {
-    navigate("/resumen");
+    if (!ubicacion || !receptor || !pagoType) {
+      Swal.fire({
+        title: "Alerta",
+        text: "Llena los datos de pago antes de continuar",
+        icon: "warning",
+        confirmButtonText: "Aceptar",
+      });
+    } else {
+      navigate("/resumen");
+    }
   };
 
   const getBackColor = (pathname) => {
