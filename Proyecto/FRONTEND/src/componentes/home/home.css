@@ -1,20 +1,21 @@
 .container-home {
   width: 100%;
-  height: 100%;
-  position: relative;
+  margin-top: 50px;
+}
+
+.inner-container {
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  /* margin-top: 13%; */
+  flex-direction: column;
 }
 
 #contenido-cartas {
   display: flex;
   flex-wrap: wrap;
-  background-color: white;
   flex-direction: row;
   justify-content: center;
+  width: 100%;
+  height: auto;
 }
 
 .categor-card {
@@ -23,7 +24,6 @@
   align-items: center;
   justify-content: center;
   margin: 20px;
-  margin-top: 50px;
 }
 
 .categorias {
@@ -32,6 +32,7 @@
   font-style: normal;
   color: #1f3350;
 }
+
 .bienvenida {
   font-family: "Merriweather", sans-serif;
   padding: 1%;

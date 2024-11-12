@@ -19,12 +19,12 @@ const categoryResolver = {
       if (result.status) {
         return {
           status: true,
-          message: "Category deleted successfully",
+          message: result.message,
         };
       } else {
         return {
           status: false,
-          message: "Error deleting category: ",
+          message: result.message,
         };
       }
     },

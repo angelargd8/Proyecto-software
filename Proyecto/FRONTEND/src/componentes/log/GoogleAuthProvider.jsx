@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const GoogleAuthProvider = ({ children }) => {
   
-  const clienteId ="30472634326-rbomjumikpc7llu20snb7bcvmmc4h87n.apps.googleusercontent.com"  
+  const clienteId = import.meta.env.VITE_GOOGLE_CLIENT_ID;  
   return (
     <GoogleOAuthProvider clientId={clienteId}>
       {children}

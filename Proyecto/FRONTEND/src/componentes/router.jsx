@@ -13,14 +13,21 @@ import Resumen from "./carrito/resumen.jsx";
 import AgregarCateg from "./admin/AgregarCategoria/agregarCateg.jsx";
 import Contact from "./contact/contact.jsx";
 import Configuracion from "./config/configuracion.jsx";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function AppRouter() {
   const userRol = localStorage.getItem("rol");
+  const navigate = useNavigate();
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (pathname === "/") {
+      navigate("/home");
+    }
   }, [pathname]);
 
   return (
