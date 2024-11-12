@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Carrusel from "./PagoComponents/carrusel";
 import React, { useState } from "react";
 import MobileHdr from "./Components/MobileHdr";
-import CarritoBtn from "./Components/carritoBtn";
+import CarritoBtn from "./Components/CarritoBtn";
 import CarritoSteps from "./Components/CarritoSteps";
 import DropDown from "./PagoComponents/dropDown";
 import Swal from "sweetalert2";

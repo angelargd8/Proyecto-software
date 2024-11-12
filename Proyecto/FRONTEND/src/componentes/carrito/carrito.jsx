@@ -3,7 +3,7 @@ import "./carrito.css";
 import { useNavigate } from "react-router-dom";
 import { useCarrito } from "./carritoContext";
 import MobileHdr from "./Components/MobileHdr";
-import CarritoBtn from "./Components/carritoBtn";
+import CarritoBtn from "./Components/CarritoBtn";
 import InCartProduct from "./Components/InCartProduct";
 import CarritoSteps from "./Components/CarritoSteps";
 import DetallesPago from "./PagoComponents/detallesPago";
