@@ -69,8 +69,8 @@ function Home() {
   }, []);
 
   return (
-    <div style={{ height: "100%", width: "100%", marginTop: 50 }}>
-      <div className="container-categorias">
+    <div className="container-home">
+      <div className="inner-container">
         <h1 className="categorias">Categorias</h1>
         <p className="bienvenida">Bienvenido a la página de inicio</p>
         <hr></hr>

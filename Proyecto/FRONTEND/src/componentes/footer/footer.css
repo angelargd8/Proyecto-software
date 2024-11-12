@@ -1,8 +1,6 @@
 .Container-footer {
-  all: unset;
   display: block;
   position: relative;
-  bottom: 0;
   display: flex;
   width: 100%;
   justify-content: center;
