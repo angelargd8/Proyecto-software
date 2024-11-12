@@ -46,23 +46,4 @@ function MobileHdr({ title, lastPath, onClick }) {
   );
 }
 
-// const DeskStyles = {
-//   up: {
-//     display: "flex",
-//     alignItems: "center",
-//     justifyContent: "center",
-//     textJustify: "center",
-//     height: "10%",
-//     width: "100%",
-//     borderBottom: "#1b4965",
-//   },
-//   leftSection: {
-//     display: "flex",
-//     height: "100%",
-//     width: "10%",
-//     justifyContent: "center",
-//     alignItems: "center",
-//   },
-// };
-
 export default MobileHdr;
