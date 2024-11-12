@@ -91,7 +91,7 @@ export const CarritoProvider = ({ children }) => {
 
   const limpiarCarrito = () => {
     setCarrito([]);
-    localStorage.removeItem("carrito");
+    guardarCarritoStorage([]);
   };
 
   const guardarUbicacionStorage = (ubicacion) => {
@@ -139,6 +139,15 @@ export const CarritoProvider = ({ children }) => {
     guardarUltimoTicketId(nuevoId);
   };
 
+  const limpiarTicket = () => {
+    setUbicacion("");
+    setReceptor("");
+    setPagoType("");
+    localStorage.removeItem("ubicacion");
+    localStorage.removeItem("receptor");
+    localStorage.removeItem("pagoType");
+  };
+
   return (
     <CarritoContext.Provider
       value={{
@@ -146,6 +155,7 @@ export const CarritoProvider = ({ children }) => {
         agregarAlCarrito,
         eliminarDelCarrito,
         limpiarCarrito,
+        limpiarTicket,
         setCarrito,
         guardarCarritoStorage,
         ubicacion,

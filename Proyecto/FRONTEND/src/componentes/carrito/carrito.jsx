@@ -3,7 +3,7 @@ import "./carrito.css";
 import { useNavigate } from "react-router-dom";
 import { useCarrito } from "./carritoContext";
 import MobileHdr from "./Components/MobileHdr";
-import CarritoBtn from "./Components/CarritoBtn";
+import CarritoBtn from "./Components/carritoBtn";
 import InCartProduct from "./Components/InCartProduct";
 import CarritoSteps from "./Components/CarritoSteps";
 import DetallesPago from "./PagoComponents/detallesPago";
@@ -37,12 +37,7 @@ function Carrito() {
 
   // const handlePagar = () => {
   //   navigate("/pago");
-  //   // let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
-  //   // carrito.forEach((producto) => {
-  //   //   mensaje += `${producto.quantity} -- ${producto.title}\n`;
-  //   // });
-  //   // var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
-  //   // window.open(url, "_blank");
+
   // };
 
   const handleDirecc = () => {

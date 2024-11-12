@@ -2,6 +2,8 @@ import { CarritoContext } from "../carritoContext";
 import { useContext } from "react";
 import { useCarrito } from "../carritoContext";
 import CarritoBtn from "../Components/carritoBtn";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export const precioXProducto = (cantidad, precios) => {
   precios = precios.sort((a, b) => a.quantity - b.quantity);
@@ -28,6 +30,8 @@ const FinalTicket = () => {
     pagoType,
     agregarTicket,
     obtenerUltimoTicketId,
+    limpiarCarrito,
+    limpiarTicket,
   } = useContext(CarritoContext);
   const { carrito } = useCarrito();
 
@@ -36,6 +40,29 @@ const FinalTicket = () => {
       acc + precioXProducto(producto.quantity, producto.precios),
     0
   );
+
+  const navigate = useNavigate();
+
+  const handleTicketButton = () => {
+    Swal.fire({
+      title: "¡Éxito!",
+      text: "¡Se ha agregado tu pedido!",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    }).then(() => {
+      agregarTicket();
+      limpiarTicket();
+      limpiarCarrito();
+      navigate("/home");
+
+      let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
+      carrito.forEach((producto) => {
+        mensaje += `${producto.quantity} -- ${producto.title}\n`;
+      });
+      var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    });
+  };
 
   return (
     <>
@@ -95,7 +122,7 @@ const FinalTicket = () => {
       <CarritoBtn
         styles={{ height: "10%", width: "28%" }}
         text={"Aceptar"}
-        onClick={agregarTicket}
+        onClick={handleTicketButton}
       />
     </>
   );
