@@ -1,10 +1,10 @@
 import { CarritoContext } from "../carritoContext";
 import { useContext } from "react";
 import { useCarrito } from "../carritoContext";
-import CarritoBtn from "../Components/carritoBtn";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import CarritoBtn from "../Components/CarritoBtn";
 
 export const precioXProducto = (cantidad, precios) => {
   precios = precios.sort((a, b) => a.quantity - b.quantity);
