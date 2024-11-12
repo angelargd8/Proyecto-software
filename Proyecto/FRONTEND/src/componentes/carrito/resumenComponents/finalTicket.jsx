@@ -2,9 +2,34 @@ import { CarritoContext } from "../carritoContext";
 import { useContext } from "react";
 import { useCarrito } from "../carritoContext";
 
+const precioXProducto = (cantidad, precios) => {
+  precios = precios.sort((a, b) => a.quantity - b.quantity);
+  const precioUnitario = precios[0].price;
+  let precioFinal = 0;
+  precios.forEach((precio) => {
+    let cantidadProduct = precio.quantity;
+    let precioProducto = precio.price * cantidadProduct;
+
+    if (cantidad >= cantidadProduct) {
+      let docenas = Math.floor(cantidad / cantidadProduct);
+      let extras = cantidad % cantidadProduct;
+      precioFinal = docenas * precioProducto + extras * precioUnitario;
+    }
+  });
+
+  return precioFinal;
+};
+
 const FinalTicket = () => {
   const { ubicacion, receptor, pagoType } = useContext(CarritoContext);
   const { carrito } = useCarrito();
+
+  const total = carrito.reduce(
+    (acc, producto) =>
+      acc + precioXProducto(producto.quantity, producto.precios),
+    0
+  );
+
   return (
     <>
       <div style={styles.ticket}>
@@ -30,7 +55,6 @@ const FinalTicket = () => {
             <>
               {carrito.map((producto) => (
                 <div style={{ ...styles.infoRow }} key={producto.id}>
-                  {console.log(producto)}
                   <span
                     style={{
                       ...styles.label,
@@ -40,7 +64,9 @@ const FinalTicket = () => {
                   >
                     {`-  ${producto.quantity} ${producto.title}`}
                   </span>
-                  <span style={styles.value}>{producto.precio}</span>
+                  <span style={styles.value}>
+                    {precioXProducto(producto.quantity, producto.precios)}
+                  </span>
                 </div>
               ))}
             </>
@@ -56,7 +82,7 @@ const FinalTicket = () => {
         </div>
         <div style={{ ...styles.infoRow, borderTop: "2px solid black" }}>
           <span style={styles.label}>Total a pagar:</span>
-          <span style={styles.value}>$100</span>
+          <span style={styles.value}>{total}</span>
         </div>
       </div>
     </>
