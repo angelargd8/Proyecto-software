@@ -32,7 +32,7 @@ function EditCateg() {
     console.log(data.deleteCategory.status);
 
     if (data) {
-      if (data.deleteCategory) {
+      if (data.deleteCategory.status) {
         console.log("Categoria eliminada");
         cargarCards();
         setCards(newCards);
