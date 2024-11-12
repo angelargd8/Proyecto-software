@@ -1,8 +1,10 @@
 import { CarritoContext } from "../carritoContext";
 import { useContext } from "react";
+import { useCarrito } from "../carritoContext";
 
 const FinalTicket = () => {
   const { ubicacion, receptor, pagoType } = useContext(CarritoContext);
+  const { carrito } = useCarrito();
   return (
     <>
       <div style={styles.ticket}>
@@ -21,6 +23,30 @@ const FinalTicket = () => {
           <span style={styles.value}>
             {receptor ? receptor : "No seleccionado"}
           </span>
+        </div>
+        <div style={{ ...styles.infoRow, flexDirection: "column" }}>
+          <span style={styles.label}>Productos a pagar:</span>
+          {carrito.length > 0 ? (
+            <>
+              {carrito.map((producto) => (
+                <div style={{ ...styles.infoRow }} key={producto.id}>
+                  {console.log(producto)}
+                  <span
+                    style={{
+                      ...styles.label,
+                      paddingLeft: 10,
+                      fontWeight: undefined,
+                    }}
+                  >
+                    {`-  ${producto.quantity} ${producto.title}`}
+                  </span>
+                  <span style={styles.value}>{producto.precio}</span>
+                </div>
+              ))}
+            </>
+          ) : (
+            <span style={styles.value}>Sin productos</span>
+          )}
         </div>
         <div style={styles.infoRow}>
           <span style={styles.label}>Tipo de Pago:</span>
