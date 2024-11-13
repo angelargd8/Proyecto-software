@@ -89,6 +89,7 @@ function agregarCateg() {
     formData.append("file", image);
     formData.append("name", nameCategoria);
     formData.append("idCategory", idCategory);
+
     const url = import.meta.env.VITE_APIPORT_CATEGORY;
     try {
       const response = await fetch(url, {
