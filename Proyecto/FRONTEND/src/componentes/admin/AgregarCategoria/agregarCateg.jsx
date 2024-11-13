@@ -6,11 +6,14 @@ import "./agregarCateg.css";
 import StepIndicator from "../../StepIndicator";
 import InputImage from "../../InputImage";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function agregarCateg() {
   const [nameCategoria, setNameCategoria] = useState(null);
   const [image, setImage] = useState(null);
   const [previewImage, setPreviwImage] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -59,6 +62,8 @@ function agregarCateg() {
         Swal.fire({
           title: `Se creó la categoría ${nameCategoria}`,
           icon: "success",
+        }).then(() => {
+          navigate("/home");
         });
       } else {
         Swal.fire({
