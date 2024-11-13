@@ -82,6 +82,28 @@
   background-color: black;
 }
 
+.editar-button-categoria {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #3f48a7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  height: 60%;
+  width: 200px;
+  max-width: 70%;
+  align-self: center;
+  margin: 5px;
+  margin-left: 50px;
+  transition: background-color 0.5s ease;
+}
+
+.editar-button-categoria:hover {
+  background-color: black;
+}
+
 #contenido-cartase {
   display: flex;
   flex-wrap: wrap;
@@ -93,7 +115,7 @@
 
 .category-carde {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   margin: 20px;
   height: 150px;
   width: 100%;

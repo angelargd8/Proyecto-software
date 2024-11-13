@@ -104,7 +104,11 @@ function EditCateg() {
       </div>
       <div id="contenido-cartase">
         {listadoCards.map((elemento) => (
-          <div key={elemento.idCategory} className="category-carde">
+          <div
+            key={elemento.idCategory}
+            className="category-carde"
+            style={{ backgroundColor: "#f0f0f0" }}
+          >
             <CardCategoria title={elemento.name} imagen={elemento.image} />
             <button
               className="editar-button"
@@ -116,7 +120,13 @@ function EditCateg() {
               className="eliminar-button"
               onClick={() => eliminarCategoria(elemento.idCategory)}
             >
-              Eliminar
+              Eliminar Categoría
+            </button>
+            <button
+              className="editar-button-categoria"
+              onClick={() => info(elemento.name)}
+            >
+              Editar Categoría
             </button>
           </div>
         ))}
