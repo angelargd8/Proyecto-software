@@ -85,13 +85,14 @@ function agregarCateg() {
     <div
       style={{
         height: "100%",
-        width: "100%",
+        width: "50%",
         display: "flex",
         flexDirection: "column",
         alignContent: "center",
         alignItems: "center",
-        justifyContent: "center",
         gap: "5px",
+        alignSelf: "center",
+        marginTop: 50,
       }}
     >
       <div
