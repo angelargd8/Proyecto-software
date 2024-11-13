@@ -6,6 +6,7 @@ import "./navbar.css";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { useNavigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import MobileNav from "./components/MobileNav";
 
 const navbarPages = [
   { name: "Inicio", link: "/home" },
@@ -267,6 +268,14 @@ const NavBar2 = () => {
                 </div>
               </>
             )}
+            <MobileNav
+              spanColor={"white"}
+              iconStyles={{
+                width: 30,
+                height: 30,
+                marginTop: scrollPosition == 0 ? 50 : 30,
+              }}
+            />
           </div>
         </>
       )}

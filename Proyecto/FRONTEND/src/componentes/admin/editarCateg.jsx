@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import useGraphqlApi from "../../hooks/useGraphqlApi";
+import Swal from "sweetalert2";
 
 function EditCateg() {
   const [listadoCards, setCards] = useState([]);
@@ -27,16 +28,22 @@ function EditCateg() {
       }
     `;
     const data = await fetchData(query, { idCategory: id });
-    console.log(data);
-    console.log(data.deleteCategory);
-    console.log(data.deleteCategory.status);
 
     if (data) {
       if (data.deleteCategory.status) {
-        console.log("Categoria eliminada");
+        Swal.fire({
+          icon: "success",
+          title: "Eliminado",
+          text: data.deleteCategory.message,
+        });
         cargarCards();
         setCards(newCards);
-        console.log(id, newCards);
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Cuidado",
+          text: data.deleteCategory.message,
+        });
       }
     }
   };

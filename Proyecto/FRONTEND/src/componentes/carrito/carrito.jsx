@@ -3,10 +3,12 @@ import "./carrito.css";
 import { useNavigate } from "react-router-dom";
 import { useCarrito } from "./carritoContext";
 import MobileHdr from "./Components/MobileHdr";
-import CarritoBtn from "./Components/carritoBtn";
+import CarritoBtn from "./Components/CarritoBtn";
 import InCartProduct from "./Components/InCartProduct";
 import CarritoSteps from "./Components/CarritoSteps";
 import DetallesPago from "./PagoComponents/detallesPago";
+import Swal from "sweetalert2";
+
 function Carrito() {
   const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
     useCarrito();
@@ -28,17 +30,22 @@ function Carrito() {
   }, []);
 
   const handlePagar = () => {
+    if (carrito.length === 0) {
+      Swal.fire({
+        title: "Alerta",
+        text: "El carrito está vacío, ¡Agrega algo a tu carrito!",
+        icon: "warning",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+
     if (isMobile) {
       navigate("/pago");
     } else {
       setShowModal(true);
     }
   };
-
-  // const handlePagar = () => {
-  //   navigate("/pago");
-
-  // };
 
   const handleDirecc = () => {
     navigate("/carrito");

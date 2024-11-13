@@ -137,10 +137,26 @@ async function getItemPrices(idItem) {
   }
 }
 
+async function deleteItem(idItem) {
+  try {
+    const result = await pool.query(
+      `delete from articulos where id_articulo = ${idItem}`
+    );
+    return {
+      status: true,
+      message: "Articulo eliminado",
+    };
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
 module.exports = {
   getAllItems,
   getOneItem,
   updateItem,
   addNewItem,
   getItemPrices,
+  deleteItem,
 };
