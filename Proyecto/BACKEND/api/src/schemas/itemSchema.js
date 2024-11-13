@@ -30,6 +30,11 @@ const itemTypeDefs = gql`
     Item: Items
   }
 
+  type StatusItemDelete {
+    status: Boolean!
+    message: String
+  }
+
   type Mutation {
     addNewItem(
       name: String!
@@ -44,6 +49,7 @@ const itemTypeDefs = gql`
       price: Float!
       description: String
     ): Items
+    deleteItem(idItem: Int!): StatusItemDelete
   }
 `;
 

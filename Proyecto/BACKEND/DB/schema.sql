@@ -141,7 +141,12 @@ alter table categoria_promociones add constraint categoria_promocionesfkcategori
 
 alter table categoria_promociones add constraint categoria_promocionesfkpromociones foreign key (id_promocion) references promociones (id_promocion);
 
-alter table precios add constraint articulosPrecios foreign key (id_articulo) references articulos(id_articulo);
+ALTER TABLE precios
+ADD CONSTRAINT articulosPrecios
+FOREIGN KEY (id_articulo)
+REFERENCES articulos(id_articulo)
+ON DELETE CASCADE;
+
 
 
 

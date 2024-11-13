@@ -12,6 +12,7 @@ const resolvers = {
   Mutation: {
     ...userResolvers.Mutation,
     ...categoryResolvers.Mutation,
+    ...itemResolvers.Mutation,
   },
   Users: {
     ...userResolvers.Users,
