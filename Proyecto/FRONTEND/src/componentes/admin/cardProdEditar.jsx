@@ -55,8 +55,12 @@ const CardProduct = ({
         </div>
       </div>
       <div className="addToCartContainer">
-        <button className="editarButon">Editar</button>
-        <button className="eliminarButon">Eliminar</button>
+        <button className="editarButon" onClick={onEditProduct}>
+          Editar
+        </button>
+        <button className="eliminarButon" onClick={onDeleteProduct}>
+          Eliminar
+        </button>
       </div>
     </div>
   );

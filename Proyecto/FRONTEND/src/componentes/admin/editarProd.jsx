@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useGraphqlApi from "../../hooks/useGraphqlApi";
+import Swal from "sweetalert2";
 
 const EditarProd = () => {
   const location = useLocation();
@@ -18,8 +19,27 @@ const EditarProd = () => {
     navigate("/agregarProducto", { state: { id: idCategory } });
   };
 
-  const handleDeleteProduct = (idItem) => {
+  const handleDeleteProduct = async (idItem) => {
     console.log("Eliminar producto", idItem);
+    const query = `
+      mutation deleteItem($idItem: Int!) {
+        deleteItem(idItem: $idItem) {
+          message
+          status
+        }
+      }
+    `;
+    const data = await fetchData(query, { idItem: idItem });
+
+    if (data) {
+      if (data.deleteItem.status) {
+        Swal.fire({
+          title: "Producto eliminado correctamente",
+          icon: "success",
+        });
+        getProducts();
+      }
+    }
   };
 
   useEffect(() => {
