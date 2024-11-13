@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { CarritoContext } from "./carritoContext";
 import FinalTicket from "./resumenComponents/finalTicket";
 import CarritoButton from "./Components/CarritoBtn";
+import Swal from "sweetalert2";
 
 const Resumen = () => {
   const navigate = useNavigate();
