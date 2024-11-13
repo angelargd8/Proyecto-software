@@ -18,6 +18,7 @@ const OPCIONES = {
     },
     { label: "Casa", value: "Casa" },
     { label: "Trabajo", value: "Trabajo" },
+    { label: "Agregar ubicación...", value: "NuevaUbicacion" },
   ],
   USUARIOS: [
     {
@@ -29,11 +30,11 @@ const OPCIONES = {
       value: "Enrique Fernando Echeverria Leal",
     },
     { label: "Diego Garcia del Valle", value: "Diego Garcia del Valle" },
+    { label: "Agregar receptor...", value: "NuevoReceptor" },
   ],
   METODOS_PAGO: [
-    { label: "Tarjeta de Crédito/Débito", value: "Tarjeta de Crédito/Débito" },
-    { label: "Efectivo", value: "Efectivo" },
-    { label: "Depósito Bancario", value: "Depósito Bancario" },
+    { label: "Efectivo", value: "efectivo" },
+    { label: "Agregar tarjeta...", value: "NuevaTarjeta" },
   ],
 };
 

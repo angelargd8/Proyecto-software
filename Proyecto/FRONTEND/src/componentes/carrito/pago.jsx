@@ -58,21 +58,21 @@ function Pago() {
     { label: "Universidad del Valle de Guatemala", value: "uvg" },
     { label: "Casa", value: "casa" },
     { label: "Trabajo", value: "trabajo" },
-    { label: "Otro...", value: "otro" },
+    { label: "Agregar ubicación...", value: "NuevaUbicacion" },
   ];
 
   const RECEPTORES = [
     { label: "Kimberly Daniela Morales Ortega", value: "kim" },
     { label: "Enrique Fernando Echeverria Leal", value: "fer" },
     { label: "Diego Garcia del Valle", value: "diego" },
-    { label: "Otro...", value: "otro" },
+    { label: "Agregar receptor...", value: "NuevoReceptor" },
   ];
 
   const METODOS_PAGO = [
-    { label: "Tarjeta de Crédito/Débito", value: "tarjeta" },
+    { label: "Agregar tarjeta...", value: "NuevaTarjeta" },
     { label: "Efectivo", value: "efectivo" },
-    { label: "Depósito Bancario", value: "deposito" },
   ];
+
   return (
     <>
       <div className="contenedor-pago">
