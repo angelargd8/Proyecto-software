@@ -59,9 +59,33 @@ const Products = () => {
       ) : loading ? (
         <EmptyCardProd />
       ) : (
-        <h2 style={{ alignSelf: "center" }}>
-          Actualmente no hay productos para esta categoria
-        </h2>
+        <div
+          style={{
+            width: "100%",
+            marginTop: "20px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              width: 300,
+              height: 300,
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              src="/img/noData2.png"
+              alt="No hay productos"
+              style={{ height: "100%", width: "100%" }}
+            />
+          </div>
+          <h2 style={{ alignSelf: "center" }}>
+            Actualmente no hay productos para esta categoria
+          </h2>
+        </div>
       )}
     </div>
   );

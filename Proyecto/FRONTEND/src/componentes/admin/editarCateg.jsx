@@ -17,6 +17,10 @@ function EditCateg() {
     navigate(`/editarProductos/${title}`, { state: { cardInfo } });
   };
 
+  const editCategory = (title) => {
+    navigate(`/editarCategoria/${title}`);
+  };
+
   // Eliminar categoría
   const eliminarCategoria = async (id) => {
     const query = `
@@ -124,7 +128,7 @@ function EditCateg() {
             </button>
             <button
               className="editar-button-categoria"
-              onClick={() => info(elemento.name)}
+              onClick={() => editCategory(elemento.name)}
             >
               Editar Categoría
             </button>
