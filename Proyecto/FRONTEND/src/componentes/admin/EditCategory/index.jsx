@@ -7,11 +7,54 @@ import StepIndicator from "../../StepIndicator";
 import InputImage from "../../InputImage";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import useGraphqlApi from "../../../hooks/useGraphqlApi";
+import useFetchImage from "../../../hooks/useFetchImage";
 
 function agregarCateg() {
-  const [nameCategoria, setNameCategoria] = useState(null);
+  const location = useLocation();
+  const { cardInfo } = location.state;
+  const { idCategory } = cardInfo;
+  const { fetchData } = useGraphqlApi();
+
+  const [category, setCategory] = useState(null);
+  const [nameCategoria, setNameCategoria] = useState(category?.name);
   const [image, setImage] = useState(null);
   const [previewImage, setPreviwImage] = useState(null);
+
+  const img = useFetchImage(category?.image);
+
+  useEffect(() => {
+    const getCategory = async () => {
+      const query = `query GetOneCategory($idCategory: Int!) {
+                getOneCategory(idCategory: $idCategory) {
+                idCategory
+                image
+                name
+        }
+      }`;
+      const response = await fetchData(query, { idCategory });
+      if (response) {
+        setCategory(response.getOneCategory);
+      }
+    };
+    getCategory();
+  }, []);
+
+  useEffect(() => {
+    if (img) {
+      setPreviwImage(img);
+    }
+  }, [img]);
+
+  useEffect(() => {
+    if (category === null) return;
+    setNameCategoria(category.name);
+  }, [category]);
+
+  //   const [nameCategoria, setNameCategoria] = useState(null);
+  //   const [image, setImage] = useState(null);
+  //   const [previewImage, setPreviwImage] = useState(null);
 
   const navigate = useNavigate();
 
@@ -45,11 +88,8 @@ function agregarCateg() {
     const formData = new FormData();
     formData.append("file", image);
     formData.append("name", nameCategoria);
-    //TODO: arreglar esta parte del idpage (BACKEND)
-    formData.append("idpage", 1);
+    formData.append("idCategory", idCategory);
     const url = import.meta.env.VITE_APIPORT_CATEGORY;
-    // tests:
-    // var url = process.env.VITE_APIPORT_CATEGORY;
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -141,7 +181,7 @@ function agregarCateg() {
         }}
         onClick={handleSubmit}
       >
-        Agregar categoria
+        Editar la categoria
       </div>
     </div>
   );

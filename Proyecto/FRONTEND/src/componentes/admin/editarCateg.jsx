@@ -17,8 +17,8 @@ function EditCateg() {
     navigate(`/editarProductos/${title}`, { state: { cardInfo } });
   };
 
-  const editCategory = (title) => {
-    navigate(`/editarCategoria/${title}`);
+  const editCategory = (title, cardInfo) => {
+    navigate(`/editarCategoria/${title}`, { state: { cardInfo } });
   };
 
   // Eliminar categoría
@@ -115,10 +115,10 @@ function EditCateg() {
           >
             <CardCategoria title={elemento.name} imagen={elemento.image} />
             <button
-              className="editar-button"
-              onClick={() => info(elemento.name, elemento)}
+              className="editar-button-categoria"
+              onClick={() => editCategory(elemento.name, elemento)}
             >
-              Editar productos
+              Editar Categoría
             </button>
             <button
               className="eliminar-button"
@@ -127,10 +127,10 @@ function EditCateg() {
               Eliminar Categoría
             </button>
             <button
-              className="editar-button-categoria"
-              onClick={() => editCategory(elemento.name)}
+              className="editar-button"
+              onClick={() => info(elemento.name, elemento)}
             >
-              Editar Categoría
+              Editar productos
             </button>
           </div>
         ))}

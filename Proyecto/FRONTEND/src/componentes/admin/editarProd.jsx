@@ -11,7 +11,7 @@ const EditarProd = () => {
   const location = useLocation();
   const { cardInfo } = location.state;
   const { idCategory } = cardInfo;
-  const { fetchData, loading } = useGraphqlApi();
+  const { fetchData } = useGraphqlApi();
 
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
