@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CarritoBtn from "../Components/CarritoBtn";
+import { motion } from "framer-motion";
 
 const AgregarTarjeta = ({ onClose }) => {
   const [guardarTarjeta, setGuardarTarjeta] = useState(false);
@@ -10,13 +11,22 @@ const AgregarTarjeta = ({ onClose }) => {
 
   const isMobile = window.innerWidth < 768;
 
+  const animationVariants = {
+    hidden: { scale: 0.5, opacity: 0 },
+    visible: { scale: 1, opacity: 1 },
+  };
+
   return (
-    <div
+    <motion.div
       style={{
         ...styles.contenedorGeneral,
         width: isMobile ? "95%" : "40%",
         height: isMobile ? "50%" : "60%",
       }}
+      initial="hidden"
+      animate="visible"
+      variants={animationVariants}
+      transition={{ type: "spring", stiffness: 150 }}
     >
       <div style={styles.closeButton} onClick={onClose}>
         ×
@@ -84,7 +94,7 @@ const AgregarTarjeta = ({ onClose }) => {
           <CarritoBtn text={"Agregar"} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
