@@ -44,27 +44,6 @@ const FinalTicket = () => {
 
   const navigate = useNavigate();
 
-  const handleTicketButton = () => {
-    Swal.fire({
-      title: "¡Éxito!",
-      text: "¡Se ha agregado tu pedido!",
-      icon: "success",
-      confirmButtonText: "Aceptar",
-    }).then(() => {
-      agregarTicket();
-      limpiarTicket();
-      limpiarCarrito();
-      navigate("/home");
-
-      let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
-      carrito.forEach((producto) => {
-        mensaje += `${producto.quantity} -- ${producto.title}\n`;
-      });
-      var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, "_blank");
-    });
-  };
-
   const animationVariants = {
     hidden: { scale: 0.5, opacity: 0 },
     visible: { scale: 1, opacity: 1 },
@@ -131,11 +110,6 @@ const FinalTicket = () => {
           <span style={styles.value}>{total}</span>
         </div>
       </motion.div>
-      <CarritoBtn
-        styles={{ height: "10%", width: "28%" }}
-        text={"Aceptar"}
-        onClick={handleTicketButton}
-      />
     </>
   );
 };

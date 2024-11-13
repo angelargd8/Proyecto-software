@@ -8,13 +8,23 @@ function CarritoSteps({ setShowModal }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const { ubicacion, receptor, pagoType } = useCarrito();
+  const { ubicacion, receptor, pagoType, carrito } = useCarrito();
 
   const handleDirecc = () => {
     navigate("/carrito");
   };
 
   const handlePago = () => {
+    if (carrito.length === 0) {
+      Swal.fire({
+        title: "Alerta",
+        text: "El carrito está vacío, ¡Agrega algo a tu carrito!",
+        icon: "warning",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+
     if (isMobile) {
       navigate("/pago");
     } else {
