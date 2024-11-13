@@ -1,13 +1,14 @@
 import "./pago.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Carrusel from "./PagoComponents/carrusel";
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
 import CarritoSteps from "./Components/CarritoSteps";
 import DropDown from "./PagoComponents/dropDown";
 import Swal from "sweetalert2";
 import { Navigate, useNavigate } from "react-router-dom";
+import { CarritoContext } from "./carritoContext";
 
 function Pago() {
   const [ubicacion, setUbicacion] = useState("");
@@ -15,6 +16,31 @@ function Pago() {
   const [pagoType, setPagoType] = useState("");
 
   const navigate = useNavigate();
+  const { carrito } = useContext(CarritoContext);
+
+  useEffect(() => {
+    if (carrito.length === 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "¡El carrito está vacío, ¡Agrega algo a tu carrito!",
+        showConfirmButton: true,
+      }).then(() => {
+        navigate("/carrito");
+      });
+    }
+  }, [carrito, navigate]);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (!isMobile) {
+      Swal.fire({
+        icon: "info",
+        title: "Lo siento :(",
+        text: "Esta página no está disponible en versión desktop",
+        confirmButtonText: "Aceptar",
+      });
+    }
+  }, []);
 
   const handleNext = () => {
     if (ubicacion === "" || receptor === "" || pagoType === "") {

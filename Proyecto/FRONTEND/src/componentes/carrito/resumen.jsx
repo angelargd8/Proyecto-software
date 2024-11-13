@@ -20,7 +20,31 @@ const Resumen = () => {
     agregarTicket,
     limpiarTicket,
     limpiarCarrito,
+    carrito,
   } = useContext(CarritoContext);
+
+  React.useEffect(() => {
+    if (carrito.length === 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "¡Espera!",
+        text: "¡El carrito está vacío, ¡Agrega algo a tu carrito!",
+        showConfirmButton: true,
+      }).then(() => {
+        navigate("/carrito");
+      });
+    }
+    if (ubicacion === "" || receptor === "" || pagoType === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "¡Espera!",
+        text: "¡Necesitas llenar todos los datos de pago antes de continuar!",
+        showConfirmButton: true,
+      }).then(() => {
+        navigate("/carrito");
+      });
+    }
+  }, [carrito, navigate]);
 
   const handlePago = () => {
     navigate("/pago");
