@@ -71,7 +71,11 @@ const Resumen = () => {
           <FinalTicket />
           <CarritoButton
             onClick={handleTicketButton}
-            styles={{ height: "10%", width: "80%", marginTop: 20 }}
+            styles={{
+              height: "10%",
+              width: isMobile ? "80%" : "28%",
+              marginTop: 20,
+            }}
             text={"Aceptar"}
           />
         </div>
