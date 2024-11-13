@@ -19,10 +19,15 @@ const getItemPrices = async (idItem) => {
   return itemModel.getItemPrices(idItem);
 };
 
+const deleteItem = async (idItem) => {
+  return itemModel.deleteItem(idItem);
+};
+
 module.exports = {
   getAllItems,
   getOneItem,
   updateItem,
   addNewProduct,
   getItemPrices,
+  deleteItem,
 };

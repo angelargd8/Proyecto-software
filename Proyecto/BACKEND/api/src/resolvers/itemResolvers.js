@@ -39,6 +39,11 @@ const itemResolver = {
       const response = await itemController.updateItem(newItem);
       return response;
     },
+    deleteItem: async (root, args) => {
+      const { idItem } = args;
+      const response = await itemController.deleteItem(idItem);
+      return response;
+    },
   },
   Items: {
     prices: async (root) => {
