@@ -10,6 +10,7 @@ const EditarProd = () => {
   const location = useLocation();
   const { cardInfo } = location.state;
   const { idCategory } = cardInfo;
+  const { fetchData, loading } = useGraphqlApi();
 
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
@@ -39,7 +40,8 @@ const EditarProd = () => {
                 }
             }
         `;
-      const { data } = useGraphqlApi(query, { idCategory: idCategory });
+
+      const data = await fetchData(query, { idCategory: idCategory });
 
       if (data) {
         setProducts(data.getItemsByCategory);

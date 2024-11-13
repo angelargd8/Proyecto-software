@@ -34,7 +34,6 @@ const CardProduct = ({
           return;
         }
       }
-      // eslint-disable-next-line no-fallthrough
       default:
         return;
     }
