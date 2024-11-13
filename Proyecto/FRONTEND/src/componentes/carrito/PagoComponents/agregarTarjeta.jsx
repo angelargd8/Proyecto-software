@@ -1,15 +1,36 @@
 import React, { useState } from "react";
 import CarritoBtn from "../Components/CarritoBtn";
+import { motion } from "framer-motion";
 
-const AgregarTarjeta = () => {
+const AgregarTarjeta = ({ onClose }) => {
   const [guardarTarjeta, setGuardarTarjeta] = useState(false);
 
   const handleCheckboxChange = () => {
     setGuardarTarjeta(!guardarTarjeta);
   };
 
+  const isMobile = window.innerWidth < 768;
+
+  const animationVariants = {
+    hidden: { scale: 0.5, opacity: 0 },
+    visible: { scale: 1, opacity: 1 },
+  };
+
   return (
-    <div style={styles.contenedorGeneral}>
+    <motion.div
+      style={{
+        ...styles.contenedorGeneral,
+        width: isMobile ? "95%" : "40%",
+        height: isMobile ? "50%" : "60%",
+      }}
+      initial="hidden"
+      animate="visible"
+      variants={animationVariants}
+      transition={{ type: "spring", stiffness: 150 }}
+    >
+      <div style={styles.closeButton} onClick={onClose}>
+        ×
+      </div>
       <div style={styles.header}>Agregar Tarjeta</div>
       <div style={styles.content}>
         <div style={styles.form}>
@@ -73,7 +94,7 @@ const AgregarTarjeta = () => {
           <CarritoBtn text={"Agregar"} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -164,6 +185,20 @@ const styles = {
     "::placeholder": {
       color: "white",
     },
+  },
+  closeButton: {
+    position: "absolute",
+    top: 0,
+    right: 5,
+    color: "white",
+    fontSize: "24px",
+    height: "30px",
+    width: "30px",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1001,
   },
 };
 

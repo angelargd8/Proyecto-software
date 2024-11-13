@@ -9,11 +9,14 @@ import DropDown from "./PagoComponents/dropDown";
 import Swal from "sweetalert2";
 import { Navigate, useNavigate } from "react-router-dom";
 import { CarritoContext } from "./carritoContext";
+import AgregarTarjeta from "./PagoComponents/agregarTarjeta";
+import Modal from "react-modal";
 
 function Pago() {
   const [ubicacion, setUbicacion] = useState("");
   const [receptor, setReceptor] = useState("");
   const [pagoType, setPagoType] = useState("");
+  const [mostrarModal, setMostrarModal] = useState(false);
 
   const navigate = useNavigate();
   const { carrito } = useContext(CarritoContext);
@@ -73,6 +76,13 @@ function Pago() {
     { label: "Efectivo", value: "efectivo" },
   ];
 
+  const handleSelectPagoType = (value) => {
+    setPagoType(value);
+    if (value === "NuevaTarjeta") {
+      setMostrarModal(true);
+    }
+  };
+
   return (
     <>
       <div className="contenedor-pago">
@@ -121,7 +131,7 @@ function Pago() {
                 <DropDown
                   title="Metodo de Pago"
                   options={METODOS_PAGO}
-                  onSelect={setPagoType}
+                  onSelect={handleSelectPagoType}
                   innerContainerStyles={{ padding: 5, border: "none" }}
                   outerContainerStyles={{ marginLeft: 10 }}
                 />
@@ -148,6 +158,25 @@ function Pago() {
           </div>
         </div>
       </div>
+
+      <Modal
+        isOpen={mostrarModal}
+        onRequestClose={() => setMostrarModal(false)}
+        style={{
+          content: {
+            display: "flex",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "transparent",
+          },
+        }}
+      >
+        <AgregarTarjeta onClose={() => setMostrarModal(false)} />
+      </Modal>
     </>
   );
 }

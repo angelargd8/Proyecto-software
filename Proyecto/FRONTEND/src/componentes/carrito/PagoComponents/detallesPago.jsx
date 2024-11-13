@@ -1,7 +1,7 @@
 import CarritoBtn from "../Components/CarritoBtn";
 import DropDown from "./dropDown";
 import Carrusel from "./carrusel";
-import React from "react";
+import React, { useState } from "react";
 import iconoUbicacion from "../../../assets/img/FotoUbi.png";
 import iconoUsuario from "../../../assets/img/FotoReceptor.png";
 import iconoPago from "../../../assets/img/FotoEfectivo.png";
@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { CarritoContext } from "../carritoContext";
+import Modal from "react-modal";
+import AgregarTarjeta from "./agregarTarjeta";
 
 const OPCIONES = {
   UBICACIONES: [
@@ -95,6 +97,8 @@ function DetallesPago({ setShowModal }) {
     setPagoType,
   } = useContext(CarritoContext);
 
+  const [mostrarModal, setMostrarModal] = useState(false);
+
   const navigate = useNavigate();
   const handleClick = () => {
     if (setShowModal) {
@@ -108,6 +112,13 @@ function DetallesPago({ setShowModal }) {
         setShowModal(false);
         navigate("/resumen");
       }
+    }
+  };
+
+  const handleSelectPagoType = (value) => {
+    setPagoType(value);
+    if (value === "NuevaTarjeta") {
+      setMostrarModal(true);
     }
   };
 
@@ -140,7 +151,7 @@ function DetallesPago({ setShowModal }) {
             <DropDown
               title="Seleccionar método de pago"
               options={OPCIONES.METODOS_PAGO}
-              onSelect={setPagoType}
+              onSelect={handleSelectPagoType}
               selectedValue={pagoType}
             />
           </Seccion>
@@ -158,6 +169,25 @@ function DetallesPago({ setShowModal }) {
           </div>
         </div>
       </div>
+
+      <Modal
+        isOpen={mostrarModal}
+        style={{
+          content: {
+            display: "flex",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "transparent",
+          },
+        }}
+        onRequestClose={() => setMostrarModal(false)}
+      >
+        <AgregarTarjeta onClose={() => setMostrarModal(false)} />
+      </Modal>
     </>
   );
 }
