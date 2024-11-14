@@ -6,7 +6,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { useNavigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import MobileNav from "./components/MobileNav";
-import { SwapHorizontalOutline, ClipboardOutline } from "react-ionicons";
+import { SwapHorizontalOutline, ClipboardOutline , PersonAddOutline, Add} from "react-ionicons";
 
 
 const navbarPages = [
@@ -212,7 +212,8 @@ const NavBar2 = () => {
                     </div>
                   ) : (
                     // Vista de Admin: Registros de Ventas
-                    <div
+                    <div className="containerRowNav">
+                      <div
                       onClick={() => {
                         handleNavigatePage("/registroVentas");
                       }}
@@ -225,6 +226,26 @@ const NavBar2 = () => {
                       />
                       <div>Registros de Ventas</div>
                     </div>
+
+                    <div
+                    onClick={() => {
+                      handleNavigatePage("/signup");
+                    }}
+                    className="carrito-navbar-container">
+                      
+                      <PersonAddOutline
+                        color={"#ffffff"}
+                        height="30px"
+                        width="30px"
+                      />
+
+                      <div>Registro de Usuarios</div>
+                    </div>
+
+                    </div>
+                    
+
+
                   )}
 
 
