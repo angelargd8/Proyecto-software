@@ -117,6 +117,13 @@
   justify-content: center;
   cursor: pointer;
 }
+.containerRowNav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
 
 .carrito-navbar-container:hover {
   opacity: 0.5;
