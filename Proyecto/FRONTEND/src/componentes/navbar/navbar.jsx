@@ -214,7 +214,7 @@ const NavBar2 = () => {
                     // Vista de Admin: Registros de Ventas
                     <div
                       onClick={() => {
-                        handleNavigatePage("/registros");
+                        handleNavigatePage("/registroVentas");
                       }}
                       className="carrito-navbar-container"
                     >
