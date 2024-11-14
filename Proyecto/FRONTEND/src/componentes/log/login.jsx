@@ -12,12 +12,14 @@ import foto7 from "../../assets/img/Flores/FLOR PEQUEÑA.jpg";
 import foto8 from "../../assets/img/Colorante/AÑELINA.jpg";
 import foto9 from "../../assets/img/Colorante/COLORANTE VEGETAL.jpg";
 import foto10 from "../../assets/img/Brillantina-surtida.jpg";
-import React from "react";
+import React, { useEffect } from "react";
 import Swal from "sweetalert2";
 import { useLogin } from "../../hooks/useLogin";
 
 function Login() {
   const { email, setEmail, password, setPassword, handleHome, handleLoginGoogle, handleLogin } = useLogin();
+
+  const navigate = useNavigate();
 
   const responseGoogle = (response) => {
     if (response && response.credential) {
@@ -75,14 +77,36 @@ function Login() {
     foto10,
   ];
 
+  // Función para manejar la tecla Enter
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Previene el envío del formulario
+      handleLogin(); // Llama a la función de inicio de sesión al presionar Enter
+    }
+  };
+
+  useEffect(() => {
+    // Asocia el evento 'keydown' a los inputs
+    const inputFields = document.querySelectorAll(".inputs");
+    inputFields.forEach(input => {
+      input.addEventListener("keydown", handleKeyPress);
+    });
+
+    return () => {
+      // Elimina el evento cuando el componente se desmonte
+      inputFields.forEach(input => {
+        input.removeEventListener("keydown", handleKeyPress);
+      });
+    };
+  }, []);
+
   return (
     <>
       <GoogleAuthProvider>
         <div className="login body">
           <div className="goBack">
             <button className="goBack-btn" onClick={handleHome}>
-              {" "}
-              &lt;{" "}
+              {" < "}
             </button>
           </div>
           <div className="contenedor">

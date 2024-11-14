@@ -143,6 +143,8 @@ const NavBar2 = () => {
   };
 
   const isMobile = useIsMobile();
+  const homeLink = userRol === "Admin" ? "/editarCategorias" : "/home";
+
   return (
     <div style={{ width: "100%" }}>
       {hideNavBarOnPaths.includes(location.pathname) ? null : (
@@ -171,7 +173,7 @@ const NavBar2 = () => {
                   <div
                     className="navbar-text"
                     onClick={() => {
-                      handleNavigatePage(page.link);
+                      handleNavigatePage(page.name === "Inicio" ? homeLink : page.link);
                     }}
                   >
                     {page.name}
