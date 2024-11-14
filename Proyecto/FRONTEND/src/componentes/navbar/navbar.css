@@ -92,7 +92,7 @@
 .toggle-admin-view-button {
   width: 100px;
   height: 50px;
-  background-color: green;
+  /* background-color: green; */
   color: white;
   display: flex;
   flex-direction: column;
@@ -102,10 +102,10 @@
   transition: background-color 0.3s, transform 0.3s;
 }
 
-.toggle-admin-view-button:hover {
+/* .toggle-admin-view-button:hover {
   background-color: darkgreen;
   transform: scale(1.05);
-}
+} */
 
 /* CARRITO NAVBAR CONTAINER */
 .carrito-navbar-container {

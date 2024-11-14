@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import React, { useEffect } from "react";
 import useIsMobile from "../../hooks/useDevice";
 import "./navbar.css";
@@ -7,6 +6,8 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { useNavigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import MobileNav from "./components/MobileNav";
+import { SwapHorizontalOutline, ClipboardOutline } from "react-ionicons";
+
 
 const navbarPages = [
   { name: "Inicio", link: "/home" },
@@ -190,25 +191,45 @@ const NavBar2 = () => {
                         }}
                       />
                       <img src="/img/buscar.png" alt="Buscar" />
-                    </div>
+                    </div> 
                   </form>
-                  <div
-                    onClick={() => {
-                      handleNavigatePage("/carrito");
-                    }}
-                    className="carrito-navbar-container"
-                  >
-                    <img
-                      src="/img/carrito.png"
-                      id="carrito-img"
-                      href="/carrito"
-                    />
-                    <div>Carrito</div>
-                  </div>
+
+
+                  {location.pathname === "/home" ? (
+                    // Vista de Cliente: Carrito
+                    <div
+                      onClick={() => {
+                        handleNavigatePage("/carrito");
+                      }}
+                      className="carrito-navbar-container"
+                    >
+                      <img
+                        src="/img/carrito.png"
+                        id="carrito-img"
+                        href="/carrito"
+                      />
+                      <div>Carrito</div>
+                    </div>
+                  ) : (
+                    // Vista de Admin: Registros de Ventas
+                    <div
+                      onClick={() => {
+                        handleNavigatePage("/registros");
+                      }}
+                      className="carrito-navbar-container"
+                    >
+                      <ClipboardOutline
+                        color={"#ffffff"}
+                        height="30px"
+                        width="30px"
+                      />
+                      <div>Registros de Ventas</div>
+                    </div>
+                  )}
+
 
                   {userRol === "Admin" &&
-                    (location.pathname === "/home" ||
-                      location.pathname === "/editarCategorias") && (
+                    (location.pathname === "/home" || location.pathname === "/editarCategorias") && (
                       <div
                         className="toggle-admin-view-button"
                         onClick={() => {
@@ -218,10 +239,21 @@ const NavBar2 = () => {
                             navigate("/home");
                           }
                         }}
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          cursor: "pointer",
+                        }}
                       >
-                        {location.pathname === "/home" && "Ir a Vista de Admin"}
-                        {location.pathname === "/editarCategorias" &&
-                          "Ir a Vista de Usuario"}
+                        <SwapHorizontalOutline
+                          color={"#fffff"}
+                          height="30px"
+                          width="30px"
+                        />
+                        <p style={{ margin: "5px 0", fontSize: "12px", fontWeight: "bold" }}>
+                          {location.pathname === "/home" ? "Ir a Vista Admin" : "Ir a Vista Usuario"}
+                        </p>
                       </div>
                     )}
 
