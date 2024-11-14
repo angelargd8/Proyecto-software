@@ -16,6 +16,31 @@ const AgregarTarjeta = ({ onClose }) => {
     visible: { scale: 1, opacity: 1 },
   };
 
+  const formatCardNumber = (value) => {
+    return value
+      .replace(/\D/g, "")
+      .replace(/(.{4})/g, "$1-")
+      .replace(/-$/, "");
+  };
+
+  const handleCardNumberChange = (e) => {
+    const formattedValue = formatCardNumber(e.target.value);
+    e.target.value = formattedValue;
+  };
+
+  const formatExpirationDate = (value) => {
+    const cleanedValue = value.replace(/\D/g, "");
+    if (cleanedValue.length >= 3) {
+      return cleanedValue.slice(0, 2) + "/" + cleanedValue.slice(2, 4);
+    }
+    return cleanedValue;
+  };
+
+  const handleExpirationDateChange = (e) => {
+    const formattedValue = formatExpirationDate(e.target.value);
+    e.target.value = formattedValue;
+  };
+
   return (
     <motion.div
       style={{
@@ -42,6 +67,8 @@ const AgregarTarjeta = ({ onClose }) => {
                 name="numeroTarjeta"
                 required
                 style={styles.input}
+                onChange={handleCardNumberChange}
+                maxLength={19}
               />
             </div>
           </div>
@@ -54,13 +81,21 @@ const AgregarTarjeta = ({ onClose }) => {
                 placeholder="MM/AA"
                 required
                 style={{ ...styles.input, ...styles.placeholder }}
+                onChange={handleExpirationDateChange}
+                maxLength={5}
               />
             </div>
           </div>
           <div style={styles.row}>
             <label style={styles.label}>CVC:</label>
             <div style={styles.inputContainer}>
-              <input type="text" name="cvc" required style={styles.input} />
+              <input
+                type="text"
+                name="cvc"
+                required
+                style={styles.input}
+                maxLength={3}
+              />
             </div>
           </div>
           <div style={styles.row}>
