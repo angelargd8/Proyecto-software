@@ -163,6 +163,7 @@ export const CarritoProvider = ({ children }) => {
     } else {
       setTarjetaTemporal(tarjeta);
     }
+    console.log("Tarjeta guardada con token:", tarjeta);
   };
 
   const limpiarTarjetaTemporal = () => {

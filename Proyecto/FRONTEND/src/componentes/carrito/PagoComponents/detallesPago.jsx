@@ -97,6 +97,7 @@ function DetallesPago({ setShowModal }) {
     setPagoType,
     tarjetasGuardadas,
     limpiarTarjetasGuardadas,
+    tarjetaTemporal,
   } = useContext(CarritoContext);
 
   const [mostrarModal, setMostrarModal] = useState(false);
@@ -121,13 +122,17 @@ function DetallesPago({ setShowModal }) {
 
   const opcionesMetodosPago = [
     ...tarjetasGuardadas.map((tarjeta) => {
-      console.warn("tarjeta", tarjeta.numeroTarjeta);
-      const numeroTarjeta = tarjeta.numeroTarjeta || "";
       return {
-        label: `**** **** **** ${numeroTarjeta.slice(-4)}`,
-        value: `**** **** **** ${numeroTarjeta.slice(-4)}`,
+        label: `**** **** **** ${tarjeta.last4} (${tarjeta.brand})`,
+        value: tarjeta.token,
       };
     }),
+
+    ...(tarjetaTemporal ? [{
+      label: `**** **** **** ${tarjetaTemporal.last4} (${tarjetaTemporal.brand})`,
+      value: tarjetaTemporal.token,
+    }] : []),
+    
     ...OPCIONES.METODOS_PAGO,
   ];
 
@@ -143,7 +148,7 @@ function DetallesPago({ setShowModal }) {
       <style>{bounceAnimation}</style>
       <div style={styles.contenedorGeneral}>
         <div style={styles.closeButton} onClick={() => setShowModal(false)}>
-          ×
+          X
         </div>
         <div style={styles.header}>Detalles de Pago</div>
         <div style={styles.content}>
@@ -202,7 +207,10 @@ function DetallesPago({ setShowModal }) {
         }}
         onRequestClose={() => setMostrarModal(false)}
       >
-        <AgregarTarjeta onClose={() => setMostrarModal(false)} />
+        <AgregarTarjeta 
+          onClose={() => setMostrarModal(false)} 
+          setPagoType={setPagoType} 
+        />
       </Modal>
     </>
   );

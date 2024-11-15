@@ -10,8 +10,7 @@ import DetallesPago from "./PagoComponents/detallesPago";
 import Swal from "sweetalert2";
 
 function Carrito() {
-  const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito } =
-    useCarrito();
+  const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito, limpiarTarjetasGuardadas } = useCarrito();
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -137,6 +136,19 @@ function Carrito() {
                 onClick={handlePagar}
                 styles={{ backgroundColor: "#1f3350" }}
               />
+              {/* Botón para borrar todas las tarjetas, descomentar cuanto se llene */}
+              {/* <CarritoBtn
+                text={"Borrar todas las tarjetas"}
+                onClick={() => {
+                  limpiarTarjetasGuardadas();
+                  Swal.fire({
+                    icon: "success",
+                    title: "Todas las tarjetas han sido eliminadas.",
+                    showConfirmButton: true,
+                  });
+                }}
+                styles={{ backgroundColor: "#d9534f", marginTop: "10px" }}
+              /> */}
             </div>
           </div>
         </div>
