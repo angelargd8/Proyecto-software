@@ -1,3 +1,4 @@
+import React from 'react';
 import "./floatingButton.css";
 import { useLocation } from "react-router-dom";
 
