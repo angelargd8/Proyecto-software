@@ -9,9 +9,7 @@ function LeftNav({setView}){
             <div className="content">
                 <ul className="containerList">
                     <li onClick = {() => setView('account')}>Tu cuenta</li>
-                    <li onClick = {() => setView('privacy')}>Privacidad y seguridad</li>
                     <li onClick = {() => setView('help')}>Ayuda</li>
-                    {/* <li onClick = {() => setView('settings')}>Configuración</li> */}
                     
                 </ul>
             </div>
