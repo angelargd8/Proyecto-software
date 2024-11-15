@@ -2,6 +2,7 @@
 import React, { useState }  from 'react';
 import '../Account/account.css';
 import AgregarCategoriaHelp from './agregarCategoriaHelp';
+import AgregarUsuarioHelp from './agregarUsuarioHelp';
 
 function Help() {
 
@@ -12,8 +13,8 @@ function Help() {
         console.log(activeForm);
     }
 
-    const handleChangePasswordForm = () => {
-        setActiveForm(activeForm === 'changePassword' ? null : 'changePassword');
+    const handleAgregarUsuarioHelp = () => {
+        setActiveForm(activeForm === 'AgregarUsuarioHelp' ? null : 'AgregarUsuarioHelp');
     }
 
     return (
@@ -39,18 +40,18 @@ function Help() {
 
                 {/* si el active form no es info solo va a mostrar lo de cambiar contraseña*/
                 activeForm !== 'AgregarCategoriaHelp' && (
-                    <button onClick={handleChangePasswordForm}
-                    className={`button ${activeForm === 'changePassword' ? 'button-regresar' : ''}`}
+                    <button onClick={handleAgregarUsuarioHelp}
+                    className={`button ${activeForm === 'AgregarUsuarioHelp' ? 'button-regresar' : ''}`}
                     >
                         <span className="texto-principal">
-                            {activeForm === 'changePassword' ? 'Regresar' : 'Registro de ventas'}
+                            {activeForm === 'AgregarUsuarioHelp' ? 'Regresar' : 'Registrar un nuevo usuario'}
                         </span>
                         <span className="descripcion">
-                            {activeForm !== 'changePassword' && 'explicacion de registro de ventas'}
+                            {activeForm !== 'AgregarUsuarioHelp' && 'Proceso de registro de un nuevo usuario y explicación de roles'}
                         </span>
                     </button>
                 )}
-                {activeForm === 'changePassword' && <ChangePasswordForm />}
+                {activeForm === 'AgregarUsuarioHelp' && <AgregarUsuarioHelp />}
         </div>
     )
 }
