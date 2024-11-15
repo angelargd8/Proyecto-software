@@ -42,6 +42,11 @@ const EditarProd = () => {
     }
   };
 
+
+  const handleEditProduct = (title, infoProd) => {
+    navigate(`/editarProductosIndividual/${title}`, { state: { infoProd } });
+  };
+
   useEffect(() => {
     const getProducts = async () => {
       const query = `
@@ -78,7 +83,7 @@ const EditarProd = () => {
       <button className="agregarProductoButton" onClick={handleAddProduct}>
         Agregar Producto
       </button>
-      {detail == "Brillantina" && (
+      { (
         <>
           {products.map((product, index) => {
             return (
@@ -89,7 +94,7 @@ const EditarProd = () => {
                 description={product.description}
                 image={product.image}
                 precios={product.prices}
-                onEditProduct={() => {}}
+                onEditProduct={() => handleEditProduct(product.name, product)}
                 onDeleteProduct={() => handleDeleteProduct(product.idItems)}
               />
             );
