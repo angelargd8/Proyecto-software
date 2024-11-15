@@ -3,7 +3,6 @@ import "./configuracion.css";
 import React, {useState} from 'react'
 import LeftNav from './leftNav';
 import Account from "./Account/account.jsx";
-import Privacy from "./privacy/privacy.jsx";
 import Help from "./help/help.jsx";
 
 
@@ -14,8 +13,6 @@ function Configuracion() {
         switch (view) {
             case 'account':
                 return <Account />;
-            case 'privacy':
-                return <Privacy />;
             case 'help':
                 return <Help />;
             default:
