@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, getByRole } from '@testing-library/react';
-import Carrusel from '../componentes/carrito/carrusel';
+import Carrusel from '../componentes/carrito/PagoComponents/carrusel';
 
 test('renders the Carrusel component and checks existance', () => {
   const { getByText } = render(<Carrusel />);
