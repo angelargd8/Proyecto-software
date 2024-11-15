@@ -13,7 +13,7 @@ function AgregarUsuarioHelp () {
                         <li>2. Dirigase a la parte superior entre carrito e usuario y presione el boton que dice "ir vista admin " </li>
                         <li>3. A la par del texto que dice: registro de ventas, se encuentra el botón de " Registro de usuarios " presione el boton para agregar ir a la pantalla de registro</li>
                         <li>4. Llene los datos del usuario a registrar</li>
-                        <li>5. Presione el boton para agregar el usuario </li>
+                        <li>5. Presione el botón para agregar el usuario </li>
                     </div>
                     <div className="helpInfo">
                         <h3> Roles de usuarios: </h3><hr></hr>
