@@ -96,7 +96,6 @@ function DetallesPago({ setShowModal }) {
     pagoType,
     setPagoType,
     tarjetasGuardadas,
-    limpiarTarjetasGuardadas,
     tarjetaTemporal,
   } = useContext(CarritoContext);
 
@@ -132,7 +131,7 @@ function DetallesPago({ setShowModal }) {
       label: `**** **** **** ${tarjetaTemporal.last4} (${tarjetaTemporal.brand})`,
       value: tarjetaTemporal.token,
     }] : []),
-    
+
     ...OPCIONES.METODOS_PAGO,
   ];
 

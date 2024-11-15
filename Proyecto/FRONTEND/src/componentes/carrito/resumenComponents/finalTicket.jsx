@@ -29,10 +29,9 @@ const FinalTicket = () => {
     ubicacion,
     receptor,
     pagoType,
-    agregarTicket,
     obtenerUltimoTicketId,
-    limpiarCarrito,
-    limpiarTicket,
+    tarjetasGuardadas,
+    tarjetaTemporal,
   } = useContext(CarritoContext);
   const { carrito } = useCarrito();
 
@@ -121,7 +120,29 @@ const FinalTicket = () => {
         <div style={styles.infoRow}>
           <span style={styles.label}>Tipo de Pago:</span>
           <span style={styles.value}>
-            {pagoType ? pagoType : "No seleccionado"}
+            {(() => {
+              // console.log("pagoType:", pagoType);
+              // console.log("tarjetasGuardadas:", tarjetasGuardadas);
+              if (pagoType === "efectivo") {
+                // console.log("Pago es efectivo");
+                return "Efectivo";
+                  } else {
+                    // console.log("Verificando tarjeta temporal...");
+                    const tarjeta = tarjetaTemporal
+                      ? tarjetaTemporal
+                      : tarjetasGuardadas.find((tarjeta) => tarjeta.token === pagoType);
+
+                    // console.log("tarjeta encontrada:", tarjeta);
+
+                    if (tarjeta) {
+                      // console.log("Tarjeta encontrada:", tarjeta);
+                      return `**** **** **** ${tarjeta.last4} (${tarjeta.brand})`;
+                    } else {
+                      // console.log("No se encontró tarjeta. Mostrando 'No seleccionado'");
+                      return "No seleccionado";
+                    }
+                  }
+            })()}
           </span>
         </div>
         <div style={{ ...styles.infoRow, borderTop: "2px solid black" }}>
