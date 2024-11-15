@@ -95,9 +95,13 @@ function DetallesPago({ setShowModal }) {
     setReceptor,
     pagoType,
     setPagoType,
+    tarjetasGuardadas,
+    limpiarTarjetasGuardadas,
   } = useContext(CarritoContext);
 
   const [mostrarModal, setMostrarModal] = useState(false);
+
+  console.warn("tarjetasGuardadas", tarjetasGuardadas);
 
   const navigate = useNavigate();
   const handleClick = () => {
@@ -114,6 +118,18 @@ function DetallesPago({ setShowModal }) {
       }
     }
   };
+
+  const opcionesMetodosPago = [
+    ...tarjetasGuardadas.map((tarjeta) => {
+      console.warn("tarjeta", tarjeta.numeroTarjeta);
+      const numeroTarjeta = tarjeta.numeroTarjeta || "";
+      return {
+        label: `**** **** **** ${numeroTarjeta.slice(-4)}`,
+        value: `**** **** **** ${numeroTarjeta.slice(-4)}`,
+      };
+    }),
+    ...OPCIONES.METODOS_PAGO,
+  ];
 
   const handleSelectPagoType = (value) => {
     setPagoType(value);
@@ -150,7 +166,7 @@ function DetallesPago({ setShowModal }) {
           <Seccion titulo="Métodos de Pago" styles={styles}>
             <DropDown
               title="Seleccionar método de pago"
-              options={OPCIONES.METODOS_PAGO}
+              options={opcionesMetodosPago}
               onSelect={handleSelectPagoType}
               selectedValue={pagoType}
             />

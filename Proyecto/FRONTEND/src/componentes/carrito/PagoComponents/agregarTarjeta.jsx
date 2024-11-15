@@ -1,9 +1,44 @@
 import React, { useState } from "react";
 import CarritoBtn from "../Components/CarritoBtn";
 import { motion } from "framer-motion";
+import { useCarrito } from "../carritoContext";
 
 const AgregarTarjeta = ({ onClose }) => {
   const [guardarTarjeta, setGuardarTarjeta] = useState(false);
+  const [tarjeta, setTarjeta] = useState({
+    numeroTarjeta: "",
+    fechaExpiracion: "",
+    cvc: "",
+    nombreTarjeta: "",
+  });
+
+  const { agregarTarjeta } = useCarrito();
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setTarjeta((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleAgregarTarjeta = () => {
+    const tarjetaFormateada = {
+      numeroTarjeta: formatCardNumber(tarjeta.numeroTarjeta),
+      fechaExpiracion: formatExpirationDate(tarjeta.fechaExpiracion),
+      cvc: tarjeta.cvc,
+      nombreTarjeta: tarjeta.nombreTarjeta,
+    };
+
+    if (
+      tarjetaFormateada.numeroTarjeta &&
+      tarjetaFormateada.fechaExpiracion &&
+      tarjetaFormateada.cvc &&
+      tarjetaFormateada.nombreTarjeta
+    ) {
+      agregarTarjeta(tarjetaFormateada, guardarTarjeta);
+      onClose();
+    } else {
+      alert("Por favor, completa todos los campos de la tarjeta.");
+    }
+  };
 
   const handleCheckboxChange = () => {
     setGuardarTarjeta(!guardarTarjeta);
@@ -25,7 +60,7 @@ const AgregarTarjeta = ({ onClose }) => {
 
   const handleCardNumberChange = (e) => {
     const formattedValue = formatCardNumber(e.target.value);
-    e.target.value = formattedValue;
+    setTarjeta((prev) => ({ ...prev, numeroTarjeta: formattedValue }));
   };
 
   const formatExpirationDate = (value) => {
@@ -38,7 +73,7 @@ const AgregarTarjeta = ({ onClose }) => {
 
   const handleExpirationDateChange = (e) => {
     const formattedValue = formatExpirationDate(e.target.value);
-    e.target.value = formattedValue;
+    setTarjeta((prev) => ({ ...prev, fechaExpiracion: formattedValue }));
   };
 
   return (
@@ -68,6 +103,7 @@ const AgregarTarjeta = ({ onClose }) => {
                 required
                 style={styles.input}
                 onChange={handleCardNumberChange}
+                value={tarjeta.numeroTarjeta}
                 maxLength={19}
               />
             </div>
@@ -82,6 +118,7 @@ const AgregarTarjeta = ({ onClose }) => {
                 required
                 style={{ ...styles.input, ...styles.placeholder }}
                 onChange={handleExpirationDateChange}
+                value={tarjeta.fechaExpiracion}
                 maxLength={5}
               />
             </div>
@@ -94,6 +131,7 @@ const AgregarTarjeta = ({ onClose }) => {
                 name="cvc"
                 required
                 style={styles.input}
+                onChange={handleInputChange}
                 maxLength={3}
               />
             </div>
@@ -106,6 +144,7 @@ const AgregarTarjeta = ({ onClose }) => {
                 name="nombreTarjeta"
                 required
                 style={styles.input}
+                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -126,7 +165,7 @@ const AgregarTarjeta = ({ onClose }) => {
               onChange={handleCheckboxChange}
             />
           </div>
-          <CarritoBtn text={"Agregar"} />
+          <CarritoBtn text={"Agregar"} onClick={handleAgregarTarjeta} />
         </div>
       </div>
     </motion.div>

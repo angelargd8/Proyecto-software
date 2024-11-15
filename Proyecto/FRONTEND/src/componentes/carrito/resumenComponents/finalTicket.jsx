@@ -36,11 +36,14 @@ const FinalTicket = () => {
   } = useContext(CarritoContext);
   const { carrito } = useCarrito();
 
-  const total = carrito.reduce(
+  const subTotal = carrito.reduce(
     (acc, producto) =>
       acc + precioXProducto(producto.quantity, producto.precios),
     0
   );
+
+  const Tarifa = 5.0;
+  const total = subTotal + Tarifa;
 
   const navigate = useNavigate();
 
@@ -90,7 +93,10 @@ const FinalTicket = () => {
                     {`-  ${producto.quantity} ${producto.title}`}
                   </span>
                   <span style={styles.value}>
-                    {precioXProducto(producto.quantity, producto.precios)}
+                    {`Q ${precioXProducto(
+                      producto.quantity,
+                      producto.precios
+                    ).toFixed(2)}`}
                   </span>
                 </div>
               ))}
@@ -98,6 +104,19 @@ const FinalTicket = () => {
           ) : (
             <span style={styles.value}>Sin productos</span>
           )}
+          <div style={styles.infoRow}>
+            <span
+              style={{
+                ...styles.label,
+                paddingLeft: 10,
+                fontWeight: undefined,
+              }}
+            >
+              {" "}
+              - Tarifa Servicio
+            </span>
+            <span style={styles.value}>Q {Tarifa.toFixed(2)}</span>
+          </div>
         </div>
         <div style={styles.infoRow}>
           <span style={styles.label}>Tipo de Pago:</span>
@@ -107,7 +126,7 @@ const FinalTicket = () => {
         </div>
         <div style={{ ...styles.infoRow, borderTop: "2px solid black" }}>
           <span style={styles.label}>Total a pagar:</span>
-          <span style={styles.value}>{total}</span>
+          <span style={styles.value}>{`Q ${total.toFixed(2)}`}</span>
         </div>
       </motion.div>
     </>
