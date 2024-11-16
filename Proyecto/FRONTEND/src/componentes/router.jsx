@@ -13,6 +13,9 @@ import Resumen from "./carrito/resumen.jsx";
 import AgregarCateg from "./admin/AgregarCategoria/agregarCateg.jsx";
 import Contact from "./contact/contact.jsx";
 import Configuracion from "./config/configuracion.jsx";
+import EditCategory from "./admin/EditCategory/index.jsx";
+import RegistrosVentas from "./admin/RegistrosVentas/registrosVentas.jsx";
+import CardProductEdit from "./admin/AgregarProducto/editCardProd.jsx"
 import { useLocation, useNavigate } from "react-router-dom";
 
 function AppRouter() {
@@ -49,6 +52,9 @@ function AppRouter() {
             <Route path="/agregarCategoria" element={<AgregarCateg />} />
             <Route path="/editarCategorias" element={<EditarCateg />} />
             <Route path="/editarProductos/:detail" element={<EditarProds />} />
+            <Route path="/editarProductosIndividual/:detail" element={<CardProductEdit />} />
+            <Route path="/editarCategoria/:detail" element={<EditCategory />} />
+            <Route path="/registroVentas" element={<RegistrosVentas />} />
           </>
         ))
       ) : (

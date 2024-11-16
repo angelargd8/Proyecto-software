@@ -1,7 +1,7 @@
 import CarritoBtn from "../Components/CarritoBtn";
 import DropDown from "./dropDown";
 import Carrusel from "./carrusel";
-import React from "react";
+import React, { useState } from "react";
 import iconoUbicacion from "../../../assets/img/FotoUbi.png";
 import iconoUsuario from "../../../assets/img/FotoReceptor.png";
 import iconoPago from "../../../assets/img/FotoEfectivo.png";
@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { CarritoContext } from "../carritoContext";
+import Modal from "react-modal";
+import AgregarTarjeta from "./agregarTarjeta";
 
 const OPCIONES = {
   UBICACIONES: [
@@ -18,6 +20,7 @@ const OPCIONES = {
     },
     { label: "Casa", value: "Casa" },
     { label: "Trabajo", value: "Trabajo" },
+    { label: "Agregar ubicación...", value: "NuevaUbicacion" },
   ],
   USUARIOS: [
     {
@@ -29,11 +32,11 @@ const OPCIONES = {
       value: "Enrique Fernando Echeverria Leal",
     },
     { label: "Diego Garcia del Valle", value: "Diego Garcia del Valle" },
+    { label: "Agregar receptor...", value: "NuevoReceptor" },
   ],
   METODOS_PAGO: [
-    { label: "Tarjeta de Crédito/Débito", value: "Tarjeta de Crédito/Débito" },
-    { label: "Efectivo", value: "Efectivo" },
-    { label: "Depósito Bancario", value: "Depósito Bancario" },
+    { label: "Efectivo", value: "efectivo" },
+    { label: "Agregar tarjeta...", value: "NuevaTarjeta" },
   ],
 };
 
@@ -92,7 +95,13 @@ function DetallesPago({ setShowModal }) {
     setReceptor,
     pagoType,
     setPagoType,
+    tarjetasGuardadas,
+    tarjetaTemporal,
   } = useContext(CarritoContext);
+
+  const [mostrarModal, setMostrarModal] = useState(false);
+
+  console.warn("tarjetasGuardadas", tarjetasGuardadas);
 
   const navigate = useNavigate();
   const handleClick = () => {
@@ -110,12 +119,35 @@ function DetallesPago({ setShowModal }) {
     }
   };
 
+  const opcionesMetodosPago = [
+    ...tarjetasGuardadas.map((tarjeta) => {
+      return {
+        label: `**** **** **** ${tarjeta.last4} (${tarjeta.brand})`,
+        value: tarjeta.token,
+      };
+    }),
+
+    ...(tarjetaTemporal ? [{
+      label: `**** **** **** ${tarjetaTemporal.last4} (${tarjetaTemporal.brand})`,
+      value: tarjetaTemporal.token,
+    }] : []),
+
+    ...OPCIONES.METODOS_PAGO,
+  ];
+
+  const handleSelectPagoType = (value) => {
+    setPagoType(value);
+    if (value === "NuevaTarjeta") {
+      setMostrarModal(true);
+    }
+  };
+
   return (
     <>
       <style>{bounceAnimation}</style>
       <div style={styles.contenedorGeneral}>
         <div style={styles.closeButton} onClick={() => setShowModal(false)}>
-          ×
+          X
         </div>
         <div style={styles.header}>Detalles de Pago</div>
         <div style={styles.content}>
@@ -138,8 +170,8 @@ function DetallesPago({ setShowModal }) {
           <Seccion titulo="Métodos de Pago" styles={styles}>
             <DropDown
               title="Seleccionar método de pago"
-              options={OPCIONES.METODOS_PAGO}
-              onSelect={setPagoType}
+              options={opcionesMetodosPago}
+              onSelect={handleSelectPagoType}
               selectedValue={pagoType}
             />
           </Seccion>
@@ -157,6 +189,28 @@ function DetallesPago({ setShowModal }) {
           </div>
         </div>
       </div>
+
+      <Modal
+        isOpen={mostrarModal}
+        style={{
+          content: {
+            display: "flex",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "transparent",
+          },
+        }}
+        onRequestClose={() => setMostrarModal(false)}
+      >
+        <AgregarTarjeta 
+          onClose={() => setMostrarModal(false)} 
+          setPagoType={setPagoType} 
+        />
+      </Modal>
     </>
   );
 }

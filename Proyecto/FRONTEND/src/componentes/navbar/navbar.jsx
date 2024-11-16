@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import React, { useEffect } from "react";
 import useIsMobile from "../../hooks/useDevice";
 import "./navbar.css";
@@ -7,6 +6,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { useNavigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import MobileNav from "./components/MobileNav";
+import { SwapHorizontalOutline, ClipboardOutline , PersonAddOutline, Add} from "react-ionicons";
 
 const navbarPages = [
   { name: "Inicio", link: "/home" },
@@ -29,6 +29,7 @@ const NavBar2 = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [inUseMenuActions, setInUseMenuActions] = useState([
     { name: "Iniciar Sesión", link: "/login" },
+    { name: "Contactanos", link: "/contact" },
   ]);
   const [displayName, setDisplayName] = useState("Iniciar Sesión");
   const [searchItem, setSearchItem] = useState("");
@@ -142,6 +143,8 @@ const NavBar2 = () => {
   };
 
   const isMobile = useIsMobile();
+  const homeLink = userRol === "Admin" ? "/editarCategorias" : "/home";
+
   return (
     <div style={{ width: "100%" }}>
       {hideNavBarOnPaths.includes(location.pathname) ? null : (
@@ -170,7 +173,7 @@ const NavBar2 = () => {
                   <div
                     className="navbar-text"
                     onClick={() => {
-                      handleNavigatePage(page.link);
+                      handleNavigatePage(page.name === "Inicio" ? homeLink : page.link);
                     }}
                   >
                     {page.name}
@@ -190,38 +193,86 @@ const NavBar2 = () => {
                         }}
                       />
                       <img src="/img/buscar.png" alt="Buscar" />
-                    </div>
+                    </div> 
                   </form>
-                  <div
+
+
+                  {(location.pathname === "/home" || location.pathname === "/contact") ? (
+                    // Vista de Cliente: Carrito
+                    <div
+                      onClick={() => {
+                        handleNavigatePage("/carrito");
+                      }}
+                      className="carrito-navbar-container"
+                    >
+                      <img
+                        src="/img/carrito.png"
+                        id="carrito-img"
+                        href="/carrito"
+                      />
+                      <div>Carrito</div>
+                    </div>
+                  ) :
+                  userRol === "Admin" &&
+                  (location.pathname === "/home"  || location.pathname === "/editarCategorias") ?
+                  (
+                    // Vista de Admin: Registros de Ventas
+                    <div className="containerRowNav">
+                      <div
+                      onClick={() => {
+                        handleNavigatePage("/registroVentas");
+                      }}
+                      className="carrito-navbar-container"
+                    >
+                      <ClipboardOutline
+                        color={"#ffffff"}
+                        height="30px"
+                        width="30px"
+                      />
+                      <div>Registros de Ventas</div>
+                    </div>
+
+                    <div
                     onClick={() => {
-                      handleNavigatePage("/carrito");
+                      handleNavigatePage("/signup");
                     }}
-                    className="carrito-navbar-container"
-                  >
-                    <img
-                      src="/img/carrito.png"
-                      id="carrito-img"
-                      href="/carrito"
-                    />
-                    <div>Carrito</div>
-                  </div>
+                    className="carrito-navbar-container">                     
+                      <PersonAddOutline
+                        color={"#ffffff"}
+                        height="30px"
+                        width="30px"
+                      />
+                      <div>Registro de Usuarios</div>
+                    </div>
+                    </div>
+                  ) : null}
 
                   {userRol === "Admin" &&
-                    (location.pathname === "/home" ||
-                      location.pathname === "/editarCategorias") && (
+                    (location.pathname === "/home" || location.pathname === "/editarCategorias"  || location.pathname === "/contact") && (
                       <div
                         className="toggle-admin-view-button"
                         onClick={() => {
-                          if (location.pathname === "/home") {
+                          if (location.pathname === "/home" || location.pathname === "/contact") {
                             navigate("/editarCategorias");
                           } else {
                             navigate("/home");
                           }
                         }}
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          cursor: "pointer",
+                        }}
                       >
-                        {location.pathname === "/home" && "Ir a Vista de Admin"}
-                        {location.pathname === "/editarCategorias" &&
-                          "Ir a Vista de Usuario"}
+                        <SwapHorizontalOutline
+                          color={"#fffff"}
+                          height="30px"
+                          width="30px"
+                        />
+                        <p style={{ margin: "5px 0", fontSize: "12px", fontWeight: "bold" }}>
+                          {location.pathname === "/home" || location.pathname === "/contact" ? "Ir a Vista Admin" : "Ir a Vista Usuario"}
+                        </p>
                       </div>
                     )}
 

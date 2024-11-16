@@ -20,31 +20,144 @@ const Resumen = () => {
     agregarTicket,
     limpiarTicket,
     limpiarCarrito,
+    tarjetaTemporal,
+    tarjetasGuardadas,
+    carrito,
   } = useContext(CarritoContext);
+
+  React.useEffect(() => {
+    if (carrito.length === 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "¡Espera!",
+        text: "¡El carrito está vacío, ¡Agrega algo a tu carrito!",
+        showConfirmButton: true,
+      }).then(() => {
+        navigate("/carrito");
+      });
+    }
+    if (ubicacion === "" || receptor === "" || pagoType === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "¡Espera!",
+        text: "¡Necesitas llenar todos los datos de pago antes de continuar!",
+        showConfirmButton: true,
+      }).then(() => {
+        navigate("/carrito");
+      });
+    }
+  }, [carrito, navigate]);
+
+  // Cálculo del total
+  const precioXProducto = (cantidad, precios) => {
+    precios = precios.sort((a, b) => a.quantity - b.quantity);
+    const precioUnitario = precios[0].price;
+    let precioFinal = 0;
+    precios.forEach((precio) => {
+      let cantidadProduct = precio.quantity;
+      let precioProducto = precio.price * cantidadProduct;
+
+      if (cantidad >= cantidadProduct) {
+        let docenas = Math.floor(cantidad / cantidadProduct);
+        let extras = cantidad % cantidadProduct;
+        precioFinal = docenas * precioProducto + extras * precioUnitario;
+      }
+    });
+    return precioFinal;
+  };
+
+  const subTotal = carrito.reduce(
+    (acc, producto) =>
+      acc + precioXProducto(producto.quantity, producto.precios),
+    0
+  );
+
+  const Tarifa = 5.0; // Tarifa de servicio
+  const total = subTotal + Tarifa; // Total con tarifa
 
   const handlePago = () => {
     navigate("/pago");
   };
 
-  const handleTicketButton = () => {
-    Swal.fire({
-      title: "¡Éxito!",
-      text: "¡Se ha agregado tu pedido!",
-      icon: "success",
-      confirmButtonText: "Aceptar",
-    }).then(() => {
-      agregarTicket();
-      limpiarTicket();
-      limpiarCarrito();
-      navigate("/home");
-
-      let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
-      carrito.forEach((producto) => {
-        mensaje += `${producto.quantity} -- ${producto.title}\n`;
+  const realizarCobro = async (tarjeta, total) => {
+    try {
+      const response = await fetch("http://localhost:4000/api/validate-card", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: tarjeta.token,  // El token que generaste con Stripe en el frontend
+          amount: total,         // El monto total que deseas cobrar
+        }),
       });
-      var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, "_blank");
+  
+      const result = await response.json();
+  
+      if (result.success) {
+        return "Cobro realizado exitosamente";
+      } else {
+        throw new Error(result.error);
+      }
+    } catch (error) {
+      console.error("Error realizando el cobro:", error);
+      throw new Error(error.message || "Error al realizar el cobro");
+    }
+  };
+
+  const handleTicketButton = async () => {
+    const tarjeta =
+      tarjetaTemporal ||
+      tarjetasGuardadas.find((tarjeta) => tarjeta.token === pagoType);
+
+    if (!tarjeta) {
+      Swal.fire({
+        title: "Error",
+        text: "No se encontró una tarjeta para realizar el pago.",
+        icon: "error",
+      });
+      return;
+    }
+
+    // Mostrar el alert de que estamos realizando el cobro
+    Swal.fire({
+      title: "Realizando cobro",
+      text: "Por favor, espere...",
+      icon: "info",
+      showConfirmButton: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
     });
+
+    try {
+      const mensaje = await realizarCobro(tarjeta, total);
+      Swal.fire({
+        title: "¡Éxito!",
+        text: "¡Se ha agregado tu pedido!",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      }).then(() => {
+        agregarTicket();
+        limpiarTicket();
+        limpiarCarrito();
+        navigate("/home");
+
+        let mensaje = "Saludos.\nMe gustaría hacer un pedido de:\n";
+        carrito.forEach((producto) => {
+          mensaje += `${producto.quantity} -- ${producto.title}\n`;
+        });
+        var url = `https://wa.me/50237067222?text=${encodeURIComponent(mensaje)}`;
+        window.open(url, "_blank");
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
+    }
   };
 
   const handleDirecc = () => {
@@ -76,7 +189,7 @@ const Resumen = () => {
               width: isMobile ? "80%" : "28%",
               marginTop: 20,
             }}
-            text={"Aceptar"}
+            text={"Confirmar Pago"}
           />
         </div>
       </div>

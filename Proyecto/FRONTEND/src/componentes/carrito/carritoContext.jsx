@@ -15,6 +15,8 @@ export const CarritoProvider = ({ children }) => {
 
   const [carrito, setCarrito] = useState([]);
   const [tickets, setTickets] = useState([]);
+  const [tarjetasGuardadas, setTarjetasGuardadas] = useState([]);
+  const [tarjetaTemporal, setTarjetaTemporal] = useState(null);
 
   useEffect(() => {
     const storedCarrito = localStorage.getItem("carrito");
@@ -42,6 +44,11 @@ export const CarritoProvider = ({ children }) => {
       const parsedTickets = JSON.parse(storedTickets);
       setTickets(parsedTickets);
       console.warn("Tickets guardados actualmente:", parsedTickets);
+    }
+
+    const storedTarjetas = localStorage.getItem("tarjetasGuardadas");
+    if (storedTarjetas) {
+      setTarjetasGuardadas(JSON.parse(storedTarjetas));
     }
   }, []);
 
@@ -148,6 +155,26 @@ export const CarritoProvider = ({ children }) => {
     localStorage.removeItem("pagoType");
   };
 
+  const agregarTarjeta = (tarjeta, guardar) => {
+    if (guardar) {
+      const nuevasTarjetas = [...tarjetasGuardadas, tarjeta];
+      setTarjetasGuardadas(nuevasTarjetas);
+      localStorage.setItem("tarjetasGuardadas", JSON.stringify(nuevasTarjetas));
+    } else {
+      setTarjetaTemporal(tarjeta);
+    }
+    console.log("Tarjeta guardada con token:", tarjeta);
+  };
+
+  const limpiarTarjetaTemporal = () => {
+    setTarjetaTemporal(null);
+  };
+
+  const limpiarTarjetasGuardadas = () => {
+    setTarjetasGuardadas([]);
+    localStorage.removeItem("tarjetasGuardadas");
+  };
+
   return (
     <CarritoContext.Provider
       value={{
@@ -175,6 +202,11 @@ export const CarritoProvider = ({ children }) => {
         },
         agregarTicket,
         obtenerUltimoTicketId,
+        agregarTarjeta,
+        tarjetasGuardadas,
+        tarjetaTemporal,
+        limpiarTarjetaTemporal,
+        limpiarTarjetasGuardadas,
       }}
     >
       {children}

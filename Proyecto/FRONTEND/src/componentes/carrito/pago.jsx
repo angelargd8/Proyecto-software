@@ -1,20 +1,49 @@
 import "./pago.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Carrusel from "./PagoComponents/carrusel";
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MobileHdr from "./Components/MobileHdr";
 import CarritoBtn from "./Components/CarritoBtn";
 import CarritoSteps from "./Components/CarritoSteps";
 import DropDown from "./PagoComponents/dropDown";
 import Swal from "sweetalert2";
 import { Navigate, useNavigate } from "react-router-dom";
+import { CarritoContext } from "./carritoContext";
+import AgregarTarjeta from "./PagoComponents/agregarTarjeta";
+import Modal from "react-modal";
 
 function Pago() {
   const [ubicacion, setUbicacion] = useState("");
   const [receptor, setReceptor] = useState("");
   const [pagoType, setPagoType] = useState("");
+  const [mostrarModal, setMostrarModal] = useState(false);
 
   const navigate = useNavigate();
+  const { carrito } = useContext(CarritoContext);
+
+  useEffect(() => {
+    if (carrito.length === 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "¡El carrito está vacío, ¡Agrega algo a tu carrito!",
+        showConfirmButton: true,
+      }).then(() => {
+        navigate("/carrito");
+      });
+    }
+  }, [carrito, navigate]);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (!isMobile) {
+      Swal.fire({
+        icon: "info",
+        title: "Lo siento :(",
+        text: "Esta página no está disponible en versión desktop",
+        confirmButtonText: "Aceptar",
+      });
+    }
+  }, []);
 
   const handleNext = () => {
     if (ubicacion === "" || receptor === "" || pagoType === "") {
@@ -32,21 +61,28 @@ function Pago() {
     { label: "Universidad del Valle de Guatemala", value: "uvg" },
     { label: "Casa", value: "casa" },
     { label: "Trabajo", value: "trabajo" },
-    { label: "Otro...", value: "otro" },
+    { label: "Agregar ubicación...", value: "NuevaUbicacion" },
   ];
 
   const RECEPTORES = [
     { label: "Kimberly Daniela Morales Ortega", value: "kim" },
     { label: "Enrique Fernando Echeverria Leal", value: "fer" },
     { label: "Diego Garcia del Valle", value: "diego" },
-    { label: "Otro...", value: "otro" },
+    { label: "Agregar receptor...", value: "NuevoReceptor" },
   ];
 
   const METODOS_PAGO = [
-    { label: "Tarjeta de Crédito/Débito", value: "tarjeta" },
+    { label: "Agregar tarjeta...", value: "NuevaTarjeta" },
     { label: "Efectivo", value: "efectivo" },
-    { label: "Depósito Bancario", value: "deposito" },
   ];
+
+  const handleSelectPagoType = (value) => {
+    setPagoType(value);
+    if (value === "NuevaTarjeta") {
+      setMostrarModal(true);
+    }
+  };
+
   return (
     <>
       <div className="contenedor-pago">
@@ -95,7 +131,7 @@ function Pago() {
                 <DropDown
                   title="Metodo de Pago"
                   options={METODOS_PAGO}
-                  onSelect={setPagoType}
+                  onSelect={handleSelectPagoType}
                   innerContainerStyles={{ padding: 5, border: "none" }}
                   outerContainerStyles={{ marginLeft: 10 }}
                 />
@@ -122,6 +158,25 @@ function Pago() {
           </div>
         </div>
       </div>
+
+      <Modal
+        isOpen={mostrarModal}
+        onRequestClose={() => setMostrarModal(false)}
+        style={{
+          content: {
+            display: "flex",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "transparent",
+          },
+        }}
+      >
+        <AgregarTarjeta onClose={() => setMostrarModal(false)} />
+      </Modal>
     </>
   );
 }

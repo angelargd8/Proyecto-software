@@ -120,9 +120,58 @@ async function deleteCategory(idCategory) {
   }
 }
 
+async function editCategory(req, res) {
+  const categoryId = req.body.idCategory;
+  const categoryName = req.body.name;
+  const idPage = req.body.idPage;
+  const filePath = req.file ? req.file.path : req.body.currentFilePath;
+
+  if (!filePath) {
+    return res.status(400).json({
+      status: false,
+      message:
+        "Es necesario subir un archivo o proporcionar una ruta existente.",
+    });
+  }
+
+  try {
+    const result = await pool.query(
+      `UPDATE categorias 
+       SET nombre_categoria = $1, imagen_categoria = $2, id_pagina = $3
+       WHERE id_categoria = $4
+       RETURNING id_categoria, nombre_categoria, imagen_categoria`,
+      [categoryName, filePath, idPage, categoryId]
+    );
+
+    if (result.rowCount > 0) {
+      res.status(200).json({
+        status: true,
+        message: "Actualización exitosa",
+        Category: {
+          idCategory: result.rows[0].id_categoria,
+          name: result.rows[0].nombre_categoria,
+          imagen: result.rows[0].imagen_categoria,
+        },
+      });
+    } else {
+      res.status(400).json({
+        status: false,
+        message: "No se encontró la categoría para actualizar.",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Error interno del servidor.",
+      error: error.message,
+    });
+  }
+}
+
 module.exports = {
   getCategories,
   getCategory,
   addNewCategory,
   deleteCategory,
+  editCategory,
 };

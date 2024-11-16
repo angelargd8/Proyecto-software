@@ -17,6 +17,10 @@ function EditCateg() {
     navigate(`/editarProductos/${title}`, { state: { cardInfo } });
   };
 
+  const editCategory = (title, cardInfo) => {
+    navigate(`/editarCategoria/${title}`, { state: { cardInfo } });
+  };
+
   // Eliminar categoría
   const eliminarCategoria = async (id) => {
     const query = `
@@ -46,6 +50,7 @@ function EditCateg() {
         });
       }
     }
+    navigate("/editarCategorias");
   };
 
   // Agregar categoría
@@ -104,19 +109,29 @@ function EditCateg() {
       </div>
       <div id="contenido-cartase">
         {listadoCards.map((elemento) => (
-          <div key={elemento.idCategory} className="category-carde">
+          <div
+            key={elemento.idCategory}
+            className="category-carde"
+            style={{ backgroundColor: "#f0f0f0" }}
+          >
             <CardCategoria title={elemento.name} imagen={elemento.image} />
             <button
-              className="editar-button"
-              onClick={() => info(elemento.name, elemento)}
+              className="editar-button-categoria"
+              onClick={() => editCategory(elemento.name, elemento)}
             >
-              Editar productos
+              Editar Categoría
             </button>
             <button
               className="eliminar-button"
               onClick={() => eliminarCategoria(elemento.idCategory)}
             >
-              Eliminar
+              Eliminar Categoría
+            </button>
+            <button
+              className="editar-button"
+              onClick={() => info(elemento.name, elemento)}
+            >
+              Editar productos
             </button>
           </div>
         ))}

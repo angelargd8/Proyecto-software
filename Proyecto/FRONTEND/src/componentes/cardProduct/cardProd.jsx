@@ -34,7 +34,6 @@ const CardProduct = ({
           return;
         }
       }
-      // eslint-disable-next-line no-fallthrough
       default:
         return;
     }
@@ -121,20 +120,30 @@ const CardProduct = ({
         <div className="containerActions">
           <div
             className="button"
-            style={{ fontSize: 20, textAlign: "center" }}
+            style={{
+              fontSize: 20,
+              textAlign: "center",
+              backgroundColor: "#1b4965",
+            }}
             onClick={() => onHandlerClickButton("-")}
           >
             -
           </div>
           <input
             type="number"
-            className="button"
             style={{
+              width: "30%",
+              borderRadius: "10%",
+              cursor: "pointer",
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
               backgroundColor: "white",
               color: "black",
-              fontSize: 20,
-              borderRadius: "0%",
-              border: "1px solid black",
+              justifyContent: "center",
+              marginRight: "5%",
+              transition: "opacity 0.3s ease",
+              border: "1px solid #1b4965",
               textAlign: "center",
             }}
             value={isEditing ? quantity : parseInt(quantity, 10)}
@@ -142,9 +151,10 @@ const CardProduct = ({
             onBlur={onBlurQuantity}
             onFocus={onFocusQuantity}
           />
+          {console.warn(parseInt(quantity, 10))}
           <div
             className="button"
-            style={{ fontSize: 20 }}
+            style={{ fontSize: 20, backgroundColor: "#1b4965" }}
             onClick={() => onHandlerClickButton("+")}
           >
             +

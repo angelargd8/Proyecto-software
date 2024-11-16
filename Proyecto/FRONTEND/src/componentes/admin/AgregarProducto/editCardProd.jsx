@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputImage from "../../InputImage";
 import NormalInput from "../../NormalInput";
 import StepIndicator from "../../StepIndicator";
-import "./AgregarProd.css";
-import { useLocation } from "react-router-dom";
-import Button from "../../Button";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import "./AgregarProd.css";
+import Button from "../../Button";
 
-const AgregarProducto = () => {
-  const location = useLocation();
-  const { id } = location.state;
-  const navigate = useNavigate();
-  const [nameProduct, setNameProduct] = useState("");
-  const [description, setDescription] = useState("");
-  const [previewImage, setPreviwImage] = useState(null);
-  const [image, setImage] = useState(null);
 
+const CardProductEdit = () => {
+    const location = useLocation();
+    const { infoProd } = location.state;
+
+    const id = infoProd.id;
+
+    const [nameProduct, setNameProduct] = useState(infoProd.name);
+    const [description, setDescription] = useState(infoProd.description);
+    const [previewImage, setPreviwImage] = useState(infoProd.image);
+    const [image, setImage] = useState(infoProd.image);
+
+    
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     setImage(file);
@@ -93,7 +97,6 @@ const AgregarProducto = () => {
         title: `Se agregó el producto ${nameProduct}`,
         icon: "success",
       });
-      navigate("/editarCategorias");
     } else {
       Swal.fire({
         title: "Error al crear el producto",
@@ -103,9 +106,8 @@ const AgregarProducto = () => {
     }
   };
 
-  const [precios, setPrecios] = useState([
-    { nombre: "", precio: "", cantidad: "" },
-  ]);
+  const [precios, setPrecios] = useState(infoProd.prices);
+
 
   const handleInputChange = (index, name, value) => {
     const nuevosPrecios = [...precios];
@@ -130,8 +132,12 @@ const AgregarProducto = () => {
     console.log("Precios enviados: ", precios);
   };
 
-  return (
-    <div
+    console.log(infoProd);
+    
+    return (
+        <>
+        {/* editar producto */}
+          <div
       className="AddProductContainer"
       style={{ height: "100%", width: "100%", backgroundColor: "#E2E8F0" }}
     >
@@ -161,7 +167,7 @@ const AgregarProducto = () => {
             marginTop: 10,
           }}
         >
-          Agregar nuevo producto
+          Editar información del producto
         </div>
         {/* Contenedor del paso 1 principal*/}
         <div
@@ -296,9 +302,10 @@ const AgregarProducto = () => {
                         width: "100%",
                       }}
                     >
+                      {console.log(precio)}
                       <NormalInput
                         placeHolder={"Nombre. Ej: unidad"}
-                        value={precio.value}
+                        value={precio.name}
                         name="nombre"
                         onChangeValue={(value) =>
                           handleInputChange(index, "nombre", value)
@@ -306,7 +313,7 @@ const AgregarProducto = () => {
                       />
                       <NormalInput
                         placeHolder={"Cantidad. Ej: 1"}
-                        value={precio.cantidad}
+                        value={precio.quantity}
                         name="cantidad"
                         type="number"
                         onChangeValue={(e) =>
@@ -314,7 +321,7 @@ const AgregarProducto = () => {
                         }
                       />
                       <NormalInput
-                        value={precio.precio}
+                        value={precio.prices}
                         placeHolder={"Precio. Ej: 10"}
                         name="precio"
                         type="number"
@@ -375,10 +382,14 @@ const AgregarProducto = () => {
         </div>
 
         <div>
-          <Button onClick={handleAddPRoduct}>Agregar nuevo producto</Button>
+          <Button onClick={handleAddPRoduct}>Editar producto</Button>
         </div>
       </div>
     </div>
-  );
+        </>
+    );
 };
-export default AgregarProducto;
+
+
+
+export default CardProductEdit;

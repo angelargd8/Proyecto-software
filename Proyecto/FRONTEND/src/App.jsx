@@ -38,7 +38,8 @@ function AppContent() {
     (location.pathname === "/editarCategorias") |
     (location.pathname === "/detalles") |
     (location.pathname === "/agregarProducto") |
-    (location.pathname === "/agregarCategoria");
+    (location.pathname === "/agregarCategoria")|
+    location.pathname.includes("/editarProductosIndividual");
 
   return (
     <div
