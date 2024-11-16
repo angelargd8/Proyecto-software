@@ -131,7 +131,6 @@ const CardProduct = ({
           </div>
           <input
             type="number"
-            className="button"
             style={{
               width: "30%",
               borderRadius: "10%",
@@ -145,6 +144,7 @@ const CardProduct = ({
               marginRight: "5%",
               transition: "opacity 0.3s ease",
               border: "1px solid #1b4965",
+              textAlign: "center",
             }}
             value={isEditing ? quantity : parseInt(quantity, 10)}
             onChange={onChangeQuantity}
