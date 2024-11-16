@@ -6,11 +6,12 @@ import "./AgregarProd.css";
 import { useLocation } from "react-router-dom";
 import Button from "../../Button";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AgregarProducto = () => {
   const location = useLocation();
   const { id } = location.state;
-
+  const navigate = useNavigate();
   const [nameProduct, setNameProduct] = useState("");
   const [description, setDescription] = useState("");
   const [previewImage, setPreviwImage] = useState(null);
@@ -92,6 +93,7 @@ const AgregarProducto = () => {
         title: `Se agregó el producto ${nameProduct}`,
         icon: "success",
       });
+      navigate("/editarCategorias");
     } else {
       Swal.fire({
         title: "Error al crear el producto",

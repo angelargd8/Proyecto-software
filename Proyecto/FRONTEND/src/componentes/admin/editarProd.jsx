@@ -40,8 +40,8 @@ const EditarProd = () => {
         getProducts();
       }
     }
+    navigate("/editarCategorias");
   };
-
 
   const handleEditProduct = (title, infoProd) => {
     navigate(`/editarProductosIndividual/${title}`, { state: { infoProd } });
@@ -83,7 +83,7 @@ const EditarProd = () => {
       <button className="agregarProductoButton" onClick={handleAddProduct}>
         Agregar Producto
       </button>
-      { (
+      {
         <>
           {products.map((product, index) => {
             return (
@@ -100,7 +100,7 @@ const EditarProd = () => {
             );
           })}
         </>
-      )}
+      }
     </div>
   );
 };

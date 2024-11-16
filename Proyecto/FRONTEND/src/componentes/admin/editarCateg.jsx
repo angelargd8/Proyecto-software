@@ -50,6 +50,7 @@ function EditCateg() {
         });
       }
     }
+    navigate("/editarCategorias");
   };
 
   // Agregar categoría

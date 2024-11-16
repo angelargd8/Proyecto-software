@@ -10,7 +10,13 @@ import DetallesPago from "./PagoComponents/detallesPago";
 import Swal from "sweetalert2";
 
 function Carrito() {
-  const { carrito, agregarAlCarrito, eliminarDelCarrito, limpiarCarrito, limpiarTarjetasGuardadas } = useCarrito();
+  const {
+    carrito,
+    agregarAlCarrito,
+    eliminarDelCarrito,
+    limpiarCarrito,
+    limpiarTarjetasGuardadas,
+  } = useCarrito();
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
   const [showModal, setShowModal] = useState(false);
