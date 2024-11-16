@@ -10,6 +10,7 @@ const {
 const { addNewProduct } = require("./controllers/itemController");
 const upload = require("./utils/multerConfig");
 const { validateCard } = require("./controllers/stripeController");
+const { updateItem } = require("./models/itemModel");
 
 const app = express();
 app.use(cors());
@@ -20,6 +21,7 @@ app.post("/addProduct", upload.single("file"), addNewProduct);
 app.use("/uploads", express.static("./uploads"));
 app.post("/api/validate-card", validateCard);
 app.post("/editCategory", upload.single("file"), editCategory);
+app.post("/editProduct", upload.single("file"), updateItem);
 
 const server = new ApolloServer({
   typeDefs,
