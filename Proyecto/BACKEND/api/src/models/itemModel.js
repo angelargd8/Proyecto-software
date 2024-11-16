@@ -38,28 +38,28 @@ async function getOneItem(idItem) {
   }
 }
 
-async function updateItem(item) {
-  try {
-    const result = await pool.query(`update articulos 
-        set nombre_articulo = '${item.name}', cantidad_articulo = ${
-      item.quantity ? item.quantity : null
-    }, precio = ${item.price}, descripcion = '${
-      item.description ? item.description : null
-    }'
-        where id_articulo = ${item.idItem}`);
-    let jsonResult = {
-      idItems: item.idItem,
-      name: item.name,
-      quantity: item.quantity ? item.quantity : null,
-      description: item.description ? item.description : null,
-      price: item.price,
-    };
-    return jsonResult;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-}
+// async function updateItem(item) {
+//   try {
+//     const result = await pool.query(`update articulos
+//         set nombre_articulo = '${item.name}', cantidad_articulo = ${
+//       item.quantity ? item.quantity : null
+//     }, precio = ${item.price}, descripcion = '${
+//       item.description ? item.description : null
+//     }'
+//         where id_articulo = ${item.idItem}`);
+//     let jsonResult = {
+//       idItems: item.idItem,
+//       name: item.name,
+//       quantity: item.quantity ? item.quantity : null,
+//       description: item.description ? item.description : null,
+//       price: item.price,
+//     };
+//     return jsonResult;
+//   } catch (error) {
+//     console.error(error);
+//     return [];
+//   }
+// }
 
 async function addNewItem(req, res) {
   const name = req.body.name;
@@ -134,6 +134,83 @@ async function getItemPrices(idItem) {
   } catch (error) {
     console.error(error);
     return [];
+  }
+}
+
+async function updateItem(req, res) {
+  const idItem = req.body.idItem;
+  const name = req.body.name;
+  const idCategory = req.body.idCategory;
+  const description = req.body.description;
+  const prices = JSON.parse(req.body.prices);
+  const filePath = req.file ? req.file.path : req.body.currentFilePath;
+
+  if (!filePath) {
+    return res.status(400).json({
+      status: false,
+      message:
+        "Es necesario subir un archivo o proporcionar una ruta existente.",
+    });
+  }
+
+  try {
+    await pool.query("BEGIN");
+
+    const result = await pool.query(
+      `
+      UPDATE articulos
+      SET nombre_articulo = $1, descripcion = $2, id_categoria = $3, category_image = $4
+      WHERE id_articulo = $5
+      RETURNING id_articulo;
+    `,
+      [name, description, idCategory, filePath, idItem]
+    );
+
+    if (result.rowCount === 0) {
+      throw new Error("El artículo no existe o no pudo ser actualizado.");
+    }
+
+    await pool.query(
+      `
+      DELETE FROM precios
+      WHERE id_articulo = $1;
+    `,
+      [idItem]
+    );
+
+    for (const price of prices) {
+      const { nombre, cantidad, precio } = price;
+
+      await pool.query(
+        `
+        INSERT INTO precios (id_articulo, nombre_precio, cantidad_precio, precio)
+        VALUES ($1, $2, $3, $4);
+      `,
+        [idItem, nombre, cantidad, precio]
+      );
+    }
+
+    await pool.query("COMMIT");
+
+    res.status(200).json({
+      status: true,
+      message: "Actualización exitosa",
+      Item: {
+        idItem,
+        name,
+        description,
+        categoryImage: filePath,
+        prices,
+      },
+    });
+  } catch (error) {
+    await pool.query("ROLLBACK");
+    res.status(400).json({
+      status: false,
+      message: "Fallo en la actualización",
+      error: error.message,
+    });
+    console.error("Error al actualizar el artículo y los precios:", error);
   }
 }
 

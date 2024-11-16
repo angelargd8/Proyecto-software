@@ -7,8 +7,8 @@ const getOneItem = async (idItem) => {
   return await itemModel.getOneItem(idItem);
 };
 
-const updateItem = async (item) => {
-  return await itemModel.updateItem(item);
+const updateItem = async (req, res) => {
+  return await itemModel.updateItem(req, res);
 };
 
 const addNewProduct = async (req, res) => {
