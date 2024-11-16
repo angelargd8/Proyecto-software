@@ -23,12 +23,12 @@ services:
     ports:
       - "8000:5173"
     environment:
-      VITE_APIPORT: "http://5.161.104.98:3005/graphql"
-      VITE_APIPORT_IMAGE: "http://5.161.104.98:3005/"
-      VITE_APIPORT_CATEGORY: "http://5.161.104.98:3005/addCategory"
-      VITE_APIPORT_PRODUCT: "http://5.161.104.98:3005/addProduct"
-      VITE_APIPORT_EDIT_CATEGORY: "http://5.161.104.98:3005/editCategory"
-      VITE_APIPORT_EDIT_PRODUCT: "http://5.161.104.98:3005/editProduct"
+      VITE_APIPORT: "https://api.picolin.online/graphql"
+      VITE_APIPORT_IMAGE: "https://api.picolin.online/"
+      VITE_APIPORT_CATEGORY: "https://api.picolin.online/addCategory"
+      VITE_APIPORT_PRODUCT: "https://api.picolin.online/addProduct"
+      VITE_APIPORT_EDIT_CATEGORY: "https://api.picolin.online/editCategory"
+      VITE_APIPORT_EDIT_PRODUCT: "https://api.picolin.online/editProduct"
     depends_on:
       - api
       - postgres
