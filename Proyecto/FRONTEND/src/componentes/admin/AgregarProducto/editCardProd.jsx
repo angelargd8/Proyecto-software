@@ -35,9 +35,9 @@ const CardProductEdit = () => {
     }
   };
 
-  const handleAddPRoduct = async () => {
+  const handleEditProduct = async () => {
     const formData = new FormData();
-
+  
     if (!nameProduct) {
       Swal.fire({
         title: "Debe agregar un nombre para el producto",
@@ -45,7 +45,7 @@ const CardProductEdit = () => {
       });
       return;
     }
-
+  
     if (!image) {
       Swal.fire({
         title: "Debe agregar una imagen para el producto",
@@ -53,7 +53,7 @@ const CardProductEdit = () => {
       });
       return;
     }
-
+  
     if (!description) {
       Swal.fire({
         title: "Debe agregar una descripción para el producto",
@@ -61,12 +61,12 @@ const CardProductEdit = () => {
       });
       return;
     }
-
+  
     const filterPrecios = precios.filter(
       (precio) =>
         precio.nombre !== "" && precio.precio !== "" && precio.cantidad !== ""
     );
-
+  
     if (filterPrecios.length < 1) {
       Swal.fire({
         title: "Debe agregar al menos un precio para el producto",
@@ -74,38 +74,35 @@ const CardProductEdit = () => {
       });
       return;
     }
-
+  
     formData.append("prices", JSON.stringify(filterPrecios));
     formData.append("name", nameProduct);
     formData.append("file", image);
     formData.append("idCategory", id);
     formData.append("description", description);
-
-    console.log(formData);
-    const url = import.meta.env.VITE_APIPORT_PRODUCT;
-    // tests:
-    // var url = process.env.VITE_APIPORT_PRODUCT;
+  
+    const url = `${import.meta.env.VITE_APIPORT_PRODUCT}/${id}`; // Asegúrate de tener el `productId` del producto que deseas editar.
+  
     const response = await fetch(url, {
-      method: "POST",
+      method: "PUT", // Cambia a PUT para indicar edición
       body: formData,
     });
-
+  
     if (response.ok) {
-      // const result = await response.json();
-      // console.warn("File uploaded successfully:", result);
       Swal.fire({
-        title: `Se agregó el producto ${nameProduct}`,
+        title: `Producto ${nameProduct} actualizado con éxito`,
         icon: "success",
       });
     } else {
       Swal.fire({
-        title: "Error al crear el producto",
+        title: "Error al actualizar el producto",
         icon: "error",
       });
       console.error("Error:", response.statusText);
     }
   };
-
+  
+  
   const [precios, setPrecios] = useState(infoProd.prices);
 
 
@@ -321,7 +318,7 @@ const CardProductEdit = () => {
                         }
                       />
                       <NormalInput
-                        value={precio.prices}
+                        value={precio.price}
                         placeHolder={"Precio. Ej: 10"}
                         name="precio"
                         type="number"
@@ -382,7 +379,7 @@ const CardProductEdit = () => {
         </div>
 
         <div>
-          <Button onClick={handleAddPRoduct}>Editar producto</Button>
+          <Button onClick={handleEditProduct}>Editar producto</Button>
         </div>
       </div>
     </div>
