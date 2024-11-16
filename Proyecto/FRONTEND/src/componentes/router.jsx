@@ -15,7 +15,7 @@ import Contact from "./contact/contact.jsx";
 import Configuracion from "./config/configuracion.jsx";
 import EditCategory from "./admin/EditCategory/index.jsx";
 import RegistrosVentas from "./admin/RegistrosVentas/registrosVentas.jsx";
-import CardProductEdit from "./admin/editCardProd.jsx"
+import CardProductEdit from "./admin/AgregarProducto/editCardProd.jsx"
 import { useLocation, useNavigate } from "react-router-dom";
 
 function AppRouter() {
