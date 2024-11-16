@@ -17,8 +17,8 @@ const CardProductEdit = () => {
 
     const [nameProduct, setNameProduct] = useState(infoProd.name);
     const [description, setDescription] = useState(infoProd.description);
-    const [previewImage, setPreviwImage] = useState(null);
-    const [image, setImage] = useState(null);
+    const [previewImage, setPreviwImage] = useState(infoProd.image);
+    const [image, setImage] = useState(infoProd.image);
 
     
   const handleImageChange = (event) => {
@@ -106,9 +106,8 @@ const CardProductEdit = () => {
     }
   };
 
-  const [precios, setPrecios] = useState([
-    { nombre: "", precio: "", cantidad: "" },
-  ]);
+  const [precios, setPrecios] = useState(infoProd.prices);
+
 
   const handleInputChange = (index, name, value) => {
     const nuevosPrecios = [...precios];
@@ -303,9 +302,10 @@ const CardProductEdit = () => {
                         width: "100%",
                       }}
                     >
+                      {console.log(precio)}
                       <NormalInput
                         placeHolder={"Nombre. Ej: unidad"}
-                        value={precio.value}
+                        value={precio.name}
                         name="nombre"
                         onChangeValue={(value) =>
                           handleInputChange(index, "nombre", value)
@@ -313,7 +313,7 @@ const CardProductEdit = () => {
                       />
                       <NormalInput
                         placeHolder={"Cantidad. Ej: 1"}
-                        value={precio.cantidad}
+                        value={precio.quantity}
                         name="cantidad"
                         type="number"
                         onChangeValue={(e) =>
@@ -321,7 +321,7 @@ const CardProductEdit = () => {
                         }
                       />
                       <NormalInput
-                        value={precio.precio}
+                        value={precio.prices}
                         placeHolder={"Precio. Ej: 10"}
                         name="precio"
                         type="number"
