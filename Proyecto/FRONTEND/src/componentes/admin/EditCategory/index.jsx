@@ -11,7 +11,7 @@ import { useLocation } from "react-router-dom";
 import useGraphqlApi from "../../../hooks/useGraphqlApi";
 import useFetchImage from "../../../hooks/useFetchImage";
 
-function agregarCateg() {
+const agregarCateg = () => {
   const location = useLocation();
   const { cardInfo } = location.state;
   const { idCategory } = cardInfo;
@@ -52,10 +52,6 @@ function agregarCateg() {
     setNameCategoria(category.name);
   }, [category]);
 
-  //   const [nameCategoria, setNameCategoria] = useState(null);
-  //   const [image, setImage] = useState(null);
-  //   const [previewImage, setPreviwImage] = useState(null);
-
   const navigate = useNavigate();
 
   const handleImageChange = (event) => {
@@ -77,20 +73,17 @@ function agregarCateg() {
   };
 
   const handleSubmit = async () => {
-    if (!image) {
-      Swal.fire({
-        title: "Debe agregar una imagen para la categoría",
-        icon: "warning",
-      });
-      return;
-    }
-
     const formData = new FormData();
-    formData.append("file", image);
+    if (image) {
+      formData.append("file", image);
+    } else {
+      formData.append("currentFilePath", category?.image);
+    }
     formData.append("name", nameCategoria);
     formData.append("idCategory", idCategory);
+    formData.append("idpage", 1);
 
-    const url = import.meta.env.VITE_APIPORT_CATEGORY;
+    const url = import.meta.env.VITE_APIPORT_EDIT_CATEGORY;
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -101,10 +94,10 @@ function agregarCateg() {
         const result = await response.json();
         console.warn("File uploaded successfully:", result);
         Swal.fire({
-          title: `Se creó la categoría ${nameCategoria}`,
+          title: `Se edito la categoría ${nameCategoria}`,
           icon: "success",
         }).then(() => {
-          navigate("/home");
+          navigate("/editarCategorias");
         });
       } else {
         Swal.fire({
@@ -186,6 +179,6 @@ function agregarCateg() {
       </div>
     </div>
   );
-}
+};
 
 export default agregarCateg;

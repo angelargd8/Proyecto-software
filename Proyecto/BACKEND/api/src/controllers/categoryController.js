@@ -14,7 +14,11 @@ const addNewCategory = async (req, res) => {
 
 const deleteCategory = async (idCategory) => {
   return await categoryModel.deleteCategory(idCategory);
-}
+};
+
+const editCategory = async (req, res) => {
+  return await categoryModel.editCategory(req, res);
+};
 
 // exportar
 
@@ -23,4 +27,5 @@ module.exports = {
   getOneCategory,
   addNewCategory,
   deleteCategory,
+  editCategory,
 };
