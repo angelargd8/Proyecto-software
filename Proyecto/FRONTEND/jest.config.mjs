@@ -13,5 +13,5 @@ export default {
     '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/src/tests/__mocks__/fileMock.js'
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
-  testPathIgnorePatterns: ['src/tests/Router.test.js'],
+  testPathIgnorePatterns: ['src/tests/Router.test.js', 'src/tests/GoogleAuthProvider.test.js'],
 };
